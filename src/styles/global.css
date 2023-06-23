@@ -4,64 +4,106 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 body {
-	font-family: Verdana, sans-serif;
+  /* font-family: Verdana, sans-serif;
 	margin: auto;
 	padding: 20px;
 	max-width: 65ch;
+	margin-inline: auto !important;
 	text-align: left;
 	background-color: #fff;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	line-height: 1.5;
-	color: #444;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-strong,
-b {
-	color: #222;
-}
-a {
-	color: #3273dc;
-}
-nav a {
-	margin-right: 10px;
+	color: #444; */
+  background-color: #13111c;
+  color: rgb(226, 232, 240);
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
 }
 textarea {
-	width: 100%;
-	font-size: 16px;
+  width: 100%;
+  font-size: 16px;
 }
 input {
-	font-size: 16px;
+  font-size: 16px;
 }
 content {
-	line-height: 1.6;
+  line-height: 1.6;
 }
 table {
-	width: 100%;
+  width: 100%;
 }
 img {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
 }
-code {
-	padding: 2px 5px;
-	background-color: #f2f2f2;
+.post code {
+  padding: 2px 5px;
+  background-color: #414141;
+  border-radius: 2px;
 }
-pre {
-	padding: 1rem;
+.post pre {
+  padding: 1rem;
+  margin: 12px 0;
 }
-pre > code {
-	all: unset;
+.post pre > code {
+  all: unset;
 }
-blockquote {
-	border: 1px solid #999;
-	color: #222;
-	padding: 2px 0px 2px 20px;
-	margin: 0px;
-	font-style: italic;
+.post blockquote {
+  border: 1px solid #999;
+  color: #222;
+  padding: 2px 0px 2px 20px;
+  margin: 0px;
+  font-style: italic;
+}
+.post h1,
+.post h2,
+.post h3,
+.post h4,
+.post p,
+.post ul,
+.post ol {
+  margin: 12px 0;
+}
+.post h1 {
+  font-weight: bold;
+  font-size: 36px;
+}
+.post h2 {
+  font-weight: bold;
+  font-size: 28px;
+}
+.post h3 {
+  font-weight: bold;
+  font-size: 22px;
+}
+.post h4 {
+  font-weight: bold;
+  font-size: 18px;
+}
+.post p {
+  line-height: 1.6;
+}
+.post ol {
+  list-style: decimal;
+}
+.post li ol {
+  list-style: lower-alpha;
+  margin-left: 16px;
+  margin-top: 8px;
+}
+.post ul {
+  list-style: disc;
+}
+.post li ul {
+  list-style: circle;
+  margin-left: 16px;
+  margin-top: 8px;
+}
+.post hr {
+  margin: 20px 0;
+}
+.post a {
+  text-decoration: underline;
 }
