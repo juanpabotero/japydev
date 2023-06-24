@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="generator" content="Astro v2.6.6">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://example.com/notes/javascript/">
+
+<!-- Primary Meta Tags -->
+<title>JavaScript</title>
+<meta name="title" content="JavaScript">
+<meta name="description" content="Lorem ipsum dolor sit amet">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://example.com/notes/javascript/">
+<meta property="og:title" content="JavaScript">
+<meta property="og:description" content="Lorem ipsum dolor sit amet">
+<meta property="og:image" content="https://example.com/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://example.com/notes/javascript/">
+<meta property="twitter:title" content="JavaScript">
+<meta property="twitter:description" content="Lorem ipsum dolor sit amet">
+<meta property="twitter:image" content="https://example.com/placeholder-social.jpg">
+  <link rel="stylesheet" href="/_astro/about.d9cdec7b.css" />
+<link rel="stylesheet" href="/_astro/about.99ca717b.css" />
+<link rel="stylesheet" href="/_astro/HeaderLink.astro_astro_type_style_index_0_lang.06f8633c.css" /></head>
+
+  <body class="flex flex-col">
+    <header class="px-4 my-16 mx-auto max-w-3xl w-full flex justify-between">
+  <nav class="flex gap-3">
+    <a href="/" class="astro-EIMMU3LG">
+	Inicio
+</a> /
+    <a href="/notes" class="astro-EIMMU3LG">
+	Notas
+</a>
+    <!-- <HeaderLink href="/about">About</HeaderLink> -->
+  </nav>
+  <div class="flex gap-2">
+    <a href="https://github.com/juanpabotero" target="_blank" rel="noopener noreferrer">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"></path>
+      </svg>
+    </a>
+    <a href="https://www.linkedin.com/in/juanpabotero/" target="_blank" rel="noopener noreferrer">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77Z"></path>
+      </svg>
+    </a>
+  </div>
+</header>
+    <main class="px-4 max-w-3xl mx-auto w-full">
+      <article class="post">
+        <!-- {heroImage && <img width={720} height={360} src={heroImage} alt="" />} -->
+        <!-- <h1 class="title">{title}</h1> -->
+        <!-- <FormattedDate date={pubDate} /> -->
+        <!-- {
+          updatedDate && (
+            <div class="last-updated-on">
+              Last updated on <FormattedDate date={updatedDate} />
+            </div>
+          )
+        } -->
+        
+  
+  <h1 id="javascript">JavaScript</h1>
+<h2 id="conceptos">Conceptos</h2>
+<ul>
+<li>
+<p>Es una lenguaje de programación de tipado débil y dinámico.<br>
+Funciona en tiempo de ejecución.</p>
+</li>
+<li>
+<p>[] hace referencia a un array<br>
+{} hace referencia a un objeto<br>
+() hace referencia a una funcion o metodo y se va a ejecutar</p>
+</li>
+<li>
+<p><strong>This</strong>: hace referencia al contexto donde se ejecuta,
+se refiere al dueño que esta llamando la funcion,
+las funciones de flecha no modifican el this.
+cuando se haga una referencia al mismo objeto usar el this</p>
+</li>
+<li>
+<p>toda funcion que no tiene un return explicito retorna undefined</p>
+</li>
+<li>
+<p>+= suma o concatena lo que tiene la variable y el nuevo valor</p>
+</li>
+<li>
+<p>“ back tick para interpolar</p>
+</li>
+<li>
+<p>” es un string vacio, no es lo mismo que undefined o null</p>
+</li>
+<li>
+<p>${} lo que pongo adentro debe ser una expresion valida de JS</p>
+</li>
+<li>
+<p><strong>Instancia</strong>: crear un nuevo objeto a partir de una clase</p>
+</li>
+<li>
+<p><strong>JSON.stringify</strong>: transforma los datos a un json string para poder
+ser enviados a traves del navegador</p>
+</li>
+<li>
+<p><strong>JSON.parse</strong>: transforma los datos de un json string a un objeto
+para poder ser trabajados en nuestra aplicacion, es lo inverso
+al stringify</p>
+</li>
+<li>
+<p><strong>[object Object]</strong>: es la representacion de un objeto en forma de
+string</p>
+</li>
+<li>
+<p><strong>prototype</strong>: es como el adn de la clase u objeto</p>
+</li>
+<li>
+<p><strong>Never:</strong> es un tipo de dato que nos indica que se va a procesar a partir
+de una promesa y puede que nunca devuelva un valor.
+es un tipo de dato que nunca va a ser retornado por una funcion o metodo</p>
+</li>
+<li>
+<p><strong>Closure</strong>: permite a variables externas al scope, ser usadas dentro
+del scope. Hacer referencia a la variable externa del scope es un
+closure</p>
+</li>
+<li>
+<p>algunos metodos de los arrays modifican el array inicial y otros no,
+los que no modifican el array inicial y devuelven uno nuevo se conocen
+como puros (pure), entre ellos estan map, filter, reduce, slice.
+algunos que mutan el array inicial son splice, sort, reverse, push y otros.</p>
+<p>Si uso los metodos que modifican el array inicial con el spread
+operator (…) para evitar que modifique el array, éste crea una nueva
+copia del arrray, el problema es que esto repetido muchas veces en el
+codigo puede empezar a ser un problema.</p>
+<p>Los nuevo metodos son puros, son inmutables, no mutan el array original.</p>
+<ul>
+<li>toReversed()</li>
+<li>toSorted()</li>
+<li>toSpliced(): devuelve un nuevo array con las modificaciones, no el elemento eliminado como lo hace splice()</li>
+<li>with(): reemplaza un elemento del array</li>
+</ul>
+</li>
+<li>
+<p>el metodo .sort() modifica el array original y convierte los numeros en string
+para ordenarlos, por eso si se quiere ordenar numeros se deben pasar los parametros
+<code>numbers.sort((a, b) => a - b)</code>. Ademas si se quiere crear un nuevo elemento a partir
+de un array y usando este metodo, se debe usar el spread operator (…) porque si no,
+se haria referencia al mismo array original</p>
+</li>
+<li>
+<p><strong>Hoisting</strong>: permite a variables y funciones estar disponibles desde
+el inicio del código asi sean llamadas antes de su declaracion, esto
+funciona para variables definidas con <code>var</code>, con <code>let</code> y <code>const</code> no.<br>
+Para funciones, sirve con <code>function</code>, con funciones flecha no.
+Todas las funciones definidas con la palabra function, javascript les
+aplica hoisting, es decir, se puede llamar a las funciones antes de ser
+definidas porq se mueven al inicio cuando se corre el codigo.</p>
+</li>
+<li>
+<p>al reject de una promesa deberia siempre pasarle una instancia del error
+new Error:<br>
+<code>Promise.reject(new Error('Error'))</code></p>
+</li>
+<li>
+<p>commonjs va con require para hacer las importaciones y module.exports para
+las exportaciones. ESModules va con import y export.
+La forma de cargar los scripts en el html:</p>
+<ul>
+<li>forma clasica (bloquea por defecto):<br>
+<code>&#x3C;script src="./main.js">&#x3C;/script></code></li>
+<li>cargar como modulo (ESModules, se puede usar import y export.) (defer por defecto):<br>
+<code>&#x3C;script type="module" src="./main.js">&#x3C;/script></code></li>
+</ul>
+</li>
+<li>
+<p>cadena.match(regEx) !== null: para validar una cadena con una expresion
+regular, es distinto a hacerlo con el test porq el test cambia el ultimo
+indice de la cadena</p>
+</li>
+<li>
+<p>formatear numeros con <code>intl.numberFormat()</code></p>
+</li>
+<li>
+<p>La igualdad no estricta (==) se puede utilizar para comparar si un valor es
+null o undefined. Ej, <code>if (variable == null) { ... }</code>, esto es equivalente a
+<code>if (variable === null || variable === undefined) { ... }</code>.</p>
+</li>
+<li>
+<p><strong>Operadores</strong>:</p>
+<ul>
+<li>falsy: null, undefined, false, ”, 0, NaN</li>
+<li>?? operador nullish, compara el valor con un valor null o undefined.</li>
+<li>|| operador or, compara el valor con un valor falsy.</li>
+<li>&#x26;&#x26; operador and, necesita que el primer valor sea verdadero para evaluar
+el segundo, si es asi pone el segundo asi éste sea falsy.</li>
+</ul>
+</li>
+<li>
+<p>Una mejor forma de poner el opcional chaining (?), porq se transpila de
+mejor forma a javascript y evita que el objeto sea null:
+en vez de poner esto:<br>
+<code>const name = user?.name</code><br>
+poner esto:<br>
+<code>const { name } = user ?? {}</code></p>
+</li>
+<li>
+<p><strong>querySelectorAll</strong>: devuelve un nodeList que es diferente a un array,
+tiene el metodo forEach disponible pero no incluye otros metodos
+de los arrays.
+puedo poner Array.from(querySelectorAll(‘selector’)) para convertirlo
+a un array.</p>
+</li>
+<li>
+<p>top level await, no es necesario que esté dentro de una función async.
+Se puede usae en ESModules, no en archivos clasicos de JS</p>
+</li>
+<li>
+<p>hasOwn: para revisar que los objetos tengan una propiedad, deberia
+usarse en vez de hasOwnProperty</p>
+</li>
+<li>
+<p>copia profunda de un objeto:<br>
+<code>const cloneObj = structuredClone(obj);</code><br>
+<code>Object.assign()</code> hace una copia superficial del objeto</p>
+</li>
+<li>
+<p><strong>Proxy</strong>: intercepta las peticiones de un objeto para cambiar la funcionalidad</p>
+</li>
+<li>
+<p>setTimeOut y setInterval no son parte de Javascript, son parte de la web API</p>
+</li>
+<li>
+<p><strong>Declaración y expresión</strong>:</p>
+<ul>
+<li>declaracion es una instruccion que le estamos dando al PC, no produce un valor,
+devolveria undefined, ej:<br>
+<code>const frase = 'Hola' => undefined</code></li>
+<li>expresion produce un valor, ej:<br>
+<code>frase => 'Hola'</code></li>
+</ul>
+</li>
+<li>
+<p>el parametro event de un addEventListener click tiene varias propiedades,
+entre ellas:</p>
+<ul>
+<li>event.target: es el elemento que ha recibido el click</li>
+<li>event.currentTarget: es el elemento que esta escuchando el evento</li>
+</ul>
+</li>
+<li>
+<p>Los métodos <code>every</code> y <code>some</code> dejan de hacer la iteración cuando cumplen su propósito.<br>
+Para <code>every</code> es cuando algún elemento no cumple la condición y para <code>some</code> es cuando<br>
+algún elmento cumple la condición.</p>
+</li>
+<li>
+<p>Al igual que los metodos anteriores, el metodo <code>find</code> tambien deja de hacer la<br>
+iteración cuando encuentra el elemento que cumple la condición.</p>
+</li>
+<li>
+<p>El metodo <code>reduce</code> permite crear un único valor a partir de un array.<br>
+El primer parametro es una funcion que recibe dos parametros, el acumulador y el<br>
+elemento actual, el segundo parametro es el valor inicial del acumulador.<br>
+Ej:<br>
+<code>const total = numbers.reduce((acc, el) => acc + el, 0);</code><br>
+<code>const total = numbers.reduce((acc, el) => acc + el);</code><br>
+<code>const total = numbers.reduce((acc, el) => acc + el, '');</code><br>
+<code>const total = numbers.reduce((acc, el) => acc + el, []);</code><br>
+<code>const total = numbers.reduce((acc, el) => acc + el, {});</code></p>
+</li>
+<li>
+<p>Código imperativo se enfoce en el como quiero hacer las cosas (el paso a paso).<br>
+Código declarativo se enfoca en el que quiero, este último seria mas universal y<br>
+reutilizable.</p>
+</li>
+<li>
+<p><strong>Dynamic imports</strong> sirven para importar algo cuando se necesita realmente,<br>
+similar al lazy load. Los imports que hacemos normalmente son estáticos.</p>
+</li>
+</ul>
+<hr>
+<h2 id="buenas-practicas">Buenas practicas</h2>
+<ul>
+<li>
+<p>Nombrar variables usando camelCase y tener un significado explicito</p>
+<ul>
+<li>no se deberian crear nombres de variables que empiecen con numeros</li>
+<li>no debe llevar .</li>
+<li>$ en el nombre de una variable es simplemente un caracter mas</li>
+<li>_ para separar numeros, no se tendra en cuenta</li>
+</ul>
+</li>
+<li>
+<p>Una constante de manera global se puede definir en SCREAMING_CASE</p>
+</li>
+<li>
+<p>Nombrar funciones o metodos usando camelCase y debe ser un verbo + sustantivo</p>
+</li>
+<li>
+<p>nombrar clases e interfaces usando PascalCase, usar sustantivos</p>
+</li>
+<li>
+<p>Tratar de utilizar funciones puras, que no modifiquen el estado de las variables
+que estan fuera de la funcion, que no tengan efectos secundarios.</p>
+</li>
+<li>
+<p>Una función solo deberia tener una razón por la cual cambiar.</p>
+</li>
+<li>
+<p>No crear objetos o arrays usando el constructor:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">obj</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">new</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Object</span><span style="color: #E1E4E8">();</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">arr</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">new</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Array</span><span style="color: #E1E4E8">();</span></span></code></pre>
+<p>usar los literales:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">obj</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> {};</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">arr</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> [];</span></span></code></pre>
+</li>
+<li>
+<p>No usar Magic Strings o Magic Numbers, declarar los valores con sentido, ej:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">API_URL</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'https://api.com'</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">API_KEY</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'123456'</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">API_VERSION</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'v1'</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">API_ENDPOINT</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">`${</span><span style="color: #79B8FF">API_URL</span><span style="color: #9ECBFF">}/${</span><span style="color: #79B8FF">API_VERSION</span><span style="color: #9ECBFF">}/endpoint?key=${</span><span style="color: #79B8FF">API_KEY</span><span style="color: #9ECBFF">}`</span><span style="color: #E1E4E8">;</span></span></code></pre>
+</li>
+<li>
+<p>Usar try/catch en el async/await:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">getData</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">async</span><span style="color: #E1E4E8"> () </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">try</span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">res</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">await</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">fetch</span><span style="color: #E1E4E8">(url);</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> (</span><span style="color: #F97583">!</span><span style="color: #E1E4E8">res.ok) </span><span style="color: #F97583">throw</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">new</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Error</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'Error'</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">await</span><span style="color: #E1E4E8"> res.</span><span style="color: #B392F0">json</span><span style="color: #E1E4E8">();</span></span>
+<span class="line"><span style="color: #E1E4E8">  } </span><span style="color: #F97583">catch</span><span style="color: #E1E4E8"> (err) {</span></span>
+<span class="line"><span style="color: #E1E4E8">    console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(err);</span></span>
+<span class="line"><span style="color: #E1E4E8">  }</span></span>
+<span class="line"><span style="color: #E1E4E8">};</span></span></code></pre>
+</li>
+<li>
+<p>El await se deberia asignar a una constante en vez de asignarse
+a traves de += o un return:<br>
+no estaria bien:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">response </span><span style="color: #F97583">+=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">await</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">fetch</span><span style="color: #E1E4E8">(url);</span></span>
+<span class="line"><span style="color: #F97583">return</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">await</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">fetch</span><span style="color: #E1E4E8">(url);</span></span></code></pre>
+<p>estaria bien:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">response</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">await</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">fetch</span><span style="color: #E1E4E8">(url);</span></span>
+<span class="line"><span style="color: #E1E4E8">response2 </span><span style="color: #F97583">+=</span><span style="color: #E1E4E8"> response;</span></span>
+<span class="line"><span style="color: #F97583">return</span><span style="color: #E1E4E8"> response;</span></span></code></pre>
+</li>
+<li>
+<p><code>name = name ?? 'Juan'</code>
+La expresion anterior se podria optimizar usando el operador ??=, porque esta<br>
+expresión hace doble asignación, asigna el null o undefined y lo reescribe con<br>
+el valor. Con el operador <code>??=</code> solo se hace la asignación si existe el valor:
+<code>name ??= 'Juan'</code></p>
+</li>
+<li>
+<p>No usar el delete para borrar propiedades de un objeto porque éste desoptimiza<br>
+el código, mejor usar la siguiente sintaxis:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">persona</span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #FFAB70">name</span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'Juan'</span><span style="color: #E1E4E8">,</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #FFAB70">age</span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">30</span><span style="color: #E1E4E8">,</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #FFAB70">single</span><span style="color: #F97583">:</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">true</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #79B8FF">name</span><span style="color: #E1E4E8">,</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">...</span><span style="color: #79B8FF">restOfPersona</span></span>
+<span class="line"><span style="color: #E1E4E8">} </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> persona</span></span></code></pre>
+<p>restOfPersona seria el nuevo objeto sin la propiedad que queremos eliminar.</p>
+</li>
+<li>
+<p>En JavaScript y sus frameworks es buena practica pasar los parametros<br>
+como objetos porque así hace a la función más extensible y ordenada, ej:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #6A737D">// definicion de la funcion</span></span>
+<span class="line"><span style="color: #B392F0">someFunction</span><span style="color: #E1E4E8">({ param1, param2, param3 }) {</span></span>
+<span class="line"><span style="color: #E1E4E8">  consol.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">({param1, param2, param3})</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span>
+<span class="line"><span style="color: #6A737D">// llamada a la funcion</span></span>
+<span class="line"><span style="color: #B392F0">someFunction</span><span style="color: #E1E4E8">({ param1, param2, param3 })</span></span></code></pre>
+</li>
+<li>
+<p>Si se tienen muchos archivos dentro de una carpeta, se puede crear un<br>
+archivo index.js dentro de esta misma carpeta y exportar todos los componentes<br>
+desde ahi, ej:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">export</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">*</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'./useCounter'</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">export</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">*</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'./useFetch'</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">export</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">*</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'./useForm'</span><span style="color: #E1E4E8">;</span></span></code></pre>
+<p>Y en el arhivo que se quiera usar, solo se hace referencia a la carpeta<br>
+porque por defecto mira el index.js.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> { useCounter, useFetch, useForm } </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'./hooks'</span><span style="color: #E1E4E8">;</span></span></code></pre>
+</li>
+<li>
+<p>La mejor forma de comparar strings es usando el metodo <code>localeCompare</code>,
+compara dependiendo del idioma, tiene en cuenta asentos y demás, ej:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">str1</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'Hola'</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">str2</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'hola'</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #E1E4E8">str1.</span><span style="color: #B392F0">localeCompare</span><span style="color: #E1E4E8">(str2); </span><span style="color: #6A737D">// -1</span></span>
+<span class="line"><span style="color: #E1E4E8">str2.</span><span style="color: #B392F0">localeCompare</span><span style="color: #E1E4E8">(str1); </span><span style="color: #6A737D">// 1</span></span>
+<span class="line"><span style="color: #E1E4E8">str1.</span><span style="color: #B392F0">localeCompare</span><span style="color: #E1E4E8">(str1); </span><span style="color: #6A737D">// 0</span></span></code></pre>
+<p>Para ordenar strings se puede usar el metodo <code>sort</code> de los arrays,
+tener en cuenta que modifica el array original, ej:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">arr</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> [</span><span style="color: #9ECBFF">'Hola'</span><span style="color: #E1E4E8">, </span><span style="color: #9ECBFF">'hola'</span><span style="color: #E1E4E8">, </span><span style="color: #9ECBFF">'adios'</span><span style="color: #E1E4E8">, </span><span style="color: #9ECBFF">'Adios'</span><span style="color: #E1E4E8">];</span></span>
+<span class="line"><span style="color: #E1E4E8">arr.</span><span style="color: #B392F0">sort</span><span style="color: #E1E4E8">((</span><span style="color: #FFAB70">a</span><span style="color: #E1E4E8">, </span><span style="color: #FFAB70">b</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> a.</span><span style="color: #B392F0">localeCompare</span><span style="color: #E1E4E8">(b)); </span><span style="color: #6A737D">// ['Adios', 'adios', 'Hola', 'hola']</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">newArr</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> [</span><span style="color: #F97583">...</span><span style="color: #E1E4E8">arr].</span><span style="color: #B392F0">sort</span><span style="color: #E1E4E8">((</span><span style="color: #FFAB70">a</span><span style="color: #E1E4E8">, </span><span style="color: #FFAB70">b</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> a.</span><span style="color: #B392F0">localeCompare</span><span style="color: #E1E4E8">(b)); </span><span style="color: #6A737D">// para un nuevo array</span></span></code></pre>
+</li>
+</ul>
+<hr>
+<h2 id="utilidades">Utilidades</h2>
+<ul>
+<li>
+<p>Obtener todos los datos de una URL:</p>
+<ul>
+<li>hostname: El dominio sin protocolo</li>
+<li>pathname: La ruta de la URl</li>
+<li>href: La URL completa</li>
+<li>origin: El protocolo y el dominio</li>
+<li>search: Los parametros de la URL</li>
+<li>hash: El hash de la URL</li>
+</ul>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">url</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">new</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">URL</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'https://example.com/pathname/?name=Juan&#x26;age=30#hash'</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(url.hostname); </span><span style="color: #6A737D">// example.com</span></span>
+<span class="line"><span style="color: #E1E4E8">console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(url.pathname); </span><span style="color: #6A737D">// /pathname/</span></span>
+<span class="line"><span style="color: #E1E4E8">console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(url.href); </span><span style="color: #6A737D">// https://example.com/pathname/?name=Juan&#x26;age=30#hash</span></span>
+<span class="line"><span style="color: #E1E4E8">console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(url.origin); </span><span style="color: #6A737D">// https://example.com</span></span>
+<span class="line"><span style="color: #E1E4E8">console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(url.search); </span><span style="color: #6A737D">// ?name=Juan&#x26;age=30</span></span>
+<span class="line"><span style="color: #E1E4E8">console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(url.hash); </span><span style="color: #6A737D">// #hash</span></span></code></pre>
+</li>
+<li>
+<p>Obtener url actual:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">window.location.href;</span></span></code></pre>
+</li>
+<li>
+<p>Obtener el path de la url:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">window.location.pathname;</span></span></code></pre>
+</li>
+<li>
+<p>Obtener parametros de la url:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">urlParams</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">new</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">URLSearchParams</span><span style="color: #E1E4E8">(window.location.search);</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">id</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> urlParams.</span><span style="color: #B392F0">get</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'id'</span><span style="color: #E1E4E8">);</span></span></code></pre>
+</li>
+<li>
+<p>Agregar params a una url:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">url</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">new</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">URL</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'https://example.com'</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">url.searchParams.</span><span style="color: #B392F0">set</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'name'</span><span style="color: #E1E4E8">, </span><span style="color: #9ECBFF">'Juan'</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">url.searchParams.</span><span style="color: #B392F0">set</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'age'</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">30</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(url); </span><span style="color: #6A737D">// https://example.com/?name=Juan&#x26;age=30</span></span></code></pre>
+</li>
+<li>
+<p>Recuperar los datos de un formulario en un objeto:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">document.</span><span style="color: #B392F0">querySelector</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'form'</span><span style="color: #E1E4E8">).</span><span style="color: #B392F0">addEventListener</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'submit'</span><span style="color: #E1E4E8">, (</span><span style="color: #FFAB70">e</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">  e.</span><span style="color: #B392F0">preventDefault</span><span style="color: #E1E4E8">();</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">data</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> Object.</span><span style="color: #B392F0">fromEntries</span><span style="color: #E1E4E8">(</span><span style="color: #F97583">new</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">FormData</span><span style="color: #E1E4E8">(e.target));</span></span>
+<span class="line"><span style="color: #E1E4E8">  console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(data);</span></span>
+<span class="line"><span style="color: #E1E4E8">});</span></span></code></pre>
+</li>
+<li>
+<p>Generar numeros compactos:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">formatter</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> Intl.</span><span style="color: #B392F0">NumberFormat</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'en'</span><span style="color: #E1E4E8">, { notation: </span><span style="color: #9ECBFF">'compact'</span><span style="color: #E1E4E8"> })</span></span>
+<span class="line"><span style="color: #E1E4E8">formatter.</span><span style="color: #B392F0">format</span><span style="color: #E1E4E8">(</span><span style="color: #79B8FF">1200</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> 1.2</span><span style="color: #79B8FF">K</span></span>
+<span class="line"><span style="color: #E1E4E8">formatter.</span><span style="color: #B392F0">format</span><span style="color: #E1E4E8">(</span><span style="color: #79B8FF">1200000</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> 1.2</span><span style="color: #79B8FF">M</span></span>
+<span class="line"><span style="color: #E1E4E8">formatter.</span><span style="color: #B392F0">format</span><span style="color: #E1E4E8">(</span><span style="color: #79B8FF">1200000000</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> 1.2</span><span style="color: #79B8FF">B</span></span></code></pre>
+</li>
+<li>
+<p>Validar un formulario:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">&#x3C;</span><span style="color: #85E89D">form</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">onsubmit</span><span style="color: #E1E4E8">=</span><span style="color: #9ECBFF">"</span><span style="color: #F97583">return</span><span style="color: #9ECBFF"> </span><span style="color: #B392F0">validate</span><span style="color: #9ECBFF">();"</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">novalidate</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">  &#x3C;</span><span style="color: #85E89D">input</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">type</span><span style="color: #E1E4E8">=</span><span style="color: #9ECBFF">"text"</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">name</span><span style="color: #E1E4E8">=</span><span style="color: #9ECBFF">"name"</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">id</span><span style="color: #E1E4E8">=</span><span style="color: #9ECBFF">"name"</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">required</span><span style="color: #E1E4E8"> /></span></span>
+<span class="line"><span style="color: #E1E4E8">  &#x3C;</span><span style="color: #85E89D">input</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">type</span><span style="color: #E1E4E8">=</span><span style="color: #9ECBFF">"email"</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">name</span><span style="color: #E1E4E8">=</span><span style="color: #9ECBFF">"email"</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">required</span><span style="color: #E1E4E8"> /></span></span>
+<span class="line"><span style="color: #E1E4E8">  &#x3C;</span><span style="color: #85E89D">input</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">type</span><span style="color: #E1E4E8">=</span><span style="color: #9ECBFF">"submit"</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">value</span><span style="color: #E1E4E8">=</span><span style="color: #9ECBFF">"Send"</span><span style="color: #E1E4E8"> /></span></span>
+<span class="line"><span style="color: #E1E4E8">&#x3C;/</span><span style="color: #85E89D">form</span><span style="color: #E1E4E8">></span></span></code></pre>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">validate</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> () </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">name</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> document.</span><span style="color: #B392F0">queryElementById</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'name'</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> (</span><span style="color: #F97583">!</span><span style="color: #E1E4E8">name.value) {</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">alert</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'Name is required'</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">false</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #E1E4E8">  }</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">true</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #E1E4E8">};</span></span></code></pre>
+<p>Retornar falso no permitirá hacer el submit del formulario, retornar true
+si lo permitirá.</p>
+</li>
+<li>
+<p>Ordenar un array de forma aleatoria. Daria unos números positivos y otros<br>
+negativos y normalizaria la distribución.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">numbers</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> [</span><span style="color: #79B8FF">2</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">22</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">33</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">55</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">11</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">44</span><span style="color: #E1E4E8">];</span></span>
+<span class="line"><span style="color: #E1E4E8">number.</span><span style="color: #B392F0">sort</span><span style="color: #E1E4E8">(() </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> Math.</span><span style="color: #B392F0">random</span><span style="color: #E1E4E8">() </span><span style="color: #F97583">-</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">0.5</span><span style="color: #E1E4E8">);</span></span></code></pre>
+</li>
+<li>
+<p>Crear un array de N posiciones</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">positions</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">10</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">numbers</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> [</span><span style="color: #F97583">...</span><span style="color: #B392F0">Array</span><span style="color: #E1E4E8">(positions).</span><span style="color: #B392F0">keys</span><span style="color: #E1E4E8">()];</span></span></code></pre>
+</li>
+<li>
+<p>Hacer un ranking:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">function</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">getRanking</span><span style="color: #E1E4E8">(</span><span style="color: #FFAB70">ranking</span><span style="color: #E1E4E8">) {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">':star:'</span><span style="color: #E1E4E8">.</span><span style="color: #B392F0">repeat</span><span style="color: #E1E4E8">(ranking).</span><span style="color: #B392F0">padEnd</span><span style="color: #E1E4E8">(</span><span style="color: #79B8FF">5</span><span style="color: #E1E4E8">, </span><span style="color: #9ECBFF">':starEmpty:'</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+</li>
+<li>
+<p>Generar un ID unico:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">id</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> window.crypto.</span><span style="color: #B392F0">randomUUID</span><span style="color: #E1E4E8">();</span></span></code></pre>
+</li>
+<li>
+<p>Sacar el tamaño de un elemento en el DOM:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">element</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> document.</span><span style="color: #B392F0">querySelector</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'div'</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> { </span><span style="color: #79B8FF">width</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">height</span><span style="color: #E1E4E8"> } </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> element.</span><span style="color: #B392F0">getBoundingClientRect</span><span style="color: #E1E4E8">();</span></span>
+<span class="line"><span style="color: #E1E4E8">console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(width, height);</span></span></code></pre>
+</li>
+<li>
+<p>Intersection Observer, permite detectar cuando un elemento esta en el viewport:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">observer</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">new</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">IntersectionObserver</span><span style="color: #E1E4E8">((</span><span style="color: #FFAB70">entries</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">  entries.</span><span style="color: #B392F0">forEach</span><span style="color: #E1E4E8">((</span><span style="color: #FFAB70">entry</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> { </span><span style="color: #79B8FF">isIntersecting</span><span style="color: #E1E4E8"> } </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> entry;</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> (isIntersecting) {</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">color</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> entry.target.</span><span style="color: #B392F0">getAttribute</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'data-color'</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">      entry.target.style.background </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> color;</span></span>
+<span class="line"><span style="color: #E1E4E8">    }</span></span>
+<span class="line"><span style="color: #E1E4E8">  });</span></span>
+<span class="line"><span style="color: #E1E4E8">});</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">divs</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> document.</span><span style="color: #B392F0">querySelectorAll</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'div'</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">divs.</span><span style="color: #B392F0">forEach</span><span style="color: #E1E4E8">((</span><span style="color: #FFAB70">div</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> observer.</span><span style="color: #B392F0">observe</span><span style="color: #E1E4E8">(div));</span></span></code></pre>
+</li>
+<li>
+<p>AbortController: para cancelar peticiones con fetch. ej:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">button </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> document.</span><span style="color: #B392F0">querySelector</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'button'</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">controller</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">new</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">AbortController</span><span style="color: #E1E4E8">();</span></span>
+<span class="line"><span style="color: #E1E4E8">button.</span><span style="color: #B392F0">addEventListener</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'click'</span><span style="color: #E1E4E8">, () </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> controller.</span><span style="color: #B392F0">abort</span><span style="color: #E1E4E8">());</span></span>
+<span class="line"><span style="color: #E1E4E8">controller.signal.</span><span style="color: #B392F0">addEventListener</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'abort'</span><span style="color: #E1E4E8">, () </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'abort'</span><span style="color: #E1E4E8">));</span></span>
+<span class="line"><span style="color: #B392F0">fetch</span><span style="color: #E1E4E8">(url, { signal: controller.signal })</span></span>
+<span class="line"><span style="color: #E1E4E8">  .</span><span style="color: #B392F0">then</span><span style="color: #E1E4E8">((</span><span style="color: #FFAB70">res</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> res.</span><span style="color: #B392F0">json</span><span style="color: #E1E4E8">())</span></span>
+<span class="line"><span style="color: #E1E4E8">  .</span><span style="color: #B392F0">then</span><span style="color: #E1E4E8">((</span><span style="color: #FFAB70">res</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">    console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(res); </span><span style="color: #6A737D">// no se ejecutaria si se aborto la peticion</span></span>
+<span class="line"><span style="color: #E1E4E8">  });</span></span></code></pre>
+</li>
+</ul>
+<hr>
+<h2 id="midudev">Midudev</h2>
+<h2 id="conceptos-1">Conceptos</h2>
+<ul>
+<li>
+<p><strong>Declaración</strong>: es una instrucción que no produce un valor.<br>
+<strong>Expresión</strong>: es una instrucción que produce un valor.<br>
+Es importante saber la diferencia porque, por ejemplo, en los condicionales
+solo se pueden poner expresiones.</p>
+</li>
+<li>
+<p><strong>Hoisting</strong>: es un término que se usa para describir cómo JavaScript parece que
+mueve las declaraciones funciones al principio del código, de forma que las puedes
+usar incluso antes de declararlas.</p>
+<p>Lo que está pasando es que JavaScript asigna en memoria, durante la fase de
+compilación, las declaraciones de funciones y por eso al ejecutarse el código
+tiene acceso a esa posición de memoria a la que se refiere la función.</p>
+<p>Para las function expressions y arrow funtions no se aplica el hoisting.</p>
+</li>
+<li>
+<p><strong>Recursividad</strong>: es una técnica de programación que consiste en que una función
+se llame a sí misma. Cuando hacemos recursividad SIEMPRE hay que tener una
+condición base que haga que la función salga de sí misma. Si no ponemos la condición,
+la función se llamará infinitamente y el navegador se quedará bloqueado. Ej:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">function</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">cuentaAtras</span><span style="color: #E1E4E8">(</span><span style="color: #FFAB70">numero</span><span style="color: #E1E4E8">) {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #6A737D">// Condición base: Si el número que recibe es</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #6A737D">// menor de 0 entonces salimos de la función</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> (numero </span><span style="color: #F97583">&#x3C;</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8">) {</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">return</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #6A737D">// Si el número era mayor o igual a 0, lo mostramos</span></span>
+<span class="line"><span style="color: #E1E4E8">  console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(numero);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #6A737D">// Y llamamos a la función con el número anterior</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #B392F0">cuentaAtras</span><span style="color: #E1E4E8">(numero </span><span style="color: #F97583">-</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">1</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+</li>
+</ul>
+<h2 id="tipos-de-datos">Tipos de datos</h2>
+<ul>
+<li>number (enteros y decimales son del mismo tipo)</li>
+<li>string</li>
+<li>boolean</li>
+<li>null (significa que algo no tiene valor)</li>
+<li>undefined (significa que algo no ha sido definido)</li>
+<li>symbol</li>
+<li>bigint</li>
+<li>object (arrays, funciones, clases, etc)</li>
+</ul>
+<p><strong>typeof</strong>: devuelve el tipo de dato de una variable</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">typeof</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">40</span><span style="color: #E1E4E8">; </span><span style="color: #6A737D">// number</span></span>
+<span class="line"><span style="color: #F97583">typeof</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">null</span><span style="color: #E1E4E8">; </span><span style="color: #6A737D">// object</span></span>
+<span class="line"><span style="color: #F97583">typeof</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Symbol</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'Simbolo'</span><span style="color: #E1E4E8">); </span><span style="color: #6A737D">// symbol</span></span>
+<span class="line"><span style="color: #F97583">typeof</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">40</span><span style="color: #F97583">n</span><span style="color: #E1E4E8">; </span><span style="color: #6A737D">// bigint</span></span></code></pre>
+<h2 id="bucles">Bucles</h2>
+<p>Para el bucle <strong>For</strong> o <strong>While</strong> se puede usar las palabras reservadas <em>break</em> y <em>continue</em>.
+Por ejemplo:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">let</span><span style="color: #E1E4E8"> cuentaAtras </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">10</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F97583">while</span><span style="color: #E1E4E8"> (cuentaAtras </span><span style="color: #F97583">></span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8">) {</span></span>
+<span class="line"><span style="color: #E1E4E8">  cuentaAtras </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> cuentaAtras </span><span style="color: #F97583">-</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">1</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #6A737D">// si la cuenta atrás es 5, salimos del bucle</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> (cuentaAtras </span><span style="color: #F97583">===</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">5</span><span style="color: #E1E4E8">) {</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">break</span><span style="color: #E1E4E8">; </span><span style="color: #6A737D">// &#x3C;---- salimos del bucle</span></span>
+<span class="line"><span style="color: #E1E4E8">  }</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">let</span><span style="color: #E1E4E8"> cuentaAtras </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">10</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F97583">while</span><span style="color: #E1E4E8"> (cuentaAtras </span><span style="color: #F97583">></span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8">) {</span></span>
+<span class="line"><span style="color: #E1E4E8">  cuentaAtras </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> cuentaAtras </span><span style="color: #F97583">-</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">1</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #6A737D">// si la cuenta atrás es un número par...</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> (cuentaAtras </span><span style="color: #F97583">%</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">2</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">===</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8">) {</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">continue</span><span style="color: #E1E4E8">; </span><span style="color: #6A737D">// &#x3C;---- saltamos a la siguiente iteración</span></span>
+<span class="line"><span style="color: #E1E4E8">  }</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<h2 id="funciones">Funciones</h2>
+<p>Los parámetros son los valores que recibe la función.<br>
+Los argumentos son los valores que se le pasan a la función.</p>
+
+      </article>
+    </main>
+    <div class="fixed -z-10 h-[150px] w-[150px] lg:w-[300px] lg:h-[300px] rounded-full bg-red-500 blur-[150px] md:blur-[350px] opacity-50 left-0 top-0">
+    </div>
+    <div class="fixed -z-10 h-[150px] w-[150px] lg:w-[300px] lg:h-[300px] rounded-full bg-yellow-500 blur-[150px] md:blur-[350px] opacity-50 right-0 bottom-0">
+    </div>
+    <footer class="text-center p-6 pt-8 mt-auto">
+	&copy; 2023 desarrollado por <b>Juan Pablo Botero</b>.
+</footer>
+  </body></html>

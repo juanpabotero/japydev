@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="generator" content="Astro v2.6.6">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://example.com/notes/react/">
+
+<!-- Primary Meta Tags -->
+<title>React</title>
+<meta name="title" content="React">
+<meta name="description" content="Lorem ipsum dolor sit amet">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://example.com/notes/react/">
+<meta property="og:title" content="React">
+<meta property="og:description" content="Lorem ipsum dolor sit amet">
+<meta property="og:image" content="https://example.com/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://example.com/notes/react/">
+<meta property="twitter:title" content="React">
+<meta property="twitter:description" content="Lorem ipsum dolor sit amet">
+<meta property="twitter:image" content="https://example.com/placeholder-social.jpg">
+  <link rel="stylesheet" href="/_astro/about.d9cdec7b.css" />
+<link rel="stylesheet" href="/_astro/about.99ca717b.css" />
+<link rel="stylesheet" href="/_astro/HeaderLink.astro_astro_type_style_index_0_lang.06f8633c.css" /></head>
+
+  <body class="flex flex-col">
+    <header class="px-4 my-16 mx-auto max-w-3xl w-full flex justify-between">
+  <nav class="flex gap-3">
+    <a href="/" class="astro-EIMMU3LG">
+	Inicio
+</a> /
+    <a href="/notes" class="astro-EIMMU3LG">
+	Notas
+</a>
+    <!-- <HeaderLink href="/about">About</HeaderLink> -->
+  </nav>
+  <div class="flex gap-2">
+    <a href="https://github.com/juanpabotero" target="_blank" rel="noopener noreferrer">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"></path>
+      </svg>
+    </a>
+    <a href="https://www.linkedin.com/in/juanpabotero/" target="_blank" rel="noopener noreferrer">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77Z"></path>
+      </svg>
+    </a>
+  </div>
+</header>
+    <main class="px-4 max-w-3xl mx-auto w-full">
+      <article class="post">
+        <!-- {heroImage && <img width={720} height={360} src={heroImage} alt="" />} -->
+        <!-- <h1 class="title">{title}</h1> -->
+        <!-- <FormattedDate date={pubDate} /> -->
+        <!-- {
+          updatedDate && (
+            <div class="last-updated-on">
+              Last updated on <FormattedDate date={updatedDate} />
+            </div>
+          )
+        } -->
+        
+  
+  <h1 id="react">React</h1>
+<h2 id="herramientas">Herramientas</h2>
+<p>Recomendado instalar las extensiones del navegador:</p>
+<ul>
+<li>React Developer Tools (solo funcionan en modo desarrollo)</li>
+<li>Redux DevTools</li>
+</ul>
+<p>Extensiones de VSCode:</p>
+<ul>
+<li>ES7+ React</li>
+<li>Simple React Snippets</li>
+</ul>
+<h2 id="librerías">Librerías</h2>
+<ul>
+<li>
+<p><strong>Crear proyecto</strong><br>
+Client Side: Vite<br>
+SSR: Next.js<br>
+Static: Astro</p>
+</li>
+<li>
+<p><strong>Package Manager</strong><br>
+Por defecto: npm<br>
+Por cambiar o por probar: pnpm</p>
+</li>
+<li>
+<p><strong>State Management</strong><br>
+Cosas estáticas o que cambian poco: React Context<br>
+Para estado global general: Zustand<br>
+Redux Toolkit SÓLO para proyectos medio/grandecitos con estados globales complejos<br>
+Para proyectos GRANDES, evitar el estado global y depender de React Query, Apollo, Flux…</p>
+<ul>
+<li>Tanstack Query (React Query): Es una libreria para manejar estados asincronos.<br>
+Permite también hacer fetching de datos.<br>
+Para instalar: <code>npm install @tanstack/react-query</code><br>
+(ver curso-react-midudev/10b-prueba-tecnica-typescript-react-query)</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Fetching</strong><br>
+<a href="https://tanstack.com/query/latest">https://tanstack.com/query/latest</a><br>
+urlQL</p>
+</li>
+<li>
+<p><strong>Routing</strong><br>
+NextJS File System Routing<br>
+React Router (para proyectos con paths complejos o muchas páginass)<br>
+Wouter (smaller alternative, páginas sencillas)</p>
+</li>
+<li>
+<p><strong>CSS Styling</strong><br>
+TailwindCSS<br>
+CSS Modules<br>
+Vanilla Extract</p>
+</li>
+<li>
+<p><strong>React UI Libraries</strong><br>
+Framer Motion<br>
+Auto Animate</p>
+</li>
+<li>
+<p><strong>Charts</strong><br>
+Recharts</p>
+</li>
+<li>
+<p><strong>Forms</strong><br>
+<a href="https://react-hook-form.com/">https://react-hook-form.com/</a><br>
+zod (para validaciones)</p>
+</li>
+<li>
+<p><strong>Autenticación</strong><br>
+Supabase Auth<br>
+Next Auth<br>
+O probar Lucia Auth/Authjs.dev</p>
+</li>
+<li>
+<p><strong>Hosting</strong></p>
+<p>Proyectos web:<br>
+Vercel<br>
+Netlify</p>
+<p>Proyectos web + Workers (Edge Functions):<br>
+Especial mención: Cloudflare</p>
+<p>Dockerfiles:<br>
+Railway<br>
+Fly.io<br>
+Render</p>
+</li>
+<li>
+<p><strong>Testing</strong><br>
+Vitest + Playwright + React Testing Library</p>
+</li>
+<li>
+<p><strong>Time in React</strong><br>
+Menos momentjs lo que quieras.<br>
+date-fns<br>
+dayjs<br>
+luxon</p>
+</li>
+<li>
+<p><strong>Componentes</strong><br>
+<a href="https://mui.com/">https://mui.com/</a><br>
+<a href="https://react-bootstrap.github.io/">https://react-bootstrap.github.io/</a><br>
+<a href="https://www.tremor.so/">https://www.tremor.so/</a></p>
+</li>
+<li>
+<p><strong>Iconos</strong><br>
+<a href="https://react-icons.github.io/react-icons/">https://react-icons.github.io/react-icons/</a></p>
+</li>
+<li>
+<p><strong>Animaciones</strong><br>
+<a href="https://react.useanimations.com/">https://react.useanimations.com/</a><br>
+<a href="https://react-spring.io">https://react-spring.io</a></p>
+</li>
+<li>
+<p><strong>Notificaciones</strong><br>
+<a href="https://react-hot-toast.com/">https://react-hot-toast.com/</a><br>
+<a href="https://sonner.emilkowal.ski/">https://sonner.emilkowal.ski/</a></p>
+</li>
+<li>
+<p><strong>Calendario</strong><br>
+<a href="https://react-day-picker.js.org/">https://react-day-picker.js.org/</a></p>
+</li>
+<li>
+<p><strong>Debounce</strong><br>
+<a href="https://www.npmjs.com/package/use-debounce">https://www.npmjs.com/package/use-debounce</a><br>
+<a href="https://github.com/angus-c/just#just-debounce-it">https://github.com/angus-c/just#just-debounce-it</a></p>
+</li>
+<li>
+<p><strong>Dropzone (subir archivos arrastrando y soltando)</strong><br>
+<a href="https://react-dropzone.js.org">https://react-dropzone.js.org</a><br>
+<a href="https://pqina.nl/filepond/?ref=pqina">https://pqina.nl/filepond/?ref=pqina</a></p>
+</li>
+<li>
+<p><strong>Renderizar PDFs</strong><br>
+<a href="https://react-pdf.org/">https://react-pdf.org/</a></p>
+</li>
+</ul>
+<h2 id="hosting">Hosting</h2>
+<ul>
+<li>Github Pages con Vite:
+<ul>
+<li>Puedo instalar: <code>npm install gh-pages --save-dev</code></li>
+<li>Agregar en el package.json:
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #9ECBFF">"scripts"</span><span style="color: #E1E4E8">: {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #79B8FF">"deploy"</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">"gh-pages -d dist"</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+</li>
+<li>Seguir los pasos de la documentación.<br>
+<a href="https://vitejs.dev/guide/static-deploy.html">vitejs.dev/guide/static-deploy.html</a></li>
+<li><a href="https://www.youtube.com/watch?v=rLoWMU4L_qE&#x26;list=WL&#x26;index=12&#x26;t=17005s">Ver video</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="comandos">Comandos</h2>
+<ul>
+<li><code>npm create vite@latest</code><br>
+Una aplicación nueva de React se debería crear usando Vite, y no<br>
+create reactApp, con este comando y seleccionando React.</li>
+</ul>
+<p><strong>Inicializar un proyecto de React</strong> sin ayuda de Vite o ninguna
+otra herramienta, debo hacer esto:</p>
+<ul>
+<li>
+<p>Inicializar Vite con vanilla</p>
+</li>
+<li>
+<p>Instalar un plugin, como Babel, para React:<br>
+<code>npm install @vitejs/plugin-react -E</code><br>
+-E es para que instale la version exacta.</p>
+</li>
+<li>
+<p>Instalar React y React DOM:<br>
+<code>npm install react react-dom -E</code></p>
+</li>
+<li>
+<p>Crear el archivo <strong>vite.config.js</strong> para configurar Vite<br>
+con React y ponemos dentro del archivo:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> { defineConfig } </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'vite'</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> react </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'@vitejs/plugin-react'</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #F97583">export</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">default</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">defineConfig</span><span style="color: #E1E4E8">({</span></span>
+<span class="line"><span style="color: #E1E4E8">  plugins: [</span><span style="color: #B392F0">react</span><span style="color: #E1E4E8">()],</span></span>
+<span class="line"><span style="color: #E1E4E8">});</span></span></code></pre>
+</li>
+<li>
+<p>En el archivo que es el punto de entrada de mi aplicación,<br>
+en este caso, main.js, ponemos:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> { createRoot } </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'react-dom/client'</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #6A737D">// selecciono el elemento donde quiero renderizar mi app</span></span>
+<span class="line"><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">root</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">createRoot</span><span style="color: #E1E4E8">(document.</span><span style="color: #B392F0">getElementById</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'app'</span><span style="color: #E1E4E8">));</span></span>
+<span class="line"><span style="color: #E1E4E8">root.</span><span style="color: #B392F0">render</span><span style="color: #E1E4E8">(&#x3C;</span><span style="color: #85E89D">h1</span><span style="color: #E1E4E8">>Hello world&#x3C;/</span><span style="color: #85E89D">h1</span><span style="color: #E1E4E8">>);</span></span></code></pre>
+</li>
+<li>
+<p>Cambiar el nombre del archivo de main.js a main.jsx.<br>
+Cambiarlo tambien en el index.html</p>
+</li>
+<li>
+<p>Seria recomendable instalar un linter.</p>
+</li>
+</ul>
+<hr>
+<h2 id="conceptos">Conceptos</h2>
+<h3 id="react-1">React</h3>
+<p>Es una librería, se transpila a JAVASCRIPT, no a HTML.</p>
+<p>React detecta la parte que ha cambiado y es lo unico que va a<br>
+actualizar en el DOM, lo hace comparando el estado anterior del<br>
+componente con el actual y revisa si ha cambiado algo.</p>
+<p>El punto de entrada de la aplicación es el fichero main.jsx</p>
+<p>Los archivos jsx equivalen a js + xml.</p>
+<h3 id="componente">Componente</h3>
+<p>Es una función que devuelve un elemento, es una pieza de código encapsulada<br>
+y reutilizable que puede tener estado o no, el elemento que devuelve la<br>
+función es lo que React renderiza.<br>
+Los componentes se deben nombrar usando PascalCase para<br>
+diferenciarlos de los elementos HTML.</p>
+<p>Si el componente no va a tener nada en su interior puedo usarlo<br>
+asi <code>&#x3C;Button /></code>, esto se llama <em>self closing tag</em>, si va a contener algo,<br>
+debo usarlo asi <code>&#x3C;Button>Boton 1&#x3C;/Button></code></p>
+<p>Lo que tiene dentro el elemento son los hijos y se les llama children,<br>
+para recuperarlos utilizaria la prop children en el componente:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">&#x3C;</span><span style="color: #79B8FF">Button</span><span style="color: #E1E4E8">>Boton 1 /* este seria el children */&#x3C;/</span><span style="color: #79B8FF">Button</span><span style="color: #E1E4E8">></span></span></code></pre>
+<p>Solo se debe retornar un elemento porque en el momento en que<br>
+React quiere renderizarlo, solo acepta un elemento, si quiero<br>
+devolver mas de un elemento debo envolverlos en otro elemento o<br>
+puedo usar <code>&#x3C;React.Fragment>&#x3C;/React.Fragment></code> que no crea<br>
+ningun elemento HTML:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">&#x3C;</span><span style="color: #79B8FF">React.Fragment</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">  &#x3C;</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">>Boton 1&#x3C;/</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">  &#x3C;</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">>Boton 2&#x3C;/</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">  &#x3C;</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">>Boton 3&#x3C;/</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">&#x3C;/</span><span style="color: #79B8FF">React.Fragment</span><span style="color: #E1E4E8">></span></span></code></pre>
+<p>O en su forma corta:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">&#x3C;></span></span>
+<span class="line"><span style="color: #E1E4E8">  &#x3C;</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">>Boton 1&#x3C;/</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">  &#x3C;</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">>Boton 2&#x3C;/</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">  &#x3C;</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">>Boton 3&#x3C;/</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">&#x3C;/></span></span></code></pre>
+<p>Tambien puedo pasar funciones y elementos como parametros a un componente.<br>
+Función: paso solo la función y en el componente hijo la ejecuto,<br>
+esta es una forma de pasar información del componente hijo al padre,
+ya que la función está en el padre pero la ejecuta el hijo con los datos<br>
+que éste tiene y devuelve algo que el padre puede usar.<br>
+En el padre:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">function</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">App</span><span style="color: #E1E4E8">() {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">changeUsername</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> (</span><span style="color: #FFAB70">userName</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">setUserName</span><span style="color: #E1E4E8">(userName);</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> &#x3C;</span><span style="color: #79B8FF">FollowCard</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">formatUserName</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{changeUsername} />;</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<p>En el hijo:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">function</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">FollowCard</span><span style="color: #E1E4E8">({ </span><span style="color: #FFAB70">formatUserName</span><span style="color: #E1E4E8"> }) {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">handleClick</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> () </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #B392F0">formatUserName</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'midudev'</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">  };</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> &#x3C;</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">onClick</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{handleClick}>Format User&#x3C;/</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">>;</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<p>Elemento: paso el elemento y el componente hijo lo rendrizaria:<br>
+En el padre:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">function</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">App</span><span style="color: #E1E4E8">() {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">format</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> &#x3C;</span><span style="color: #85E89D">span</span><span style="color: #E1E4E8">>midudev&#x3C;/</span><span style="color: #85E89D">span</span><span style="color: #E1E4E8">>;</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> &#x3C;</span><span style="color: #79B8FF">FollowCard</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">formatUserName</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{format} />;</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<p>En el hijo:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">function</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">FollowCard</span><span style="color: #E1E4E8">({ </span><span style="color: #FFAB70">formatUserName</span><span style="color: #E1E4E8"> }) {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> &#x3C;</span><span style="color: #85E89D">div</span><span style="color: #E1E4E8">>{formatUserName}&#x3C;/</span><span style="color: #85E89D">div</span><span style="color: #E1E4E8">>;</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<h3 id="props">Props</h3>
+<p>Son las propiedades que recibe el componente, es un objeto,<br>
+pero normalmente se desestructura para usar dentro de la función.<br>
+Sirven para pasar información del componente padre al componente<br>
+hijo. Se les puede dar un valor por defecto.</p>
+<p>Las props deberían ser inmutables, se podria crear una variable nueva<br>
+a partir de la prop.</p>
+<p>Puedo poner valores por defecto cuando hago la desestructuración<br>
+o también de la siguiente manera, despues de la función principal:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">SomeComponent.defaultProps </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">  title: </span><span style="color: #9ECBFF">'No hay título'</span><span style="color: #E1E4E8">,</span></span>
+<span class="line"><span style="color: #E1E4E8">};</span></span></code></pre>
+<p>Si quiero enviar el valor booleano true como prop, puedo solamente<br>
+poner el nombre de la prop: <code>&#x3C;Button isFollowing /></code>, en vez de<br>
+<code>&#x3C;Button isFollowing={true} /></code></p>
+<h3 id="proptypes">PropTypes</h3>
+<p>Se usan para definir el tipo a las properties, para usarse se
+debe instalar <code>npm install prop-types</code> y se debe importar
+<code>import PropTypes from 'prop-types';</code>. Se usan asi:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">SomeComponent.propTypes </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">  title: PropTypes.string.isRequired,</span></span>
+<span class="line"><span style="color: #E1E4E8">};</span></span></code></pre>
+<h3 id="eventos">Eventos</h3>
+<p>Para manejar un evento, por ejemplo un click, lo podemos hacer asi:<br>
+<code>&#x3C;button onClick={() => handleClick()}>Incrementar&#x3C;/button></code><br>
+Ademas, tenemos disponible el <code>event</code> que va a tener la información del evento:<br>
+<code>&#x3C;button onClick={(event) => handleClick(event)}>Incrementar&#x3C;/button></code><br>
+Todo lo anterior se puede resumir asi y el manejo de los argumentos se<br>
+hace en el método que se llama:<br>
+<code>&#x3C;button onClick={handleClick}>Incrementar&#x3C;/button></code><br>
+Si le quiero pasar algo distinto al evento, puedo hacerlo asi:<br>
+<code>&#x3C;button onClick={() => handleClick(task.id)}>Incrementar&#x3C;/button></code><br>
+Si solo pusiera la funcion que quiero ejecutar con los parentesis,<br>
+ésta se ejecutaría cuando se renderiza el componente:<br>
+<code>&#x3C;button onClick={handleClick(task.id)}>Incrementar&#x3C;/button></code></p>
+<h3 id="estilos">Estilos</h3>
+<ul>
+<li>
+<p>Según donde se importe el archivo de css, afectará a ciertos componentes.<br>
+Si se importa en el main.jsx, afectará a todos los componentes, si se<br>
+importa en un componente afectará solo a ese componente y sus hijos.</p>
+</li>
+<li>
+<p>Para poner estilos en linea podemos ponerlos como un objeto,<br>
+debo usar sus propiedades en camelCase y el valor como un string,<br>
+porque React transpila a JavaScript y no a HTML:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">&#x3C;</span><span style="color: #85E89D">div</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">style</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{{ display: </span><span style="color: #9ECBFF">'flex'</span><span style="color: #E1E4E8">, alignItems: </span><span style="color: #9ECBFF">'center'</span><span style="color: #E1E4E8"> }}>Hola&#x3C;/</span><span style="color: #85E89D">div</span><span style="color: #E1E4E8">></span></span></code></pre>
+</li>
+<li>
+<p>Para añadir una clase se debe usar <code>className=""</code>:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">&#x3C;</span><span style="color: #85E89D">div</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">className</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"my-card"</span><span style="color: #E1E4E8">>Hola&#x3C;/</span><span style="color: #85E89D">div</span><span style="color: #E1E4E8">></span></span></code></pre>
+<p>Puedo pasarle una clase dependiendo de una condición:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">&#x3C;</span><span style="color: #85E89D">div</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">className</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{</span><span style="color: #9ECBFF">`my-card ${</span><span style="color: #E1E4E8">isFollowing</span><span style="color: #9ECBFF"> </span><span style="color: #F97583">?</span><span style="color: #9ECBFF"> </span><span style="color: #9ECBFF">'is-following'</span><span style="color: #9ECBFF"> </span><span style="color: #F97583">:</span><span style="color: #9ECBFF"> </span><span style="color: #9ECBFF">''}`</span><span style="color: #E1E4E8">}>Hola&#x3C;/</span><span style="color: #85E89D">div</span><span style="color: #E1E4E8">></span></span></code></pre>
+</li>
+</ul>
+<h3 id="formularios">Formularios</h3>
+<h4 id="formularios-no-controlados">Formularios no controlados</h4>
+<p>Se gestiona el formulario a traves del DOM.<br>
+El formulario no tiene estado, por lo que no se puede usar <code>useState</code><br>
+para manejar los cambios en los inputs.<br>
+Es la forma mas sencilla y rápida.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">function</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Form</span><span style="color: #E1E4E8">() {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">handleSubmit</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> (</span><span style="color: #FFAB70">event</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">    event.</span><span style="color: #B392F0">preventDefault</span><span style="color: #E1E4E8">();</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">formData</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">new</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">FormData</span><span style="color: #E1E4E8">(event.target);</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">data</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> Object.</span><span style="color: #B392F0">fromEntries</span><span style="color: #E1E4E8">(formData);</span></span>
+<span class="line"><span style="color: #E1E4E8">    console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(data);</span></span>
+<span class="line"><span style="color: #E1E4E8">  };</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> (</span></span>
+<span class="line"><span style="color: #E1E4E8">    &#x3C;</span><span style="color: #85E89D">form</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">onSubmit</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{handleSubmit}></span></span>
+<span class="line"><span style="color: #E1E4E8">      &#x3C;</span><span style="color: #85E89D">input</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">type</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"text"</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">name</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"name"</span><span style="color: #E1E4E8"> /></span></span>
+<span class="line"><span style="color: #E1E4E8">      &#x3C;</span><span style="color: #85E89D">input</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">type</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"text"</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">name</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"lastName"</span><span style="color: #E1E4E8"> /></span></span>
+<span class="line"><span style="color: #E1E4E8">      &#x3C;</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">type</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"submit"</span><span style="color: #E1E4E8">>Enviar&#x3C;/</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">    &#x3C;/</span><span style="color: #85E89D">form</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">  );</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<h4 id="formularios-controlados">Formularios controlados</h4>
+<p>Se gestiona el formulario a traves de React,<br>
+gracias al estado, se crea un estado para tener el control de lo que se<br>
+escribe en los inputs.<br>
+El formulario tiene estado, por lo que se puede usar <code>useState</code><br>
+para manejar los cambios en los inputs.<br>
+Los datos del formulario se obtienen con las variables de estado.<br>
+El problema es que se vuelve a renderizar el componente porque se cambia<br>
+el estado en cada cambio del input.<br>
+El formulario se valida de mejor manera que con el no controlado.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">function</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Form</span><span style="color: #E1E4E8">() {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> [</span><span style="color: #79B8FF">name</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">setName</span><span style="color: #E1E4E8">] </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">useState</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">''</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> [</span><span style="color: #79B8FF">lastName</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">setLastName</span><span style="color: #E1E4E8">] </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">useState</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">''</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">handleSubmit</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> (</span><span style="color: #FFAB70">event</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">    event.</span><span style="color: #B392F0">preventDefault</span><span style="color: #E1E4E8">();</span></span>
+<span class="line"><span style="color: #E1E4E8">    console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">({ name, lastName });</span></span>
+<span class="line"><span style="color: #E1E4E8">  };</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> (</span></span>
+<span class="line"><span style="color: #E1E4E8">    &#x3C;</span><span style="color: #85E89D">form</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">onSubmit</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{handleSubmit}></span></span>
+<span class="line"><span style="color: #E1E4E8">      &#x3C;</span><span style="color: #85E89D">input</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">type</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"text"</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">name</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"name"</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">value</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{name}</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">onChange</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{(</span><span style="color: #FFAB70">event</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">setName</span><span style="color: #E1E4E8">(event.target.value)}</span></span>
+<span class="line"><span style="color: #E1E4E8">      /></span></span>
+<span class="line"><span style="color: #E1E4E8">      &#x3C;</span><span style="color: #85E89D">input</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">type</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"text"</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">name</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"lastName"</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">value</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{lastName}</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">onChange</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{(</span><span style="color: #FFAB70">event</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">setLastName</span><span style="color: #E1E4E8">(event.target.value)}</span></span>
+<span class="line"><span style="color: #E1E4E8">      /></span></span>
+<span class="line"><span style="color: #E1E4E8">      &#x3C;</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">type</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"submit"</span><span style="color: #E1E4E8">>Enviar&#x3C;/</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">    &#x3C;/</span><span style="color: #85E89D">form</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">  );</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<p>Se podria usar un solo estado para manejar los datos del formulario:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">function</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Form</span><span style="color: #E1E4E8">() {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> [</span><span style="color: #79B8FF">data</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">setData</span><span style="color: #E1E4E8">] </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">useState</span><span style="color: #E1E4E8">({ name: </span><span style="color: #9ECBFF">''</span><span style="color: #E1E4E8">, lastName: </span><span style="color: #9ECBFF">''</span><span style="color: #E1E4E8"> });</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">handleSubmit</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> (</span><span style="color: #FFAB70">event</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">    event.</span><span style="color: #B392F0">preventDefault</span><span style="color: #E1E4E8">();</span></span>
+<span class="line"><span style="color: #E1E4E8">    console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(data);</span></span>
+<span class="line"><span style="color: #E1E4E8">  };</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> (</span></span>
+<span class="line"><span style="color: #E1E4E8">    &#x3C;</span><span style="color: #85E89D">form</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">onSubmit</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{handleSubmit}></span></span>
+<span class="line"><span style="color: #E1E4E8">      &#x3C;</span><span style="color: #85E89D">input</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">type</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"text"</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">name</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"name"</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">value</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{data.name}</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">onChange</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{(</span><span style="color: #FFAB70">event</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">setData</span><span style="color: #E1E4E8">({ </span><span style="color: #F97583">...</span><span style="color: #E1E4E8">data, name: event.target.value })}</span></span>
+<span class="line"><span style="color: #E1E4E8">      /></span></span>
+<span class="line"><span style="color: #E1E4E8">      &#x3C;</span><span style="color: #85E89D">input</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">type</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"text"</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">name</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"lastName"</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">value</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{data.lastName}</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">onChange</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{(</span><span style="color: #FFAB70">event</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">setData</span><span style="color: #E1E4E8">({ </span><span style="color: #F97583">...</span><span style="color: #E1E4E8">data, lastName: event.target.value })}</span></span>
+<span class="line"><span style="color: #E1E4E8">      /></span></span>
+<span class="line"><span style="color: #E1E4E8">      &#x3C;</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">type</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"submit"</span><span style="color: #E1E4E8">>Enviar&#x3C;/</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">    &#x3C;/</span><span style="color: #85E89D">form</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">  );</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<p>Se podria usar un <em>useEffect</em> para validar el formulario:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">function</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">Form</span><span style="color: #E1E4E8">() {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> [</span><span style="color: #79B8FF">data</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">setData</span><span style="color: #E1E4E8">] </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">useState</span><span style="color: #E1E4E8">({ name: </span><span style="color: #9ECBFF">''</span><span style="color: #E1E4E8">, lastName: </span><span style="color: #9ECBFF">''</span><span style="color: #E1E4E8"> });</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> [</span><span style="color: #79B8FF">error</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">setError</span><span style="color: #E1E4E8">] </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">useState</span><span style="color: #E1E4E8">(</span><span style="color: #79B8FF">null</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #B392F0">useEffect</span><span style="color: #E1E4E8">(() </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #F97583">if</span><span style="color: #E1E4E8"> (data.name.</span><span style="color: #79B8FF">length</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">></span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">&#x26;&#x26;</span><span style="color: #E1E4E8"> data.lastName.</span><span style="color: #79B8FF">length</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">></span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">0</span><span style="color: #E1E4E8">) {</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #B392F0">setError</span><span style="color: #E1E4E8">(</span><span style="color: #79B8FF">null</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">    } </span><span style="color: #F97583">else</span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #B392F0">setError</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'Los campos no pueden estar vacios'</span><span style="color: #E1E4E8">);</span></span>
+<span class="line"><span style="color: #E1E4E8">    }</span></span>
+<span class="line"><span style="color: #E1E4E8">  }, [data]);</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">handleSubmit</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> (</span><span style="color: #FFAB70">event</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">    event.</span><span style="color: #B392F0">preventDefault</span><span style="color: #E1E4E8">();</span></span>
+<span class="line"><span style="color: #E1E4E8">    console.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">(data);</span></span>
+<span class="line"><span style="color: #E1E4E8">  };</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> (</span></span>
+<span class="line"><span style="color: #E1E4E8">    &#x3C;</span><span style="color: #85E89D">form</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">onSubmit</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{handleSubmit}></span></span>
+<span class="line"><span style="color: #E1E4E8">      &#x3C;</span><span style="color: #85E89D">input</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">type</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"text"</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">name</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"name"</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">value</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{data.name}</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">onChange</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{(</span><span style="color: #FFAB70">event</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">setData</span><span style="color: #E1E4E8">({ </span><span style="color: #F97583">...</span><span style="color: #E1E4E8">data, name: event.target.value })}</span></span>
+<span class="line"><span style="color: #E1E4E8">      /></span></span>
+<span class="line"><span style="color: #E1E4E8">      &#x3C;</span><span style="color: #85E89D">input</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">type</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"text"</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">name</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"lastName"</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">value</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{data.lastName}</span></span>
+<span class="line"><span style="color: #E1E4E8">        </span><span style="color: #B392F0">onChange</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{(</span><span style="color: #FFAB70">event</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">setData</span><span style="color: #E1E4E8">({ </span><span style="color: #F97583">...</span><span style="color: #E1E4E8">data, lastName: event.target.value })}</span></span>
+<span class="line"><span style="color: #E1E4E8">      /></span></span>
+<span class="line"><span style="color: #E1E4E8">      &#x3C;</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">type</span><span style="color: #F97583">=</span><span style="color: #9ECBFF">"submit"</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">disabled</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{error}></span></span>
+<span class="line"><span style="color: #E1E4E8">        Enviar</span></span>
+<span class="line"><span style="color: #E1E4E8">      &#x3C;/</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">    &#x3C;/</span><span style="color: #85E89D">form</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">  );</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<h3 id="otros-conceptos">Otros conceptos</h3>
+<ul>
+<li>
+<p>Puedo usar {} para poner expresiones validas de JavaScript,<br>
+recordar que las expresiones devuelven un valor.</p>
+</li>
+<li>
+<p>Cuando renderizamos una lista de elementos o un array se debe agregar el<br>
+atributo <strong>key</strong> y debe ser un identificador unico para ese elemento.<br>
+No es recomendable usar el indice del array como key, porque si se agrega<br>
+un elemento al principio del array, se re-renderizan todos los elementos.</p>
+</li>
+</ul>
+<hr>
+<h2 id="hooks">Hooks</h2>
+<p>Son funciones que permiten añadir funcionalidad a los componentes de React o<br>
+poder ejecutar código arbitrario cuando pasen ciertos eventos en los componentes.<br>
+Estan nombrados con la palabra <em>use</em> para reconocerlos facilmente, ej<br>
+<code>useState</code>, si creo un hook personalizado deberia ponerle la palabra <em>use</em>.</p>
+<p>La declaración de los hooks nunca deberia estar dentro de un condicional<br>
+o un ciclo, siempre deberia estar en el cuerpo del componente. Si quiero<br>
+dar un valor inicial dependiendo de cierta condición, puedo hacerlo a traves<br>
+de una función y devolver el valor dependiendo de la condición.<br>
+(ver en React/Midudev/02-tic-tac-toe/App.jsx).</p>
+<h3 id="usestate">useState</h3>
+<p>Permite manejar el estado y guardarlo en una variable.<br>
+Se importa <code>import { useState } from 'react'</code> y se usa
+<code>const [isFollowing, setIsFollowing] = useState(false)</code>
+donde <code>isFollowing</code> contiene el valor del estado y <code>setIsfollowing</code>
+es la función para actualizar el estado, además el <code>useState(false)</code>
+permite poner un valor inicial al estado.<br>
+La inicialización de los estados solo ocurre una vez, no cada vez que
+se renderiza el componente.<br>
+Este seria un estado interno, solo para el componente.</p>
+<p>Cuando use el <code>setIsFollowing(true)</code> le paso el nuevo valor para actualizar<br>
+el estado, pero también puedo pasarlo de la siguiente manera para<br>
+tener acceso al estado anterior y aplicar cualquier logica y al final<br>
+retornar el nuevo valor: <code>setIsFollowing((previousState) => true)</code></p>
+<p>La actualización de los estados es asincrona, por eso muchas veces debo<br>
+usar una variable auxiliar, y no el estado en si, para hacer la lógica.</p>
+<p>Los estados deberían ser inmutables, se podria crear una nueva variable<br>
+a partir del estado, solo se deberian actualizar a traves de su metodo set…</p>
+<p>Cada vez que cambiamos el estado se vuelve a renderizar el componente,<br>
+se ejecuta el código pero al DOM solo llegan aquellas partes que han cambiado.<br>
+Otra forma que se vuelve a renderizar un componente es cuando un componente<br>
+padre se vuelve a renderizar y propaga los cambios hacia abajo, no hacia arriba.</p>
+<p>Siempre que se utilice una prop para inicializar un estado, se debe recordar que<br>
+solo se inicializa una vez, si esta prop cambia no va a cambiar ese estado.<br>
+El estado del padre no se propaga al componente hijo.<br>
+Dijimos que si cambia el estado del padre, este se vuelve a renderizar y<br>
+haria que el componente hijo se vuelve a renderizar, pero su estado solo<br>
+se inicializa una vez.</p>
+<h3 id="useeffect">useEffect</h3>
+<p>Permite ejecutar código arbitrario cuando el componente se monta en el DOM<br>
+y cada vez que cambian las dependencias que nosotros le digamos.<br>
+Se utiliza en el cuerpo de nuestro componente.<br>
+Como mínimo se ejecuta una vez cuando se monta el componente.<br>
+Se pueden tener tantos useEffect como queramos.<br>
+useEffect no se puede usar como una función asincrona, siempre debe ser sincrona.<br>
+Es buena práctica que los efectos tengan solo una responsabilidad.</p>
+<p>Se ejecuta en modo desarrollo 2 veces para ayudar a depurar posibles<br>
+problemas, en producción solo se ejecuta una vez, y lo hace cuando se usa<br>
+el <code>React.StrictMode</code>, si se quita, solo se ejecuta una vez.</p>
+<p>Se importa <code>import { useEffect } from 'react'</code> y se usa<br>
+<code>useEffect(funcionAEjecutar, [listaDeDependencias])</code><br>
+ListaDeDependencias es un array y es opcional. Si no se le pasa, el<br>
+<em>useEffect</em> se ejecutará cada vez que se renderiza el componente, y una de<br>
+las razones por las que se vuelve a renderizar el componente es cuando<br>
+cambia el estado. Si quiero que se ejecute solo una vez, le pasaria<br>
+un array vacío como segundo parámetro, así, solo se ejecuta cuando se<br>
+renderiza el componente por primera vez. Quedaria asi:<br>
+[] -> solo se ejecuta una vez cuando se monta el componente.<br>
+[dependencia] -> se ejecuta cuando cambia la dependencia y cuando se monta el componente.<br>
+undefined (no se le pasa nada) -> se ejecuta cada vez que se renderiza el componente.</p>
+<p>Para limpiar los efectos se puede usar el return del useEffect (llamada cleanup)<br>
+para devolver una función y en ésta especificar cómo limpiar el efecto. Se ejecuta<br>
+siempre que se desmonta el componente (cuando deja de aparecer el componente) y cada vez<br>
+que cambian las dependencias, antes de ejecutar el efecto de nuevo.<br>
+(ver en React/Midudev/03-mouse-follower/App.jsx).</p>
+<p>Se debe tener cuidado cuando actualizamos el estado mediante el <em>setState</em><br>
+dentro de un <em>useEffect</em> y no ponemos dependencias, porque se puede crear<br>
+un loop infinito, cuando actualizamos el estado dentro de un <em>useEffect</em><br>
+normalmente debemos poner las dependencias, como mínimo [].</p>
+<h3 id="uselayouteffect">useLayoutEffect</h3>
+<p>Es igual que el <em>useEffect</em> pero se ejecuta de forma síncrona despues de todas las
+mutaciones del DOM.<br>
+Se importa <code>import { useLayoutEffect } from 'react'</code> y se usa
+<code>useLayoutEffect(funcionAEjecutar, [listaDeDependencias])</code><br>
+Se recomienda usar el <em>useEffect</em> hasta donde sea posible.</p>
+<h3 id="useref">useRef</h3>
+<p>Definición mala: crear referencia a un elemento del dom</p>
+<p>Permite crear una referencia mutable que persiste durante todo el ciclo de vida del<br>
+componente, es util para guardar cualquier valor que se quiera mutar y cada vez que<br>
+este cambia no vuelve a renderizar el componente. Eso es lo que lo hace diferente del<br>
+<em>useState</em> que cada vez que cambia el estado vuelve a renderizar el componente, pero<br>
+el <em>useRef</em> cada vez que cambia el valor no vuelve a renderizar el componente.<br>
+Permite crear un valor que persiste entre renderizados.<br>
+Es util para guardar referencia a un elemento del DOM.</p>
+<p>Se importa <code>import { useRef } from 'react'</code> y se usa <code>const ref = useRef(valorInicial)</code><br>
+donde <code>ref</code> es la referencia y <code>valorInicial</code> es el valor inicial de la referencia.<br>
+Para acceder al valor de la referencia se usa <code>ref.current</code> y para cambiar el valor
+de la referencia se usa <code>ref.current = nuevoValor</code>.<br>
+Para asignar esa referencia a un elemento del DOM se pone <code>ref={ref}</code> como atributo<br>
+del elemento.</p>
+<h3 id="memo---funcion-de-react">memo - Funcion de React</h3>
+<p>Permite memorizar un componente, es decir, que solo se vuelva a renderizar
+cuando sus props cambian.<br>
+Es recomendado usarlo cuando se tiene una operación costosa que se ejecuta cada vez que
+se renderiza el componente, no seria necesario usarlo en todos los casos.<br>
+Se importa <code>import { memo } from 'react'</code> ó <code>import React from 'react'</code> y se usa
+<code>export memo(Componente)</code> ó <code>export React.memo(Componente)</code> donde <code>Componente</code> es
+el componente que se va a memorizar.</p>
+<h3 id="usememo">useMemo</h3>
+<p>Permite memorizar un valor que solo se vuelve a calcular cuando cambian sus<br>
+dependencias y no cada vez que se renderiza el componente.<br>
+Si no cambian las dependencias, la función no se ejecuta y el valor se mantiene igual.<br>
+Es recomendado usarlo cuando se tiene un problema de rendimiento o una operación costosa
+que se ejecuta cada vez que se renderiza el componente, no seria necesario usarlo en todos los casos.<br>
+Se importa <code>import { useMemo } from 'react'</code> y se usa<br>
+<code>const valorAMemorizar = useMemo(() => funcionAEjecutar, [listaDeDependencias])</code><br>
+donde <code>valorAMemorizar</code> es el valor que se va a memorizar, <code>funcionAEjecutar</code><br>
+es la función que se va a ejecutar y <code>listaDeDependencias</code> es un array con las dependencias.<br>
+Si no se le pasa la lista de dependencias, se ejecuta cada vez que se renderiza el componente.<br>
+Si se le pasa una lista de dependencias vacía, se ejecuta solo una vez cuando se monta el componente.<br>
+Si se le pasa una lista de dependencias, se ejecuta cuando cambia alguna de las dependencias<br>
+y cuando se monta el componente.<br>
+(ver en curso-react-midudev/05-buscador-peliculas/).</p>
+<h3 id="usecallback">useCallback</h3>
+<p>Es exactamente lo mismo que el <em>useMemo</em> pero para funciones porque simplifica su sintaxis.<br>
+Se importa <code>import { useCallback } from 'react'</code> y se usa<br>
+<code>const funcionAMemorizar = useCallback(funcionAEjecutar, [listaDeDependencias])</code><br>
+Se usa para las funciones, para lo demas se usa el <em>useMemo</em>.<br>
+(ver en curso-react-midudev/05-buscador-peliculas/).</p>
+<h3 id="usereducer">useReducer</h3>
+<p><strong>Reducer</strong>: Es una funcion que permite manejar el estado de una manera escalable y
+más compleja, recibe el estado actual y la acción que se quiere ejecutar, a partir de
+estos 2, devuelve el nuevo estado. Por eso se llama reducer, porque transforma el
+estado a partir de la accion y devuelve el nuevo estado.<br>
+Esta totalmente separado del componente, del provider y del custom hook.<br>
+No puede ser una función asincrónica, ni debe realizar tareas asíncronas.<br>
+Debe ser una función pura, no debe tener efectos secundarios en el resto del código.<br>
+Debe retornar un nuevo estado, no debe mutar el estado actual (por eso se usa con
+frecuencia el spread operator, …state).<br>
+No debe llamar al localStorage o sessionStorage, ni a la API, porque estas pueden
+fallar y terminaría retornando un error y no un nuevo estado.<br>
+Para modificar el estado no debe requerirse más de una acción.</p>
+<p>La lógica seria la siguiente:</p>
+<ul>
+<li>Se crea un reducer que contiene el estado inicial y la lógica para manejar el estado.</li>
+<li>La vista renderiza el estado.</li>
+<li>La vista dispara acciones que se envían al reducer.</li>
+<li>El reducer maneja el estado y devuelve el nuevo estado que se renderiza en la vista.</li>
+</ul>
+<p>Se importa <code>import { useReducer } from 'react'</code> y se usa
+<code>const [state, dispatch] = useReducer(reducer, estadoInicial, init)</code>,
+donde <code>init</code> es la función inicializadora en caso que se tenga un proceso que tome tiempo, es opcional,
+<code>estadoInicial</code> es el estado inicial del componente, <code>reducer</code> es una función que
+recibe el estado actual y la acción para determinar el nuevo estado y devuelve el nuevo estado,
+<code>state</code> es el estado actual, <code>dispatch</code> se encarga de enviar las acciones al reducer.<br>
+El type del action es obligatorio y se usa para identificar la accion que se tiene que hacer.<br>
+El payload del action es opcional, es el objeto para actualizar el estado, puede ser un objeto, array, string, etc.<br>
+(ver en curso-react-midudev/06-shopping-cart/).</p>
+<h3 id="contexto---usecontext">Contexto - useContext</h3>
+<p>Esta separado del arbol de componentes y se puede acceder a él desde
+cualquier componente que esté contenido en el contexto. Todo lo que
+envuelva el componente Provider, tendrá acceso al contexto.<br>
+Es una forma de inyección de dependencias, puedes inyectar información
+en cualquier componente sin tener que pasarla por las props, no solo
+es para crear un estado global, puede ser tambien información estática.<br>
+No hace falta envolver toda la aplicación en el contexto, a veces queremos
+que solo una parte de la aplicación tenga acceso a ese contexto.<br>
+Se recomienda para usar con estados que cambian pocas veces o no son muy complejos,
+para lo demas se deberia usar Redux, Zustand u otra alternativa.</p>
+<p>Es una forma de pasar información a los componentes sin tener que pasarla por las props.<br>
+Se usa para evitar el prop drilling, que es pasar props por muchos componentes.<br>
+Todos los componentes hijos tienen acceso al contexto.<br>
+Se puede acceder a él a través de la API Context de React.</p>
+<p>Se importa <code>import { createContext } from 'react'</code><br>
+Se crea un contexto: <code>const TaskContext = createContext()</code>, este seria el<br>
+nombre del contexto pero el componente en sí se llama Provider.<br>
+Seria recomendable exportar el contexto y el componente Provider.<br>
+Siempre son 3 pasos: crear el contexto, proveer el contexto y consumirlo:</p>
+<ol>
+<li>Se crea el contexto como un componente:</li>
+</ol>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> { createContext } </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'react'</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #6A737D">// crear el contexto</span></span>
+<span class="line"><span style="color: #6A737D">// Este es el que tenemos que consumir</span></span>
+<span class="line"><span style="color: #F97583">export</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">TaskContext</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">createContext</span><span style="color: #E1E4E8">();</span></span>
+<span class="line"><span style="color: #6A737D">// crear el Provider para proveer el contexto</span></span>
+<span class="line"><span style="color: #6A737D">// Este es el que nos provee de acceso al contexto</span></span>
+<span class="line"><span style="color: #F97583">export</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">function</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">TaskContextProvider</span><span style="color: #E1E4E8">({ </span><span style="color: #FFAB70">children</span><span style="color: #E1E4E8"> }) {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> [</span><span style="color: #79B8FF">tasks</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">setTasks</span><span style="color: #E1E4E8">] </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">useState</span><span style="color: #E1E4E8">([]);</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> (</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #6A737D">/* el value es la información que quiero proveer y a la cual tienen</span></span>
+<span class="line"><span style="color: #6A737D">    acceso los componentes hijos, puede ser cualquier cosa, un objeto, </span></span>
+<span class="line"><span style="color: #6A737D">    un array, un string, un estado, etc. */</span></span>
+<span class="line"><span style="color: #E1E4E8">    &#x3C;</span><span style="color: #79B8FF">TaskContext.Provider</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">value</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{{ tasks, setTasks }}></span></span>
+<span class="line"><span style="color: #E1E4E8">      {</span><span style="color: #6A737D">/* el children es donde quiero proveer esa informaciòn */</span><span style="color: #E1E4E8">}</span></span>
+<span class="line"><span style="color: #E1E4E8">      {children}</span></span>
+<span class="line"><span style="color: #E1E4E8">    &#x3C;/</span><span style="color: #79B8FF">TaskContext.Provider</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">  );</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<ol start="2">
+<li>Se provee el contexto:</li>
+</ol>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> { TaskContextProvider } </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'./TaskContext'</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #E1E4E8">ReactDOM.</span><span style="color: #B392F0">createRoot</span><span style="color: #E1E4E8">(document.</span><span style="color: #B392F0">getElementById</span><span style="color: #E1E4E8">(</span><span style="color: #9ECBFF">'root'</span><span style="color: #E1E4E8">)).</span><span style="color: #B392F0">render</span><span style="color: #E1E4E8">(</span></span>
+<span class="line"><span style="color: #E1E4E8">  &#x3C;</span><span style="color: #79B8FF">React.StrictMode</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">    &#x3C;</span><span style="color: #79B8FF">TaskContextProvider</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">      &#x3C;</span><span style="color: #79B8FF">App</span><span style="color: #E1E4E8"> /></span></span>
+<span class="line"><span style="color: #E1E4E8">    &#x3C;/</span><span style="color: #79B8FF">TaskContextProvider</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">  &#x3C;/</span><span style="color: #79B8FF">React.StrictMode</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">);</span></span></code></pre>
+<ol start="3">
+<li>Consumir el contexto, para usar el contexto en un componente que es hijo del contexto,
+se debe importar el contexto y el hook <code>useContext</code> de React:</li>
+</ol>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> { useContext } </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'react'</span></span>
+<span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> { TaskContext } </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'./TaskContext'</span></span>
+<span class="line"><span style="color: #F97583">export</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">function</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">TaskCard</span><span style="color: #E1E4E8">() {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">const</span><span style="color: #E1E4E8"> { </span><span style="color: #79B8FF">tasks</span><span style="color: #E1E4E8">, </span><span style="color: #79B8FF">setTasks</span><span style="color: #E1E4E8"> } </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">useContext</span><span style="color: #E1E4E8">(TaskContext)</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #F97583">return</span><span style="color: #E1E4E8"> (</span></span>
+<span class="line"><span style="color: #E1E4E8">    &#x3C;</span><span style="color: #85E89D">div</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">      {</span></span>
+<span class="line"><span style="color: #E1E4E8">        tasks.</span><span style="color: #B392F0">map</span><span style="color: #E1E4E8">((</span><span style="color: #FFAB70">task</span><span style="color: #E1E4E8">) </span><span style="color: #F97583">=></span><span style="color: #E1E4E8"> {</span></span>
+<span class="line"><span style="color: #E1E4E8">          &#x3C;</span><span style="color: #85E89D">div</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">key</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{task.id}>{task.title}&#x3C;/</span><span style="color: #85E89D">div</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">        })</span></span>
+<span class="line"><span style="color: #E1E4E8">        &#x3C;</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">onClick</span><span style="color: #F97583">=</span><span style="color: #E1E4E8">{setTasks}>add task&#x3C;/</span><span style="color: #85E89D">button</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">      }</span></span>
+<span class="line"><span style="color: #E1E4E8">    &#x3C;/</span><span style="color: #85E89D">div</span><span style="color: #E1E4E8">></span></span>
+<span class="line"><span style="color: #E1E4E8">  )</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+<h3 id="useid">useId</h3>
+<p>Genera un identificador único que siempre va a ser el mismo. Funciona con SSR.<br>
+No sirve como key en algo que se está iterando, porque la key necesita un id
+único para ese elemento y el useId es el orden de llamada dentro del componente.<br>
+Se importa <code>import { useId } from 'react'</code> y se usa <code>const id = useId()</code>
+donde <code>id</code> es el id generado.<br>
+Seria ideal para relacionar un label con un input, el label llevaria el atributo
+<code>htmlFor={id}</code> y el input tendria el atributo <code>id={id}</code>.<br>
+(ver en curso-react-midudev/06-shopping-cart/).</p>
+<h3 id="custom-hooks">Custom Hooks</h3>
+<ul>
+<li>Es una función, sirven para extraer lógica de los componentes y reutilizarla en<br>
+diferentes componentes.</li>
+<li>Debe empezar con la palabra <em>use</em>.</li>
+<li>Debe seguir las reglas de los demás Hooks.</li>
+<li>La diferencia entre un Custom Hook y una función, es que en el Custom Hook si<br>
+podemos utilizar los Hooks de React, esto es lo que lo diferencia de hacerlo un<br>
+hook o un helper.</li>
+<li>No deberian ir atados a la implementación, por eso también se le debe dar un<br>
+nombre que no haga referencia a la implementación.</li>
+<li>No necesariamente se definen en archivos .jsx, pueden ser archivos .js, porque<br>
+no necesariamente deben estar ligados a React.</li>
+<li>Cuando vea un <em>useEffect</em> en el componente, me podría preguntar si es lógica<br>
+que se puede abstraer en un Custom Hook, y normalmente es así.</li>
+</ul>
+<hr>
+<h2 id="buenas-prácticas">Buenas prácticas</h2>
+<ul>
+<li>
+<p>Para una prop, que se va a usar como inizializadora de un estado, se deberia<br>
+poner el nombre de <strong>initial</strong>, ej: <strong>initialIsFollowing</strong></p>
+</li>
+<li>
+<p>Lo que no va a cambiar cuando se use el componente, lo puedo poner afuera<br>
+de la función principal para evitar que se vuelva a ejecutar esa parte que<br>
+no va a cambiar.</p>
+</li>
+<li>
+<p>Leer del localStorage es lento y sincrono, por eso deberiamos hacerlo lo<br>
+menos posible. Si queremos iniciar un estado en base al localStorage lo<br>
+deberiamos hacer como valor inicial del <em>useState</em>, pasandole una función<br>
+y devolver el valor según la lógica que queramos.<br>
+(ver en React/Midudev/02-tic-tac-toe/App.jsx).</p>
+</li>
+<li>
+<p>Debemos controlar que ponemos en el cuerpo del componente porque esto se<br>
+va a ejecutar cada vez que se renderiza el componente. Se deberia poner<br>
+atención donde ponemos cosas como lectura o escritura del localStorage,<br>
+agregar addEventListener, llamadas a APIs, fetching de datos y demás,<br>
+seria recomendable ponerlos dentro de un <em>useEffect</em>.</p>
+</li>
+<li>
+<p><code>{fact &#x26;&#x26; &#x3C;p>{fact}&#x3C;/p>}</code><br>
+renderizado condicional, es una buena practica cuando se trabaja con<br>
+código asíncrono como fetching de datos.</p>
+</li>
+<li>
+<p>Tener cuidado con lo que se llama <em>Dos fuentes de la verdad</em>, es cuando
+tenemos un estado local y un estado global y esto puede generar problemas de
+sincronización al renderizar los cambios.</p>
+</li>
+<li>
+<p>En JavaScript y sus frameworks es buena practica pasar los parametros<br>
+como objetos porque así hace a la función más extensible y ordenada, ej:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #6A737D">// definicion de la funcion</span></span>
+<span class="line"><span style="color: #B392F0">someFunction</span><span style="color: #E1E4E8">({ param1, param2, param3 }) {</span></span>
+<span class="line"><span style="color: #E1E4E8">  consol.</span><span style="color: #B392F0">log</span><span style="color: #E1E4E8">({param1, param2, param3})</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span>
+<span class="line"><span style="color: #6A737D">// llamada a la funcion</span></span>
+<span class="line"><span style="color: #B392F0">someFunction</span><span style="color: #E1E4E8">({ param1, param2, param3 })</span></span></code></pre>
+</li>
+<li>
+<p>No usar las defaultProps, porque si se quiere pasar un valor por defecto<br>
+a una prop, se puede hacer directamente en la definición de la función,<br>
+ej:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">function</span><span style="color: #E1E4E8"> </span><span style="color: #B392F0">GifGrid</span><span style="color: #E1E4E8">({ </span><span style="color: #FFAB70">category</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">=</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'One Punch'</span><span style="color: #E1E4E8"> }) {</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #6A737D">// ...</span></span>
+<span class="line"><span style="color: #E1E4E8">}</span></span></code></pre>
+</li>
+<li>
+<p>No es necesario importar React en los archivos .jsx, porque se hace<br>
+automáticamente.</p>
+</li>
+<li>
+<p>Si se tienen muchos componentes dentro de una carpeta, se puede crear un<br>
+archivo index.js dentro de esta misma carpeta y exportar todos los componentes<br>
+desde ahi, ej:</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">export</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">*</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'./GifGrid'</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">export</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">*</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'./GifItem'</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"><span style="color: #F97583">export</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">*</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'./GifList'</span><span style="color: #E1E4E8">;</span></span></code></pre>
+<p>Y en el arhivo que se quiera usar, solo se hace referencia a la carpeta<br>
+porque por defecto mira el index.js.</p>
+<pre is:raw="" class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #F97583">import</span><span style="color: #E1E4E8"> { GifGrid, GifItem, GifList } </span><span style="color: #F97583">from</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">'./components'</span><span style="color: #E1E4E8">;</span></span></code></pre>
+</li>
+</ul>
+
+      </article>
+    </main>
+    <div class="fixed -z-10 h-[150px] w-[150px] lg:w-[300px] lg:h-[300px] rounded-full bg-red-500 blur-[150px] md:blur-[350px] opacity-50 left-0 top-0">
+    </div>
+    <div class="fixed -z-10 h-[150px] w-[150px] lg:w-[300px] lg:h-[300px] rounded-full bg-yellow-500 blur-[150px] md:blur-[350px] opacity-50 right-0 bottom-0">
+    </div>
+    <footer class="text-center p-6 pt-8 mt-auto">
+	&copy; 2023 desarrollado por <b>Juan Pablo Botero</b>.
+</footer>
+  </body></html>
