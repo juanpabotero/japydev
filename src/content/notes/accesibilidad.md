@@ -2,7 +2,7 @@
 title: "Accesibilidad"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jan 01 2022"
-heroImage: "/placeholder-hero.jpg"
+heroImage: "/accessibility.svg"
 ---
 
 # Accesibilidad  

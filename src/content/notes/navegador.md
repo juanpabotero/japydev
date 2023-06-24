@@ -2,7 +2,7 @@
 title: 'Navegador'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 10 2022'
-heroImage: '/placeholder-hero.jpg'
+heroImage: '/chrome.svg'
 ---
 
 # Navegador

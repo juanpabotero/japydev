@@ -2,7 +2,7 @@
 title: 'JavaScript'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 08 2022'
-heroImage: '/placeholder-hero.jpg'
+heroImage: '/javascript.svg'
 ---
 
 # JavaScript

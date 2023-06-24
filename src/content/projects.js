@@ -1,20 +1,20 @@
 export const projects = [
   {
     img: '/placeholder-hero.jpg',
-    link: '#',
+    link: 'https://juanpaboterodev.netlify.app/password-generator',
     stack: 'HTML • CSS • JavaScript',
-    title: 'Proyecto 1',
+    title: 'Password Generator',
   },
   {
     img: '/placeholder-hero.jpg',
-    link: '#',
-    stack: 'HTML • CSS',
-    title: 'Proyecto 2',
+    link: 'https://juanpaboterodev.netlify.app/advice-generator',
+    stack: 'HTML • CSS • JavaScript • API',
+    title: 'Advice Generator',
   },
   {
     img: '/placeholder-hero.jpg',
-    link: '#',
-    stack: 'Angular • TypeScript • API',
-    title: 'Proyecto 3',
+    link: 'https://juanpaboterodev.netlify.app/tip-calculator',
+    stack: 'HTML • CSS • JavaScript',
+    title: 'Tip Calculator',
   },
 ];

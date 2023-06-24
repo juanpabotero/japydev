@@ -2,7 +2,7 @@
 title: 'Clean Code'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 03 2022'
-heroImage: '/placeholder-hero.jpg'
+heroImage: '/code.svg'
 ---
 
 # Clean Code

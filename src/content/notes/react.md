@@ -2,7 +2,7 @@
 title: 'React'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 13 2022'
-heroImage: '/placeholder-hero.jpg'
+heroImage: '/react.svg'
 ---
 
 # React

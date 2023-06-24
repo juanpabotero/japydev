@@ -64,7 +64,7 @@ img {
 .post p,
 .post ul,
 .post ol {
-  margin: 12px 0;
+  margin: 16px 0;
 }
 .post h1 {
   font-weight: bold;
@@ -95,6 +95,7 @@ img {
 }
 .post ul {
   list-style: disc;
+  margin-left: 16px;
 }
 .post li ul {
   list-style: circle;

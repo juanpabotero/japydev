@@ -2,7 +2,7 @@
 title: 'Otros'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 11 2022'
-heroImage: '/placeholder-hero.jpg'
+heroImage: '/plus.svg'
 ---
 
 # OTROS

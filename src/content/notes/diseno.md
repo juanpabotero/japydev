@@ -2,7 +2,7 @@
 title: 'Diseño'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 05 2022'
-heroImage: '/placeholder-hero.jpg'
+heroImage: '/design.svg'
 ---
 
 # Diseño

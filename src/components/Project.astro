@@ -6,29 +6,30 @@ const { img, link, title, stack } = Astro.props;
   href={link}
   target="_blank"
   rel="noopener noreferrer"
-  class="group flex items-center gap-6 p-4 mb-8 border-[1px] border-gray-500 rounded-md hover:border-yellow-600 hover:-translate-y-1 transition-all duration-200"
+  class="group flex items-center gap-6 p-4 mb-8 border-[1px] border-gray-500 rounded-md 
+  hover:border-yellow-600 hover:-translate-y-1 transition-all duration-200"
 >
-  <img src={img} alt="" class="w-10 h-10 rounded-full object-cover" />
-  <h4 class="text-xl">{title}</h4>
-  <p class="text-gray-400">{stack}</p>
-  <div class="ml-auto flex items-center gap-4">
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 18 18"
-      fill="none"
-      class="transition-all duration-300 group-hover:translate-x-1"
-    >
-      <path
-        d="M5.25 12.75L12.75 5.25"
-        stroke="#999999"
-        stroke-linecap="round"
-        stroke-linejoin="round"></path>
-      <path
-        d="M5.25 5.25H12.75V12.75"
-        stroke="#999999"
-        stroke-linecap="round"
-        stroke-linejoin="round"></path>
-    </svg>
+  <img src={img} alt="" class="w-10 h-10 grid rounded-full object-cover" />
+  <div class="flex flex-col gap-2 sm:flex-row sm:gap-6 sm:items-center">
+    <h4 class="text-xl">{title}</h4>
+    <p class="text-gray-400">{stack}</p>
   </div>
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 18 18"
+    fill="none"
+    class="transition-all duration-300 group-hover:translate-x-1 ml-auto"
+  >
+    <path
+      d="M5.25 12.75L12.75 5.25"
+      stroke="#999999"
+      stroke-linecap="round"
+      stroke-linejoin="round"></path>
+    <path
+      d="M5.25 5.25H12.75V12.75"
+      stroke="#999999"
+      stroke-linecap="round"
+      stroke-linejoin="round"></path>
+  </svg>
 </a>

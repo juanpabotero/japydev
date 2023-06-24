@@ -2,7 +2,7 @@
 title: 'GIT'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 06 2022'
-heroImage: '/placeholder-hero.jpg'
+heroImage: '/git.svg'
 ---
 
 # GIT

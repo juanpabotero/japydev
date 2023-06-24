@@ -2,7 +2,7 @@
 title: 'TypeScript'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 15 2022'
-heroImage: '/placeholder-hero.jpg'
+heroImage: '/typescript.svg'
 ---
 
 # TypeScript

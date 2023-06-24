@@ -2,7 +2,7 @@
 title: 'Páginas'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 12 2022'
-heroImage: '/placeholder-hero.jpg'
+heroImage: '/page.svg'
 ---
 
 # PÁGINAS

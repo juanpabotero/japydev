@@ -1,0 +1,16 @@
+---
+const { img, link, title } = Astro.props;
+---
+
+<a
+  href={link}
+  class="group flex gap-4 items-center w-max text-gray-300 hover:text-gray-200 border-gray-500 rounded-md 
+  hover:border-yellow-600 hover:translate-x-2 transition-all duration-200"
+>
+  <img
+    src={img}
+    alt=""
+    class="w-5 h-5 rounded-full object-cover text-gray-300"
+  />
+  <span>{title}</span>
+</a>

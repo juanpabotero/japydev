@@ -2,7 +2,7 @@
 title: 'CSS'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 04 2022'
-heroImage: '/placeholder-hero.jpg'
+heroImage: '/css.svg'
 ---
 
 # CSS

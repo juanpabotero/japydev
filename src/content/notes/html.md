@@ -2,7 +2,7 @@
 title: 'HTML'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 07 2022'
-heroImage: '/placeholder-hero.jpg'
+heroImage: '/html.svg'
 ---
 
 # HTML

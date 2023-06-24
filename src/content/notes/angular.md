@@ -2,7 +2,7 @@
 title: 'Angular'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 02 2022'
-heroImage: '/placeholder-hero.jpg'
+heroImage: '/angular.svg'
 ---
 
 # ANGULAR

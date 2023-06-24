@@ -2,7 +2,7 @@
 title: 'Markdown'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 09 2022'
-heroImage: '/placeholder-hero.jpg'
+heroImage: '/markdown.svg'
 ---
 
 # Markdown

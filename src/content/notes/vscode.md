@@ -2,7 +2,7 @@
 title: 'Visual Studio Code'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 16 2022'
-heroImage: '/placeholder-hero.jpg'
+heroImage: '/vscode.svg'
 ---
 
 # VSCODE
