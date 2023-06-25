@@ -1,20 +1,26 @@
 export const projects = [
   {
-    img: '/placeholder-hero.jpg',
+    img: '/react.svg',
+    link: 'https://juanpabotero.github.io/react-counter/',
+    stack: 'React • Vite • HTML • CSS • JS',
+    title: 'React Counter',
+  },
+  {
+    img: '/angular.svg',
     link: 'https://juanpaboterodev.netlify.app/password-generator',
-    stack: 'HTML • CSS • JavaScript',
+    stack: 'Angular • HTML • CSS • JS',
     title: 'Password Generator',
   },
   {
-    img: '/placeholder-hero.jpg',
+    img: '/angular.svg',
     link: 'https://juanpaboterodev.netlify.app/advice-generator',
-    stack: 'HTML • CSS • JavaScript • API',
+    stack: 'Angular • API • HTML • CSS • JS',
     title: 'Advice Generator',
   },
   {
-    img: '/placeholder-hero.jpg',
+    img: '/angular.svg',
     link: 'https://juanpaboterodev.netlify.app/tip-calculator',
-    stack: 'HTML • CSS • JavaScript',
+    stack: 'Angular • HTML • CSS • JS',
     title: 'Tip Calculator',
   },
 ];

@@ -76,17 +76,18 @@ img {
 }
 .post h3 {
   font-weight: bold;
-  font-size: 22px;
+  font-size: 24px;
 }
 .post h4 {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
 }
 .post p {
   line-height: 1.6;
 }
 .post ol {
   list-style: decimal;
+  margin-left: 16px;
 }
 .post li ol {
   list-style: lower-alpha;
