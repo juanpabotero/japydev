@@ -7,9 +7,9 @@ heroImage: '/git.svg'
 
 # GIT
 
-# Teoria
+## Conceptos
 
-## Estados en git:
+### Estados en git:
 
 - **modified**: el archivo contiene cambios pero no han sido
   marcados para ser confirmados, se encuentra en el directorio
@@ -21,12 +21,12 @@ heroImage: '/git.svg'
 - **committed**: el archivo ha sido guardado en el repositorio local.
   Esta accion recibe el nombre de commit.
 
-## HEAD
+### HEAD
 
 Es el puntero que hace referencia al punto actual del historial de
 cambios del repositorio, normalmente es el ultimo commit
 
-## Archivos y carpetas que se deberian ignorar:
+### Archivos y carpetas que se deberian ignorar:
 
 - archivos con credenciales o llaves API (deberian inyectarse por
   variable de entorno)
@@ -38,7 +38,7 @@ cambios del repositorio, normalmente es el ultimo commit
 - dependencias que pueden ser descargadas (/node_modules)
 - coverage del testing (/coverage)
 
-# General
+## General
 
 - `git --version`  
   ver version de git
@@ -98,7 +98,7 @@ cambios del repositorio, normalmente es el ultimo commit
   al final de los comandos significa que quiero saber que resultado
   tendria una accion sin realizarla
 
-# Commits
+## Commits
 
 - `git add archivo`  
   agrega el archivo o directorio al area de preparacion
@@ -174,7 +174,7 @@ cambios del repositorio, normalmente es el ultimo commit
 - `git cherry-pick hashCommit -e`  
   aplicar el commit indicado y cambiar el mensaje del commit
 
-# Ramas
+## Ramas
 
 - `git branch`  
   muestra las ramas.  
@@ -234,7 +234,7 @@ cambios del repositorio, normalmente es el ultimo commit
   si quiero ejecutar el comando, doy:
   `git remote prune origin`
 
-# Repo remoto
+## Repo remoto
 
 - `git remote add aliasRepoRemoto rutaRepoRemoto`  
   agrega un repositorio remoto a nuestro repositorio local,
@@ -299,7 +299,7 @@ cambios del repositorio, normalmente es el ultimo commit
 - `git config credential.username "userName"`  
   Configurar las credenciales para el proyecto
 
-# Tags
+## Tags
 
 **Tags**: normalmente se usan para hacer versionado del codigo  
 ej, v1.2.0, v1.2.1, v1.2.2, etc
@@ -322,7 +322,7 @@ ej, v1.2.0, v1.2.1, v1.2.2, etc
 - `git tag -d <nombreTag>`  
   eliminar tag
 
-# Stash
+## Stash
 
 **Stash** es un almacen temporal para los cambios que aun no queremos confirmar
 como commit pero que tampoco queremos perder, para poder moverse a otras
@@ -360,13 +360,13 @@ ramas y demas con tranquilidad
 - `git stash clear`  
   limpiar el stash
 
-# Errores
+## Errores
 
 - _remote: Permission to 'repositorio' denied to 'username'_  
   Si ya se tienen las credenciales configuradas, se debe cambiar el username:  
   `git config credential.username "new name"`
 
-# Otros
+## Otros
 
 - si se tiene un archivo en conflicto al hacer el merge,
   se debe resolver manualmente, indicando la estructura final

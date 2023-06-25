@@ -7,9 +7,9 @@ heroImage: '/vscode.svg'
 
 # VSCODE
 
-# Atajos
+## Atajos
 
-## Navegacion
+### Navegacion
 
 - F5  
   ejecutar el debug
@@ -79,7 +79,7 @@ heroImage: '/vscode.svg'
 - ctrl + numero  
   mover entre pestañas "mayores"
 
-## Editor
+### Editor
 
 - ctrl + a  
   seleccionar todo
@@ -184,6 +184,8 @@ heroImage: '/vscode.svg'
 
 - lorem y tab  
   genera texto aleatorio
+
+---
 
 ## Otros
 

@@ -10,7 +10,7 @@ heroImage: '/code.svg'
 Codigo limpio es aquel que se ha escrito con la intencion de que otra
 persona pueda entenderlo
 
-# Convenciones
+## Convenciones
 
 - Nombrar variables usando lowercamelcase y tener un significado explicito
 
@@ -31,9 +31,9 @@ persona pueda entenderlo
 
 - 1 identacion = 4 espacios
 
-# Principios
+## Principios
 
-## Principios SOLID:
+### Principios SOLID:
 
 - SINGLE RESPONSABILITY (SRP): responsabilidad unica.
   Nunca deberia haber mas de un motivo por el cual cambiar una clase.
@@ -65,21 +65,21 @@ persona pueda entenderlo
   - Las abstracciones no deben depender de los detalles.
     Los detalles deben depender de abstracciones.
 
-## Principio DRY (Don't repeat yourself):
+### Principio DRY (Don't repeat yourself):
 
 Evitar tener duplicidad de codigo
 
-## Principio YAGNI (You aren't gonna to need it):
+### Principio YAGNI (You aren't gonna to need it):
 
 Evitar escribir codigo para el mañana o una mega-solucion, centrarse
 unicamente en lo necesario.
 
-## Principio KISS (Kepp it simple, stupid):
+### Principio KISS (Kepp it simple, stupid):
 
 La sencillez debe ser una meta en el desarrollo y la complejidad innecesaria
 debe ser eliminada.
 
-## Acronimo STUPID:
+### Acronimo STUPID:
 
 6 principios que debemos evitar:
 
@@ -93,7 +93,7 @@ debe ser eliminada.
   cohesion se refiere a lo que la clase puede hacer, una buena cohesion
   indica que la clase se enfoca en lo que deberia hacer.
 
-- **Untestability**: codigo no probable (unit test)  
+- **Untestability**: codigo no probable (unit test)
 
 - **Premature** optimization: optimizacion prematura
 
@@ -101,7 +101,7 @@ debe ser eliminada.
 
 - **Duplication**: codigo duplicado
 
-# TypeScript
+## TypeScript
 
 - no usar \_ como prefijo o sufijo, ni como un identificador.  
   si no se necesitan todos los elementos simplemente se agrega una coma:  
