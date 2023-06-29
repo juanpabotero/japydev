@@ -3,7 +3,7 @@ export const projects = [
     img: '/react.svg',
     link: 'https://juanpabotero.github.io/react-counter/',
     stack: 'React • Vite • JS • CSS • HTML',
-    title: 'React Counter',
+    title: 'Counter',
   },
   {
     img: '/angular.svg',

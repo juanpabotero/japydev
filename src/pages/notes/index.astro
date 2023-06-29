@@ -30,7 +30,7 @@ const posts = (await getCollection('notes')).sort(
         Anotaciones de distintas tecnologías, herramientas, lenguajes,
         frameworks, recursos y más.
       </p>
-      <section class="grid min-[480px]:grid-cols-2 gap-x-6 gap-y-6">
+      <section class="sm:columns-2 gap-x-4">
         {
           posts.map((post) => (
             <Note
@@ -43,11 +43,11 @@ const posts = (await getCollection('notes')).sort(
       </section>
     </main>
     <div
-      class="fixed -z-10 h-[134px] w-[134px] lg:w-[300px] lg:h-[300px] rounded-full bg-red-600 blur-[150px] md:blur-[350px] opacity-50 left-0 top-0"
+      class="fixed -z-10 h-[134px] w-[134px] lg:w-[300px] lg:h-[300px] rounded-full bg-red-600 blur-[150px] lg:blur-[350px] opacity-50 left-0 top-0"
     >
     </div>
     <div
-      class="fixed -z-10 h-[134px] w-[134px] lg:w-[300px] lg:h-[300px] rounded-full bg-amber-600 blur-[150px] md:blur-[350px] opacity-50 right-0 bottom-0"
+      class="fixed -z-10 h-[134px] w-[134px] lg:w-[300px] lg:h-[300px] rounded-full bg-amber-600 blur-[150px] lg:blur-[350px] opacity-50 right-0 bottom-0"
     >
     </div>
     <Footer />

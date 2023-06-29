@@ -883,7 +883,7 @@ Github: github.com/swimlane/ngx-charts
   <p [ngClass]="{'precioAlto': marca.precio > 80}">Hola</p>
   ```
 
-## Directivas:
+### Directivas:
 
 Es una funcionalidad disponible para las vistas o archivos html, se debe
 importar el CommonModule de `@angular/common`
@@ -913,7 +913,7 @@ importar el CommonModule de `@angular/common`
   </ul>
   ```
 
-## Formularios:
+### Formularios:
 
 ```html
 <form #formContact="ngForm" (ngSubmit)="onSubmit()">
@@ -944,7 +944,7 @@ importar el CommonModule de `@angular/common`
 La funcion `onSubmit` estaria en el archivo .component.ts
 cargar FormsModule de `@angular/forms`
 
-## @Input:
+### @Input:
 
 recibir datos desde el componente padre en el componente hijo,
 se debe importar donde se va a utilizar  
@@ -958,7 +958,7 @@ Desde la logica del componente hijo:
 Si lo quiero recibir con un nombre distinto debo poner:  
 `@Input('nombreEnHijo') otroNombre: string = ''`
 
-## @Output:
+### @Output:
 
 Pasar datos desde el componente hijo al componente padre,
 se debe importar donde se va a utilizar.  
@@ -1008,7 +1008,7 @@ metodoEnPadre(event){
 
 ## Backend mean fernando
 
-## Nodemon:
+### Nodemon:
 
 lanzar el servidor de node en modo de desarrollo  
 (ver documentacion en la pagina)  
