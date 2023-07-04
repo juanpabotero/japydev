@@ -31,9 +31,9 @@ input {
 content {
   line-height: 1.6;
 }
-table {
+/* table {
   width: 100%;
-}
+} */
 img {
   max-width: 100%;
   height: auto;
@@ -108,4 +108,9 @@ img {
 }
 .post a {
   text-decoration: underline;
+}
+.post td, .post th {
+  padding: 8px 12px;
+  text-align: center;
+  border: 1px solid #ccc;
 }

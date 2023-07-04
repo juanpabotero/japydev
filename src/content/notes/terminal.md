@@ -1,7 +1,7 @@
 ---
 title: 'Terminal'
 description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jan 14 2022'
+pubDate: 'Jan 15 2022'
 heroImage: '/terminal.svg'
 ---
 

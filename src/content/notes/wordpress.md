@@ -1,7 +1,7 @@
 ---
 title: 'WordPress'
 description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jan 17 2022'
+pubDate: 'Jan 18 2022'
 heroImage: '/wordpress.svg'
 ---
 

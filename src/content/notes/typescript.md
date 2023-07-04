@@ -1,7 +1,7 @@
 ---
 title: 'TypeScript'
 description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jan 15 2022'
+pubDate: 'Jan 16 2022'
 heroImage: '/typescript.svg'
 ---
 
