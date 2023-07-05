@@ -17,8 +17,17 @@ const { Content } = await post.render();
 
 <BlogPost {...post.data}>
   <div class="flex gap-3 items-center">
-    <img src={post.data.heroImage} alt="">
-    <h1>{post.data.title}</h1>
+    <!-- ponerle un nombre a la transicion para relacionar los 
+    elementos que quiero animar entre paginas, ponerle el mismo
+    nombre a la animacion de cada elemento en ambas paginas -->
+    <img
+      src={post.data.heroImage}
+      alt={`Logo de ${post.data.title}`}
+      style={`view-transition-name: note-img-${post.data.id}`}
+    />
+    <h1 style={`view-transition-name: note-title-${post.data.id}`}>
+      {post.data.title}
+    </h1>
   </div>
   <Content />
 </BlogPost>

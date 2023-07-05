@@ -1,11 +1,10 @@
 ---
+id: 'wordpress'
 title: 'WordPress'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 18 2022'
 heroImage: '/wordpress.svg'
 ---
-
-# WordPress
 
 - WordPress usa PHP como lenguaje, MySQL como base de datos y Apache
   como servidor

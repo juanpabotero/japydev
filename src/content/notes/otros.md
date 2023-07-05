@@ -1,11 +1,10 @@
 ---
+id: 'otros'
 title: 'Otros'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 11 2022'
 heroImage: '/plus.svg'
 ---
-
-# OTROS
 
 ## Herramientas
 

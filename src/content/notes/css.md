@@ -1,11 +1,10 @@
 ---
+id: 'css'
 title: 'CSS'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 04 2022'
 heroImage: '/css.svg'
 ---
-
-# CSS
 
 ## Propiedades
 

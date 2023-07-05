@@ -1,11 +1,10 @@
 ---
+id: 'diseno'
 title: 'Diseño'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 05 2022'
 heroImage: '/design.svg'
 ---
-
-# Diseño
 
 - Utilizar 2 o 3 colores dentro de la web, que van a ser comunes para
   toda la pagina

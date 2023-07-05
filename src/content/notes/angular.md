@@ -1,4 +1,5 @@
 ---
+id: 'angular'
 title: 'Angular'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 02 2022'

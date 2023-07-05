@@ -1,11 +1,10 @@
 ---
+id: 'paginas'
 title: 'Páginas'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 12 2022'
 heroImage: '/page.svg'
 ---
-
-# PÁGINAS
 
 ## Documentación:
 

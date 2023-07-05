@@ -1,11 +1,10 @@
 ---
+id: 'javascript'
 title: 'JavaScript'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 08 2022'
 heroImage: '/javascript.svg'
 ---
-
-# JavaScript
 
 ## Conceptos
 

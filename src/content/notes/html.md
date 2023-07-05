@@ -1,11 +1,10 @@
 ---
+id: 'html'
 title: 'HTML'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 07 2022'
 heroImage: '/html.svg'
 ---
-
-# HTML
 
 ## Conceptos
 

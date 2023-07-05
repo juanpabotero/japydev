@@ -1,11 +1,10 @@
 ---
+id: 'terminal'
 title: 'Terminal'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 15 2022'
 heroImage: '/terminal.svg'
 ---
-
-# Terminal
 
 ## Linux
 

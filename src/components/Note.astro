@@ -1,16 +1,18 @@
 ---
-const { img, link, title } = Astro.props;
+const { id, img, link, title } = Astro.props;
 ---
 
 <a
   href={link}
-  class="group flex gap-4 items-center mb-4 w-max break-inside-avoid text-gray-300 hover:text-gray-200 
-  hover:translate-x-2 transition-all duration-200"
+  class="group flex gap-4 items-center mb-4 w-max break-inside-avoid text-gray-300 hover:text-gray-200 hover:translate-x-2 transition-all duration-200"
 >
+  <!-- ponerle un nombre a la transicion para relacionar los 
+  elementos que quiero animar entre paginas -->
   <img
     src={img}
-    alt=""
+    alt={`Logo de ${title}`}
     class="w-5 h-5 object-cover"
+    style={`view-transition-name: note-img-${id}`}
   />
-  <span>{title}</span>
+  <span style={`view-transition-name: note-title-${id}`}>{title}</span>
 </a>

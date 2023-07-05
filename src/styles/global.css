@@ -4,17 +4,6 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 body {
-  /* font-family: Verdana, sans-serif;
-	margin: auto;
-	padding: 20px;
-	max-width: 65ch;
-	margin-inline: auto !important;
-	text-align: left;
-	background-color: #fff;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	line-height: 1.5;
-	color: #444; */
   background-color: #181621;
   color: rgb(226, 232, 240);
   min-height: 100vh;
@@ -31,9 +20,6 @@ input {
 content {
   line-height: 1.6;
 }
-/* table {
-  width: 100%;
-} */
 img {
   max-width: 100%;
   height: auto;
@@ -109,8 +95,42 @@ img {
 .post a {
   text-decoration: underline;
 }
-.post td, .post th {
+.post td,
+.post th {
   padding: 8px 12px;
   text-align: center;
   border: 1px solid #ccc;
 }
+/* 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes slide-from-right {
+  from {
+    transform: translateX(30px);
+  }
+}
+@keyframes slide-to-left {
+  to {
+    transform: translateX(-30px);
+  }
+}
+
+/* foto de la página antigua 
+::view-transition-old(root) { 
+  animation: 300ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+    700ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+}
+
+/* foto de la página nueva 
+::view-transition-new(root) {
+  animation: 210ms cubic-bezier(0, 0, 0.2, 1) 300ms both fade-in,
+    700ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+} */

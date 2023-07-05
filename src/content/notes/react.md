@@ -1,11 +1,10 @@
 ---
+id: 'react'
 title: 'React'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 13 2022'
 heroImage: '/react.svg'
 ---
-
-# React
 
 ## Herramientas
 
@@ -146,38 +145,38 @@ Extensiones de VSCode:
   Una aplicación nueva de React se debería crear usando Vite, y no  
   create reactApp, con este comando y seleccionando React.
 
-**Inicializar un proyecto de React** sin ayuda de Vite o ninguna 
+**Inicializar un proyecto de React** sin ayuda de Vite o ninguna
 otra herramienta, debo hacer esto:
 
-  - Inicializar Vite con vanilla
-  - Instalar un plugin, como Babel, para React:  
-    `npm install @vitejs/plugin-react -E`  
-    -E es para que instale la version exacta.
-  - Instalar React y React DOM:  
-    `npm install react react-dom -E`
-  - Crear el archivo **vite.config.js** para configurar Vite  
-    con React y ponemos dentro del archivo:
+- Inicializar Vite con vanilla
+- Instalar un plugin, como Babel, para React:  
+  `npm install @vitejs/plugin-react -E`  
+  -E es para que instale la version exacta.
+- Instalar React y React DOM:  
+  `npm install react react-dom -E`
+- Crear el archivo **vite.config.js** para configurar Vite  
+  con React y ponemos dentro del archivo:
 
-    ```js
-    import { defineConfig } from 'vite';
-    import react from '@vitejs/plugin-react';
+  ```js
+  import { defineConfig } from 'vite';
+  import react from '@vitejs/plugin-react';
 
-    export default defineConfig({
-      plugins: [react()],
-    });
-    ```
+  export default defineConfig({
+    plugins: [react()],
+  });
+  ```
 
-  - En el archivo que es el punto de entrada de mi aplicación,  
-    en este caso, main.js, ponemos:
-    ```js
-    import { createRoot } from 'react-dom/client';
-    // selecciono el elemento donde quiero renderizar mi app
-    const root = createRoot(document.getElementById('app'));
-    root.render(<h1>Hello world</h1>);
-    ```
-  - Cambiar el nombre del archivo de main.js a main.jsx.  
-    Cambiarlo tambien en el index.html
-  - Seria recomendable instalar un linter.
+- En el archivo que es el punto de entrada de mi aplicación,  
+  en este caso, main.js, ponemos:
+  ```js
+  import { createRoot } from 'react-dom/client';
+  // selecciono el elemento donde quiero renderizar mi app
+  const root = createRoot(document.getElementById('app'));
+  root.render(<h1>Hello world</h1>);
+  ```
+- Cambiar el nombre del archivo de main.js a main.jsx.  
+  Cambiarlo tambien en el index.html
+- Seria recomendable instalar un linter.
 
 ---
 
@@ -306,8 +305,8 @@ poner el nombre de la prop: `<Button isFollowing />`, en vez de
 
 ### PropTypes
 
-Se usan para definir el tipo a las properties, para usarse se 
-debe instalar `npm install prop-types` y se debe importar 
+Se usan para definir el tipo a las properties, para usarse se
+debe instalar `npm install prop-types` y se debe importar
 `import PropTypes from 'prop-types';`. Se usan asi:
 
 ```jsx
@@ -517,12 +516,12 @@ de una función y devolver el valor dependiendo de la condición.
 ### useState
 
 Permite manejar el estado y guardarlo en una variable.  
-Se importa `import { useState } from 'react'` y se usa 
-`const [isFollowing, setIsFollowing] = useState(false)` 
-donde `isFollowing` contiene el valor del estado y `setIsfollowing` 
-es la función para actualizar el estado, además el `useState(false)` 
+Se importa `import { useState } from 'react'` y se usa
+`const [isFollowing, setIsFollowing] = useState(false)`
+donde `isFollowing` contiene el valor del estado y `setIsfollowing`
+es la función para actualizar el estado, además el `useState(false)`
 permite poner un valor inicial al estado.  
-La inicialización de los estados solo ocurre una vez, no cada vez que 
+La inicialización de los estados solo ocurre una vez, no cada vez que
 se renderiza el componente.  
 Este seria un estado interno, solo para el componente.
 

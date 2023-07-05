@@ -1,11 +1,10 @@
 ---
+id: 'navegador'
 title: 'Navegador'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 10 2022'
 heroImage: '/chrome.svg'
 ---
-
-# Navegador
 
 ## Atajos
 

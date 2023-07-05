@@ -20,6 +20,7 @@ const posts = await getCollection('notes');
     {
       posts.map((post) => (
         <Note
+          id={post.data.id}
           link={`/notes/${post.slug}/`}
           img={post.data.heroImage}
           title={post.data.title}

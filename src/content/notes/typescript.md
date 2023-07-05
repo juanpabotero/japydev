@@ -1,11 +1,10 @@
 ---
+id: 'typescript'
 title: 'TypeScript'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 16 2022'
 heroImage: '/typescript.svg'
 ---
-
-# TypeScript
 
 - Typescript transpila el codigo a Javascript para ser leido por el
   navegador
