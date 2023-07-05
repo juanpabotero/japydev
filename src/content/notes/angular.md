@@ -5,8 +5,6 @@ pubDate: 'Jan 02 2022'
 heroImage: '/angular.svg'
 ---
 
-# ANGULAR
-
 ## Comandos
 
 - Instalar Angular CLI  
@@ -295,10 +293,14 @@ heroImage: '/angular.svg'
 - **ngContent**: para renderizar elementos en los componentes hijos:  
   en el html del componente hijo:  
   `<ng-content></ng-content>`  
-  en el html del componente padre:  
-   `<app-hijo>
-		<div> {{ user.name }} </div>
-	</app-hijo>`  
+  en el html del componente padre:
+
+  ```html
+  <app-hijo>
+    <div>{{ user.name }}</div>
+  </app-hijo>
+  ```
+
   se renderizara el div donde este el ngContent del componente hijo.
 
 - **FORMULARIOS** (ver carpeta 06-formulariosApp)  

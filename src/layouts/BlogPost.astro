@@ -1,45 +1,14 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import Layout from './Layout.astro';
 
 type Props = CollectionEntry<'notes'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title } = Astro.props;
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead title={title} description={description} />
-  </head>
-
-  <body class="flex flex-col">
-    <Header />
-    <main class="px-4 max-w-3xl mx-auto w-full">
-      <article class="post">
-        <!-- {heroImage && <img width={720} height={360} src={heroImage} alt="" />} -->
-        <!-- <h1 class="title">{title}</h1> -->
-        <!-- <FormattedDate date={pubDate} /> -->
-        <!-- {
-          updatedDate && (
-            <div class="last-updated-on">
-              Last updated on <FormattedDate date={updatedDate} />
-            </div>
-          )
-        } -->
-        <slot />
-      </article>
-    </main>
-    <div
-      class="fixed -z-10 h-[150px] w-[150px] lg:w-[300px] lg:h-[300px] rounded-full bg-red-500 blur-[150px] md:blur-[350px] opacity-50 left-0 top-0"
-    >
-    </div>
-    <div
-      class="fixed -z-10 h-[150px] w-[150px] lg:w-[300px] lg:h-[300px] rounded-full bg-yellow-500 blur-[150px] md:blur-[350px] opacity-50 right-0 bottom-0"
-    >
-    </div>
-    <Footer />
-  </body>
-</html>
+<Layout title={`JapyDev | ${title}`}>
+  <article class="post">
+    <slot />
+  </article>
+</Layout>

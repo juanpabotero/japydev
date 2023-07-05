@@ -1,55 +1,30 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
-import Project from '../../components/Project.astro';
 import Note from '../../components/Note.astro';
+import Layout from '../../layouts/Layout.astro';
 
-const posts = (await getCollection('notes')).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-);
+const posts = await getCollection('notes');
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body class="flex flex-col">
-    <Header />
-    <main class="px-4 max-w-3xl mx-auto w-full">
-      <p>
-        <span class="text-amber-300">Notas y recursos</span> que he tomado a lo largo
-        de mi aprendizaje en el
-        <b>desarrollo web</b>.
-      </p>
-      <p class="pb-10">
-        Anotaciones de distintas tecnologías, herramientas, lenguajes,
-        frameworks, recursos y más.
-      </p>
-      <section class="sm:columns-2 gap-x-4">
-        {
-          posts.map((post) => (
-            <Note
-              link={`/notes/${post.slug}/`}
-              img={post.data.heroImage}
-              title={post.data.title}
-            />
-          ))
-        }
-      </section>
-    </main>
-    <div
-      class="fixed -z-10 h-[134px] w-[134px] lg:w-[300px] lg:h-[300px] rounded-full bg-red-600 blur-[150px] lg:blur-[350px] opacity-50 left-0 top-0"
-    >
-    </div>
-    <div
-      class="fixed -z-10 h-[134px] w-[134px] lg:w-[300px] lg:h-[300px] rounded-full bg-amber-600 blur-[150px] lg:blur-[350px] opacity-50 right-0 bottom-0"
-    >
-    </div>
-    <Footer />
-  </body>
-</html>
+<Layout title="JapyDev | Notas">
+  <p>
+    <span class="text-amber-300">Notas y recursos</span> que he tomado a lo largo
+    de mi aprendizaje en el
+    <b>desarrollo web</b>.
+  </p>
+  <p class="pb-10">
+    Anotaciones de distintas tecnologías, herramientas, lenguajes, frameworks,
+    recursos y más.
+  </p>
+  <section class="sm:columns-2 gap-x-4">
+    {
+      posts.map((post) => (
+        <Note
+          link={`/notes/${post.slug}/`}
+          img={post.data.heroImage}
+          title={post.data.title}
+        />
+      ))
+    }
+  </section>
+</Layout>
