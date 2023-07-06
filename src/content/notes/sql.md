@@ -8,11 +8,11 @@ heroImage: '/sql.svg'
 
 ## Herramientas
 
-- Gestionar las bases de datos:  
-  Para usuarios Mac: https://dbngin.com/
-
 - Aprender y practicar SQL:  
   https://sqlbolt.com/
+
+- Gestionar las bases de datos:  
+  Para usuarios Mac: https://dbngin.com/
 
 ---
 
@@ -86,6 +86,18 @@ SQL no es case sensitive, pero es una buena practica escribir las palabras
 clave en mayúscula y los nombres de columnas, tablas y demás en minúscula.  
 Esto es para el estandar SQL, pero cada base de datos tiene su propia
 implementación, por ejemplo, PostgreSQL es case sensitive.
+
+Comandos básicos:
+
+```sql
+CREATE DATABASE database_name; // crea una base de datos
+USE database_name; // usa una base de datos
+CREATE TABLE table_name (column_name data_type, column_name data_type); // crea una tabla
+SHOW TABLES; // muestra las tablas de la base de datos
+DESCRIBE table_name; // describe la tabla
+DROP TABLE table_name; // elimina la tabla
+DROP DATABASE database_name; // elimina la base de datos
+```
 
 Sentencia SQL:  
 Primero iria el comando o acción, luego la columna(s) o atributo(s)
@@ -219,3 +231,7 @@ SELECT COUNT(*) FROM movies WHERE year = 2001 AND director = "Chris Columbus";
 SELECT director, COUNT(*) FROM movies GROUP BY director;
 SELECT director, COUNT(*) FROM movies GROUP BY director HAVING COUNT(*) > 1;
 ```
+
+## MySQL
+
+Sistema de gestión de bases de datos relacionales.
