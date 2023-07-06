@@ -90,6 +90,7 @@ implementación, por ejemplo, PostgreSQL es case sensitive.
 Comandos básicos:
 
 ```sql
+SHOW DATABASES; // muestra las bases de datos
 CREATE DATABASE database_name; // crea una base de datos
 USE database_name; // usa una base de datos
 CREATE TABLE table_name (column_name data_type, column_name data_type); // crea una tabla
