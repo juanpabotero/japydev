@@ -359,6 +359,15 @@ ramas y demas con tranquilidad
 - `git stash clear`  
   limpiar el stash
 
+## Buenas prácticas
+
+- Usar el verbo imperativo en los mensajes de commit (Add, Change, Remove, etc)
+- No usar puntuacion al final del titulo del mensaje de commit
+- Usar un máximo de 50 caracteres en el titulo del mensaje de commit
+- Usar el cuerpo del commit si es necesario, separado del titulo por una linea en blanco
+- Usar commit semánticos (feat, fix, docs, style, refactor, etc.)
+- 
+
 ## Errores
 
 - _remote: Permission to 'repositorio' denied to 'username'_  

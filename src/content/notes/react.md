@@ -58,8 +58,9 @@ Extensiones de VSCode:
   Framer Motion  
   Auto Animate
 
-- **Charts**  
-  Recharts
+- **Gráficas - Charts**  
+  Recharts  
+  https://www.react-graph-gallery.com/
 
 - **Forms**  
   https://react-hook-form.com/  

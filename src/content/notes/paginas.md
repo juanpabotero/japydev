@@ -178,6 +178,7 @@ heroImage: '/page.svg'
   [exercism.org](https://exercism.org/) (midu)  
   [hackerrank.com](https://www.hackerrank.com/)  
   [leetcode.com](https://leetcode.com/)  
+  https://pruebastecnicas.com/ (midu)  
   [retos.dev](https://retos.dev/) (midu)  
   [retosdeprogramacion.com](https://retosdeprogramacion.com/)
 
@@ -420,6 +421,9 @@ Para buscar cualquier libreria con vanilla javascript:
 
 - Fondos personalizados (particulas)  
   [vincentgarreau.com/particles.js](https://vincentgarreau.com/particles.js/)
+
+- Gráficas (charts)  
+  https://d3-graph-gallery.com/  
 
 - Mapas:  
   [leafletjs.com](https://leafletjs.com/)
@@ -673,10 +677,8 @@ Para buscar cualquier libreria con vanilla javascript:
 
 ## Otras utilidades:
 
-- Iconos, ilustraciones, herramientas, diseños  
+- Colección de recursos (Iconos, ilustraciones, herramientas, diseños)  
   https://uigoodies.com/
-
-- Colección de recursos  
   https://www.toools.design/
 
 - Imagenes para fondos  

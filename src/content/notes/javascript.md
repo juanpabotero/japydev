@@ -230,6 +230,8 @@ heroImage: '/javascript.svg'
   const getData = async () => {
     try {
       const res = await fetch(url);
+      // si se recibe una respuesta 4xx o 5xx no entrará en el catch
+      // response.ok será true con respuestas 2xx
       if (!res.ok) throw new Error('Error');
       return await res.json();
     } catch (err) {
@@ -436,9 +438,18 @@ heroImage: '/javascript.svg'
 - Hacer un ranking:
 
   ```javascript
-  function getRanking(ranking) {
-    return ':star:'.repeat(ranking).padEnd(5, ':starEmpty:');
-  }
+  const createRanking = ({
+    rating,
+    total = 5,
+    starIcon = ':star:',
+    emptyIcon = ':starEmpty:',
+  }) => {
+    const stars = starIcon.repeat(rating);
+    const empty = emptyIcon.repeat(total - rating);
+    return stars + empty;
+  };
+  // para usarlo:
+  createRanking({ rating: 7, total: 10 });
   ```
 
 - Generar un ID unico:
@@ -472,6 +483,7 @@ heroImage: '/javascript.svg'
   ```
 
 - AbortController: para cancelar peticiones con fetch. ej:
+
   ```javascript
   button = document.querySelector('button');
   const controller = new AbortController();
@@ -482,6 +494,75 @@ heroImage: '/javascript.svg'
     .then((res) => {
       console.log(res); // no se ejecutaria si se aborto la peticion
     });
+  ```
+
+- Crear un elemento drag and drop:
+
+  ```html
+  <div id="dropzone">Arrastra una imagen aquí</div>
+  <img
+    id="preview"
+    src=""
+    alt="Vista previa de la imagen"
+    style="display: none"
+  />
+  ```
+
+  ```javascript
+  // referencias a los elementos del DOM
+  const dropzone = document.getElementById('dropzone');
+  const preview = document.getElementById('preview');
+  // evitar el omportamiento por defecto de arrastrar y soltar
+  dropzone.addEventListener('dragover', (e) => e.preventDefault());
+  // procesar el archivo cuando se suelta en la zona de arrastre
+  dropzone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    // obtener el archivo
+    const file = e.dataTransfer.files[0];
+    // validar que sea una imagen
+    if (!file.type.match('image.*')) {
+      alert('Solo puedes subir imagenes');
+      return;
+    }
+    const reader = new FileReader();
+    // leer el archivo como una url de datos
+    reader.readAsDataURL(file);
+    // manejar el evento de carga de archivos
+    reader.onload = (e) => {
+      // mostrar la imagen
+      preview.src = e.target.result;
+      preview.style.display = 'block';
+    };
+  });
+  ```
+
+- Recuperar los queries de una url a un objeto:
+
+  ```javascript
+  'https://example.com/?name=Juan&age=30'; // url de ejemplo
+  const query = document.location.search;
+  const searchParams = new URLSearchParams(query);
+  const queryParams = Object.fromEntries(searchParams.entries());
+  console.log(queryParams); // { name: 'Juan', age: '30' }
+  ```
+
+- Sincronizar pestañas usando el localStorage:
+
+  ```javascript
+  // cuando cambia el storage, ejecutamos esto para sinconizar en otras pestañas
+  window.addEventListener('storage', (event) => {
+    if (event.key === 'counter') {
+      const newCounterValue = event.newValue;
+      $counter.textContent = newCounterValue;
+    }
+  });
+
+  // cuando se hace click en el boton para incrementar el contador
+  $button.addEventListener('click', () => {
+    counter++;
+    $counter.textContent = counter;
+    localStorage.setItem('counter', counter);
+  });
   ```
 
 ---

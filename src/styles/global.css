@@ -93,6 +93,10 @@ img {
   margin: 20px 0;
 }
 .post a {
+  color: #2f81f7;
+  text-decoration: none;
+}
+.post a:hover {
   text-decoration: underline;
 }
 .post td,

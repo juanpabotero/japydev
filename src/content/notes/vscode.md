@@ -105,6 +105,9 @@ heroImage: '/vscode.svg'
   seleccionar la palabra, si lo sigo oprimiendo selecciona las
   siguientes coincidencias
 
+- ctrl + k, ctrl + d  
+  para saltar la seleccion actual
+
 - ctrl + L  
   seleccionar la linea
 

@@ -231,5 +231,18 @@ heroImage: '/html.svg'
   }
   ```
 
-  - Cargar una imagen con _preload_, puede ser recomendado para imagenes muy pesadas.  
-    `<link rel="preload" href="img/imagen.webp" as="image" type="image/webp" fetchpriority="high">`
+- Cargar una imagen con _preload_, puede ser recomendado para imagenes muy pesadas.  
+  `<link rel="preload" href="img/imagen.webp" as="image" type="image/webp" fetchpriority="high">`
+
+- Crear un calendario, con fechas y horas. Filtro de minimo y maximo con bloques de horas:
+  ```html
+  <label>
+    Selecciona fecha para tu reserva:
+    <input
+      type="datetime-local"
+      value="2023-03-03T19:00"
+      min="2023-01-01T00:00"
+      max="2023-12-31T23:59"
+    />
+  </label>
+  ```
