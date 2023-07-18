@@ -346,7 +346,13 @@ heroImage: '/javascript.svg'
   console.log(url.href); // https://example.com/pathname/?name=Juan&age=30#hash
   console.log(url.origin); // https://example.com
   console.log(url.search); // ?name=Juan&age=30
+  console.log(url.searchParams); // URLSearchParams { 'name' => 'Juan', 'age' => '30' }
   console.log(url.hash); // #hash
+
+  // modificar la url y obtener la url modificada
+  url.searchParams.set('name', 'Pedro');
+  url.searchParams.set('lastname', 'Perez');
+  console.log(url.href); // https://example.com/pathname/?name=Pedro&age=30&lastname=Perez#hash
   ```
 
 - Obtener url actual:
@@ -563,6 +569,26 @@ heroImage: '/javascript.svg'
     $counter.textContent = counter;
     localStorage.setItem('counter', counter);
   });
+  ```
+
+- Desplazarse hasta un elemento que no se vea en el viewport:
+
+  ```javascript
+  const element = document.getElementById('element');
+  const button = document.getElementById('button');
+  button.addEventListener('click', () => {
+    element.scrollIntoView({ behavior: 'smooth' });
+  });
+  ```
+
+- Tiempo relativo en cualquier idioma:
+
+  ```javascript
+  const rtf = new Intl.RelativeTimeFormat('es');
+  rtf.format(-1, 'day'); // hace 1 día
+  rtf.format(1, 'day'); // dentro de 1 día
+  rtf.format(-3, 'month'); // hace 3 meses
+  rtf.format(3, 'month'); // dentro de 3 meses
   ```
 
 ---

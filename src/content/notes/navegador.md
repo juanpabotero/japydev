@@ -66,6 +66,9 @@ heroImage: '/chrome.svg'
 - **WhatFont:**  
   ver fuentes que usa la pagina
 
+- **Web Vitals**
+  Muestra 6 métricas de rendimiento, la puntuación Core Web Vitals y datos de usuarios reales.
+
 ---
 
 ## Otros

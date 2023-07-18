@@ -110,7 +110,8 @@ heroImage: '/rendimiento-web.svg'
   (descargarlas, dejarlas en tu repositorio y usarlas desde allí).
 
 - **Ordenar la etiqueta head**: Ademas de precargar scripts y recursos, el orden de lo
-  que se carga es importante.
+  que se carga es importante.  
+  Más información sobre como ordenar la etiqueta head [aquí](https://github.com/rviscomi/capo.js).
 
 ## Ver rendimiento de una página
 
