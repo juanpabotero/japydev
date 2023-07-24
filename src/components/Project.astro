@@ -2,16 +2,16 @@
 export interface Props {
   id: number;
   img: string;
-  link: string;
-  title: string;
   stack: string;
+  title: string;
+  url: string;
 }
 
-const { img, link, title, stack } = Astro.props;
+const { img, stack, title, url } = Astro.props;
 ---
 
 <a
-  href={link}
+  href={url}
   target="_blank"
   rel="noopener noreferrer"
   class="group flex items-center gap-6 p-4 mb-8 border-[1px] border-amber-300/30 rounded-md hover:border-amber-300/60 hover:-translate-y-1 transition-all duration-200"

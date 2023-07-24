@@ -1,111 +1,163 @@
 ---
 id: 'otros'
 title: 'Otros'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jan 11 2022'
 heroImage: '/plus.svg'
 ---
 
 ## Herramientas
 
-### Node:
+### Eslint:
 
-Permite correr javascript del lado del servidor, tambien
-permite desarrollar localmente.  
-Existen paquetes dentro de node que permiten muchas funcionalidades,
-por ej, paquetes para trabajar con archivos en un servidor, conectarse
-a bases de datos, etc.  
-Babel es uno de los paquetes que esta disponible en node.  
-Puedo poner node en la terminal para entrar en modo de ejecucion
-y poner cualquier codigo de Javascript.  
-Normalmente los modulos de node se dejan por fuera del git porque
-se pueden constriur facilmente en base al package.json
+Declarar reglas de uso del codigo.  
+Para una configuracion rápida en algun proyecto puedo instalar
+standard o semistandard (el mismo standard pero con semicolons),
+funciona para archivos .js, .jsx:  
+En la terminal: `npm install standard -D`  
+En la terminal: `npm install semistandard -D`
 
-### NPM:
+Dentro del **package.json** pongo:
 
-Gestor de paquetes de node
+```json
+"eslintConfig": {
+	"extends": "standard"
+}
+```
 
-- **npm init** => crea el package.json  
-  **npm init -y** => para indicar que si aceptas el contenido por defecto
-- **npm install** => para instalar los modulos de node y los paquetes que
-  estan en el package.json
-- **npm start** => para lanzar el servidor local
-- **npm install -g** => para instalar de manera global
-- **npm install** => para instalar como dependencia de produccion
-- **npm install --save-dev** => para instalar como dependecia de desarrollo  
-  **npm install -D**
-- **npm install --save** => para instalar de forma local en el proyecto  
-  **npm install -s**
-- **npm i nombrePaquete@version** => para instalar una version en especifico de
-  un paquete
-- **npm i nombrePaquete@latest** => para instalar la ultima version de un paquete
-- **-E** es para que instale la version exacta.
+Si hay algun conflicto entre el formeteo de prettier y EsLint, puedo
+desactivar esa regla en la configuración del EsLint:
 
-**npx** es lo mismo que ejecutar ./node_modules/.bin/  
-Permite ejecutar el comando de una libreria que no ha sido instalada.
-Permite ejecutar comandos arbitrarios que estan en el npm package.  
-Permite instalar paquetes de forma global en una carpeta temporal
-y ejecutar el binario al vuelo  
-ej, ./node_modules/.bin/eslint --init seria lo mismo que ejecutar  
-npx eslint --init
+```json
+"eslintConfig": {
+	"extends": "standard",
+	"rules": {
+		"space-before-function-paren": "off"
+	}
+}
+```
 
-Instalar las dependencias siempre de manera local y no global. De manera global solo se
-puede usar una versión de un dependencia y si se tienen varios proyectos con distintas
-versiones de las dependencias, se puede tener problemas.
+Para un proyecto en el que use React debo poner, no lo de arriba,
+si no esto:
 
-Se puede crear un archivo `.npmrc` para configurar npm de manera local, esto sobreescribe
-la configuracion global.
+```json
+"eslintConfig": {
+	"extends": "./node_modules/standard/eslintrc.json"
+}
+```
 
-### NVM:
+Para instalar eslint en un proyecto que use TypeScript podria hacerlo
+de dos maneras:
 
-Node version manager, manejar la instalacion de versiones de node.  
-Puedo instalar una version de node en concreto con:  
-`nvm install version`  
-Puedo usar una version de node en concreto con:  
-`nvm use version`
+- Primera:  
+  `npm install ts-standard -D`
 
-- **nvm version** => version de NVM
-- **nvm install versionNode** => instalar una version de node  
-  **nvm install lts** => para instalar la ultima version lts de node
-- **nvm use versionNode** => usar una version de node (si sale error,
-  ejecutar terminal como administrador)
-- **nvm current** => ver la version actual de node
-- **nvm ls** => listar las versiones de node disponibles
-- **nvm uninstall versionNode** => desinstalar una version de node
+  En el archivo `.eslintrc.cjs`, en `"extends"`, agregar: `"./node_modules/ts-standard/eslintrc.json"`
+  para que vea el archivo que tiene la configuracion del linter.
 
-### package.json:
+  En el archivo `.eslintrc.cjs`, en `"parserOptions"`, agregar: `"project": "./tsconfig.json"`
+  para que vea el archivo que tiene la configuracion de TypeScript.
 
-Le dice a node y a nosotros como funciona la
-aplicacion, que dependencias son necesarias para pasar a
-produccion, que puedo descartar para pasar a produccion, etc.
-devDependencies del package.json son dependencias de desarrollo y
-estas no llegan a la version de produccion.
+  Si deseo desactivar alguna regla de Eslint, en el archivo `.eslintrc.cjs`,
+  en `"rules"` (es un objeto), agregar la regla que quiero desactivar, por ejemplo:
+  `"@typescript-eslint/explicit-function-return-type": "off"`.
 
-Dentro del package.json y las dependencias:
+  Como tip es que si quiero desactivar alguna regla, en el editor puedo pararme
+  encima del error y darle la opción de desactivar la regla, copio el texto que
+  está despues de _eslint-disable-next-line_ y lo pego en el archivo `.eslintrc.cjs`,
+  en `"rules"` y le agregó el valor `"off"`.
 
-- ^ aceptara versiones dentro del rango de versiones menores, ej:  
-  ^3.4.4 acepta 3.x.x
-- ~ aceptara versiones dentro del rango de versiones de parche, ej:  
-  ~3.4.4 acepta 3.4.x
-- si no tiene nungun simbolo antes, solo acepta esa version exacta, ej:  
-  3.4.4
+- Segunda:  
+  `npx eslint --init`
 
-Dentro de los scripts puedo poner el comando:  
-`"phoenix": "rm -f package-lock.json && rm -rf ./node_modules && npm install --no-fund --no-audit"`  
-Lo que hace es eliminar el _package-lock.json_ y el _node_modules_ para
-reinstalar los paquetes, normalmente se usa cuando se actualizan los
-paquetes.  
-El _--no-fund_ es para que no muestre los mensajes de paquetes
-que piden donaciones y el _--no-audit_ es para que no muestre los mensajes
-de paquetes que piden auditar, ambos se usan para hacer una pequeña
-optimizacion que puede ahorrar unos segundos en las instalaciones.
+  1. Seleccionar, To check syntax, find problems, and enforce code style
+  2. Seleccionar, JavaScript modules (import/export)
+  3. Seleccionar, React
+  4. Seleccionar, Yes
+  5. Seleccionar, Browser
+  6. Seleccionar, Use a popular style guide
+  7. Seleccionar, Standard
+  8. Seleccionar, JavaScript
+  9. Seleccionar, Yes
+  10. Seleccionar, npm
+
+  El resumen de las preguntas que se hacen quedaria asi:  
+  How would you like to use ESLint? · style  
+  What type of modules does your project use? · esm  
+  Which framework does your project use? · react  
+  Does your project use TypeScript? » Yes  
+  Where does your code run? · browser  
+  How would you like to define a style for your project? · popular guide  
+  Which style guide do you want to follow? · standard-with-typescript  
+  What format do you want your config file to be in? · JavaScript  
+  Would you like to install them now? · Yes  
+  Which package manager do you want to use? · npm
+
+En el archivo `.eslintrc.cjs`, en `"parserOptions"`, agregar: `"project": "./tsconfig.json"`
+para que vea el archivo que tiene la configuracion de TypeScript.
+
+Si deseo desactivar alguna regla de Eslint, en el archivo `.eslintrc.cjs`,
+en `"rules"` (es un objeto), agregar la regla que quiero desactivar, por ejemplo:
+`"@typescript-eslint/explicit-function-return-type": "off"`.
+
+Como tip es que si quiero desactivar alguna regla, en el editor puedo pararme
+encima del error y darle la opción de desactivar la regla, copio el texto que
+está despues de _eslint-disable-next-line_ y lo pego en el archivo `.eslintrc.cjs`,
+en `"rules"` y le agrego el valor `"off"`.
 
 En los scripts puedo poner un comando para pasar el linter por todos los archivos,
 `"lint": "eslint . --fix"`
 
-**peerDependencies** significa que no lo vamos a instalar nosotros, sino que vamos
-a depender de que el proyecto donde lo vamos a utilizar ya tenga instalada esa utilidad.  
-El paquete necesita una dependencia de produccion que debe ser instalada por el usuario.
+### Prettier:
+
+Puedo instalar Prettier en cualquier proyecto, para usar una configuracion  
+especifica en ese proyecto y estandarizar cuando se quiere trabajar en equipo.  
+Ejecuto `npm install prettier -D`  
+Creo el archivo `.prettierrc.json`  
+Agrego la configuracion que quiero en formato json, ej:
+
+```json
+{
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "none"
+}
+```
+
+Si hay algun conflicto entre el formeteo de prettier y EsLint, puedo
+desactivar esa regla en la configuración del EsLint:
+
+```json
+"eslintConfig": {
+	"extends": "standard",
+	"rules": {
+		"space-before-function-paren": "off"
+	}
+}
+```
+
+### Jest:
+
+Test  
+instalar como devDependency:  
+`npm install jest -D`  
+Instalar los tipos de jest:  
+`npm install @types/jest -D`  
+instalar STANDARD como devDependency, para poder exportar entre archivos:  
+`npm install standard -D`  
+en el package.json dentro de scripts poner "test": "jest" y ejecutar con:  
+`npm run test`  
+Tambien puedo agregar el comando: `"test:watch": "jest --watchAll"` para  
+que este escuchando los cambios, lo ejecuto con: `npm run test:watch`.  
+igualmente ver en jestjs.io y en **03-Javascript/04-JavascriptEjercicios**
+
+### Playwright:
+
+Para hacer test E2E.
+
+- Para instalarlo en el proyecto: `npm init playwright@latest`
+- Una vez configurados los test, los ejecuto con: `npx playwright test`
+- Si me sale el error _ReferenceError: require is not defined in ES module scope_  
+   debo cambiar el archivo playwright.config.js a playwright.config.cjs  
+  (ver react/midudev/projects/04-react-prueba-tecnica)
 
 ### Babel:
 
@@ -190,21 +242,6 @@ el estado desde cualquier componente
 
 Ver en **curso-react-midudev/projects/09-crud-redux**
 
-### Jest:
-
-Test  
-instalar como devDependency:  
-`npm install jest -D`  
-Instalar los tipos de jest:  
-`npm install @types/jest -D`  
-instalar STANDARD como devDependency, para poder exportar entre archivos:  
-`npm install standard -D`  
-en el package.json dentro de scripts poner "test": "jest" y ejecutar con:  
-`npm run test`  
-Tambien puedo agregar el comando: `"test:watch": "jest --watchAll"` para  
-que este escuchando los cambios, lo ejecuto con: `npm run test:watch`.  
-igualmente ver en jestjs.io y en **03-Javascript/04-JavascriptEjercicios**
-
 ### FNM:
 
 Alternativa a NVM para manejar multiples versiones de NodeJS
@@ -285,127 +322,6 @@ en el localHost:9000.
 
 Para hacer continous integration
 
-### Eslint:
-
-Declarar reglas de uso del codigo.  
-Una configuracion rapida en algun proyecto puedo instalar
-standard o semistandard (el mismo standard pero con semicolons),
-funciona para archivos .js, .jsx:  
-En la teminal `npm install standard -D`  
-Dentro del **package.json** pongo:
-
-```json
-"eslintConfig": {
-	"extends": "standard"
-}
-```
-
-Para un proyecto en el que use React debo poner, no lo de arriba,
-si no esto:
-
-```json
-"eslintConfig": {
-	"extends": "./node_modules/standard/eslintrc.json"
-}
-```
-
-Para instalar eslint en un proyecto que use TypeScript podria haceerlo
-de dos maneras:
-
-UNA:  
-`npm install ts-standard -D`
-
-En el archivo `.eslintrc.cjs`, en `"extends"`, agregar: `"./node_modules/ts-standard/eslintrc.json"`
-para que vea el archivo que tiene la configuracion del linter.
-
-En el archivo `.eslintrc.cjs`, en `"parserOptions"`, agregar: `"project": "./tsconfig.json"`
-para que vea el archivo que tiene la configuracion de TypeScript.
-
-Si deseo desactivar alguna regla de Eslint, en el archivo `.eslintrc.cjs`,
-en `"rules"` (es un objeto), agregar la regla que quiero desactivar, por ejemplo:
-`"@typescript-eslint/explicit-function-return-type": "off"`.
-
-Como tip es que si quiero desactivar alguna regla, en el editor puedo pararme
-encima del error y darle la opción de desactivar la regla, copio el texto que
-está despues de _eslint-disable-next-line_ y lo pego en el archivo `.eslintrc.cjs`,
-en `"rules"` y le agregó el valor `"off"`.
-
-DOS:  
-`npx eslint --init`
-
-1. Seleccionar, To check syntax, find problems, and enforce code style
-2. Seleccionar, JavaScript modules (import/export)
-3. Seleccionar, React
-4. Seleccionar, Yes
-5. Seleccionar, Browser
-6. Seleccionar, Use a popular style guide
-7. Seleccionar, Standard
-8. Seleccionar, JavaScript
-9. Seleccionar, Yes
-10. Seleccionar, npm
-
-El resumen de las preguntas que se hacen quedaria asi:  
-How would you like to use ESLint? · style  
-What type of modules does your project use? · esm  
-Which framework does your project use? · react  
-Does your project use TypeScript? » Yes  
-Where does your code run? · browser  
-How would you like to define a style for your project? · popular guide  
-Which style guide do you want to follow? · standard-with-typescript  
-What format do you want your config file to be in? · JavaScript  
-Would you like to install them now? · Yes  
-Which package manager do you want to use? · npm
-
-En el archivo `.eslintrc.cjs`, en `"parserOptions"`, agregar: `"project": "./tsconfig.json"`
-para que vea el archivo que tiene la configuracion de TypeScript.
-
-Si deseo desactivar alguna regla de Eslint, en el archivo `.eslintrc.cjs`,
-en `"rules"` (es un objeto), agregar la regla que quiero desactivar, por ejemplo:
-`"@typescript-eslint/explicit-function-return-type": "off"`.
-
-Como tip es que si quiero desactivar alguna regla, en el editor puedo pararme
-encima del error y darle la opción de desactivar la regla, copio el texto que
-está despues de _eslint-disable-next-line_ y lo pego en el archivo `.eslintrc.cjs`,
-en `"rules"` y le agregó el valor `"off"`.
-
-### Prettier:
-
-Puedo instalar Prettier en cualquier proyecto, para usar una configuracion  
-especifica en ese proyecto y estandarizar cuando se quiere trabajar en equipo.  
-Ejecuto `npm install prettier -D`  
-Creo el archivo `.prettierrc.json`  
-Agrego la configuracion que quiero en formato json, ej:
-
-```json
-{
-  "semi": true,
-  "singleQuote": true,
-  "trailingComma": "none"
-}
-```
-
-Si hay algun conflicto entre el formeteo de prettier y EsLint, puedo  
-desactivar esa regla en la configuración del EsLint:
-
-```json
-"eslintConfig": {
-	"extends": "standard",
-	"rules": {
-		"space-before-function-paren": "off"
-	}
-}
-```
-
-### Playwright:
-
-Para hacer test E2E.
-
-- Para instalarlo en el proyecto: `npm init playwright@latest`
-- Una vez configurados los test, los ejecuto con: `npx playwright test`
-- Si me sale el error _ReferenceError: require is not defined in ES module scope_  
-   debo cambiar el archivo playwright.config.js a playwright.config.cjs  
-  (ver react/midudev/projects/04-react-prueba-tecnica)
-
 ### wc-toast
 
 wc-toast de npm packages para crear un toast (una alerta)
@@ -419,6 +335,13 @@ se resfactoriza con la seguridad de que ya tengo un test que me cubre.
 Si escribo un test y pasa inmediatemente, puedo evaluarlo y ver si me está
 aportando o si ya hay otro test que lo cubre.  
 Puedo ir quitando los test redundantes.
+
+### Strapi
+
+Headless CMS de código abierto y gratis, lo que cuesta es hospedarlo.
+No está ligado a un frontend, el frontend se puede hacer con cualquier
+framework o libreria. Nos permite crear el contenido y consumirlo a través
+de una API.
 
 ---
 

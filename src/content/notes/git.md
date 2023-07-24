@@ -1,8 +1,6 @@
 ---
 id: 'git'
 title: 'GIT'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jan 06 2022'
 heroImage: '/git.svg'
 ---
 

@@ -1,8 +1,6 @@
 ---
 id: 'paginas'
 title: 'Páginas'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jan 12 2022'
 heroImage: '/page.svg'
 ---
 
@@ -74,9 +72,9 @@ heroImage: '/page.svg'
 - **surge.sh (gratis)** => paginas estaticas (HTML, CSS, JS)
 - **digitalocean.com** => gratis par paginas estaticas y tiene plan de pago
   para aplicaciones con backend
-- **railway.app (gratis)** => aplicaciones con backend
 - **render.com (gratis)** => aplicaciones con backend
 - **fly.io (gratis)** => aplicaciones con backend
+- **railway.app (de pago)** => aplicaciones con backend
 - **heroku.com (de pago)** => aplicaciones con backend
 - **dev.new (gratis)** => despliegue de aplicaciones y bases de datos
 - **workers.cloudflare.com (cloudflare pages) (gratis)**
@@ -199,6 +197,7 @@ heroImage: '/page.svg'
 
 - Cheat sheets de distintos programas  
   [cheatography.com](https://cheatography.com/)
+  
 - Todo sobre entrevistas  
   [techinterviewhandbook.org](https://www.techinterviewhandbook.org/) (midu)
 
