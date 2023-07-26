@@ -1,6 +1,8 @@
 ---
 id: 'node'
 title: 'Node.js'
+description: 'Lorem ipsum dolor sit amet'
+pubDate: 'Jan 01 2022'
 heroImage: '/node.svg'
 ---
 

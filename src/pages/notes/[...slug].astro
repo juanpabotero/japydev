@@ -3,30 +3,30 @@ import { CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
 
 export async function getStaticPaths() {
-  const notes = await getCollection('notes');
-  return notes.map((note) => ({
-    params: { slug: note.slug },
-    props: note,
+  const posts = await getCollection('notes');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
   }));
 }
 type Props = CollectionEntry<'notes'>;
 
-const note = Astro.props;
-const { Content } = await note.render();
+const post = Astro.props;
+const { Content } = await post.render();
 ---
 
-<BlogPost {...note.data}>
+<BlogPost {...post.data}>
   <div class="flex gap-3 items-center">
     <!-- ponerle un nombre a la transicion para relacionar los 
     elementos que quiero animar entre paginas, ponerle el mismo
     nombre a la animacion de cada elemento en ambas paginas -->
     <img
-      src={note.data.heroImage}
-      alt={`Logo de ${note.data.title}`}
-      style={`view-transition-name: note-img-${note.data.id}`}
+      src={post.data.heroImage}
+      alt={`Logo de ${post.data.title}`}
+      style={`view-transition-name: note-img-${post.data.id}`}
     />
-    <h1 style={`view-transition-name: note-title-${note.data.id}`}>
-      {note.data.title}
+    <h1 style={`view-transition-name: note-title-${post.data.id}`}>
+      {post.data.title}
     </h1>
   </div>
   <Content />

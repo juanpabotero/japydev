@@ -1,6 +1,8 @@
 ---
 id: 'typescript'
 title: 'TypeScript'
+description: 'Lorem ipsum dolor sit amet'
+pubDate: 'Jan 01 2022'
 heroImage: '/typescript.svg'
 ---
 
