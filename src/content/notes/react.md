@@ -1,8 +1,6 @@
 ---
 id: 'react'
 title: 'React'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jan 01 2022'
 heroImage: '/react.svg'
 ---
 

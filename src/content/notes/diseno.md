@@ -1,8 +1,6 @@
 ---
 id: 'diseno'
 title: 'Diseño'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jan 01 2022'
 heroImage: '/design.svg'
 ---
 

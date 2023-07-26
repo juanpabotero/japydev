@@ -1,8 +1,6 @@
 ---
 id: 'clean-code'
 title: 'Clean Code'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jan 01 2022'
 heroImage: '/code.svg'
 ---
 

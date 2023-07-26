@@ -1,8 +1,6 @@
 ---
 id: 'paginas'
 title: 'Páginas'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jan 01 2022'
 heroImage: '/page.svg'
 ---
 

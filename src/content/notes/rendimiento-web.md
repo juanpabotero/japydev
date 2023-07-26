@@ -1,8 +1,6 @@
 ---
 id: 'rendimiento-web'
 title: 'Rendimiento Web'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jan 01 2022'
 heroImage: '/rendimiento-web.svg'
 ---
 

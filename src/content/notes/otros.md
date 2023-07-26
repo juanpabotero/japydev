@@ -1,8 +1,6 @@
 ---
 id: 'otros'
 title: 'Otros'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jan 01 2022'
 heroImage: '/plus.svg'
 ---
 

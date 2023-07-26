@@ -1,8 +1,6 @@
 ---
 id: 'navegador'
 title: 'Navegador'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jan 01 2022'
 heroImage: '/chrome.svg'
 ---
 
