@@ -76,7 +76,7 @@ img {
   margin-left: 16px;
 }
 .post li ol {
-  list-style: lower-alpha;
+  list-style: decimal;
   margin-left: 16px;
   margin-top: 8px;
 }
