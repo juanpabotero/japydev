@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import Note from '../../components/Note.astro';
 import Layout from '../../layouts/Layout.astro';
 
-const posts = await getCollection('notes');
+const notes = await getCollection('notes');
 ---
 
 <Layout title="JapyDev | Notas">
@@ -18,12 +18,12 @@ const posts = await getCollection('notes');
   </p>
   <section class="sm:columns-2 gap-x-4">
     {
-      posts.map((post) => (
+      notes.map((note) => (
         <Note
-          id={post.data.id}
-          link={`/notes/${post.slug}/`}
-          img={post.data.heroImage}
-          title={post.data.title}
+          id={note.data.id}
+          img={note.data.heroImage}
+          link={`/notes/${note.slug}/`}
+          title={note.data.title}
         />
       ))
     }
