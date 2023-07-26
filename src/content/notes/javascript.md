@@ -1,6 +1,8 @@
 ---
 id: 'javascript'
 title: 'JavaScript'
+description: 'Lorem ipsum dolor sit amet'
+pubDate: 'Jan 01 2022'
 heroImage: '/javascript.svg'
 ---
 

@@ -1,6 +1,8 @@
 ---
 id: 'css'
 title: 'CSS'
+description: 'Lorem ipsum dolor sit amet'
+pubDate: 'Jan 01 2022'
 heroImage: '/css.svg'
 ---
 

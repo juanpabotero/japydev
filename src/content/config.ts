@@ -5,17 +5,16 @@ const notes = defineCollection({
   schema: z.object({
     id: z.string(),
     title: z.string(),
-    description: z.string().optional(),
-    // Transform string to Date object
-    pubDate: z
-      .string()
-      .or(z.date())
-      .transform((val) => new Date(val))
-      .optional(),
-    updatedDate: z
-      .string()
-      .optional()
-      .transform((str) => (str ? new Date(str) : undefined)),
+    description: z.string(),
+		// Transform string to Date object
+		pubDate: z
+			.string()
+			.or(z.date())
+			.transform((val) => new Date(val)),
+		updatedDate: z
+			.string()
+			.optional()
+			.transform((str) => (str ? new Date(str) : undefined)),
     heroImage: z.string().optional(),
   }),
 });
