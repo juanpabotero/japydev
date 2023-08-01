@@ -41,12 +41,15 @@ Para utilizar ES Modules en Node, se debe agregar `"type": "module"` en el packa
 
 - `node nombreArchivo.js` para ejecutar un archivo de Javascript.
 
+- `node --watch nombreArchivo.js` para ejecutar un archivo de Javascript y que se
+  reinicie cada vez que se haga un cambio en el archivo (desde la versión 18).
+
 Existen paquetes dentro de node que permiten muchas funcionalidades,
 por ej, paquetes para trabajar con archivos en un servidor, conectarse
 a bases de datos, etc. Babel es uno de los paquetes que esta disponible en node.
 
 Normalmente los modulos de node se dejan por fuera del git porque
-se pueden construir fácilmente en base al package.json
+se pueden construir fácilmente en base al package.json.
 
 ## Paquetes
 
@@ -233,6 +236,20 @@ segundos en las instalaciones.
 a depender de que el proyecto donde lo vamos a utilizar ya tenga instalada esa utilidad.
 El paquete necesita una dependencia de produccion que debe ser instalada por el usuario.
 
+## Nodemon
+
+Es un paquete que permite reiniciar el servidor cada vez que se hace un cambio en el código.  
+Se instala en el proyecto como dependencia de desarrollo con `npm install nodemon -D`.  
+No es recomendable instalarlo de manera global.
+
+Puedo crear un script en el package.json para ejecutar nodemon, por ejemplo:  
+`"dev": "nodemon nombreArchivo.js"`
+
+## Express
+
+Es un framework de Node para crear servidores web.  
+Se instala en el proyecto como dependencia de producción con `npm install express`.
+
 ## Utilidades
 
 Script para mostrar un puerto disponibe
@@ -279,7 +296,7 @@ import { findAvailablePort } from './free-port.js';
 
 // si quiero utilizar las variables de entorno
 // antes de ejecutar el script, ejecutar en la terminal: export PORT=1234
-const desiredPort = process.env.PORT || 3000;
+const desiredPort = process.env.PORT ?? 3000;
 
 // crear el servidor
 const server = http.createServer((request, response) => {

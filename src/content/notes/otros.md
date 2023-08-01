@@ -355,6 +355,60 @@ de una API.
 
 ## Conceptos
 
+### Buffer
+
+Es un espacio de memoria donde se almacenan datos binarios de manera temporal.
+Son utiles para trabajar con archivos, imagenes, etc. Y son esenciales para trabajar
+con transmisiones de datos.
+
+### HTTP
+
+Es el protocolo de transferencia de hipertexto, es un protocolo de la capa de aplicación
+para la transferencia de datos de hipertexto, como HTML. Fue diseñado para la comunicación
+entre navegadores web y servidores web, pero puede usarse para otros propósitos también.
+
+Las cabeceras de la petición son información que le dan más contexto a la petición, por ejemplo,
+el navegador le dice al servidor que tipo de navegador es, que tipo de contenido acepta, etc.
+
+**User-Agent** es la cabecera que le dice al servidor que tipo de navegador es, el servidor
+puede responder de manera diferente dependiendo del navegador, si es mobile o desktop, etc.
+
+Por defecto el metodo de la petición es GET, que es para obtener información.
+
+- GET: obtener información
+- HEAD: es como el GET, obtener la cabecera de la petición sin el contenido
+- POST: enviar información, para crear un recurso nuevo
+- PUT: actualizar toda la información
+- PATCH: actualizar parte de la información
+- DELETE: eliminar información
+- OPTIONS: obtener los metodos que soporta el servidor
+- TRACE: devuelve lo que se le envia, para hacer pruebas
+
+Por defecto el status code es 200, que significa que todo salió bien.
+
+- Del 100 al 199 son informativos.
+- Del 200 al 299 son de éxito.
+- Del 300 al 399 son de redirección.
+- Del 400 al 499 son de error del cliente.
+- Del 500 al 599 son de error del servidor.
+
+Los más importantes son:
+
+- 200 OK
+- 301 Moved Permanently (el recurso se ha movido)
+- 400 Bad Request (la petición no es correcta)
+- 404 Not Found (el recurso no existe)
+- 500 Internal Server Error (error interno del servidor)
+
+![Funcionamiento de una petición HTTP](/public/http-croquis.webp)
+
+HTTP ha tenido problemas de seguridad, por lo que se ha creado HTTPS, que es HTTP con
+TLS (Transport Layer Security) o SSL (Secure Sockets Layer), que es un protocolo de
+seguridad que permite que los datos viajen de manera segura por internet.
+
+Se puede tener un servicio HTTP de manera local y cuando se despliega a producción,
+se envuelve en un servicio HTTPS.
+
 ### Polyfill:
 
 Es un codigo que provee el funcionamiento de una nueva

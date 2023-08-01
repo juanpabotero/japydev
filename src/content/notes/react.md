@@ -97,7 +97,9 @@ Extensiones de VSCode:
 - **Componentes**  
   https://mui.com/  
   https://react-bootstrap.github.io/  
-  https://www.tremor.so/
+  https://tremor.so/  
+  https://prismane.io/  
+  https://nextui.org/
 
 - **Iconos**  
   https://react-icons.github.io/react-icons/

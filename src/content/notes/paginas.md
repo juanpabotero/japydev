@@ -74,10 +74,11 @@ heroImage: '/page.svg'
 - **surge.sh (gratis)** => paginas estaticas (HTML, CSS, JS)
 - **digitalocean.com** => gratis par paginas estaticas y tiene plan de pago
   para aplicaciones con backend
-- **render.com (gratis)** => aplicaciones con backend
+- **render.com (gratis)** => despliegue de aplicaciones con backend y bases de datos
 - **fly.io (gratis)** => aplicaciones con backend
 - **railway.app (de pago)** => aplicaciones con backend
 - **heroku.com (de pago)** => aplicaciones con backend
+- https://www.fl0.com/ => despliegue de aplicaciones con backend y bases de datos
 - **dev.new (gratis)** => despliegue de aplicaciones y bases de datos
 - **workers.cloudflare.com (cloudflare pages) (gratis)**
 - **Gitlab Pages**
@@ -146,14 +147,17 @@ heroImage: '/page.svg'
 - Mapas  
   [developers.arcgis.com/javascript/latest](https://developers.arcgis.com/javascript/latest/)
 
+- API para musica  
+  [developer.spotify.com/documentation/web-api/](https://developer.spotify.com/documentation/web-api/)
+
 - Pagina con muchas APIs (midu)  
   [rapidapi.com](https://rapidapi.com/)
 
 - Apis publicas  
   [github.com/public-apis/public-apis](https://github.com/public-apis/public-apis)
 
-- API para musica  
-  [developer.spotify.com/documentation/web-api/](https://developer.spotify.com/documentation/web-api/)
+- Crear APIs de prueba  
+  https://sandapi.com/
 
 ## Páginas frontend:
 
@@ -199,7 +203,6 @@ heroImage: '/page.svg'
 
 - Cheat sheets de distintos programas  
   [cheatography.com](https://cheatography.com/)
-  
 - Todo sobre entrevistas  
   [techinterviewhandbook.org](https://www.techinterviewhandbook.org/) (midu)
 
@@ -251,6 +254,7 @@ heroImage: '/page.svg'
   [design-resources-for-developers](https://github.com/bradtraversy/design-resources-for-developers)
 
 - [developer-roadmaps](https://github.com/kamranahmedse/developer-roadmap)
+
 - Libros gratis de programacion  
   [free-programming-books](https://github.com/EbookFoundation/free-programming-books)
 
@@ -402,7 +406,8 @@ Para buscar cualquier libreria con vanilla javascript:
   [superstate.dev](https://superstate.dev/)
 
 - Dialogos  
-  [sweetalert2.github.io](https://sweetalert2.github.io/)
+  [sweetalert2.github.io](https://sweetalert2.github.io/)  
+  https://a11y-dialog.netlify.app/ (script para usar dialogos accesibles)
 
 - Validar formularios de forma declarativa  
   [vestjs.dev](https://vestjs.dev/)
@@ -424,10 +429,11 @@ Para buscar cualquier libreria con vanilla javascript:
   [vincentgarreau.com/particles.js](https://vincentgarreau.com/particles.js/)
 
 - Gráficas (charts)  
-  https://d3-graph-gallery.com/  
+  https://d3-graph-gallery.com/
 
 - Mapas:  
-  [leafletjs.com](https://leafletjs.com/)
+  [leafletjs.com](https://leafletjs.com/)  
+  https://chartkick.com/mapkick-js
 
 - Fullscreen scrolling websites:
   [alvarotrigo.com/fullPage](https://alvarotrigo.com/fullPage/)
@@ -506,6 +512,7 @@ Para buscar cualquier libreria con vanilla javascript:
 ## Generadores CSS:
 
 - [fancy-border-radius](https://9elements.github.io/fancy-border-radius/)
+
 - Formas  
   [bennettfeely.com/clippy](https://bennettfeely.com/clippy/)
 
@@ -513,6 +520,7 @@ Para buscar cualquier libreria con vanilla javascript:
   [uiverse.io](https://uiverse.io/)
 
 - [cssgrid-generator.netlify.app](https://cssgrid-generator.netlify.app/)
+
 - Gradientes  
   [csshero.org/mesher ](https://csshero.org/mesher/)  
   [designgradients.com](https://www.designgradients.com/)  
@@ -522,6 +530,7 @@ Para buscar cualquier libreria con vanilla javascript:
 
 - Hovers  
   [ianlunn.github.io/Hover/](http://ianlunn.github.io/Hover/)
+
 - Loaders  
   [cssloaders.github.io](https://cssloaders.github.io/)  
   [getwaves.io](https://getwaves.io/)  
@@ -535,6 +544,7 @@ Para buscar cualquier libreria con vanilla javascript:
   https://www.transition.style/
 
 - [neumorphism.io](https://neumorphism.io/#e0e0e0)
+  
 - Diferentes utilidades  
   [omatsuri.app](https://omatsuri.app/)  
   [purecss.io](https://purecss.io/)  
@@ -835,6 +845,7 @@ Para buscar cualquier libreria con vanilla javascript:
 
 - [devhints.io](https://devhints.io/)  
   Cheatsheet de varias tecnologias (midu)
+  
 - [qrcode-monkey.com](https://www.qrcode-monkey.com/)  
   generador de codigo QR
 
