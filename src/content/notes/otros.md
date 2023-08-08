@@ -161,6 +161,11 @@ Para hacer test E2E.
    debo cambiar el archivo playwright.config.js a playwright.config.cjs  
   (ver react/midudev/projects/04-react-prueba-tecnica)
 
+### Zod:
+
+Para hacer validaciones de datos.  
+Se instala con `npm install zod`
+
 ### Babel:
 
 Libreria que convierte el codigo y lo hace compatible con
@@ -408,6 +413,33 @@ seguridad que permite que los datos viajen de manera segura por internet.
 
 Se puede tener un servicio HTTP de manera local y cuando se despliega a producción,
 se envuelve en un servicio HTTPS.
+
+### CORS
+
+Cross Origin Resource Sharing.
+
+Es una politica de seguridad que se aplica en el navegador, que permite o no que
+un recurso sea consumido desde un dominio diferente al que lo sirve.
+
+El error de CORS se debe arreglar desde el backend.  
+Se puede resolver agregando la cabecera `Access-Control-Allow-Origin: *` en el backend,
+pero esto no es seguro, porque le permite a cualquiera consumir el recurso.  
+Lo que se debe hacer es agregar la cabecera `Access-Control-Allow-Origin: https://midominio.com`
+en el backend, para que solo ese dominio pueda consumir el recurso.
+
+Para solucionarlo se puede instalar `npm install cors` (ver curso-nodejs-midudev, clase-3, app.js)
+
+Metodos normales: GET, HEAD, POST
+Metodos complejos: PUT, PATCH, DELETE
+
+Los metodos complejos primero hacen una peticion OPTIONS para preguntarle al servidor
+que metodos soporta, y si el servidor responde que soporta el metodo que se quiere usar,
+se hace la peticion normal.
+
+### Idempotencia
+
+Es una propiedad que tienen algunas operaciones, que consiste en que si la operación
+se aplica una o más veces, el resultado es el mismo que si se aplicara una sola vez.
 
 ### Polyfill:
 

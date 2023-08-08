@@ -250,6 +250,79 @@ Puedo crear un script en el package.json para ejecutar nodemon, por ejemplo:
 Es un framework de Node para crear servidores web.  
 Se instala en el proyecto como dependencia de producción con `npm install express`.
 
+## Rest API
+
+Acrónimo de Representational State Transfer, es una arquitectura de software.  
+Los prinipios de REST son la escalabilidad, fiabilidad, simplicidad, portabilidad,
+visibilidad, fácil de mantener.
+
+Las APIs deben ser como un embudo, pueden llegar a recibir mucha información pero solo
+procesar y devolver la información que se necesita.
+
+Los fundamentos de REST son:
+
+**Recursos:**  
+En REST todo es considerado un recurso, por ejemplo, un usuario, un producto, etc.
+Cada recurso se identifica con una URL.
+
+**Verbos:**  
+Los verbos HTTP sirven para definir las operaciones que se pueden hacer con los recursos:
+
+- GET: obtener un recurso
+- POST: crear un recurso, NO es idempotente, porque siempre se crea un nuevo recurso
+- PUT: actualizar totalmente un recurso ya existente o crearlo si no existe, SI es idempotente,
+  porque si se hace varias veces, siempre se obtiene el mismo resultado. Con un PUT se
+  enviaria todo el objeto.
+- PATCH: actualizar parcialmente un recurso, normalmente es idempotente pero depende, porque si
+  se hace varias veces, puede que se obtenga un resultado diferente como por ejemplo, si se
+  tiene una propiedad updatedAt, cada vez que se actualiza, cambia el valor de esa propiedad.
+  Con un PATCH se enviaria solo la o las propiedades que se quieren actualizar.
+- DELETE: eliminar un recurso
+- HEAD: obtener los encabezados de un recurso
+- OPTIONS: obtener los metodos HTTP que soporta un recurso
+
+**Representaciones:**  
+Lo recursos pueden tener múltiples representaciones: JSON, XML, HTML, Imagenes,
+Videos, PDF, etc. El cliente deberia poder elegir la representación del recurso pero
+no es muy común.
+
+**Stateless**  
+Cada petición que se hace al servidor debe contener toda la información necesaria
+para que el servidor pueda entenderla, no debe depender de ninguna petición anterior.
+El cliente debe enviar toda la información necesaria para procesar la request.
+
+**Interfaz uniforme**  
+Las peticiones deben ser consistentes, deben tener una interfaz uniforme,
+deben tener una estructura definida.  
+Las urls siempre deben hacer lo mismo, los verbos siempre deben hacer lo mismo,
+las respuestas siempre deben tener la misma estructura, etc.
+
+**Separación de conceptos**  
+Los componentes del cliente y del servidor estan separados entre sí, permite que
+cliente y servidor evolucionen de forma separada.
+
+### CORS
+
+Cross Origin Resource Sharing.
+
+Es una politica de seguridad que se aplica en el navegador, que permite o no que
+un recurso sea consumido desde un dominio diferente al que lo sirve.
+
+El error de CORS se debe arreglar desde el backend.  
+Se puede resolver agregando la cabecera `Access-Control-Allow-Origin: *` en el backend,
+pero esto no es seguro, porque le permite a cualquiera consumir el recurso.  
+Lo que se debe hacer es agregar la cabecera `Access-Control-Allow-Origin: https://midominio.com`
+en el backend, para que solo ese dominio pueda consumir el recurso.
+
+Para solucionarlo se puede instalar `npm install cors` (ver curso-nodejs-midudev, clase-3, app.js)
+
+Metodos normales: GET, HEAD, POST
+Metodos complejos: PUT, PATCH, DELETE
+
+Los metodos complejos primero hacen una peticion OPTIONS para preguntarle al servidor
+que metodos soporta, y si el servidor responde que soporta el metodo que se quiere usar,
+se hace la peticion normal.
+
 ## Utilidades
 
 Script para mostrar un puerto disponibe

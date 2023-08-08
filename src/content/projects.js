@@ -4,7 +4,7 @@ export const projects = [
     img: '/react.svg',
     stack: 'React • Vite • JS • CSS • HTML',
     title: 'Reading List',
-    url: 'https://juanpabotero.github.io/reading-list/',
+    url: 'https://reading-list-japydev.netlify.app/',
   },
   {
     id: 2,
