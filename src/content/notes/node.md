@@ -316,7 +316,7 @@ en el backend, para que solo ese dominio pueda consumir el recurso.
 
 Para solucionarlo se puede instalar `npm install cors` (ver curso-nodejs-midudev, clase-3, app.js)
 
-Metodos normales: GET, HEAD, POST
+Metodos normales: GET, HEAD, POST  
 Metodos complejos: PUT, PATCH, DELETE
 
 Los metodos complejos primero hacen una peticion OPTIONS para preguntarle al servidor

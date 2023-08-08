@@ -25,10 +25,24 @@ const { title } = Astro.props;
       class="fixed -z-10 h-[134px] w-[134px] lg:w-[300px] lg:h-[300px] rounded-full bg-amber-600 blur-[150px] lg:blur-[350px] opacity-50 right-0 bottom-0"
     >
     </div>
+    <div
+      class="fixed z-10 h-7 w-7 bg-amber-800/50 text-gray-100/80 right-3 bottom-4 sm:right-5 flex items-center justify-center rounded-full"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        ><path
+          fill="currentColor"
+          d="M6.7 14.7q-.275-.275-.275-.7t.275-.7l4.6-4.6q.15-.15.325-.212T12 8.425q.2 0 .388.075t.312.2l4.6 4.6q.275.275.275.7t-.275.7q-.275.275-.7.275t-.7-.275L12 10.8l-3.9 3.9q-.275.275-.7.275t-.7-.275Z"
+        ></path></svg
+      >
+    </div>
     <Footer />
   </body>
 </html>
-
 <!-- uso de la View Transition API -->
 <!-- <script>
   import { startViewTransition } from "../utils/navigation";
