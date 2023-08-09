@@ -12,11 +12,12 @@ const { img, stack, title, url } = Astro.props;
 
 <a
   href={url}
-  class="group flex items-center gap-6 p-4 mb-8 border-[1px] border-amber-300/30 rounded-md hover:border-amber-300/60 hover:-translate-y-1 transition-all duration-200"
+  class="group flex items-center gap-5 sm:gap-7 p-4 mb-8 border-[1px] border-amber-300/30 rounded-md 
+  hover:border-amber-300/60 hover:-translate-y-1 transition-all duration-200"
 >
-  <img src={img} alt="" class="w-6 h-6" />
-  <div class="flex flex-col gap-1 sm:flex-row sm:gap-6 sm:items-center">
-    <h4 class="text-lg">{title}</h4>
+  <img src={img} alt="" class="w-20 sm:w-24 max-h-20 object-cover aspect-auto rounded-md" />
+  <div class="grid gap-1">
+    <h4 class="text-lg font-bold">{title}</h4>
     <p class="text-sm sm:text-base text-gray-400/80">{stack}</p>
   </div>
   <svg
@@ -24,7 +25,7 @@ const { img, stack, title, url } = Astro.props;
     height="18"
     viewBox="0 0 18 18"
     fill="none"
-    class="transition-all duration-300 group-hover:translate-x-1 ml-auto"
+    class="transition-all duration-300 group-hover:translate-x-1 ml-auto hidden sm:block"
   >
     <path
       d="M5.25 12.75L12.75 5.25"
