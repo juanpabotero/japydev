@@ -12,10 +12,16 @@ const { img, stack, title, url } = Astro.props;
 
 <a
   href={url}
-  class="group flex items-center gap-5 sm:gap-7 p-4 mb-8 border-[1px] border-amber-300/30 rounded-md 
-  hover:border-amber-300/60 hover:-translate-y-1 transition-all duration-200"
+  aria-label={`Proyecto - ${title}`}
+  class="group flex items-center gap-5 sm:gap-7 p-4 mb-8 border-[1px] border-amber-300/30 rounded-md hover:border-amber-300/60 hover:-translate-y-1 transition-all duration-200"
 >
-  <img src={img} alt="" class="w-20 sm:w-24 max-h-20 object-cover aspect-auto rounded-md" />
+  <img
+    src={img}
+    alt={title}
+    width="80"
+    height="52"
+    class="w-20 sm:w-24 max-h-20 object-cover aspect-auto rounded-md"
+  />
   <div class="grid gap-1">
     <h4 class="text-lg font-bold">{title}</h4>
     <p class="text-sm sm:text-base text-gray-400/80">{stack}</p>
