@@ -301,7 +301,7 @@ las respuestas siempre deben tener la misma estructura, etc.
 Los componentes del cliente y del servidor estan separados entre sí, permite que
 cliente y servidor evolucionen de forma separada.
 
-### CORS
+## CORS
 
 Cross Origin Resource Sharing.
 
@@ -322,6 +322,45 @@ Metodos complejos: PUT, PATCH, DELETE
 Los metodos complejos primero hacen una peticion OPTIONS para preguntarle al servidor
 que metodos soporta, y si el servidor responde que soporta el metodo que se quiere usar,
 se hace la peticion normal.
+
+## MVC
+
+Modelo Vista Controlador es un patrón de diseño, proporciona una estructura para separar
+la aplicación en 3 componentes: Modelo, Vista y Controlador.
+
+**Modelo:**
+Representa la lógica del negocio, los datos, la lógica de la aplicación y las reglas
+de negocio. Se encarga de acceder a la base de datos, hacer consultas, actualizar la
+información, etc.  
+En código, el archivo modelo debe ser en singular, ej, user.js, product.js, etc.
+
+Las validaciones se deberían hacer en los 3 componentes, pero el modelo debería
+garantizar la integridad y la coherencia de los datos.
+
+**Controlador:**
+Actua como un intermediario entre el modelo y la vista. Responde a eventos,
+normalmente acciones del usuario, y realiza peticiones al modelo cuando se hace
+una acción, por ejemplo, cuando se hace click en un botón, el controlador puede
+pedirle al modelo que actualice los datos.
+
+**Vista:**
+Representa la interfaz de usuario, se encarga de mostrar la información al usuario.
+La vista no puede acceder directamente al modelo, debe hacerlo a través del controlador.
+La vista normalmente es una página web, pero puede ser cualquier otra cosa como una
+aplicación de escritorio, una aplicación móvil, un json, una tabla, etc.
+
+El proceso seria asi:
+
+1. El modelo envia los datos al controlador
+2. El controlador envia los datos a la vista
+3. La vista muestra los datos al usuario
+4. El usuario interactua con la vista
+5. La vista envia los datos al controlador
+6. El controlador envia los datos al modelo
+7. El modelo actualiza los datos
+8. Se repite el proceso
+
+(ver en curso-nodejs-midudev, clase-4)
 
 ## Utilidades
 

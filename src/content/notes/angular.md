@@ -698,6 +698,20 @@ Usar el cdk de angular para distintas funcionalidades o componentes.
 
 ---
 
+## Utilidades
+
+- **Debounce:**
+
+  ```typescript
+  this.searchInput
+    .pipe(debounceTime(300), distinctUntilChanged())
+    .subscribe((valor) => {
+      this.valueInput = valor;
+    });
+  ```
+
+---
+
 ## Angular material:
 
 libreria de componentes, ya estan estilizados y funcionales.  

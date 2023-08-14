@@ -67,7 +67,8 @@ heroImage: '/chrome.svg'
   ver fuentes que usa la pagina
 
 - **Web Vitals**
-  Muestra 6 métricas de rendimiento, la puntuación Core Web Vitals y datos de usuarios reales.
+  Muestra 6 métricas de rendimiento, la puntuación Core Web Vitals y datos de usuarios reales.  
+  Ir a la configuración y activar Console logging.
 
 ---
 

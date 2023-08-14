@@ -53,9 +53,12 @@ heroImage: '/html.svg'
   pantalla, por ejemplo, si quiero que un elemento sea leido como un boton,
   puedo ponerle el atributo `role="button"`
 
+- Cargar una imagen con _preload_, puede ser recomendado para imagenes muy pesadas.  
+  `<link rel="preload" href="img/imagen.webp" as="image" type="image/webp" fetchpriority="high">`
+
 - Poner el atributo `fetchpriority="high"` a un elmento le dice al navegador
   que tiene alta prioridad para que se haga su carga, esto se puede usar por ej
-  en el LCP (Largest Contentful Paint) para que se cargue lo mas rapido posible.
+  en el LCP (Largest Contentful Paint) para que se cargue lo más rapido posible.
 
 - Poner alto y ancho a las imágenes como atributos de la etiqueta img,
   ayuda a que el navegador sepa el tamaño de la imagen antes de cargarla,
@@ -101,14 +104,13 @@ heroImage: '/html.svg'
 
   ```html
   <img
-    src="perro-800w.jpg"
-    srcset="images/image-mobile.jpg 767w, images/image-desktop.jpg"
-    sizes="(max-width: 767px) 767px, 100vw"
-    alt="perro"
+    src="image-800w.jpg"
+    srcset="images/image-480w.jpg 480w, images/image-800w.jpg 800w"
+    sizes="(max-width: 600px) 480px, 800px"
   />
   ```
 
-      otra forma:
+  otra forma:
 
   ```html
   <picture>
@@ -155,8 +157,8 @@ heroImage: '/html.svg'
   ```
 
 - Puedo cargar un gif de la siguiente manera para ahorrar el peso del gif,
-  se pone el **autoplay** con el **muted** (los navegadores no permiten autoplay sino se tiene muted) y **loop** para que se repita infinitamente:  
-  `<video muted autoplay loop src="rutaVideo" />`
+  se pone el **autoplay** con el **muted** (los navegadores no permiten autoplay sino se tiene muted) y
+  **loop** para que se repita infinitamente: `<video muted autoplay loop src="rutaVideo" />`
 
 - Cargar un archivo abriendo la camara trasera o delantera del celular:  
   `capture` me dice si abre la camara delantera o trasera y `accept` me dice
@@ -230,9 +232,6 @@ heroImage: '/html.svg'
     backdrop-filter: blur(5px);
   }
   ```
-
-- Cargar una imagen con _preload_, puede ser recomendado para imagenes muy pesadas.  
-  `<link rel="preload" href="img/imagen.webp" as="image" type="image/webp" fetchpriority="high">`
 
 - Crear un calendario, con fechas y horas. Filtro de minimo y maximo con bloques de horas:
   ```html
