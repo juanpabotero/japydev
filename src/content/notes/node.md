@@ -51,6 +51,10 @@ a bases de datos, etc. Babel es uno de los paquetes que esta disponible en node.
 Normalmente los modulos de node se dejan por fuera del git porque
 se pueden construir fácilmente en base al package.json.
 
+Cuando queremos obtener y devolver datos mockeados, deberiamos devolver una promesa 
+con los datos, porque si el día de mañana se traen los datos desde una API seguirá
+funcionando igual.
+
 ## Paquetes
 
 Para usar los paquetes de Node, es recomendable desde la versión 16, hacerlo

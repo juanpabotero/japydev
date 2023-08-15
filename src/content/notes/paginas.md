@@ -674,6 +674,7 @@ Para buscar cualquier libreria con vanilla javascript:
 - [pixeden.com](https://www.pixeden.com/)
 - [preview.app](https://preview.app/login) => Mockups con diferentes dispositivos
 - [unblast.com](https://unblast.com/)
+- https://shots.so/ (midu)
 
 ## Emojis:
 

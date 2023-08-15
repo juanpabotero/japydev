@@ -359,6 +359,33 @@ ramas y demas con tranquilidad
 - `git stash clear`  
   limpiar el stash
 
+## Bisect
+
+Es una herramienta que nos permite encontrar el commit que introdujo
+un bug en nuestro proyecto. Para usarlo, primero debemos estar en un commit
+donde el bug no exista y luego ejecutar el comando `git bisect start`. Luego
+debemos indicarle a git que el commit actual es malo con `git bisect bad` y
+luego indicarle a git que el commit donde el bug no existia es bueno con
+`git bisect good <hashCommit>`. Git se encargara de hacer un checkout a un
+commit intermedio entre el bueno y el malo, debemos probar si el bug existe
+en ese commit y decirle a git si es bueno o malo con `git bisect good` o
+`git bisect bad`. Git se encargara de hacer un checkout a otro commit
+intermedio y asi sucesivamente hasta encontrar el commit que introdujo el bug.
+
+- `git bisect start`  
+  iniciar el bisect
+
+- `git bisect bad`
+  indicarle a git que el commit actual es malo
+
+- `git bisect good <hashCommit>`
+  indicarle a git el commit donde el bug no existia es bueno
+
+- `git bisect reset`
+  salir del bisect
+
+
+
 ## Buenas prácticas
 
 - Usar el verbo imperativo en los mensajes de commit (Add, Change, Remove, etc)

@@ -1,31 +1,12 @@
 ---
-const today = new Date();
+import SocialMedia from './SocialMedia.astro';
 ---
 
 <footer
-  class="max-w-3xl w-full mx-auto mt-auto p-6 pt-12 flex flex-col gap-1 items-center"
+  class="max-w-3xl w-full mx-auto mt-auto p-6 pt-16 flex flex-col gap-2 items-center"
 >
-  <span>
+  <div>
     Desarrollado por <span class="text-amber-300">Juan Pablo Botero</span>
-  </span>
-  <span class="text-sm text-gray-400/75">
-    Hecho con
-    <a
-      href="https://astro.build/"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="font-bold"
-    >
-      Astro
-    </a>
-    -
-    <a
-      href="https://tailwindcss.com/"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="font-bold"
-    >
-      Tailwind CSS
-    </a>
-  </span>
+  </div>
+  <SocialMedia color={'text-gray-200'} />
 </footer>
