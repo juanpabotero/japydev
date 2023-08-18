@@ -10,7 +10,7 @@ export const experience = [
   {
     title: 'Desarrollador Frontend',
     company: 'Universidad Tecnológica de Pereira',
-    date: 'Ago/2022 - Ene/2023',
+    date: 'Ago/2022 - Dic/2022',
     description: [
       'Desarrollo Frontend usando ANGULAR como Framework para el proyecto "Fortalecimiento en capacidades de salud".'
     ]
