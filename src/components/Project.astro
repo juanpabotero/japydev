@@ -13,8 +13,8 @@ const { img, stack, title, url } = Astro.props;
 <a
   href={url}
   aria-label={`Proyecto - ${title}`}
-  class="group flex items-center gap-5 sm:gap-7 p-4 border-[1px] border-amber-300/40 rounded-md 
-  hover:border-amber-300/60 hover:-translate-y-1 transition-all duration-200"
+  class="group flex items-center gap-5 sm:gap-7 p-4 border-[1px] border-red-500/40 dark:border-amber-300/40 rounded-md 
+  hover:border-red-500/60 dark:hover:border-amber-300/60 hover:-translate-y-1 transition-all duration-200"
 >
   <img
     src={img}
@@ -25,7 +25,7 @@ const { img, stack, title, url } = Astro.props;
   />
   <div class="grid gap-1">
     <h4 class="text-lg font-bold">{title}</h4>
-    <p class="text-sm sm:text-base text-gray-400/80">{stack}</p>
+    <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400/80">{stack}</p>
   </div>
   <svg
     width="18"

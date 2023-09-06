@@ -79,6 +79,7 @@ heroImage: '/page.svg'
 - **railway.app (de pago)** => aplicaciones con backend
 - **heroku.com (de pago)** => aplicaciones con backend
 - https://www.fl0.com/ => despliegue de aplicaciones con backend y bases de datos
+- https://www.koyeb.com/ => despliegue de aplicaciones con backend
 - **dev.new (gratis)** => despliegue de aplicaciones y bases de datos
 - **workers.cloudflare.com (cloudflare pages) (gratis)**
 - **Gitlab Pages**
@@ -507,7 +508,8 @@ Para buscar cualquier libreria con vanilla javascript:
   [headlessui.com](https://headlessui.com/)  
   [tailwindui.com](https://tailwindui.com/)  
   [flowbite.com ](https://flowbite.com/)  
-  [hyperui.dev](https://www.hyperui.dev/)
+  [hyperui.dev](https://www.hyperui.dev/)  
+  https://konstaui.com/
 
 ## Generadores CSS:
 
@@ -709,7 +711,8 @@ Para buscar cualquier libreria con vanilla javascript:
 - Diseños  
   [dribbble.com](https://dribbble.com/)  
   [behance.net](https://www.behance.net/)  
-  https://collectui.com/
+  https://collectui.com/  
+  https://godly.website/
 
 - Patrones de diseño  
   [ui-patterns.com](https://ui-patterns.com/)
