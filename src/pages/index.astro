@@ -26,11 +26,7 @@ import Experience from '../components/Experience.astro';
     {
       projects.map((project) => (
         <Project
-          id={project.id}
-          img={project.img}
-          stack={project.stack}
-          title={project.title}
-          url={project.url}
+          {...project}
         />
       ))
     }
@@ -40,10 +36,7 @@ import Experience from '../components/Experience.astro';
     {
       experience.map((job) => (
         <Experience
-          company={job.company}
-          date={job.date}
-          description={job.description}
-          title={job.title}
+          {...job}
         />
       ))
     }

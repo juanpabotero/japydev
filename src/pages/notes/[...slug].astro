@@ -1,7 +1,14 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
 
+// crear las páginas "dinámicas" de manera estática, es decir,
+// en tiempo de compilación. 
+// Seria la forma correcta de hacerlo cuando se conoce el número
+// de páginas que se van a crear y no se espera que este número
+// cambie en el tiempo.
+// En este caso, se creará una página por cada entrada de la
+// colección "notes" y se pasará la entrada como prop.
 export async function getStaticPaths() {
   const posts = await getCollection('notes');
   return posts.map((post) => ({

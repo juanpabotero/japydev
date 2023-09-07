@@ -1,4 +1,11 @@
 ---
+export interface Props {
+  company: string;
+  date: string;
+  description: string[];
+  title: string;
+}
+
 const { company, date, description, title } = Astro.props;
 ---
 
@@ -9,6 +16,6 @@ const { company, date, description, title } = Astro.props;
     <p class="text-sm text-gray-600 dark:text-gray-400/80">{date}</p>
   </div>
   <div class="md:w-2/3">
-    {description.map((item, index) => <p id={index}>{item}</p>)}
+    {description.map((item) => <p>{item}</p>)}
   </div>
 </div>
