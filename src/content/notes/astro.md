@@ -10,7 +10,8 @@ heroImage: '/astro.svg'
 
 Astro es un framework para construir sitios web modernos con JavaScript, HTML y CSS.
 Se puede usar cualquier marco de JavaScript, como React, Vue, Svelte, Preact, etc.
-No carga Javascript por defecto.  
+No carga Javascript por defecto.
+
 El Javascript va entre ---, ej:
 
 ```javascript
@@ -19,11 +20,12 @@ console.log('Hello World');
 ---
 ```
 
-Los componentes se deben nombrar siempre con la primera letra en mayuscula
-e importar de la misma manera para diferenciarlos de los elementos HTML.
+Si pongo un `console.log`, no se va a ver en la consola del navegador, se ve en
+la terminal porque Astro no ejecuta javascript en la parte del cliente, lo hace
+en el servidor o en tiempo de compilación.
 
-Los estilos van dentro de la etiqueta `style` del componente.  
-Los estilos tienen scoope, es decir, son especificos para ese componente.  
+Los estilos van dentro de la etiqueta `style`.  
+Los estilos tienen scoope, es decir, son especificos para ese componente o página.  
 También se pueden usar estilos globales, usando el atributo `is:global` en el tag `style`, ej:
 
 ```html
@@ -34,7 +36,10 @@ También se pueden usar estilos globales, usando el atributo `is:global` en el t
 </style>
 ```
 
-Las Props de los componentes se pueden extraer desde el objeto global **Astro**
+Los componentes se deben nombrar siempre con la primera letra en mayúscula
+e importar de la misma manera para diferenciarlos de los elementos HTML.
+
+Las Props se pueden extraer desde el objeto global **Astro**
 y se puede definir una interfaz para estas con el nombre de **Props**:
 
 ```typescript
@@ -47,16 +52,12 @@ interface Props {
 const { href, title, body } = Astro.props;
 ```
 
-Si pongo un `console.log` en el componente, no se va a ver en la consola del navegador,
-se ve en la terminal porque Astro no ejecuta javascript en la parte del cliente, lo hace
-en el servidor o en tiempo de compilación.
-
 Las iteracciones como las funciones **map**, **filter**, etc, que se hacen en el cuerpo
 del componente, no necesitan de una propiedad **key**, como pasa en JSX, porque Astro
 las agrega por defecto.
 
-El `<slot />` en los componentes, es un elemento que se usa para renderizar el contenido
-que envuelve ese componente, seria como el children, ej:
+El `<slot />`, es un elemento que se usa para renderizar el contenido que envuelve
+ese componente, seria como el children, ej:
 
 Componente Card:
 
@@ -135,14 +136,16 @@ declarativa, en caso que la condición sea true, la clase se va a aplicar, ej:
 ```
 
 Astro no carga javascript por defecto, si hay un componente que necesita javascript
-se debe poner el atributo `client:visible`, ej:
+se debe poner el atributo `client`, y seleccionar una de las opciones, en este caso,
+`visible` para cargar el javascript cuando el elemento sea visible, ej:
 
 ```html
 <Counter client:visible />
 ```
 
-Otro atributo que se puede poner es `transition:persist`, que permite que el componente
-no se vuelva a renderizar cuando cambia la ruta, persiste su estado entre páginas, ej:
+Otro atributo que se puede poner es `transition`, y seleccionar una de las opciones,
+en este caso, `persist` que permite que el componente no se vuelva a renderizar cuando
+cambia la ruta, persiste su estado entre páginas, ej:
 
 ```html
 <Counter transition:persist />
@@ -154,7 +157,7 @@ El nombre de la carpeta se usa como prefijo en la url, ej:
 `src/pages/blog/index.astro` -> `/blog`  
 `src/pages/blog/astro.astro` -> `/blog/astro`.
 
-Para usar un layout en los archivos markdown se debe usar el atributo `layout` en el frontmatter, ej:
+Para usar un layout en los archivos markdown se puede usar el atributo `layout` en el frontmatter, ej:
 
 ```yaml
 ---
