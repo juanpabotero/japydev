@@ -393,6 +393,8 @@ CREATE TABLE users (
 );
 ```
 
+La biblioteca para conectarse a MySQL desde Node.js es **mysql2**.
+
 #### Atajos de teclado
 
 - ctrl + enter: ejecuta la consulta en la que esta el cursor

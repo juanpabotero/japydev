@@ -80,6 +80,7 @@ heroImage: '/page.svg'
 - **heroku.com (de pago)** => aplicaciones con backend
 - https://www.fl0.com/ => despliegue de aplicaciones con backend y bases de datos
 - https://www.koyeb.com/ => despliegue de aplicaciones con backend
+- https://zeabur.com/ => despliegue de aplicaciones con backend
 - **dev.new (gratis)** => despliegue de aplicaciones y bases de datos
 - **workers.cloudflare.com (cloudflare pages) (gratis)**
 - **Gitlab Pages**
@@ -616,6 +617,7 @@ Para buscar cualquier libreria con vanilla javascript:
 - [simpleicons.org](https://simpleicons.org/) (midu)
 - [svgl.vercel.app](https://svgl.vercel.app/) => logos de distintas tecnologias
 - [svgrepo.com](https://www.svgrepo.com/) (midu)
+- https://tabler-icons.io/ (midu)
 - [tablericons.com](https://tablericons.com/) (midu)
 - [thenounproject.com](https://thenounproject.com/)
 - [useanimations.com](https://useanimations.com/) (iconos animados)
@@ -743,6 +745,26 @@ Para buscar cualquier libreria con vanilla javascript:
 
 - [talenteca.com](https://www.talenteca.com/)
 
+- https://justremote.co/
+
+- https://lalent.co/
+
+- https://www.tecla.io/
+
+- https://remotive.com/
+
+- https://hireline.io/
+
+- https://www.capgemini.com/careers/join-us/#size=15
+
+- https://trabajosremotos.es/
+
+- https://weworkremotely.com/
+
+- torre.co
+
+- https://remoteleads.io/
+
 - [linkedin.com](https://www.linkedin.com/)
 
 - [indeed.com](https://co.indeed.com/)
@@ -750,6 +772,7 @@ Para buscar cualquier libreria con vanilla javascript:
 - [co.computrabajo.com](https://co.computrabajo.com/)
 
 - [resume.io](https://resume.io/) => crear la hoja de vida
+
 - [between.tech](https://between.tech/) => empresa de España que ofrece vacantes
 
 - [Guia para crear hoja de vida](https://delacruzdev.notion.site/Apply-to-tech-companies-with-this-CV-template-fd977e7e715d4445a6ba1878a500e327)
@@ -888,6 +911,12 @@ Para buscar cualquier libreria con vanilla javascript:
 
 - Aprender Node  
   https://aprendenode.dev/ (midu)
+
+- https://www.jsondataai.com/  
+  Generar informacion en un json
+
+- https://free-for.dev/#/
+  Recrusos gratuitos para desarrolladores
 
 ---
 

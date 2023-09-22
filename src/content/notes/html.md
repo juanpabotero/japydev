@@ -234,6 +234,7 @@ heroImage: '/html.svg'
   ```
 
 - Crear un calendario, con fechas y horas. Filtro de minimo y maximo con bloques de horas:
+
   ```html
   <label>
     Selecciona fecha para tu reserva:
@@ -244,4 +245,9 @@ heroImage: '/html.svg'
       max="2023-12-31T23:59"
     />
   </label>
+  ```
+
+- Evitar que el navegador traduzca el texto de la pagina:
+  ```html
+  <p translate="no">Este texto no se traduce</p>
   ```

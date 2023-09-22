@@ -99,7 +99,8 @@ Extensiones de VSCode:
   https://react-bootstrap.github.io/  
   https://tremor.so/  
   https://prismane.io/  
-  https://nextui.org/
+  https://nextui.org/  
+  https://ui.shadcn.com/
 
 - **Iconos**  
   https://react-icons.github.io/react-icons/

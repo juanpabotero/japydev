@@ -51,7 +51,7 @@ a bases de datos, etc. Babel es uno de los paquetes que esta disponible en node.
 Normalmente los modulos de node se dejan por fuera del git porque
 se pueden construir fácilmente en base al package.json.
 
-Cuando queremos obtener y devolver datos mockeados, deberiamos devolver una promesa 
+Cuando queremos obtener y devolver datos mockeados, deberiamos devolver una promesa
 con los datos, porque si el día de mañana se traen los datos desde una API seguirá
 funcionando igual.
 
@@ -364,7 +364,14 @@ El proceso seria asi:
 7. El modelo actualiza los datos
 8. Se repite el proceso
 
-(ver en curso-nodejs-midudev, clase-4)
+(ver en curso-nodejs-midudev, clase-4 o clase-5)
+
+## Inyección de dependencias
+
+Es un patrón de diseño que permite crear aplicaciones más flexibles, desacoplando
+los componentes de la aplicación.  
+Permite que un objeto, una clase, etc, reciba sus dependencias desde afuera, 
+se le inyectan, permite reutilización del código, permite hacer pruebas unitarias.
 
 ## Utilidades
 
