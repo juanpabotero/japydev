@@ -65,6 +65,10 @@ heroImage: '/html.svg'
   y asi no se vea el efecto de carga de la imagen y no haya movimiento del  
   layout. Despues se puede usar CSS para formatear mejor la imagen.
 
+- `setCustomValidity` es un metodo de los inputs que permite poner un mensaje
+  de error personalizado, por ejemplo, si el input es de tipo email, y el usuario
+  pone un texto que no es un email, se puede poner un mensaje de error personalizado.
+
 ---
 
 ## Semantica
@@ -248,6 +252,7 @@ heroImage: '/html.svg'
   ```
 
 - Evitar que el navegador traduzca el texto de la pagina:
+
   ```html
   <p translate="no">Este texto no se traduce</p>
   ```

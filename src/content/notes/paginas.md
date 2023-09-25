@@ -702,7 +702,8 @@ Para buscar cualquier libreria con vanilla javascript:
 
 - Imagenes para fondos  
   [app.haikei.app](https://app.haikei.app/)  
-  [tabbied.com](https://tabbied.com/)
+  [tabbied.com](https://tabbied.com/)  
+  https://www.svgbackgrounds.com/
 
 - Editor de fotos  
   [pixlr.com](https://pixlr.com/)
@@ -715,6 +716,7 @@ Para buscar cualquier libreria con vanilla javascript:
   [behance.net](https://www.behance.net/)  
   https://collectui.com/  
   https://godly.website/
+  https://www.dark.design/ (diseños de dark mode)
 
 - Patrones de diseño  
   [ui-patterns.com](https://ui-patterns.com/)

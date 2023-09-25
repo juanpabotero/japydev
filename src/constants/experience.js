@@ -4,7 +4,7 @@ export const experience = [
     company: 'Michael Page',
     date: 'Feb/2023 - Actualidad',
     description: [
-      'Apoyo en el equipo de FRONT para las células del Proyecto Portafolio.'
+      'Apoyo en el equipo de Frontend en casa editorial EL TIEMPO para el Proyecto Portafolio.'
     ]
   },
   {
