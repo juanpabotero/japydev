@@ -2,9 +2,9 @@ export const experience = [
   {
     title: 'Desarrollador Frontend',
     company: 'Michael Page',
-    date: 'Feb/2023 - Actualidad',
+    date: 'Feb/2023 - Sep/2023',
     description: [
-      'Apoyo en el equipo de Frontend en casa editorial EL TIEMPO para el Proyecto Portafolio.'
+      'Apoyo en el equipo de Frontend en casa editorial EL TIEMPO para el proyecto Portafolio.'
     ]
   },
   {

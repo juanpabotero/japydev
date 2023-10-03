@@ -920,6 +920,9 @@ Para buscar cualquier libreria con vanilla javascript:
 - https://free-for.dev/#/
   Recrusos gratuitos para desarrolladores
 
+- https://www.umletino.com/umletino.html  
+  Crear diagramas de flujo UML
+
 ---
 
 ## Libros de programación

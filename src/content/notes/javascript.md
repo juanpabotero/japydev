@@ -32,6 +32,8 @@ heroImage: '/javascript.svg'
 
 - **Instancia**: crear un nuevo objeto a partir de una clase
 
+- **Castear o casting**: convertir un tipo de dato a otro
+
 - **JSON.stringify**: transforma los datos a un json string para poder
   ser enviados a traves del navegador
 
@@ -448,7 +450,7 @@ heroImage: '/javascript.svg'
     rating,
     total = 5,
     starIcon = ':star:',
-    emptyIcon = ':starEmpty:',
+    emptyIcon = ':starEmpty:'
   }) => {
     const stars = starIcon.repeat(rating);
     const empty = emptyIcon.repeat(total - rating);
