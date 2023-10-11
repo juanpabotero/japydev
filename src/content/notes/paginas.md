@@ -38,8 +38,8 @@ heroImage: '/page.svg'
     export default defineConfig({
       base: '/nombre-repositorio/',
       build: {
-        outDir: 'docs',
-      },
+        outDir: 'docs'
+      }
     });
     ```
 
@@ -55,6 +55,33 @@ heroImage: '/page.svg'
     - Seguir los pasos de la documentación.  
       [vitejs.dev/guide/static-deploy.html](https://vitejs.dev/guide/static-deploy.html)
     - [Ver video](https://www.youtube.com/watch?v=rLoWMU4L_qE&list=WL&index=12&t=17005s)
+
+  - **Github Pages con Angular:**  
+    Se puede configurar en el archivo `angular.json`, la propiedad `baseHref`
+    de la configuracion de `production`:
+
+    ```json
+    "configurations": {
+      "production": {
+        "baseHref": "/nombre-repositorio/"
+      }
+    }
+    ```
+
+    Una vez se hace el build, debo crear una copia del archivo `docs/index.html` y llamarlo
+    `docs/404.html` y subir los cambios.
+
+    También puedo cambiar el `outputPath` de la configuracion de `build` para que la carpeta
+    de salida sea `docs`:
+
+    ```json
+    "build": {
+      "builder": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "docs"
+      }
+    }
+    ```
 
   - **Failed to load resource: the server responded with a status of 404**  
     si tengo el error anterior debo poner lo siguiente en el index.html de produccion:  
@@ -186,7 +213,8 @@ heroImage: '/page.svg'
   [leetcode.com](https://leetcode.com/)  
   https://pruebastecnicas.com/ (midu)  
   [retos.dev](https://retos.dev/) (midu)  
-  [retosdeprogramacion.com](https://retosdeprogramacion.com/)
+  [retosdeprogramacion.com](https://retosdeprogramacion.com/)  
+  https://angular-challenges.vercel.app/ Retos de Angular
 
 - Proyectos Frontend  
   [codewithrandom.com](https://www.codewithrandom.com/)  
@@ -236,8 +264,13 @@ heroImage: '/page.svg'
   [reactjs-interview-questions](https://github.com/sudheerj/reactjs-interview-questions)
 
 - [30-seconds-of-interviews](https://github.com/30-seconds/30-seconds-of-interviews)
-- Algoritmos y estructuras de datos en Javascript  
-  [javascript-algorithms](https://github.com/trekhleb/javascript-algorithms)
+
+- Algoritmos y estructuras de datos (midu):  
+  [TheAlgorithms](https://github.com/TheAlgorithms)
+
+- Algoritmos y estructuras de datos en Javascript (midu):  
+  [javascript-algorithms](https://github.com/trekhleb/javascript-algorithms)  
+  [javascript-algorithms](https://github.com/trekhleb/javascript-algorithms/blob/master/README.es-ES.md)
 
 - Ideas de proyectos  
   [app-ideas](https://github.com/florinpop17/app-ideas)
@@ -299,12 +332,6 @@ heroImage: '/page.svg'
 
 - recursos (midu):  
   [frontend-developer-resources](https://github.com/mrcodedev/frontend-developer-resources)
-
-- algoritmos y estructuras de datos (midu):  
-  [TheAlgorithms](https://github.com/TheAlgorithms)
-
-- algoritmos y estructuras de datos en Javascript (midu):  
-  [javascript-algorithms](https://github.com/trekhleb/javascript-algorithms/blob/master/README.es-ES.md)
 
 - Patrones de diseño  
   [awesome-design-patterns](https://github.com/DovAmir/awesome-design-patterns)
@@ -510,7 +537,8 @@ Para buscar cualquier libreria con vanilla javascript:
   [tailwindui.com](https://tailwindui.com/)  
   [flowbite.com ](https://flowbite.com/)  
   [hyperui.dev](https://www.hyperui.dev/)  
-  https://konstaui.com/
+  https://konstaui.com/  
+  https://tailwind-elements.com/
 
 ## Generadores CSS:
 
@@ -547,7 +575,6 @@ Para buscar cualquier libreria con vanilla javascript:
   https://www.transition.style/
 
 - [neumorphism.io](https://neumorphism.io/#e0e0e0)
-  
 - Diferentes utilidades  
   [omatsuri.app](https://omatsuri.app/)  
   [purecss.io](https://purecss.io/)  
@@ -874,7 +901,6 @@ Para buscar cualquier libreria con vanilla javascript:
 
 - [devhints.io](https://devhints.io/)  
   Cheatsheet de varias tecnologias (midu)
-  
 - [qrcode-monkey.com](https://www.qrcode-monkey.com/)  
   generador de codigo QR
 
@@ -922,6 +948,9 @@ Para buscar cualquier libreria con vanilla javascript:
 
 - https://www.umletino.com/umletino.html  
   Crear diagramas de flujo UML
+
+- https://es.khanacademy.org/computing/computer-science/algorithms  
+  Curso de algoritmos
 
 ---
 

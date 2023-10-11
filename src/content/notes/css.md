@@ -154,6 +154,18 @@ heroImage: '/css.svg'
   }
   ```
 
+- Poner puntos suspensivos despues de n numero de lineas,
+  en este caso, en 2 lineas:
+
+  ```css
+  p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  ```
+
 - Remover outline cuando se hace click en los controles pero no para usuarios  
   que usan el teclado:
 

@@ -66,7 +66,7 @@ Los tipos de datos se dividen en dos grupos:
   - `Clases`: indica un objeto de una clase.
   - `Interfaces`: indica un objeto de una interfaz.
 
-Conversión de tipos:
+Conversión de tipos (casting o casteo):
 
 ```java
 // de String a int
@@ -77,6 +77,46 @@ double edad = Double.parseDouble("20.5");
 String edad = String.valueOf(20);
 // de double a String
 String edad = String.valueOf(20.5);
+// de int a double
+int edad = 20;
+double edad = edad;
+// de double a int
+double edad = 20.5;
+int edad = (int) edad;
+```
+
+Conversión de objetos:
+
+```java
+// de String a Integer
+String edad = "20";
+Integer edad = Integer.valueOf(edad);
+// de Integer a String
+Integer edad = 20;
+String edad = String.valueOf(edad);
+// de una clase a otra
+Persona persona = new Persona();
+Empleado empleado = (Empleado) persona;
+```
+
+### AutoBoxing y UnBoxing
+
+El autoboxing es la conversión automática que hace Java de un tipo primitivo
+a su clase envolvente (wrapper) y el unboxing es la conversión automática que
+hace Java de un objeto de tipo envolvente a su tipo primitivo.  
+Se usa para convertir tipos primitivos en objetos y viceversa, se usa su clase
+envolvente cuando se quiere acceder a los atributos o métodos de la clase.
+
+- Para el tipo primitivo `int`, su clase envolvente es `Integer`.
+- Para el tipo primitivo `double`, su clase envolvente es `Double`.
+- Para el tipo primitivo `boolean`, su clase envolvente es `Boolean`.
+- Para el tipo primitivo `char`, su clase envolvente es `Character`.
+
+```java
+// autoboxing
+Integer entero = 10; // se convierte a Integer, es decir, a un objeto
+// unboxing
+int entero2 = entero; // se convierte a int, es decir, a un tipo primitivo
 ```
 
 ### Operadores
@@ -137,6 +177,25 @@ boolean esString = texto instanceof String;
 // esString = true
 ```
 
+### Argumentos o parámetros variables
+
+Se pueden definir métodos que reciban un número variable de argumentos,
+estos deben ir al final y son un array.
+
+```java
+// definir un método que recibe un número variable de argumentos
+public static int sumar(String comentario, int... numeros) {
+  int suma = 0;
+  for (int numero : numeros) {
+    suma += numero;
+  }
+  return suma;
+}
+// llamar al método
+int resultado = sumar("Hola", 1, 2, 3, 4, 5);
+// resultado = 15
+```
+
 ### Clases
 
 Las clases son plantillas que se utilizan para crear objetos.  
@@ -153,15 +212,18 @@ y no hace nada.
 Las clases quedan asociadas a paquetes, que son las carpetas donde estan contenidas,
 para poder usar una clase de otro paquete se debe importar, ej: `import clases.Persona;`.
 
-Solo debe haber una clase pública en el archivo, las demás clases que se agreguen no
-deben tener este modificador, por defecto tendran el modificador `default` o
-`package` y solo se podrán acceder desde el mismo paquete.
-
+Con el modificador `public` se puede acceder a los atributos y métodos de una clase
+desde cualquier parte del programa.  
 Con el modificador `private` se puede restringir el acceso a los atributos y métodos
 de una clase, solo se podrá acceder a ellos desde la misma clase.  
 Con el modificador `protected` se puede restringir el acceso a los atributos y métodos
 de una clase, solo se podrá acceder a ellos desde la misma clase y desde las clases
-que heredan de ella.
+que heredan de ella.  
+Por defecto, si no se define un modificador, se usa el modificador `default` o
+`package`, que permite acceder a los atributos y métodos de una clase desde el
+mismo paquete.  
+Solo debe haber una clase pública en el archivo, las demás clases que se agreguen no
+deben tener este modificador.
 
 Se puede acceder a los atributos a través de getters y setters, que son métodos
 públicos que se crean dentro de la clase.
@@ -311,7 +373,8 @@ atributo, método o clase. Cuando se usa en un atributo o método, no se puede
 modificar, cuando se usa en una clase, no se puede heredar de ella.
 
 Cuando se usa en conjunto con `static` se crea una constante, es decir, un
-atributo que no se puede modificar y que pertenece a la clase y no a los objetos. Se debe declarar en mayúsculas y separados por guión bajo.
+atributo que no se puede modificar y que pertenece a la clase y no a los objetos.  
+Se debe declarar en mayúsculas y separados por guión bajo.
 
 ```java
 public class Persona {
@@ -399,6 +462,255 @@ public class Empleado extends Persona {
 Empleado empleado = new Empleado("Juan", "Perez", 20, 1, 1000);
 ```
 
+Se puede sobreescribir un método de la clase padre en la clase hija.
+
+```java
+// crear clase padre
+public class Empleado {
+  String nombre;
+  int sueldo;
+  // constructor
+  public Empleado(String nombre, int sueldo) {
+    this.nombre = nombre;
+    this.sueldo = sueldo;
+  }
+  // método
+  public String obtenerDetalles() {
+    return "nombre=" + nombre + ", sueldo=" + sueldo;
+  }
+}
+// crear clase hija
+public class Gerente extends Empleado {
+  String departamento;
+  // constructor
+  public Gerente(String nombre, int sueldo, String departamento) {
+    super(nombre, sueldo);
+    this.departamento = departamento;
+  }
+  // sobreescribir el método de la clase padre
+  @Override // anotación para indicar que se sobreescribe el método
+  public String obtenerDetalles() {
+    // se puede llamar al método de la clase padre
+    return super.obtenerDetalles() + ", departamento=" + departamento;
+  }
+}
+// crear un objeto de la clase Gerente
+Gerente gerente = new Gerente("Juan", 1000, "Sistemas");
+// llamar al método
+System.out.println(gerente.obtenerDetalles());
+```
+
+### Polimorfismo
+
+El polimorfismo es la capacidad que tienen los objetos de comportarse de
+diferentes formas.
+
+```java
+// crear una clase padre
+public class Empleado {
+  String nombre;
+  int sueldo;
+  // constructor
+  public Empleado(String nombre, int sueldo) {
+    this.nombre = nombre;
+    this.sueldo = sueldo;
+  }
+  // método
+  public String obtenerDetalles() {
+    return "nombre=" + nombre + ", sueldo=" + sueldo;
+  }
+}
+// crear clase hija
+public class Gerente extends Empleado {
+  String departamento;
+  // constructor
+  public Gerente(String nombre, int sueldo, String departamento) {
+    super(nombre, sueldo);
+    this.departamento = departamento;
+  }
+  // sobreescribir el método de la clase padre
+  @Override // anotación para indicar que se sobreescribe el método
+  public String obtenerDetalles() {
+    // se puede llamar al método de la clase padre
+    return super.obtenerDetalles() + ", departamento=" + departamento;
+  }
+}
+// crear clase hija
+public class Vendedor extends Empleado {
+  String zona;
+  // constructor
+  public Vendedor(String nombre, int sueldo, String zona) {
+    super(nombre, sueldo);
+    this.zona = zona;
+  }
+  // sobreescribir el método de la clase padre
+  @Override // anotación para indicar que se sobreescribe el método
+  public String obtenerDetalles() {
+    // se puede llamar al método de la clase padre
+    return super.obtenerDetalles() + ", zona=" + zona;
+  }
+}
+// crear un objeto de la clase Gerente
+Gerente gerente = new Gerente("Juan", 1000, "Sistemas");
+// crear un objeto de la clase Vendedor
+Vendedor vendedor = new Vendedor("Pedro", 500, "Zona 1");
+// crear un arreglo de objetos de la clase Empleado
+Empleado[] empleados = new Empleado[2];
+// asignar objetos a las posiciones del arreglo
+empleados[0] = gerente;
+empleados[1] = vendedor;
+// recorrer el arreglo
+for (Empleado empleado : empleados) {
+  // se llama al metodo segun el tipo de objeto
+  // como ambas referencias que se pasan son hijas de la
+  // clase Empleado, se pueden usar ambas aqui
+  // esto es polimorfismo
+  System.out.println(empleado.obtenerDetalles());
+}
+```
+
+### Clases abstractas
+
+Las clases abstractas son clases que no se pueden instanciar, es decir, no se
+pueden crear objetos de ellas. Se usan para definir una clase base que no se
+puede instanciar, pero que se puede heredar de ella.
+
+```java
+// crear una clase abstracta
+public abstract class FiguraGeometrica {
+  // atributos
+  protected String tipoFigura;
+  // constructor
+  protected FiguraGeometrica(String tipoFigura) {
+    this.tipoFigura = tipoFigura;
+  }
+  // método abstracto, no define la implementación
+  public abstract void dibujar();
+  // getters y setters
+  public String getTipoFigura() {
+    return this.tipoFigura;
+  }
+  public void setTipoFigura(String tipoFigura) {
+    this.tipoFigura = tipoFigura;
+  }
+  // método toString
+  @Override // anotación para indicar que se sobreescribe el método
+  public String toString() {
+    return "FiguraGeometrica [tipoFigura=" + tipoFigura + "]";
+  }
+}
+// crear una clase que hereda de FiguraGeometrica
+public class Rectangulo extends FiguraGeometrica {
+  // constructor
+  public Rectangulo(String tipoFigura) {
+    super(tipoFigura);
+  }
+  // sobreescribir el método abstracto, se debe definir la implementación
+  @Override // anotación para indicar que se sobreescribe el método
+  public void dibujar() {
+    System.out.println("Aquí se debería dibujar un: " + this.getClass().getSimpleName());
+  }
+}
+// crear una clase que hereda de FiguraGeometrica
+public class Triangulo extends FiguraGeometrica {
+  // constructor
+  public Triangulo(String tipoFigura) {
+    super(tipoFigura);
+  }
+  // sobreescribir el método abstracto, se debe definir la implementación
+  @Override // anotación para indicar que se sobreescribe el método
+  public void dibujar() {
+    System.out.println("Aquí se debería dibujar un: " + this.getClass().getSimpleName());
+  }
+}
+// crear un objeto de la clase Rectangulo
+FiguraGeometrica rectangulo = new Rectangulo("Rectangulo");
+// crear un objeto de la clase Triangulo
+FiguraGeometrica triangulo = new Triangulo("Triangulo");
+// crear un arreglo de objetos de la clase FiguraGeometrica
+FiguraGeometrica[] figuras = new FiguraGeometrica[2];
+// asignar objetos a las posiciones del arreglo
+figuras[0] = rectangulo;
+figuras[1] = triangulo;
+// recorrer el arreglo
+for (FiguraGeometrica figura : figuras) {
+  figura.dibujar();
+}
+```
+
+### Clase Object
+
+La clase `Object` es la clase padre de todas las clases de Java, por lo tanto,
+todos los objetos heredan de ella.  
+La clase `Object` tiene los siguientes métodos:
+
+- `toString()`: devuelve una cadena de caracteres que representa al objeto.
+- `equals()`: compara el contenido de dos objetos y devuelve true si son iguales.
+- `hashCode()`: compara el contenido de dos objetos pero devuelve un número entero
+  que representa al objeto y los compara.
+- `getClass()`: devuelve el nombre de la clase del objeto.
+- `clone()`: crea un nuevo objeto con los mismos valores del objeto original.
+
+```java
+// crear una clase
+public class Persona {
+  String nombre;
+  int edad;
+  // constructor
+  public Persona(String nombre, int edad) {
+    this.nombre = nombre;
+    this.edad = edad;
+  }
+  // getters y setters
+  public String getNombre() {
+    return this.nombre;
+  }
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+  public int getEdad() {
+    return this.edad;
+  }
+  public void setEdad(int edad) {
+    this.edad = edad;
+  }
+  // metodo toString
+  @Override // anotación para indicar que se sobreescribe el método
+  public String toString() {
+    return "Persona [nombre=" + nombre + ", edad=" + edad + "]";
+  }
+  // metodo hashCode
+  @Override // anotación para indicar que se sobreescribe el método
+  public int hashCode() {
+    // se puede usar el método hashCode de la clase Object
+    // o se puede crear uno propio
+    return super.hashCode();
+  }
+  // metodo equals
+  @Override // anotación para indicar que se sobreescribe el método
+  public boolean equals(Object obj) {
+    // si el objeto es el mismo, devuelve true
+    if (this == obj) {
+      return true;
+    }
+    // si el objeto es nulo o no es una instancia de la clase Persona, devuelve false
+    if (obj == null || !(obj instanceof Persona)) {
+      return false;
+    }
+    // si el objeto es una instancia de la clase Persona, devuelve true
+    Persona persona = (Persona) obj;
+    return this.nombre.equals(persona.nombre) && this.edad == persona.edad;
+  }
+}
+// crear un objeto de la clase Persona
+Persona persona1 = new Persona("Juan", 20);
+Persona persona2 = new Persona("Juan", 20);
+// comparar objetos
+System.out.println(persona1 == persona2); // false
+System.out.println(persona1.equals(persona2)); // true
+System.out.println(persona1.hashCode() == persona2.hashCode()); // true
+```
+
 ### Clase Scanner
 
 La clase `Scanner` se utiliza para leer datos de la consola.  
@@ -428,8 +740,8 @@ scanner.close();
 Los arreglos son estructuras de datos que permiten almacenar varios valores
 del mismo tipo, los arreglos son de tipo objeto. Una vez se crea un arreglo,
 no se puede cambiar su tamaño. Si se quiere agregar un elemento, se debe crear
-un nuevo arreglo con el tamaño necesario y copiar los elementos del arreglo 
-anterior, o se puede usar otra estructura de datos como una lista, set o map, 
+un nuevo arreglo con el tamaño necesario y copiar los elementos del arreglo
+anterior, o se puede usar otra estructura de datos como una lista, set o map,
 que si permiten un tamaño dinámico.
 
 ```java
@@ -486,4 +798,133 @@ for (int[] fila : numeros) {
     System.out.println(numero);
   }
 }
+```
+
+### Enumeraciones o enums
+
+Las enumeraciones son un tipo de dato que permite definir un conjunto de
+constantes (por defecto son públicos, estáticos y finales), se usan para
+definir valores que no van a cambiar.  
+Se escribe en PascalCase.
+
+```java
+// declarar una enumeración
+public enum Dias {
+  LUNES,
+  MARTES,
+  MIERCOLES,
+  JUEVES,
+  VIERNES,
+  SABADO,
+  DOMINGO
+}
+// usar una enumeración
+Dias dia = Dias.LUNES;
+// acceder a una constante de la enumeración
+System.out.println(dia); // LUNES
+// recorrer una enumeración
+for (Dias d : Dias.values()) {
+  System.out.println(d);
+}
+```
+
+Se pueden agregar atributos y métodos a una enumeración:
+
+```java
+// declarar una enumeración
+public enum Dias {
+  LUNES("Lunes", 1),
+  MARTES("Martes", 2),
+  MIERCOLES("Miércoles", 3),
+  JUEVES("Jueves", 4),
+  VIERNES("Viernes", 5),
+  SABADO("Sábado", 6),
+  DOMINGO("Domingo", 7);
+
+  // atributos
+  private final String nombre;
+  private final int numero;
+
+  // constructor
+  private Dias(String nombre, int numero) {
+    this.nombre = nombre;
+    this.numero = numero;
+  }
+
+  // getters
+  public String getNombre() {
+    return this.nombre;
+  }
+  public int getNumero() {
+    return this.numero;
+  }
+
+  // método toString
+  @Override
+  public String toString() {
+    return "Dias [nombre=" + nombre + ", numero=" + numero + "]";
+  }
+}
+// usar una enumeración
+Dias dia = Dias.LUNES;
+// acceder a una constante de la enumeración
+System.out.println(dia); // LUNES
+// acceder a un atributo de la enumeración
+System.out.println(dia.getNombre()); // Lunes
+System.out.println(dia.getNumero()); // 1
+// recorrer una enumeración
+for (Dias d : Dias.values()) {
+  System.out.println(d);
+}
+```
+
+### Bloques de inicialización
+
+Los bloques de inicialización se usan para inicializar los atributos de una
+clase. Se ejecutan antes que los constructores. Pueden ser estáticos o dinámicos.
+
+```java
+public class Persona {
+  private final int idPersona;
+  private static int contadorPersonas;
+  // bloque de inicialización estático
+  static {
+    // se ejecuta antes que los constructores
+    // se usa para inicializar los atributos estáticos
+    System.out.println("Ejecución bloque estático");
+    // se puede inicializar un atributo estático
+    Persona.contadorPersonas = 10;
+  }
+  // bloque de inicialización no estático
+  {
+    // se ejecuta antes que los constructores
+    // se usa para inicializar los atributos no estáticos
+    System.out.println("Ejecución bloque no estático");
+    // se puede inicializar un atributo no estático
+    this.idPersona = Persona.contadorPersonas++;
+  }
+  // constructor
+  public Persona() {
+    System.out.println("Ejecución del constructor");
+  }
+  // getters y setters
+  public int getIdPersona() {
+    return this.idPersona;
+  }
+  public static int getContadorPersonas() {
+    return Persona.contadorPersonas;
+  }
+  public static void setContadorPersonas(int contador) {
+    Persona.contadorPersonas = contador;
+  }
+}
+// crear un objeto de la clase Persona
+Persona persona = new Persona();
+// acceder a un atributo estático
+System.out.println(Persona.contadorPersonas); // 10
+// acceder a un atributo no estático
+System.out.println(persona.getIdPersona()); // 10
+// crear otro objeto de la clase Persona
+Persona persona2 = new Persona();
+System.out.println(persona2.getIdPersona()); // 11
 ```
