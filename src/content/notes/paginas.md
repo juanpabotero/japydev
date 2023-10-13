@@ -84,16 +84,14 @@ heroImage: '/page.svg'
     ```
 
   - **Failed to load resource: the server responded with a status of 404**  
-    si tengo el error anterior debo poner lo siguiente en el index.html de produccion:  
-    `<base href="/nombre-repositorio/">`  
-    O revisar si solo se debe agregar `./` para los links que estan en el index.html de produccion.  
-    O ambas cosas.
+    si tengo el error anterior al entrar a la página o al recargar, pruebo con
+    una de las soluciones anteriores.
 
 - **Netlify**  
   Hosting gratuito para paginas web estaticas (HTML, CSS y JS)  
   Simplemente subo la carpeta de produccion que genere
 
-  - error: Si me encuentro con el problema de Page Not Found en mi sitio
+  - error: Si me encuentro con el problema de `Page Not Found` en mi sitio
     web, debo agregar el archivo netlify.toml a la carpeta que voy a
     subir a produccion, éste lo encuentro en la carpeta de Angular
 

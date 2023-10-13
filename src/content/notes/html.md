@@ -8,33 +8,91 @@ heroImage: '/html.svg'
 
 ## Conceptos
 
-- Node vs Element:
-  Node y NodeList representan cualquier "cosa" del DOM, un elemento html,
-  texto, un comentario. Puede usarse forEach con NodeList.
-  Element y HTMLCollection representa un elemento html. No puede usarse
-  ningun metodo de array con HTMLCollection
+Es un lenaguaje cuyo objetivo es definir o describir el contenido de una pagina web.
+
+Los navegadores tienen unos estilos por defecto para cada elemento.
+
+Los elementos reemplazables son aquellos que se reemplazan por un elemento externo,
+por ejemplo, una imagen, un video, un input, un iframe, etc. Estos elementos no tienen
+etiqueta de cierre.
+
+Los atributos permiten darle información al elemento.
+
+**Metadatos**:
+
+- La etiqueta `charset` define el tipo de codificación de caracteres
+  que se va a usar en la pagina web.
+
+- La etiqueta `name="viewport"` define el tamaño de la ventana del navegador en la que se
+  va a mostrar la pagina web. `content="width=device-width, initial-scale=1.0"` indica
+  que el ancho de la pagina web va a ser el ancho del dispositivo y que el zoom inicial
+  va a ser de 1.
+
+- La etiqueta `name="description"` define la descripción de la página y aparece en la
+  búsqueda de Google.
+
+- La etiqueta `name="keywords"` define las palabras clave de la página y aparece en la
+  búsqueda de Google.
+
+- La etiqueta `name="author"` define el autor de la página.
+
+- La etiqueta `name="robots"` define si la página se puede indexar o no, si se puede
+  seguir o no, y si se puede mostrar en los resultados de búsqueda o no.
+
+- Las etiquetas de Open Graph permiten definir como se va a mostrar la página en las
+  redes sociales.
+
+- La etiqueta `rel="alternate"` define la versión alternativa de la página, por ejemplo,
+  si la página está en español, la versión alternativa puede estar en inglés.
+  Es buena para SEO. Ej:
+
+  ```html
+  <link rel="alternate" href="https://www.example.com/en" hreflang="en" />
+  ```
+
+- La etiqueta `rel="canonical"` define la url canónica de la página, es decir, la url
+  principal de la página (la mayoria de veces es la misma página). Es buena para SEO. Ej:
+
+  ```html
+  <link rel="canonical" href="https://www.example.com" />
+  ```
+
+**Node vs Element**:  
+Node y NodeList representan cualquier "cosa" del DOM, un elemento html,
+texto, un comentario. Puede usarse forEach con NodeList.
+Element y HTMLCollection representa un elemento html. No puede usarse
+ningun metodo de array con HTMLCollection
 
 - Solo debe haber un h1 por pagina
 
 - hr se deberia usar mas semanticamente que para estilar, éste separa
   dos elementos
 
+- div para agrupar elementos en bloque y span para agrupar elementos en linea.
+
 - Se puede tener mas de una etiqueta header y footer por pagina,
   siempre que tenga sentido
 
 - Si quiero poner la forma en que se cargan las imagenes en el HTML, pongo la
   propiedad `loading="eager"` para las imagenes que ya estan en la vista del
-  usuario, y la propiedad `loading="lazy"` para las imagenes que no estan en la vista del usuario.
+  usuario, y la propiedad `loading="lazy"` para las imagenes que no estan en la
+  vista del usuario. El navegador decide cuando cargar las imagenes lazy en base
+  a la conexión.
 
 - Las navegaciones de las paginas se hacen con etiquetas a, no con botones,
   un boton es para hacer una accion, un anchor es para la navegacion, se pueden
   estilar los anchor para que parezcan botones.  
   Ademas, nunca se debe poner etiquetas a dentro de botones o viceversa.
 
-- div es el contenedor para elementos en bloque y span es el contenedor
-  para elementos en linea
+- Poner los input semánticos, por ejemplo, si es un input para un email, ponerle
+  el atributo `type="email"`, si es un input para un numero, ponerle el atributo
+  `type="number"`, etc.
 
-- Atributo `title` dentro de la etiqueta p para que se vea como tooltip
+- Atributo `title` dentro de la etiqueta p para que se vea como tooltip.
+
+- El elemento `iframe` sirve para incrustar una pagina web dentro de otra.
+
+- El elemento `canvas` sirve para dibujar.
 
 - `data-*` como atributo de un elemento, normalmente se usa como identificador  
   para después usar ese elemento en el JS, ej:
@@ -69,9 +127,17 @@ heroImage: '/html.svg'
   de error personalizado, por ejemplo, si el input es de tipo email, y el usuario
   pone un texto que no es un email, se puede poner un mensaje de error personalizado.
 
+- Cada vez que se añade una id a un elemento, se crea una propiedad en el objeto
+  global window con el nombre de la id y el valor del elemento. Por ejemplo, si
+  tengo un elemento con la id "button", se crea la propiedad window.button con el
+  valor del elemento. Otro ejemplo, `<dialog id="dialog"></dialog>` y puedo acceder
+  a él con `window.dialog.showModal()`.  
+  Hay que tener cuidado al usar ids porque por cada id se crea una propiedad y tiene
+  un coste de memoria.
+
 ---
 
-## Semantica
+## Semántica
 
 - main: Contenido principal de una página web. Es recomndable utilizarlo una
   sola vez por página.
@@ -139,7 +205,7 @@ heroImage: '/html.svg'
   ```html
   <label>
     Elige el mejor framework:
-    <input list="frameworks" />
+    <input list="frameworks" name="frameworks" />
   </label>
   <datalist id="frameworks">
     <option value="Angular"></option>
@@ -249,6 +315,21 @@ heroImage: '/html.svg'
       max="2023-12-31T23:59"
     />
   </label>
+  ```
+
+- Crear una sección expandible. El atributo `open` hace que la sección se abra
+  por defecto:
+
+  ```html
+  <details open>
+    <summary>Este es el titulo</summary>
+    <p>Este es el contenido</p>
+  </details>
+
+  <details>
+    <summary>Este es el titulo</summary>
+    <p>Este es el contenido</p>
+  </details>
   ```
 
 - Evitar que el navegador traduzca el texto de la pagina:
