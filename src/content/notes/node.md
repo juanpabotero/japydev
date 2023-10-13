@@ -55,6 +55,10 @@ Cuando queremos obtener y devolver datos mockeados, deberiamos devolver una prom
 con los datos, porque si el día de mañana se traen los datos desde una API seguirá
 funcionando igual.
 
+Para los callbacks en Node se usa el patron error first, que es el primer parametro
+que recibe el callback, si hay un error, se pasa como primer parametro, si no hay
+error, se pasa null como primer parametro y el segundo parametro es el resultado.
+
 ## Paquetes
 
 Para usar los paquetes de Node, es recomendable desde la versión 16, hacerlo
@@ -370,7 +374,7 @@ El proceso seria asi:
 
 Es un patrón de diseño que permite crear aplicaciones más flexibles, desacoplando
 los componentes de la aplicación.  
-Permite que un objeto, una clase, etc, reciba sus dependencias desde afuera, 
+Permite que un objeto, una clase, etc, reciba sus dependencias desde afuera,
 se le inyectan, permite reutilización del código, permite hacer pruebas unitarias.
 
 ## Utilidades

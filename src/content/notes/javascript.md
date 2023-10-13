@@ -8,8 +8,9 @@ heroImage: '/javascript.svg'
 
 ## Conceptos
 
-- Es una lenguaje de programación de tipado débil y dinámico.  
-  Funciona en tiempo de ejecución.
+Es un lenguaje de programación de tipado débil y dinámico.  
+Funciona en tiempo de ejecución.  
+Es mono hilo, es decir, solo puede hacer una cosa a la vez.
 
 - [] hace referencia a un array  
   {} hace referencia a un objeto  
@@ -593,9 +594,43 @@ heroImage: '/javascript.svg'
   rtf.format(3, 'month'); // dentro de 3 meses
   ```
 
+- Convertir una función con callbacks a una función con promesas:
+
+  ```javascript
+  const getUser = (id, callback) => {
+    const user = {
+      name: 'Juan',
+      id
+    };
+    setTimeout(() => {
+      callback(user);
+    }, 1000);
+  };
+
+  const getUserPromise = (id) => {
+    return new Promise((resolve, reject) => {
+      const user = {
+        name: 'Juan',
+        id
+      };
+      setTimeout(() => {
+        resolve(user);
+      }, 1000);
+    });
+  };
+
+  getUser(1, (user) => {
+    console.log(user);
+  });
+
+  getUserPromise(1).then((user) => {
+    console.log(user);
+  });
+  ```
+
 ---
 
-## Midudev
+# Midudev
 
 ## Conceptos
 

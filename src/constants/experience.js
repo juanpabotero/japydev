@@ -10,7 +10,7 @@ export const experience = [
   {
     title: 'Desarrollador Frontend',
     company: 'Universidad Tecnológica de Pereira',
-    date: 'Ago/2022 - Dic/2022',
+    date: 'Ago/2022 - Feb/2023',
     description: [
       'Desarrollo Frontend usando ANGULAR como Framework para el proyecto "Fortalecimiento en capacidades de salud".'
     ]
@@ -20,8 +20,7 @@ export const experience = [
     company: 'Japy Soluciones Digitales',
     date: 'Ene/2022 - Ago/2022',
     description: [
-      'Creación de soluciones para empresas y particulares a través del uso de herramientas tecnológicas.',
-      'Asesorar a empresas y particulares para definir requerimientos técnicos.'
+      'Soluciones para empresas y particulares apoyados en tecnologías y herramientas digitales.'
     ]
   }
 ];
