@@ -277,6 +277,18 @@ Es un post-css, babel, node, webpack todo en uno.
 tiene un entorno de ejecucion como lo son Node y Deno, tiene un manejador
 de paquetes como es npm, es un empaquetador como lo es webpack.
 
+### Morgan:
+
+Es un logger, es una dependencia que permite ver las peticiones que se hacen
+al servidor en la consola de la terminal. Esta enfocado a ser un middleware de express.  
+Muestra la petición, la dirección a la que se hizo la petición, el status code y
+el tiempo de respuesta.
+
+### Socket.io
+
+Es una libreria que permite hacer comunicacion en tiempo real entre el cliente y el servidor.
+Se puede usar con NodeJS, Java, Python, etc. Se puede usar para hacer chats, juegos, etc.
+
 ### json-server:
 
 Servidor que permite hacer peticiones HTTP.  
@@ -370,7 +382,8 @@ con transmisiones de datos.
 
 Es el protocolo de transferencia de hipertexto, es un protocolo de la capa de aplicación
 para la transferencia de datos de hipertexto, como HTML. Fue diseñado para la comunicación
-entre navegadores web y servidores web, pero puede usarse para otros propósitos también.
+entre navegadores web y servidores web, pero puede usarse para otros propósitos también.  
+Usa TCP como protocolo de transporte.
 
 Las cabeceras de la petición son información que le dan más contexto a la petición, por ejemplo,
 el navegador le dice al servidor que tipo de navegador es, que tipo de contenido acepta, etc.
@@ -435,6 +448,25 @@ Metodos complejos: PUT, PATCH, DELETE
 Los metodos complejos primero hacen una peticion OPTIONS para preguntarle al servidor
 que metodos soporta, y si el servidor responde que soporta el metodo que se quiere usar,
 se hace la peticion normal.
+
+### Web Sockets
+
+Es un protocolo de comunicación bidireccional, full-duplex, sobre un único socket TCP.
+Un socket es una conexión en concreto.
+Esto quiere decir que la comunicación es en ambos sentidos y que la conexión se establece
+sobre un único canal de comunicación. Basado en eventos.  
+Usa TCP como protocolo de transporte.
+
+Es stateful, es decir, que mantiene una conexión abierta y persistente entre el cliente y el servidor.
+Esto permite que el servidor pueda enviar información al cliente cuando lo necesite, sin que el cliente
+tenga que hacer una petición al servidor. También quiere decir que no es cacheable, no
+se puede guardar en caché.
+
+Se usa para manejar información en tiempo real, como chats, juegos, etc.
+
+Se hace un handshake, que es un saludo entre el cliente y el servidor, para establecer la conexión.
+Se deja abierta la conexión y se envian mensajes en ambos sentidos hasta que el cliente o el servidor
+decidan cerrar la conexión.
 
 ### Idempotencia
 

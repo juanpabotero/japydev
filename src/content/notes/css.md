@@ -684,3 +684,45 @@ Los estilos usando un preprocesador de css:
   una fuente en el CSS, podriamos hacer un _preload_ de las fuentes para que no
   tangan que esperar hasta que se descargue el CSS.
   `<link rel="preload" href="fonts/Archivo-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">`
+
+---
+
+# MIDUDEV
+
+CSS (Cascading Style Sheets) es un lenguaje de estilos que nos permite darle
+estilo a nuestros documentos HTML.
+
+Hay algunas propiedades que se heredan de su contenedor padre, por ejemplo,
+la fuente, pero hay otras que no como el borde.
+
+El valor `initial` de una propiedad, es el valor por defecto de esa propiedad.  
+El valor `inherit` de una propiedad, hereda el valor de su contenedor padre.  
+El valor `unset` de una propiedad, resetea la propiedad, le quita las propiedades
+heredadas.
+
+`outline` es el contorno del elemento, este se pone sobre el contenido del elemento,
+no afecta el layout.  
+`border` es el borde del elemento, este se pone alrededor del contenido del elemento,
+afecta el layout.
+
+Pseudoclase `:hover` es cuando el mouse está sobre el elemento.
+Pseudoclase `:active` es cuando se hace click en el elemento.  
+Pseudoclase `:focus` es cuando el elemento tiene el foco.
+
+Operador `>` es para seleccionar el hijo directo de un elemento.  
+Operador `+` es para seleccionar el hermano que sigue justo despues del elemento.  
+Operador `~` es para seleccionar todos los hermanos que vienen despues del elemento.
+
+La especificidad de un selector es la suma de los valores de cada uno de sus selectores.  
+`id` tiene un valor de 1,0,0.
+`clase, atributo y pseudo-clase` tienen un valor de 0,1,0.
+`elemento y pseudo-elemento` tienen un valor de 0,0,1.
+
+Usar Normalize CSS es mejor que usar Reset CSS porque no resetea todo, solo lo necesario.
+Tailwind ya hace este normalize por defecto.
+
+El modelo de caja `content-box` es el modelo por defecto, el ancho y alto que se le
+da al elemento es el ancho y alto del contenido, no toma en cuenta el padding ni el
+border, estos 2 se van agregando a su tamaño.  
+En el modelo de caja `border-box`, el ancho y alto que se le da al elemento es el ancho
+y alto del contenido, padding y border.

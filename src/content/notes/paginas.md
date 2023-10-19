@@ -392,7 +392,8 @@ Para buscar cualquier libreria con vanilla javascript:
 - Animaciones:  
   [animejs.com](https://animejs.com/)  
   [greensock.com/gsap](https://greensock.com/gsap/)  
-  [theatrejs.com](https://www.theatrejs.com/)
+  [theatrejs.com](https://www.theatrejs.com/)  
+  https://gsap.com/
 
 - Anotaciones animadas:  
   [roughnotation.com](https://roughnotation.com/)
@@ -456,7 +457,10 @@ Para buscar cualquier libreria con vanilla javascript:
   [vincentgarreau.com/particles.js](https://vincentgarreau.com/particles.js/)
 
 - Gráficas (charts)  
-  https://d3-graph-gallery.com/
+  https://d3js.org/  
+  https://d3-graph-gallery.com/  
+  https://echarts.apache.org/en/index.html  
+  https://www.tradingview.com/lightweight-charts/
 
 - Mapas:  
   [leafletjs.com](https://leafletjs.com/)  
@@ -661,6 +665,10 @@ Para buscar cualquier libreria con vanilla javascript:
 - [sapiens.ui8.net](https://sapiens.ui8.net/6f3c3c2)
 - [uistore.design/categories/illustrations](https://www.uistore.design/categories/illustrations/)
 - [undraw.co](https://undraw.co/)
+- https://www.drawkit.com/
+- https://illustrationkit.com/
+- https://www.reshot.com/
+- https://iradesign.io/
 
 ## Colores:
 
@@ -678,6 +686,7 @@ Para buscar cualquier libreria con vanilla javascript:
 - [mycolor.space](https://mycolor.space/)
 - [paletton.com](https://paletton.com/)
 - [UIgradientes](https://uigradients.com/) (degradados)
+- https://uicolors.app/ (paleta de colores)
 
 ## Fuentes:
 

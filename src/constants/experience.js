@@ -8,17 +8,17 @@ export const experience = [
     ]
   },
   {
-    title: 'Desarrollador Frontend',
+    title: 'Desarrollador Full Stack',
     company: 'Universidad Tecnológica de Pereira',
-    date: 'Ago/2022 - Feb/2023',
+    date: 'Feb/2022 - Feb/2023',
     description: [
-      'Desarrollo Frontend usando ANGULAR como Framework para el proyecto "Fortalecimiento en capacidades de salud".'
+      'Desarrollo Full Stack usando ANGULAR y JAVA para el proyecto "Fortalecimiento en capacidades de salud".'
     ]
   },
   {
-    title: 'Asesor independiente',
+    title: 'Desarrollador Independiente',
     company: 'Japy Soluciones Digitales',
-    date: 'Ene/2022 - Ago/2022',
+    date: 'Sep/2021 - Feb/2022',
     description: [
       'Soluciones para empresas y particulares apoyados en tecnologías y herramientas digitales.'
     ]

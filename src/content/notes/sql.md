@@ -14,8 +14,9 @@ heroImage: '/sql.svg'
 - Gestionar las bases de datos:  
   Para usuarios Mac: https://dbngin.com/
 
-- Hostear base de datos MySQL:  
-  https://planetscale.com/
+- Hostear bases de datos:  
+  https://planetscale.com/  
+  https://turso.tech/ (SQLite)
 
 ---
 
@@ -352,7 +353,7 @@ END;
 Ejemplo:
 
 ```sql
--- DELIMITER es para cambiar el delimitador, para que SQL sepa cuando termina el trigger y cuando 
+-- DELIMITER es para cambiar el delimitador, para que SQL sepa cuando termina el trigger y cuando
 -- termina la sentencia SQL
 DELIMITER $$
 CREATE TRIGGER update_rating
