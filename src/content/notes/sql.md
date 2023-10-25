@@ -22,7 +22,7 @@ heroImage: '/sql.svg'
 
 ## Conceptos
 
-Structured Query Language.  
+Structured Query Language (Lenguaje de consulta estructurado).  
 SQL es un estandar. Cada base de datos tiene su propia implementación de SQL,
 como MySQL, PostgreSQL, SQLite, etc. Pueden cambiar algunas cosas, pero la mayoría son iguales.
 
@@ -34,6 +34,17 @@ En las bases de datos relacionales se busca optimizar y evitar la duplicidad de 
 para esto, se crean relaciones entre las tablas, y esta es la mayor diferencia con las
 bases de datos no relacionales.  
 Podemos entender las tablas como entidades y las columnas como atributos.
+
+Cuando se tiene una relación de uno a muchos, se usa una clave foranea.
+Por ejemplo, si tenemos una tabla de usuarios y una tabla de tweets, y un usuario
+puede tener muchos tweets, entonces en la tabla de tweets se agrega una columna
+que hace referencia al id del usuario.  
+Cuando se tiene una relación de muchos a muchos, se usa una tabla intermedia.
+Por ejemplo, si tenemos una tabla de productos y una tabla de ordenes, y un producto
+puede estar en muchas ordenes y una orden puede tener muchos productos, entonces se crea
+una tabla intermedia que relaciona a los productos con las ordenes.
+En este caso, la tabla intermedia tendria dos columnas, una que hace referencia al
+id del producto y otra que hace referencia al id de la orden.
 
 Tabla de tweets:
 
@@ -54,6 +65,10 @@ Tabla de usuarios:
 
 En este caso, la tabla de tweets tiene una relación con la tabla de usuarios,
 ya que cada tweet tiene un usuario asociado.
+
+RDBMS (Relational Database Management System), es un sistema de gestión de bases de datos relacionales.
+Es el software que se encarga de gestionar las bases de datos relacionales.
+Por ejemplo, MySQL, PostgreSQL, SQLite, etc.
 
 ### Diferencia entre SQL y NoSQL
 
@@ -179,6 +194,7 @@ Podemos usar varios operadores para las condiciones:
 
 ```sql
 SELECT * FROM movies WHERE id = 1;
+SELECT title as nombre, director FROM movies WHERE id = 1;
 SELECT * FROM movies WHERE id >= 1;
 SELECT * FROM movies WHERE id BETWEEN 1 AND 5;
 SELECT * FROM movies WHERE id NOT BETWEEN 1 AND 5;
@@ -199,6 +215,8 @@ SELECT * FROM movies WHERE title LIKE "Harry Potter" AND director = "Chris Colum
 SELECT * FROM movies WHERE title LIKE "Harry Potter" OR director = "Chris Columbus";
 SELECT * FROM movies WHERE title LIKE "Harry Potter" OR director = "Chris Columbus" AND year = 2001;
 SELECT * FROM movies WHERE (title LIKE "Harry Potter" OR director = "Chris Columbus") AND year = 2001;
+SELECT max(rating) as maxRating FROM movies;
+SELECT min(rating) as minRating FROM movies;
 ```
 
 Cuanto más especifica sea la condición, más rapida sera la consulta.

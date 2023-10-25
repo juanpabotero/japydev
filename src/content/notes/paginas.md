@@ -277,6 +277,7 @@ heroImage: '/page.svg'
   [awesome-interview-questions](https://github.com/DopplerHQ/awesome-interview-questions)
 
 - [awesome-javascript-interviews](https://github.com/rohan-paul/Awesome-JavaScript-Interviews)
+
 - plan de estudios para pasar cualquier proceso de entrevista (midu):  
   [codung-interview-university](https://github.com/jwasham/coding-interview-university)
 
@@ -351,11 +352,14 @@ heroImage: '/page.svg'
 
 - [nodejs-interview-questions](https://github.com/learning-zone/nodejs-interview-questions)
 - [node.js best practices](https://github.com/goldbergyoni/nodebestpractices)
+
 - aprender a programar con proyectos (midu):  
   [project-based-learning](https://github.com/practical-tutorials/project-based-learning)
 
 - [public-apis](https://github.com/public-apis/public-apis)
+  
 - Explica como funciona la web  
+  https://github.com/ByteByteGoHq/system-design-101 (midu)  
   [spellbook-of-modern-webdev](https://github.com/dexteryy/spellbook-of-modern-webdev)
 
 - Explica el diseño de sistemas  
@@ -365,6 +369,7 @@ heroImage: '/page.svg'
   [tech-interview-handbook](https://github.com/yangshun/tech-interview-handbook)
 
 - [you-dont-know-js](https://github.com/getify/You-Dont-Know-JS)
+  
 - Explica como hacer todo sin JQuery  
   [you-dont-need-jquery](https://github.com/camsong/You-Dont-Need-jQuery)
 
@@ -460,7 +465,8 @@ Para buscar cualquier libreria con vanilla javascript:
   https://d3js.org/  
   https://d3-graph-gallery.com/  
   https://echarts.apache.org/en/index.html  
-  https://www.tradingview.com/lightweight-charts/
+  https://www.tradingview.com/lightweight-charts/  
+  https://apexcharts.com/
 
 - Mapas:  
   [leafletjs.com](https://leafletjs.com/)  
@@ -958,6 +964,12 @@ Para buscar cualquier libreria con vanilla javascript:
 
 - https://es.khanacademy.org/computing/computer-science/algorithms  
   Curso de algoritmos
+
+- https://wave.webaim.org/  
+  Analiza la accesibilidad de una pagina web
+
+- https://github.com/ByteByteGoHq/system-design-101 (midu)  
+  Explicación de distintos temas web
 
 ---
 
