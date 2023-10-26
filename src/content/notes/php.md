@@ -44,12 +44,20 @@ Los comentarios se hacen con `//` o `/* */`.
 - `echo "Hola Mundo";` imprimir en pantalla.
 - `echo "<h1>Hola</h1>";` imprimir en pantalla etiquetas HTML.
 - `print "Hola Mundo";` imprimir en pantalla.
+- `print_r($variable);` imprimir en pantalla el contenido de una variable.
 - `include` para importar un archivo. Si el archivo no existe, se muestra un warning
   y se sigue ejecutando el código. Se usa para importar algo que no es tan necesario
-  para que el código funcione.
+  para que el código funcione. `include_once` evita que se importe el archivo mas
+  de una vez.
 - `require` para importar un archivo. Si el archivo no existe, se muestra un error
   y se detiene la ejecución del código. Se usa para importar algo que es necesario
-  para que el código funcione.
+  para que el código funcione. `require_once` evita que se importe el archivo mas
+  de una vez.
+- `exit` para detener la ejecución del código.
+- `die()` para detener la ejecución del código.
+- `declare(strict_types=1);` se usa para habilitar el tipado estricto
+- `header('Location: /pagina')` para redireccionar a otra página. Se puede agregar
+  un query string `header('Location: /pagina?name=Juan')`.
 - `__DIR__` -> devuelve la ruta absoluta de la carpeta donde se encuentra el archivo que lo llama.
 - `__FILE__` -> devuelve la ruta absoluta del archivo que lo llama.
 - `__LINE__` -> devuelve el número de línea donde se encuentra.
@@ -57,8 +65,46 @@ Los comentarios se hacen con `//` o `/* */`.
 - `__CLASS__` -> devuelve el nombre de la clase donde se encuentra.
 - `__METHOD__` -> devuelve el nombre del método donde se encuentra.
 - `__NAMESPACE__` -> devuelve el nombre del namespace donde se encuentra.
-- `exit` para detener la ejecución del código.
-- `die` para detener la ejecución del código.
+
+### Superglobales
+
+Son variables que están disponibles en todo el script.
+
+- `$_GET` acceder a los datos enviados por el método GET. También sirve para leer
+  los query strings de la URL.
+- `$_POST` acceder a los datos enviados por el método POST.
+- `$_SERVER` acceder a los datos del servidor.
+- `$_SESSION` acceder a los datos de la sesión.
+- `$_COOKIE` acceder a los datos de las cookies.
+- `$_FILES` acceder a los datos de los archivos.
+- `$_ENV` acceder a los datos del entorno.
+- `$_REQUEST` acceder a los datos de las peticiones.
+- `$_GLOBALS` acceder a todas las variables globales.
+
+```php
+<?php
+  // $_GET
+  echo $_GET['name'];
+  // $_POST
+  echo $_POST['name'];
+  // $_SERVER
+  echo $_SERVER['SERVER_NAME'];
+  // $_SESSION
+  session_start();
+  $_SESSION['name'] = 'Juan';
+  echo $_SESSION['name'];
+  // $_COOKIE
+  echo $_COOKIE['font-size'];
+  // $_FILES
+  echo $_FILES['file']['name'];
+  // $_ENV
+  echo $_ENV['USER'];
+  // $_REQUEST
+  echo $_REQUEST['name'];
+  // $_GLOBALS
+  echo $GLOBALS['name'];
+?>
+```
 
 ### Variables
 
@@ -132,6 +178,7 @@ interpolación puede llevar a una vulnerabilidad.
 - `strtoupper($name)` para convertir un string a mayúsculas.
 - `strtolower($name)` para convertir un string a minúsculas.
 - `substr($name, 0, 2)` para obtener una parte de un string.
+  (string, posición inicial, cantidad de caracteres)
 - `str_replace('o', 'a', $name)` para reemplazar una parte de un string.
   (valor a reemplazar, valor de reemplazo, string)
 - `strpos($name, 'o')` para obtener la posición de una parte de un string.
@@ -152,7 +199,12 @@ Se pueden usar números enteros o decimales.
 - `is_float($height)` para saber si una variable es de tipo decimal.
 - `is_numeric($age)` para saber si una variable es de tipo numérico.
 - `round($height, 1)` para redondear un número decimal.
+  (valor, cantidad de decimales).
+- `ceil($height)` para redondear un número decimal hacia arriba.
+- `floor($height)` para redondear un número decimal hacia abajo.
 - `rand(1, 10)` para generar un número aleatorio entre 1 y 10.
+- `intval($variable)` para convertir a un entero.
+- `M_PI` para obtener el valor de PI.
 
 #### Boolean
 
@@ -213,22 +265,25 @@ Los arrays pueden tener claves alfanuméricas.
 - `isset($people)` revisa si un array esta creado o una propiedad esta definida.
 - `isset($people['age'])` revisa si un array esta creado o una propiedad esta definida.
 - `count($people)` muestra la cantidad de elementos de un array.
+- `$people[] = 'Pablo'` añadir un elemento al final de un array.
 - `array_push($people, 'Pedro')` agregar un elemento al final de un array.
 - `array_pop($people)` eliminar el último elemento de un array.
 - `array_unshift($people, 'Pedro')` agregar un elemento al inicio de un array.
 - `array_shift($people)` eliminar el primer elemento de un array.
-- `in_array('Juan', $people)` buscar un elemento en un array.
-- `array_search('Juan', $people)` buscar un elemento en un array.
-- `array_slice($people, 1, 2)` obtener una parte de un array.
-- `array_splice($people, 1, 2)` eliminar una parte de un array.
-- `array_merge($people, $people2)` unir dos arrays.
-- `array_reverse($people)` invertir el orden de un array.
 - `sort($people)` ordenar un array de forma ascendente.
 - `rsort($people)` ordenar un array de forma descendente.
 - `asort($people)` ordenar un array asociativo por valor de forma ascendente.
 - `arsort($people)` ordenar un array asociativo por valor de forma descendente.
 - `ksort($people)` ordenar un array asociativo por clave de forma ascendente.
 - `krsort($people)` ordenar un array asociativo por clave de forma descendente.
+- `extract($people)` convertir un array asociativo en variables.
+- `join(separador, $array)` unir los elementos de un array en un string.
+- `in_array('Juan', $people)` buscar un elemento en un array.
+- `array_search('Juan', $people)` buscar un elemento en un array.
+- `array_slice($people, 1, 2)` obtener una parte de un array.
+- `array_splice($people, 1, 2)` eliminar una parte de un array.
+- `array_merge($people, $people2)` unir dos arrays.
+- `array_reverse($people)` invertir el orden de un array.
 - `array_column($people, 'name')` obtener una columna de un array asociativo.
 - `array_chunk($people, 2)` dividir un array en trozos.
 - `array_key_exists('name', $people)` saber si existe una clave en un array asociativo.
@@ -251,6 +306,31 @@ Los arrays pueden tener claves alfanuméricas.
 - `array_rand($people)` obtener un elemento aleatorio de un array.
 - `array_rand(array_flip($people), 2)` obtener elementos aleatorios de un array asociativo.
 - `array_rand(array_flip($people))` obtener un elemento aleatorio de un array asociativo.
+
+### Fechas
+
+- `date('d-m-Y')` obtener la fecha actual.
+- `date('y')` obtener el año actual en formato de 2 dígitos.
+- `date('Y')` obtener el año actual en formato de 4 dígitos.
+- `date('d-m-Y', strtotime('2021-01-01'))` obtener la fecha de una cadena.
+- `date('d-m-Y', strtotime('+1 day'))` obtener la fecha actual más un día.
+- `date('d-m-Y', strtotime('+1 week'))` obtener la fecha actual más una semana.
+- `date('d-m-Y', strtotime('+1 month'))` obtener la fecha actual más un mes.
+- `date('d-m-Y', strtotime('+1 year'))` obtener la fecha actual más un año.
+- `date('d-m-Y', strtotime('next Monday'))` obtener el próximo lunes.
+- `date('d-m-Y', strtotime('next Monday +1 week'))` obtener el próximo lunes más una semana.
+- `date('d-m-Y', strtotime('next Monday +1 month'))` obtener el próximo lunes más un mes.
+- `date('d-m-Y', strtotime('next Monday +1 year'))` obtener el próximo lunes más un año.
+- `date('d-m-Y', strtotime('last Monday'))` obtener el lunes pasado.
+- `date('d-m-Y', strtotime('last Monday -1 week'))` obtener el lunes pasado menos una semana.
+- `date('d-m-Y', strtotime('last Monday -1 month'))` obtener el lunes pasado menos un mes.
+- `date('d-m-Y', strtotime('last Monday -1 year'))` obtener el lunes pasado menos un año.
+- `date('d-m-Y', strtotime('first day of this month'))` obtener el primer día del mes actual.
+- `date('d-m-Y', strtotime('last day of this month'))` obtener el último día del mes actual.
+- `date('d-m-Y', strtotime('first day of next month'))` obtener el primer día del mes siguiente.
+- `date('d-m-Y', strtotime('last day of next month'))` obtener el último día del mes siguiente.
+- `date('d-m-Y', strtotime('first day of last month'))` obtener el primer día del mes anterior.
+- `date('d-m-Y', strtotime('last day of last month'))` obtener el último día del mes anterior.
 
 ### Operadores de incremento y decremento
 
@@ -275,6 +355,8 @@ Los arrays pueden tener claves alfanuméricas.
 - `!=` diferente.
 - `!==` compara por valor y tipo de dato.
 - `<=>` spaceship. Devuelve -1 si el primer valor es menor, 0 si son iguales y 1 si el primer valor es mayor.
+- `??` null coalescing. Devuelve el primer valor si existe, de lo contrario
+  devuelve el segundo valor. Disponible desde la versión 7 de PHP.
 
 ```php
 <?php
@@ -285,6 +367,7 @@ Los arrays pueden tener claves alfanuméricas.
   var_dump($age != $age2); // false
   var_dump($age !== $age2); // true
   var_dump($age <=> $age2); // 0
+  var_dump($age ?? $age2); // 25
 ?>
 ```
 
@@ -358,6 +441,8 @@ Si se usa la sintaxis de `:` y `endif` se debe usar `elseif` en lugar de `else i
 - `foreach` para recorrer un array. Cuando se usa un foreach en un arreglo asociativo,
   la iteración es sobre los valores del arreglo, no sobre las llaves. Si se quiere
   iterar sobre las llaves se debe usar `foreach ($array as $key => $value)`.
+- `break` para detener la ejecución de un ciclo.
+- `continue` para saltar una iteración de un ciclo.
 
 ```php
 <?php
@@ -444,11 +529,12 @@ Ejemplo de foreach con PHP y HTML:
 
 ### Funciones
 
+Las funciones no pueden acceder a las variables definidas por fuera de su scoope.
+Tendriamos que pasarle la variable como parametro a la función.
+
 - `function` para definir una función.
 - `return` para retornar un valor de una función.
-- `global` para acceder a una variable global dentro de una función. ??
-
-`declare(strict_types=1);` se usa para habilitar el tipado estricto
+- `global` para acceder a una variable global dentro de una función. ???
 
 ```php
 <?php
@@ -484,7 +570,7 @@ Ejemplo de foreach con PHP y HTML:
   }
   echo isAuthorized(false);
 
-  // con parámetros por defecto usando global ??
+  // con parámetros por defecto usando global ???
   $name = 'Juan';
   function saludar() {
     global $name;
@@ -574,42 +660,54 @@ Ejemplo de foreach con PHP y HTML:
 ?>
 ```
 
-### Superglobales ???
+### Sanitizar y validar datos
 
-Son variables que están disponibles en todo el script.
-
-- `$_GET` acceder a los datos enviados por el método GET.
-- `$_POST` acceder a los datos enviados por el método POST.
-- `$_SERVER` acceder a los datos del servidor.
-- `$_SESSION` acceder a los datos de la sesión.
-- `$_COOKIE` acceder a los datos de las cookies.
-- `$_FILES` acceder a los datos de los archivos.
-- `$_ENV` acceder a los datos del entorno.
-- `$_REQUEST` acceder a los datos de las peticiones.
-- `$_GLOBALS` acceder a todas las variables globales.
+- `filter_var($variable, validacion)` para validar un dato.
+- `htmlspecialcharts($variable);` para escapar caracteres especiales. Es una forma de
+  sanitizar datos.
 
 ```php
 <?php
-  // $_GET
-  echo $_GET['name'];
-  // $_POST
-  echo $_POST['name'];
-  // $_SERVER
-  echo $_SERVER['SERVER_NAME'];
-  // $_SESSION
+  $email = "correo@correo.com/";
+  // sanitizar
+  $resultado = filter_var($email, FILTER_SANITIZE_EMAIL);
+  var_dump($resultado); // string(17)"correo@correo.com"
+
+  // validar
+  $resultado = filter_var($email, FILTER_VALIDATE_EMAIL);
+  var_dump($resultado); // bool(false)
+?>
+```
+
+### Formularios
+
+- `action` para definir la ruta a la que se va a enviar la información del formulario.
+  Si no se pone, por defecto lo envia al mismo archivo. Es recomendable ponerlo.
+
+### Autenticación
+
+- `password_hash($contraseña, algoritmo)` para hashear una contraseña. Una vez esta
+  hasheado, no se puede deshacer.
+- `password_verify($contraseña, $contraseñaHasheada)` para verificar una contraseña.
+  Devuelve true o false.
+
+### Sesiones
+
+- `session_start()` para iniciar una sesión. Se debe iniciar sesión antes de usar `$_SESSION`.
+- `$_SESSION` para acceder a una sesión. Es un array asociativo.
+- `session_destroy()` para destruir una sesión.
+
+```php
+<?php
+  // iniciar una sesión
   session_start();
-  $_SESSION['name'] = 'Juan';
-  echo $_SESSION['name'];
-  // $_COOKIE
-  echo $_COOKIE['font-size'];
-  // $_FILES
-  echo $_FILES['file']['name'];
-  // $_ENV
-  echo $_ENV['USER'];
-  // $_REQUEST
-  echo $_REQUEST['name'];
-  // $_GLOBALS
-  echo $GLOBALS['name'];
+
+  // acceder a una sesión
+  $_SESSION['usuario'] = 'Juan';
+  $_SESSION['login'] = true;
+
+  // destruir una sesión
+  session_destroy();
 ?>
 ```
 
@@ -626,26 +724,6 @@ Son variables que están disponibles en todo el script.
 
   // acceder a una cookie
   echo $_COOKIE['font-size'];
-?>
-```
-
-### Sesiones ???
-
-- `session_start` para iniciar una sesión.
-- `$_SESSION` para acceder a una sesión.
-- `session_destroy` para destruir una sesión.
-
-```php
-<?php
-  // iniciar una sesión
-  session_start();
-
-  // acceder a una sesión
-  $_SESSION['name'] = 'Juan';
-  echo $_SESSION['name'];
-
-  // destruir una sesión
-  session_destroy();
 ?>
 ```
 
@@ -719,7 +797,7 @@ Todas las funciones de MySQLi inician con `mysqli_`. Anteriormente se usaba el p
   recibe 4 parametros: host, usuario, contraseña y base de datos.
 - La función `mysqli_query` sirve para realizar una consulta a la base de datos,
   recibe 2 parametros: la conexión y la consulta.
-- La función `mysqli_fetch_assoc` sirve para obtener un registro de la base de datos,
+- La función `mysqli_fetch_assoc` sirve para obtener un registro de la consulta,
   recibe 1 parametro: el resultado de la consulta. Devuelve un array asociativo.
 - La función `mysqli_fetch_array` sirve para obtener un registro de la base de datos,
   recibe 1 parametro: el resultado de la consulta. Devuelve un array indexado.
