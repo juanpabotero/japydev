@@ -30,8 +30,16 @@ Reiniciar el servicio cuando se hacen cambios en los archivos de configuración.
 
 ### Composer
 
-Es un gestor de dependencias para PHP.  
-`composer -v` ver la versión de composer.
+Es un gestor de dependencias para PHP. Es equivalente a NPM en JavaScript.
+
+- `composer -v` ver la versión de composer.
+- `composer init` crear un archivo composer.json.
+- `composer install` instalar las dependencias de un proyecto.
+- `composer require package` instalar una dependencia.
+- `composer remove package` eliminar una dependencia.
+- `composer update` actualizar las dependencias de un proyecto.
+- `composer dump-autoload` actualizar el archivo autoload.php.
+- `composer show` ver las dependencias instaladas.
 
 ## Conceptos
 
@@ -582,22 +590,212 @@ Tendriamos que pasarle la variable como parametro a la función.
 
 ### Clases
 
-- `class` para definir una clase.
-- `__construct` para definir el constructor de una clase.
-- `public` para definir un método o propiedad pública.
-- `private` para definir un método o propiedad privada. ???
-- `protected` para definir un método o propiedad protegida. ???
-- `static` para definir un método o propiedad estática. ???
-- `self` para acceder a una propiedad o método estático dentro de la misma clase. ???
-- `parent` para acceder a una propiedad o método estático dentro de la clase padre. ???
-- `extends` para heredar de una clase. ???
-- `::` para acceder a una propiedad o método estático. ???
-- `->` para acceder a una propiedad o método de una instancia de una clase. ???
+Es una plantilla para crear objetos. Tienen propiedades y métodos.
+Se define con PascalCase. Las caracteristicas más importantes de la programación
+orientada a objetos son:
+
+Abstracción: Es la capacidad de representar un objeto del mundo real en un programa.  
+Encapsulamiento: Es la capacidad de agrupar datos y métodos en una clase.  
+Herencia: Es la capacidad de una clase de heredar propiedades y métodos de otra.  
+Polimorfismo: Es la capacidad de una clase de tener diferentes comportamientos.
+
+- `class` definir una clase.
+- `__construct` definir el constructor de una clase. Se llama automáticamente
+  cuando se crea una instancia de la clase.
+- `$this` hace referencia a la clase o instancia de la clase.
+- `public` definir un método o propiedad pública. Se puede acceder y modificar en
+  cualquier lugar (clase y objeto)
+- `private` definir un método o propiedad privada. Solo miembros de la misma clase
+  pueden acceder a él.
+- `protected` definir un método o propiedad protegida. Se puede acceder o modificar
+  unicamente en la clase.
+- `static` definir un método o propiedad estática. Se puede acceder sin necesidad
+  de instanciar la clase.
+- `self` acceder a una propiedad o método estático dentro de la misma clase.
+- `::` acceder a una propiedad o método estático.
+- `parent` acceder a una propiedad o método dentro de la clase padre.
+- `extends` heredar de una clase.
+- `->` acceder a una propiedad o método de un objeto.
 
 ```php
 <?php
   class Product {
-    public $name;
+    protected $name;
+    public $price;
+    public $available;
+    public static $image = "image.jpg";
+
+    public function __construct(string $name, int $price, bool $available) {
+      $this->name = $name;
+      $this->price = $price;
+      $this->available = $available;
+    }
+
+    public static function getProductImage() {
+        return self::$image;
+    }
+
+    public function getName(): string {
+      return $this->name;
+    }
+
+    public function setName(string $name) {
+      $this->name = $name;
+    }
+
+    public function showInfo() {
+      return "El producto es: " . $this->name . " y su precio es: " . $this->price;
+    }
+  }
+
+  // otra forma de definir una clase. Desde PHP 8
+  class Product {
+    public function __construct(
+      protected string $name,
+      public int $price,
+      public bool $available
+    ) {}
+  }
+
+  $product = new Product('Tablet', 200, true);
+  $product->setName('Iphone');
+  echo $product->getName();
+  echo $product->showInfo();
+
+  // acceder a una propiedad o metodo estáticos
+  echo Product::$image;
+  echo Product::getProductImage();
+?>
+```
+
+#### Herencia
+
+Permite crear nuevas clases a partir de otras clases existentes.
+
+- `extends` para heredar de una clase.
+- `parent` para acceder a una propiedad o método de la clase padre.
+
+```php
+<?php
+  class Product {
+    protected $name;
+    public $price;
+    public $available;
+    public static $image = "image.jpg";
+
+    public function __construct(string $name, int $price, bool $available) {
+      $this->name = $name;
+      $this->price = $price;
+      $this->available = $available;
+    }
+
+    public static function getProductImage() {
+        return self::$image;
+    }
+
+    public function getName(): string {
+      return $this->name;
+    }
+
+    public function setName(string $name) {
+      $this->name = $name;
+    }
+
+    public function showInfo() {
+      return "El producto es: " . $this->name . " y su precio es: " . $this->price;
+    }
+  }
+
+  class ProductDigital extends Product {
+    public $downloadable;
+
+    public function __construct(
+      string $name,
+      int $price,
+      bool $available,
+      bool $downloadable
+    ) {
+      parent::__construct($name, $price, $available);
+      $this->downloadable = $downloadable;
+    }
+
+    public function showInfo() {
+      return parent::showInfo() . " y es descargable";
+    }
+  }
+
+  $product = new ProductDigital('Tablet', 200, true, true);
+  echo $product->showInfo();
+?>
+```
+
+#### Clases abstractas
+
+Sirven para definir una clase base que se va a heredar pero no se puede instanciar.
+Se usa para definir métodos que se deben implementar en las clases hijas.
+
+- `abstract` para definir una clase o metodo abstracto.
+
+```php
+<?php
+  abstract class Product {
+    protected $name;
+    public $price;
+    public $available;
+    public static $image = "image.jpg";
+
+    public function __construct(string $name, int $price, bool $available) {
+      $this->name = $name;
+      $this->price = $price;
+      $this->available = $available;
+    }
+
+    public static function getProductImage() {
+        return self::$image;
+    }
+
+    public function getName(): string {
+      return $this->name;
+    }
+
+    public function setName(string $name) {
+      $this->name = $name;
+    }
+
+    abstract public function showInfo();
+  }
+
+  class ProductDigital extends Product {
+    public $downloadable;
+
+    public function __construct(
+      string $name,
+      int $price,
+      bool $available,
+      bool $downloadable
+    ) {
+      parent::__construct($name, $price, $available);
+      $this->downloadable = $downloadable;
+    }
+
+    public function showInfo() {
+      return "El producto es: " . $this->name . " y su precio es: " . $this->price;
+    }
+  }
+
+  $product = new ProductDigital('Tablet', 200, true, true);
+  echo $product->showInfo();
+?>
+```
+
+#### Polimorfismo
+
+Es la capacidad de una clase de tener diferentes comportamientos.
+
+```php
+<?php
+  abstract class Product {
+    protected $name;
     public $price;
     public $available;
 
@@ -607,13 +805,88 @@ Tendriamos que pasarle la variable como parametro a la función.
       $this->available = $available;
     }
 
+    public function getName(): string {
+      return $this->name;
+    }
+
+    public function setName(string $name) {
+      $this->name = $name;
+    }
+
+    abstract public function showInfo();
+  }
+
+  class ProductDigital extends Product {
+    public $downloadable;
+
+    public function __construct(
+      string $name,
+      int $price,
+      bool $available,
+      bool $downloadable
+    ) {
+      parent::__construct($name, $price, $available);
+      $this->downloadable = $downloadable;
+    }
+
     public function showInfo() {
+      return "El producto es: " . $this->name . " y su precio es: " . $this->price . "y es descargable";
+    }
+  }
+
+  class ProductPhysical extends Product {
+    public $weight;
+
+    public function __construct(
+      string $name,
+      int $price,
+      bool $available,
+      int $weight
+    ) {
+      parent::__construct($name, $price, $available);
+      $this->weight = $weight;
+    }
+
+    public function showInfo() {
+      return "El producto es: " . $this->name . " y su precio es: " . $this->price . "y pesa: " . $this->weight . "kg";
+    }
+  }
+
+  $product = new ProductDigital('Tablet', 200, true, true);
+  echo $product->showInfo();
+  $product = new ProductPhysical('Tablet', 200, true, 2);
+  echo $product->showInfo();
+?>
+```
+
+### Interfaces
+
+Sirven para definir un contrato que se debe cumplir en las clases que la implementan.
+
+- `interface` para definir una interfaz.
+- `implements` para implementar una interfaz.
+
+```php
+<?php
+  interface Product {
+    public function showInfo(): string;
+  }
+
+  class ProductDigital implements Product {
+    public $name;
+    public $price;
+
+    public function __construct(string $name, int $price) {
+      $this->name = $name;
+      $this->price = $price;
+    }
+
+    public function showInfo(): string {
       return "El producto es: " . $this->name . " y su precio es: " . $this->price;
     }
   }
 
-  $product = new Product('Tablet', 200, true);
-  echo $product->name;
+  $product = new ProductDigital('Tablet', 200, true, true);
   echo $product->showInfo();
 ?>
 ```
@@ -780,6 +1053,61 @@ Tendriamos que pasarle la variable como parametro a la función.
 ?>
 ```
 
+### Namespaces
+
+Sirven para evitar conflictos entre clases que tienen el mismo nombre.
+
+- `namespace` para definir un namespace.
+- `use` para importar un namespace.
+
+```php
+<?php
+  // Tienda.php
+  namespace Tienda;
+
+  class Producto {
+    public function mostrar() {
+      echo "Mostrar Tienda";
+    }
+  }
+
+  // Tienda2.php
+  namespace Tienda2;
+
+  class Producto {
+    public function mostrar() {
+      echo "Mostrar Tienda2";
+    }
+  }
+
+  // index.php
+  // importar el autoloader de composer
+  require_once 'vendor/autoload.php';
+
+  // importar un namespace
+  use Tienda\Producto as ProductoTienda;
+  use Tienda2\Producto as ProductoTienda2;
+
+  $producto = new ProductoTienda();
+  $producto->mostrar();
+  $producto = new ProductoTienda2();
+  $producto->mostrar();
+?>
+```
+
+Agregar en el composer.json para que se pueda hacer el autoload de los namespaces:
+
+```json
+{
+  "autoload": {
+    "psr-4": {
+      "Tienda\\": "Tienda",
+      "Tienda2\\": "Tienda2"
+    }
+  }
+}
+```
+
 ## Conexión a bases de datos
 
 Existen 2 formas de conectarse a una base de datos, usando la libreria MySQLi o usando PDO.
@@ -793,20 +1121,93 @@ MySQLi solo permite conectarse a bases de datos MySQL.
 Todas las funciones de MySQLi inician con `mysqli_`. Anteriormente se usaba el prefijo
 `mysql_` pero ya es obsoleto. Se puede conectar con la forma orientada a objetos o con función.
 
-- La función `mysqli_connect` sirve para realizar la conexión a la base de datos,
-  recibe 4 parametros: host, usuario, contraseña y base de datos.
-- La función `mysqli_query` sirve para realizar una consulta a la base de datos,
-  recibe 2 parametros: la conexión y la consulta.
-- La función `mysqli_fetch_assoc` sirve para obtener un registro de la consulta,
-  recibe 1 parametro: el resultado de la consulta. Devuelve un array asociativo.
-- La función `mysqli_fetch_array` sirve para obtener un registro de la base de datos,
-  recibe 1 parametro: el resultado de la consulta. Devuelve un array indexado.
-- La función `mysqli_fetch_row` sirve para obtener un registro de la base de datos,
-  recibe 1 parametro: el resultado de la consulta. Devuelve un array indexado.
-- La función `mysqli_fetch_object` sirve para obtener un registro de la base de datos,
-  recibe 1 parametro: el resultado de la consulta. Devuelve un objeto.
-- La función `mysqli_fetch_all` sirve para obtener todos los registros de la base de datos,
-  recibe 1 parametro: el resultado de la consulta. Devuelve un array indexado.
-- La función `mysqli_close` sirve para cerrar la conexión a la base de datos,
-  recibe 1 parametro: la conexión. PHP cierra la conexión automáticamente al finalizar
-  la ejecución del script.
+- `$conexiondb = mysqli_connect(host, usuario, contraseña, base de datos)` realizar la
+  conexión a la base de datos.
+- `mysqli_query($conexiondb, $consulta)` realizar una consulta a la base de datos.
+- `mysqli_fetch_assoc($resultadoConsulta)` obtener un registro de la consulta.
+  Devuelve un array asociativo.
+- `mysqli_fetch_array($resultadoConsulta)` obtener un registro de la consulta.
+  Devuelve un array indexado.
+- `mysqli_fetch_row($resultadoConsulta)` obtener un registro de la consulta.
+  Devuelve un array indexado.
+- `mysqli_fetch_object($resultadoConsulta)` obtener un registro de la consulta.
+  Devuelve un objeto.
+- `mysqli_fetch_all($resultadoConsulta)` obtener todos los registros de la consulta.
+  Devuelve un array indexado.
+- `mysqli_close($conexiondb)` cerrar la conexión a la base de datos. PHP cierra la
+  conexión automáticamente al finalizar la ejecución del script.
+
+Tambien se puede usar la forma orientada a objetos para conectarse a la base de datos.
+
+- `$conexiondb = new mysqli(host, usuario, contraseña, base de datos)` realizar la
+  conexión a la base de datos.
+- `$conexiondb->query($consulta)` realizar una consulta a la base de datos.
+- `$resultadoConsulta->fetch_assoc()` obtener un registro de la consulta. Devuelve un
+  array asociativo.
+- `$resultadoConsulta->fetch_array()` obtener un registro de la consulta. Devuelve un array
+- `$resultadoConsulta->fetch_row()` obtener un registro de la consulta. Devuelve un array
+- `$resultadoConsulta->fetch_object()` obtener un registro de la consulta. Devuelve un objeto
+- `$resultadoConsulta->fetch_all()` obtener todos los registros de la consulta. Devuelve un array
+- `$conexiondb->close()` cerrar la conexión a la base de datos.
+
+Tambien se puede hacer con sentencias preparadas. Se usa para evitar inyección SQL.
+Una vez preparada la sentencia, se guarda en memoria, en caso de hacer la
+misma consulta.
+
+```php
+<?php
+  // Conectar a la BD con Mysqli.
+  // mysqli('host', 'user', 'password', 'database');
+  $db = new mysqli('localhost', 'root', '', 'bienesraices_crud');
+
+  // Creamos el query
+  $query = "SELECT titulo, imagen from propiedades";
+
+  // Lo preparamos
+  $stmt = $db->prepare($query);
+
+  // Lo ejecutamos
+  $stmt->execute();
+
+  // creamos las variables donde se guardaran los resultados
+  // bind_result() nos permite pasar los resultados a variables
+  $stmt->bind_result($titulo, $imagen);
+
+  // imprimir el resultado
+  // fetch() nos permite asignar los resultados
+  while($stmt->fetch()):
+      var_dump($titulo);
+  endwhile;
+?>
+```
+
+Con **PDO** usando sentencias preparadas:
+
+```php
+<?php
+  // Conectar a la BD con PDO
+  // PDO('database:host=host; dbname=database', 'user', 'password');
+  $db = new PDO('mysql:host=localhost; dbname=bienesraices_crud', 'root', '');
+
+  // Creamos el query
+  $query = "SELECT titulo, imagen from propiedades";
+
+  // Lo preparamos
+  $stmt = $db->prepare($query);
+
+  // Lo ejecutamos
+  $stmt->execute();
+
+  // Obtener los resultados
+  // fetchAll(como traer el resultado) nos permite obtener todos los resultados
+  $resultado = $stmt->fetchAll( PDO::FETCH_ASSOC );
+
+  // Iterar
+  foreach($resultado as $propiedad):
+      echo $propiedad['titulo'];
+      echo "<br>";
+      echo $propiedad['imagen'];
+      echo "<br>";
+  endforeach;
+?>
+```
