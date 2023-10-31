@@ -41,6 +41,15 @@ Es un gestor de dependencias para PHP. Es equivalente a NPM en JavaScript.
 - `composer dump-autoload` actualizar el archivo autoload.php.
 - `composer show` ver las dependencias instaladas.
 
+### Intervention Image
+
+Es una libreria para manipular imágenes.  
+`composer require intervention/image` instalar la libreria.
+
+### Packagist
+
+Es un repositorio de paquetes de PHP. Para buscar paquetes de PHP que necesitemos.
+
 ## Conceptos
 
 Para escribir código PHP se debe usar la etiqueta `<?php ?>`. En scripts que solo tengan código PHP
@@ -127,6 +136,7 @@ Es buena práctica usar mayúsculas y snake_case para el nombre de las constante
 - `gettype($variable);` imprimir el tipo de dato de una variable.
 - `var_dump($variable);` imprimir el tipo de dato y el valor de la variable.
 - `isset($variable);` saber si una variable está definida.
+- `is_null($variable);` saber si una variable es null.
 
 ```php
 <?php
@@ -227,9 +237,13 @@ no devuelven ningun valor.
 
 #### Null
 
+Null en mayúscula o minúscula es lo mismo.  
+`is_null($variable)` para saber si una variable es null.
+
 ```php
 <?php
   $salary = null;
+  $isActive = is_null($salary);
 ?>
 ```
 
@@ -263,6 +277,7 @@ Los arrays pueden tener claves alfanuméricas.
 ?>
 ```
 
+- `$people[] = 'Pablo'` añadir un elemento al final de un array.
 - `$people[0]` obtener un elemento de un array indexado.
 - `$people[3] = "Pepito"` añadir un elemento a un array indexado.
 - `$people['name']` obtener un elemento de un array asociativo.
@@ -273,11 +288,10 @@ Los arrays pueden tener claves alfanuméricas.
 - `isset($people)` revisa si un array esta creado o una propiedad esta definida.
 - `isset($people['age'])` revisa si un array esta creado o una propiedad esta definida.
 - `count($people)` muestra la cantidad de elementos de un array.
-- `$people[] = 'Pablo'` añadir un elemento al final de un array.
 - `array_push($people, 'Pedro')` agregar un elemento al final de un array.
-- `array_pop($people)` eliminar el último elemento de un array.
+- `array_pop($people)` eliminar el último elemento de un array y lo devuelve.
 - `array_unshift($people, 'Pedro')` agregar un elemento al inicio de un array.
-- `array_shift($people)` eliminar el primer elemento de un array.
+- `array_shift($people)` eliminar el primer elemento de un array y lo devuelve.
 - `sort($people)` ordenar un array de forma ascendente.
 - `rsort($people)` ordenar un array de forma descendente.
 - `asort($people)` ordenar un array asociativo por valor de forma ascendente.
@@ -605,17 +619,20 @@ Polimorfismo: Es la capacidad de una clase de tener diferentes comportamientos.
 - `$this` hace referencia a la clase o instancia de la clase.
 - `public` definir un método o propiedad pública. Se puede acceder y modificar en
   cualquier lugar (clase y objeto)
-- `private` definir un método o propiedad privada. Solo miembros de la misma clase
-  pueden acceder a él.
-- `protected` definir un método o propiedad protegida. Se puede acceder o modificar
-  unicamente en la clase.
+- `private` definir un método o propiedad privada. Solo pueden ser accedidos desde
+  dentro de la misma clase que fueron definidos. No se puede acceder desde fuera de la clase ni desde clases que heredaron de ella.
+- `protected` definir un método o propiedad protegida. Se puede acceder desde la misma
+  clase o clases que heredaron de ella. No se puede acceder desde fuera de la clase.
 - `static` definir un método o propiedad estática. Se puede acceder sin necesidad
   de instanciar la clase.
-- `self` acceder a una propiedad o método estático dentro de la misma clase.
 - `::` acceder a una propiedad o método estático.
+- `self::` acceder a una propiedad o método estático de la misma clase.
+- `static::` acceder a una propiedad o método estático de una clase hija.
 - `parent` acceder a una propiedad o método dentro de la clase padre.
 - `extends` heredar de una clase.
 - `->` acceder a una propiedad o método de un objeto.
+- `$objeto = new self;` crear una instancia de la clase que lo invoca.
+- `$objeto = new static;` crear una instancia de la clase hija que lo invoca.
 
 ```php
 <?php
@@ -891,53 +908,13 @@ Sirven para definir un contrato que se debe cumplir en las clases que la impleme
 ?>
 ```
 
-### json_encode y json_decode
-
-- `json_encode` para convertir un array a un string JSON. Se puede agregar un
-  segundo parametro para que no escape los caracteres unicode (JSON_UNESCAPED_UNICODE)
-- `json_decode` para convertir un string JSON a un array.
-
-```php
-<?php
-  $productos = [
-    [
-        'nombre' => 'Tablet',
-        'precio' => 200,
-        'disponible' => true
-    ],
-    [
-        'nombre' => 'Televisión 24"',
-        'precio' => 300,
-        'disponible' => true
-    ],
-    [
-        'nombre' => 'Monitor Curvo',
-        'precio' => 400,
-        'disponible' => false
-    ]
-  ];
-
-  echo "<pre>";
-  var_dump($productos);
-
-  // convertir un array a un string JSON.
-  $productos_json = json_encode($productos, JSON_UNESCAPED_UNICODE);
-
-  // para convertir un string JSON a un array.
-  $productos_array = json_decode($productos_json);
-
-  var_dump($productos_json);
-  var_dump($productos_array);
-  var_dump($productos_array[0]->nombre);
-  echo "</pre>";
-?>
-```
-
 ### Sanitizar y validar datos
 
 - `filter_var($variable, validacion)` para validar un dato.
 - `htmlspecialcharts($variable);` para escapar caracteres especiales. Es una forma de
-  sanitizar datos.
+  sanitizar datos, sobretodo para sanitizar el HTML que ingresa el usuario.
+- `FILTER_VALIDATE_EMAIL` para validar un email. Devuelve false si no es un email y
+  devuelve el email si es un email.
 
 ```php
 <?php
@@ -949,6 +926,12 @@ Sirven para definir un contrato que se debe cumplir en las clases que la impleme
   // validar
   $resultado = filter_var($email, FILTER_VALIDATE_EMAIL);
   var_dump($resultado); // bool(false)
+
+  // escapar/sanitizar el html
+  $resultado = "<script>alert('hola')</script>";
+  $resultado = htmlspecialchars($resultado);
+  // $resultado = &lt;script&gt;alert('hola')&lt;/script&gt;
+  // escapa los caracteres especiales y evita inyeccion de codigo
 ?>
 ```
 
@@ -956,6 +939,8 @@ Sirven para definir un contrato que se debe cumplir en las clases que la impleme
 
 - `action` para definir la ruta a la que se va a enviar la información del formulario.
   Si no se pone, por defecto lo envia al mismo archivo. Es recomendable ponerlo.
+  Para llamar al mismo archivo se puede usar:  
+  `action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"`.
 
 ### Autenticación
 
@@ -966,9 +951,11 @@ Sirven para definir un contrato que se debe cumplir en las clases que la impleme
 
 ### Sesiones
 
-- `session_start()` para iniciar una sesión. Se debe iniciar sesión antes de usar `$_SESSION`.
+- `session_start()` para iniciar una sesión. Se debe iniciar sesión en cada página
+  donde se quiera acceder a la sesión.
 - `$_SESSION` para acceder a una sesión. Es un array asociativo.
-- `session_destroy()` para destruir una sesión.
+- `session_destroy()` para destruir una sesión. Al cerrar el navegador se destruye
+  la sesión.
 
 ```php
 <?php
@@ -984,15 +971,23 @@ Sirven para definir un contrato que se debe cumplir en las clases que la impleme
 ?>
 ```
 
-### Cookies ???
+### Cookies
 
-- `setcookie` para crear una cookie.
+- `setcookie(nombre, valor, expiracion, ruta donde estará disponible)` para crear una
+  cookie.
 - `$_COOKIE` para acceder a una cookie.
+
+Se puede usar la función `time()` para obtener el tiempo actual y sumarle el tiempo
+de expiración de la cookie.  
+Para eliminar una cookie se puede poner un tiempo de expiración en el pasado. Por
+ejemplo: `time() - 1`.
+Para que la cookie esté disponible en todo el sitio se puede poner la ruta como `'/'`.  
+Es recomendable sanitizar las cookies para evitar inyección de código. Ej:  
+`htmlspecialchars($_COOKIE['font-size'])`
 
 ```php
 <?php
   // crear una cookie
-  // setcookie(nombre, valor, expiracion, ruta)
   setcookie('font-size', '30px', time() + 60 * 60 * 24 * 30, '/');
 
   // acceder a una cookie
@@ -1000,19 +995,30 @@ Sirven para definir un contrato que se debe cumplir en las clases que la impleme
 ?>
 ```
 
-### Archivos ???
+### Archivos
 
-- `file_exists` para saber si un archivo existe.
-- `file_get_contents` para obtener el contenido de un archivo.
-- `file_put_contents` para escribir en un archivo.
-- `file` para obtener el contenido de un archivo como un array.
-- `unlink` para eliminar un archivo.
-- `copy` para copiar un archivo.
-- `rename` para renombrar un archivo.
-- `mkdir` para crear una carpeta.
-- `rmdir` para eliminar una carpeta.
-- `is_dir` para saber si es una carpeta.
-- `scandir` para obtener el contenido de una carpeta como un array.
+- `file_exists(archivo)` saber si un archivo existe.
+- `file_get_contents(archivo)` obtener el contenido de un archivo.
+- `file_put_contents(archivo, contenido, tipo de agregación)` escribir en un archivo.
+  Por defecto sobreescribe el contenido. Para agregar contenido se puede usar
+  `FILE_APPEND`.
+- `file(archivo)` obtener el contenido de un archivo como un array.
+- `unlink('ruta del archivo')` eliminar un archivo.
+- `copy` copiar un archivo.
+- `rename` renombrar un archivo.
+- `mkdir` crear una carpeta.
+- `rmdir` eliminar una carpeta.
+- `is_dir` saber si es una carpeta.
+- `scandir` obtener el contenido de una carpeta como un array.
+- `path_info(ruta, tipo información)` obtener información de una ruta.
+  - `PATHINFO_DIRNAME` obtener el directorio de la ruta.
+  - `PATHINFO_BASENAME` obtener el nombre del archivo con su extensión.
+  - `PATHINFO_FILENAME` obtener el nombre del archivo sin su extensión.
+  - `PATHINFO_EXTENSION` obtener la extensión del archivo.
+- `glob(ruta)` obtener los archivos de una carpeta como un array.
+- `basename(ruta/archivo)` obtener el nombre del archivo con extensión.
+- `basename(ruta/archivo, extensión)` obtener el nombre del archivo sin extensión.
+- `dirname(ruta/archivo)` obtener el directorio de la ruta.
 
 ```php
 <?php
@@ -1021,7 +1027,7 @@ Sirven para definir un contrato que se debe cumplir en las clases que la impleme
   echo $file;
 
   // escribir en un archivo
-  file_put_contents('archivo.txt', 'Hola Mundo');
+  file_put_contents('archivo.txt', 'Hola Mundo', FILE_APPEND);
 
   // obtener el contenido de un archivo como un array
   $file = file('archivo.txt');
@@ -1050,6 +1056,10 @@ Sirven para definir un contrato que se debe cumplir en las clases que la impleme
   echo "<pre>";
   var_dump($files);
   echo "</pre>";
+
+  // obtener los archivos de una carpeta como un array.
+  $resultados = glob('*.php');
+  $resultados = glob('*.{php,html,txt}', GLOB_BRACE);
 ?>
 ```
 
@@ -1108,6 +1118,48 @@ Agregar en el composer.json para que se pueda hacer el autoload de los namespace
 }
 ```
 
+### json_encode y json_decode
+
+- `json_encode` para convertir un array a un string JSON. Se puede agregar un
+  segundo parametro para que no escape los caracteres unicode (JSON_UNESCAPED_UNICODE)
+- `json_decode` para convertir un string JSON a un array.
+
+```php
+<?php
+  $productos = [
+    [
+        'nombre' => 'Tablet',
+        'precio' => 200,
+        'disponible' => true
+    ],
+    [
+        'nombre' => 'Televisión 24"',
+        'precio' => 300,
+        'disponible' => true
+    ],
+    [
+        'nombre' => 'Monitor Curvo',
+        'precio' => 400,
+        'disponible' => false
+    ]
+  ];
+
+  echo "<pre>";
+  var_dump($productos);
+
+  // convertir un array a un string JSON.
+  $productos_json = json_encode($productos, JSON_UNESCAPED_UNICODE);
+
+  // para convertir un string JSON a un array.
+  $productos_array = json_decode($productos_json);
+
+  var_dump($productos_json);
+  var_dump($productos_array);
+  var_dump($productos_array[0]->nombre);
+  echo "</pre>";
+?>
+```
+
 ## Conexión a bases de datos
 
 Existen 2 formas de conectarse a una base de datos, usando la libreria MySQLi o usando PDO.
@@ -1120,6 +1172,10 @@ PDO permite conectarse a cualquier base de datos que tenga un driver PDO
 MySQLi solo permite conectarse a bases de datos MySQL.  
 Todas las funciones de MySQLi inician con `mysqli_`. Anteriormente se usaba el prefijo
 `mysql_` pero ya es obsoleto. Se puede conectar con la forma orientada a objetos o con función.
+
+El método `query` se podria utulizar cuando yo como programador creo la consulta y no
+hago interpolación de los datos. Si se requiere un dato que el usuario ingresa para
+armar la consulta, se debe usar sentencias preparadas.
 
 - `$conexiondb = mysqli_connect(host, usuario, contraseña, base de datos)` realizar la
   conexión a la base de datos.
@@ -1156,6 +1212,10 @@ misma consulta.
 
 ```php
 <?php
+  // obtener datos de la url
+  $id = $_GET['id'];
+  $nombre = $_GET['nombre'];
+
   // Conectar a la BD con Mysqli.
   // mysqli('host', 'user', 'password', 'database');
   $db = new mysqli('localhost', 'root', '', 'bienesraices_crud');
@@ -1174,7 +1234,23 @@ misma consulta.
   $stmt->bind_result($titulo, $imagen);
 
   // imprimir el resultado
-  // fetch() nos permite asignar los resultados
+  // fetch() trae un resultado de la consulta
+  while($stmt->fetch()):
+      var_dump($titulo);
+  endwhile;
+
+  // si se requiere inyectar datos en la consulta
+  // ? indica que se va a inyectar un dato
+  // bind_param() nos permite inyectar datos en la consulta
+  // se debe poner una letra por cada dato que se va a inyectar
+  // s indica que el dato es un string
+  // i indica que el dato es un entero
+  // d indica que el dato es un double
+  $query = "SELECT titulo, imagen from propiedades WHERE id = ? OR nombre = ?";
+  $stmt = $db->prepare($query);
+  $stmt->bind_param('is', $id, $nombre);
+  $stmt->execute();
+  $stmt->bind_result($titulo, $imagen);
   while($stmt->fetch()):
       var_dump($titulo);
   endwhile;
@@ -1185,6 +1261,10 @@ Con **PDO** usando sentencias preparadas:
 
 ```php
 <?php
+  // obtener datos de la url
+  $id = $_GET['id'];
+  $nombre = $_GET['nombre'];
+
   // Conectar a la BD con PDO
   // PDO('database:host=host; dbname=database', 'user', 'password');
   $db = new PDO('mysql:host=localhost; dbname=bienesraices_crud', 'root', '');
@@ -1203,6 +1283,28 @@ Con **PDO** usando sentencias preparadas:
   $resultado = $stmt->fetchAll( PDO::FETCH_ASSOC );
 
   // Iterar
+  foreach($resultado as $propiedad):
+      echo $propiedad['titulo'];
+      echo "<br>";
+      echo $propiedad['imagen'];
+      echo "<br>";
+  endforeach;
+
+  // si se requiere inyectar datos en la consulta ???
+  $query = "SELECT titulo, imagen from propiedades WHERE id = :id OR nombre = :nombre";
+  $stmt = $db->prepare($query);
+  // bindValue() nos permite inyectar datos en la consulta
+  $stmt->bindValue(':id', $id);
+  $stmt->bindValue(':nombre', $nombre);
+  $stmt->execute();
+  // o se podria hacer asi:
+  // $stmt->execute(
+  //   array(
+  //     ':id' => $id,
+  //     ':nombre' => $nombre
+  //   )
+  // );
+  $resultado = $stmt->fetchAll( PDO::FETCH_ASSOC );
   foreach($resultado as $propiedad):
       echo $propiedad['titulo'];
       echo "<br>";

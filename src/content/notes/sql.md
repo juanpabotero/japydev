@@ -338,7 +338,7 @@ SELECT * FROM movies WHERE year = 2002;
 
 #### UPDATE
 
-Permite actualizar los datos de una tabla.
+Permite actualizar los datos de una tabla. Siempre deberia ir acompañado de una condición.
 
 ```sql
 UPDATE movies SET year = 2000 WHERE id = 1;
@@ -347,7 +347,7 @@ UPDATE movies SET year = 2000, rating = 8.0 WHERE id = 1;
 
 #### DELETE
 
-Permite eliminar los datos de una tabla.
+Permite eliminar los datos de una tabla. Siempre deberia ir acompañado de una condición.
 
 ```sql
 DELETE FROM movies WHERE id = 1;

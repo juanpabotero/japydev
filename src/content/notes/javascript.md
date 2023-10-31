@@ -584,6 +584,14 @@ Es mono hilo, es decir, solo puede hacer una cosa a la vez.
   });
   ```
 
+- Obtener el navegador y el sistema operativo:
+
+  ```javascript
+  const userAgent = window.navigator.userAgent;
+  const isChrome = userAgent.includes('Chrome');
+  const isWindows = userAgent.includes('Windows');
+  ```
+
 - Tiempo relativo en cualquier idioma:
 
   ```javascript

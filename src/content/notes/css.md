@@ -145,7 +145,9 @@ heroImage: '/css.svg'
   }
   ```
 
-- Esconder texto muy largo:
+- Esconder texto muy largo. Indica que si el desbordamiento es por un texto,
+  ponga 3 puntos al final. Por defecto text-overflow es clip, es decir, corta
+  el texto, pero no lo esconde:
 
   ```css
   p {
@@ -726,3 +728,78 @@ da al elemento es el ancho y alto del contenido, no toma en cuenta el padding ni
 border, estos 2 se van agregando a su tamaño.  
 En el modelo de caja `border-box`, el ancho y alto que se le da al elemento es el ancho
 y alto del contenido, padding y border.
+
+El overflow por defecto es `visible`, es decir, el contenido que se sale del elemento
+se muestra. Es recomendable usar `auto` en vez de `scroll` porque el navegador va a
+saber gestionar mejor si poner el scroll o no.
+
+Los elementos se posicionan por defecto de forma estática: `position: static`.
+
+`position: relative` crea un punto relativo para uqe cualquier hijo pueda tomarlo
+como referencia para posicionarse.
+
+`position: absolute` podemos definir su posición absoluta respecto al punto de
+referencia más cercano, es decir, si alguno de sus contenedores padre tiene
+`position: relative`, se posicionará respecto a este, sino, se posicionará
+respecto al documento.
+
+`position: fixed` posiciona el elemento relativo a la pantalla, es decir,
+si hago scroll, el elemento se va a mantener en la misma posición. No le afecta
+`position: relative` de sus contenedores padre.
+
+`position: sticky` se posiciona relativo a su contenedor padre y se mueve hasta donde
+su contenedor lo permita. Tiene en cuenta el `position: relative` de sus contenedores
+padre. Se debe acompañar de top, bottom, left o right para que se posicione.
+
+Los elementos HTML vienen en 3D, hay un apilamiento o capas y de allí sale la
+propiedad z-index para darle la profundidad a los elementos.  
+Algunas propiedades crean el contexto de apilamiento, por ejemplo, `position: fixed`
+o `opacity` menor a 1.  
+Cuando existe este apilamiento, por derfecto, los elementos hijos se posicionan por
+encima de sus padres pero por debajo de otros elementos en otros nodos. Los elementos
+hermanos que estan más abajo en el documento quedan por encima de los otros.  
+En algunos casos se debe usar `position: relative` para que el `z-index` funcione,
+porque el contexto de apilamiento debe tener alguna referencia.
+
+`display: flex` establece como tiene que funcionar el contenedor respecto a sus hijos.
+Permite alinear los elementos hijos. Es unidereccional, en un solo eje, es la
+diferencia con grid que funciona en 2 ejes.
+
+Por defecto usa `flex-wrap: nowrap` y lo que hace es intentar que el contenido quepa
+en una sola linea, si no cabe, le cambia su tamaño para que quepa.  
+`flex-wrap: wrap` le dice que si no cabe el contenido en una linea, entonces puede
+hacer un salto de linea.
+
+`flex-flow` es una forma abreviada de `flex-direction` y `flex-wrap`.
+
+Los valores por defecto son:
+
+- `flex-grow: 0` los elementos no crecen
+- `flex-shrink: 1` los elementos pueden reducir su tamaño a un tamaño más pequeño
+  que su flex-basis.
+- `flex-basis: auto` los elementos tienen un tamaño base de auto, es decir, el tamaño
+  de su contenido. Si el elemento tiene un width definido, toma éste como flex-basis.
+
+Si pongo `flex: 1` es lo mismo que poner `flex: 1 1 0`, es decir, `flex-grow: 1`,
+`flex-shrink: 1` y `flex-basis: 0`. Los elementos empiezan desde el mismo tamaño base y
+crecen hasta tener el mismo tamaño para ocupar todo el espacio disponible.
+
+- `justify-content` alinea el contenido en el eje principal
+- `align-content` alinea el contenido en el eje secundario
+- `justify-items` alinea los elementos en el eje principal
+- `align-items` alinea los elementos en el eje secundario
+- `justify-self` alinea el elemento en el eje principal
+- `align-self` alinea el elemento en el eje secundario
+
+### Utilidades
+
+- Posicionar modales o dialogos en el centro de la pantalla. Posicionado respecto al
+  documento:
+
+  ```css
+  .modal {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+  }
+  ```
