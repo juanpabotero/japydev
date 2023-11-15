@@ -37,7 +37,8 @@ Es un gestor de dependencias para PHP. Es equivalente a NPM en JavaScript.
 - `composer install` instalar las dependencias de un proyecto.
 - `composer require package` instalar una dependencia.
 - `composer remove package` eliminar una dependencia.
-- `composer update` actualizar las dependencias de un proyecto.
+- `composer update` actualizar las dependencias de un proyecto. Si se hace un cambio en
+  el composer.json se debe ejecutar este comando para que se actualicen las dependencias.
 - `composer dump-autoload` actualizar el archivo autoload.php.
 - `composer show` ver las dependencias instaladas.
 
@@ -1313,3 +1314,12 @@ Con **PDO** usando sentencias preparadas:
   endforeach;
 ?>
 ```
+
+## MVC
+
+Es un patrón de diseño de software que separa la lógica de negocio de la interfaz de usuario. Se divide en 3 capas:
+
+- Modelo: Se encarga de la lógica de negocio y de la interacción con la base de datos.
+- Vista: Se encarga de la interfaz de usuario.
+- Controlador: Se encarga de recibir las peticiones del usuario y de enviar los datos a
+  la vista. Es el intermediario entre el modelo y la vista.
