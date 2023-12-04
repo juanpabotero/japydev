@@ -712,6 +712,25 @@ Usar el cdk de angular para distintas funcionalidades o componentes.
 
 ---
 
+## Angular 17:
+
+- Nuevas directivas @if, @for, @switch:
+
+- Carga diferida (@defer).
+
+- Por defecto usa Esbuild, Vite y Standalone Components.
+
+- Transformar la información de un input.
+
+- Signals estables. Recomendable usarlo para manejar el estado del componente,
+  para lo demás usar observables.
+
+## Angular 16:
+
+- Parametros y queryParams como inputs.
+
+- Self closing tags.
+
 ## Angular material:
 
 libreria de componentes, ya estan estilizados y funcionales.  

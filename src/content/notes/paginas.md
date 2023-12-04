@@ -282,7 +282,8 @@ heroImage: '/page.svg'
   [codung-interview-university](https://github.com/jwasham/coding-interview-university)
 
 - Clean code para Javascript  
-  [clean-code-Javascript](https://github.com/ryanmcdermott/clean-code-javascript)
+  [clean-code-Javascript](https://github.com/ryanmcdermott/clean-code-javascript)  
+  https://github.com/andersontr15/clean-code-javascript-es
 
 - Recursos para desarrolladores  
   [design-resources-for-developers](https://github.com/bradtraversy/design-resources-for-developers)
@@ -357,7 +358,6 @@ heroImage: '/page.svg'
   [project-based-learning](https://github.com/practical-tutorials/project-based-learning)
 
 - [public-apis](https://github.com/public-apis/public-apis)
-  
 - Explica como funciona la web  
   https://github.com/ByteByteGoHq/system-design-101 (midu)  
   [spellbook-of-modern-webdev](https://github.com/dexteryy/spellbook-of-modern-webdev)
@@ -369,7 +369,6 @@ heroImage: '/page.svg'
   [tech-interview-handbook](https://github.com/yangshun/tech-interview-handbook)
 
 - [you-dont-know-js](https://github.com/getify/You-Dont-Know-JS)
-  
 - Explica como hacer todo sin JQuery  
   [you-dont-need-jquery](https://github.com/camsong/You-Dont-Need-jQuery)
 
@@ -538,7 +537,8 @@ Para buscar cualquier libreria con vanilla javascript:
   [uiverse.io](https://uiverse.io/)
 
 - Componentes UI  
-  [storybook.js.org](https://storybook.js.org/)
+  [storybook.js.org](https://storybook.js.org/)  
+  https://www.hover.dev/
 
 - Componentes Tailwind  
   [headlessui.com](https://headlessui.com/)  
