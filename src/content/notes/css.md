@@ -791,6 +791,80 @@ crecen hasta tener el mismo tamaño para ocupar todo el espacio disponible.
 - `justify-self` alinea el elemento en el eje principal
 - `align-self` alinea el elemento en el eje secundario
 
+GRID
+
+Permite poner elementos encima de otros.
+
+La principal diferencia con `flex` es que este trabaja en un solo eje, mientras que
+`grid` trabaja en 2 ejes.
+
+El valor de auto para definir el tamaño de los elementos hace que se ajuste segun su contenido,
+si una columna tiene mas contenido va a tomar más espacio.
+
+Con `auto-fill`, si no hay más elementos que cubran el espacio va a respetar el tamaño
+del elemento asi sobre espacio a los lados. Con `auto-fit`, si no hay más elementos que
+cubran el espacio, va a hacer crecer los elementos para cubrir todo el espacio disponible.
+
+Se puede sobreponer unos elementos sobre otros con grid posicionandolos en el mismo lugar,
+quedaria por encima el elemento que esta más abajo en el DOM:
+
+```css
+.container div:nth-child(1) {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+}
+.container div:nth-child(2) {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+}
+```
+
+ANIMACIONES
+
+`scale` cambia el tamaño del elemento solo visualmente porque sigue ocupando lo mismo.
+
+Hay 2 formas de hacer animaciones, con transiciones y animaciones.
+
+Con las transiciones tener cuidado al usar el `all` porque anima todas las propiedades
+y en el caso de las sombraas son muy costosas de animar. Es mejor especificar las
+propiedades que se van a animar.
+
+Podemos hacer que las propiedades tengan diferentes transiciones. ej:
+
+```css
+div {
+  transition: background-color 0.3s ease-in, color 0.5s ease-out;
+}
+```
+
+Para saber que se puede animar, podemos penasr en las propiedades que tienen un estado
+intermedio, por ejemmplo, cambiar de un color a otro o el tamaño de un elemento. Pero
+propiedades como `background-image` o `font-family` no tienen estado intermedio y no
+se pueden animar.
+
+Se podria cambiar la transicion de entrada y salida de un elemento al poner distintas
+propiedades en los distintos estados:
+
+```css
+div {
+  transition: all 300ms ease-in; // estado final
+}
+div:hover {
+  transition: all 1s ease-out; // la primera animación
+}
+```
+
+Por temas de accesibilidad se puede poner una media query para los usuarios que prefieren
+no tener animaciones:
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  div {
+    transition: none;
+  }
+}
+```
+
 ### Utilidades
 
 - Posicionar modales o dialogos en el centro de la pantalla. Posicionado respecto al
