@@ -649,6 +649,7 @@ Para buscar cualquier libreria con vanilla javascript:
 - [lineicons.com](https://lineicons.com/) (midu)
 - [lordicon.com](https://lordicon.com/) (iconos animados)
 - [manypixels.co/free-icons](https://www.manypixels.co/free-icons)
+- https://phosphoricons.com/
 - [simpleicons.org](https://simpleicons.org/) (midu)
 - [svgl.vercel.app](https://svgl.vercel.app/) => logos de distintas tecnologias
 - [svgrepo.com](https://www.svgrepo.com/) (midu)
@@ -675,6 +676,7 @@ Para buscar cualquier libreria con vanilla javascript:
 - https://illustrationkit.com/
 - https://www.reshot.com/
 - https://iradesign.io/
+- https://css-peeps.com/
 
 ## Colores:
 
@@ -702,6 +704,7 @@ Para buscar cualquier libreria con vanilla javascript:
 - [fontfabric.com](https://www.fontfabric.com/)
 - [fonts.google.com](https://fonts.google.com/)
 - [fontshare.com](https://www.fontshare.com/)
+- https://fontsource.org/
 - [fontspace.com](https://www.fontspace.com/)
 - [fontsquirrel.com](https://www.fontsquirrel.com/)
 - [urbanfonts.com](https://www.urbanfonts.com/)
@@ -732,7 +735,8 @@ Para buscar cualquier libreria con vanilla javascript:
 - [Tinypng](https://tinypng.com/)
 - [Shortpixel](https://shortpixel.com/)
 - [svgomg](https://jakearchibald.github.io/svgomg/) (midu)  
-  se pega el svg y en la parte de abajo a la derecha se copia el código HTML del svg.
+  se pega el svg y en la parte de abajo a la derecha se copia el código HTML del svg.  
+  No remover viewbox porque no se podría redimensionar el svg
 
 ## Otras utilidades:
 
@@ -970,6 +974,9 @@ Para buscar cualquier libreria con vanilla javascript:
 
 - https://github.com/ByteByteGoHq/system-design-101 (midu)  
   Explicación de distintos temas web
+
+- https://www.engvid.com/  
+  Curso de ingles
 
 ---
 

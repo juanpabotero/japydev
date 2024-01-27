@@ -9,14 +9,17 @@ heroImage: '/sql.svg'
 ## Herramientas
 
 - Aprender y practicar SQL:  
-  https://sqlbolt.com/
+  https://sqlbolt.com/  
+  https://datalemur.com/
 
 - Gestionar las bases de datos:  
   Para usuarios Mac: https://dbngin.com/
 
 - Hostear bases de datos:  
-  https://planetscale.com/  
-  https://turso.tech/ (SQLite)
+  https://planetscale.com/ (MySQL)   
+  https://neon.tech/ (PostgreSQL)  
+  https://turso.tech/ (SQLite)  
+  https://www.mongodb.com/atlas/database (MongoDB)  
 
 ---
 

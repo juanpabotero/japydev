@@ -308,12 +308,7 @@ ningun metodo de array con HTMLCollection
   ```html
   <label>
     Selecciona fecha para tu reserva:
-    <input
-      type="datetime-local"
-      value="2023-03-03T19:00"
-      min="2023-01-01T00:00"
-      max="2023-12-31T23:59"
-    />
+    <input type="datetime-local" value="2023-03-03T19:00" min="2023-01-01T00:00" max="2023-12-31T23:59" />
   </label>
   ```
 
@@ -336,4 +331,16 @@ ningun metodo de array con HTMLCollection
 
   ```html
   <p translate="no">Este texto no se traduce</p>
+  ```
+
+- Solo precargar los metadatos del video, hace que de entrada sea mucho más ligero y una vez se le de play cargará el resto.  
+  El src del source tiene un # y el tiempo donde queremos que esté el vídeo, este va a servir de poster para el vídeo.
+
+  ```html
+  <video preload="metadata" muted loop>
+    <source
+      src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4#t=10.1"
+      type="video/mp4"
+    />
+  </video>
   ```
