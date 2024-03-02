@@ -370,8 +370,6 @@ SELECT CONCAT('Nombre: ', title, ', año: ', year) as 'Fecha estreno' FROM movie
 
 ### NULL FUNCTIONS
 
-Permite devolver un valor segun se cumpla o no una condición. Es muy similar a un switch o if de programación.
-
 ```sql
 SELECT * FROM movies WHERE id IS NULL;
 SELECT * FROM movies WHERE id IS NOT NULL;
@@ -647,3 +645,4 @@ La biblioteca para conectarse a MySQL desde Node.js es **mysql2**.
 - ctrl + y: elimina la linea en la que esta el cursor
 - ctrl 2 veces y sin soltar, presionar flecha arriba o abajo: crear multi cursor
 - shift + alt + click: seleccionar varias lineas
+- alt + j: seleccionar todas las coincidencias
