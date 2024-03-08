@@ -603,6 +603,36 @@ COMMIT;
 ROLLBACK;
 ```
 
+### BLOQUEOS
+
+Manejan las concurrencias, para evitar que dos usuarios hagan una consulta a la vez.
+Mientras una consulta esta en proceso, la otra consulta se bloquea.  
+Permite bloquear una tabla para que no se puedan hacer consultas, actualizaciones o eliminaciones.
+
+```sql
+LOCK TABLES table_name READ/WRITE;
+-- codigo
+UNLOCK TABLES;
+```
+
+### CARDINALIDAD
+
+Son los tipos de relaciones que se pueden dar entre las tablas.
+
+- 1:1 uno a uno
+- 1:N uno a muchos
+- N:M muchos a muchos
+
+### NORMALIZACIÓN
+
+Es el proceso de organizar los datos en una base de datos.
+
+- Primera forma normal: cada columna debe tener un solo valor, no puede ser un array.
+- Segunda forma normal: cada columna debe depender de la clave primaria.
+- Tercera forma normal: no debe haber dependencias transitivas.
+- Cuarta forma normal: no debe haber dependencias multivaluadas.
+- Quinta forma normal: no debe haber dependencias de unión.
+
 ## MySQL
 
 Sistema de gestión de bases de datos relacionales.

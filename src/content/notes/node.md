@@ -258,6 +258,11 @@ Puedo crear un script en el package.json para ejecutar nodemon, por ejemplo:
 Es un framework de Node para crear servidores web.  
 Se instala en el proyecto como dependencia de producción con `npm install express`.
 
+## API
+
+Application Programming Interface, es un mecanismo que permite a dos aplicaciones 
+comunicarse entre sí mediante un conjunto de definiciones y protocolo.
+
 ## Rest API
 
 Acrónimo de Representational State Transfer, es una arquitectura de software.  
