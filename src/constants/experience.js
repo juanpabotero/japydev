@@ -2,7 +2,7 @@ export const experience = [
   {
     title: 'Desarrollador Full Stack',
     company: 'Inlaze',
-    date: 'Nov/2023 - Actualmente',
+    date: 'Nov/2023 - Mar/2024',
     description: [
       'Desarrollo de aplicativos, servicios y automatización de procesos de cara al cliente y de uso interno para la empresa.'
     ]
