@@ -258,7 +258,7 @@ type Address struct {
   City string
 }
 
-// cuando se trabaja con json, se indica el nombre de la llave que se va a usar el json si queremos que sea diferente 
+// cuando se trabaja con json, se indica el nombre de la llave que se va a usar el json si queremos que sea diferente
 type Person struct {
   Name string `json:"name"`
   Age int `json:"age"`
@@ -812,10 +812,29 @@ func main() {
 // Recovered from Error
 ```
 
-## Concurencia (Goroutine)
+## Concurrencia (Goroutine)
 
 La concurrencia es la capacidad de ejecutar varias tareas al mismo tiempo.  
-Las Goroutines son hilos de ejecución ligeros que se pueden ejecutar en paralelo.
+Las Goroutines es una función que se ejecuta de forma independiente en el mismo espacio
+de tiempo que otras Goroutines, son hilos de ejecución ligeros que se pueden ejecutar en paralelo.
+
+Go tiene minimo una Goroutine que es la principal (main), la que se ejecuta cuando se inicia el programa.
+Go utiliza el modelo "fork-join" para crear Goroutines, se crea una Goroutine principal y se crean
+Goroutines hijas que se ejecutan de forma independiente y en algun punto vuelven a la principal,
+como se ve en la imagen. Para crear una Goroutine se usa la palabra clave `go`.
+
+Para crear los puntos de unión (join-points) se necesita sincronizar la Goroutine padre con la hija,
+se puede hacer con el paquete `sync`, los canales o esperar que la Goroutine hija finalice, es recomendable
+usar el paquete sync o los canales.
+
+![Modelo de Goroutine](/public/model_goroutine.png)
+
+Los valores de retorno de las Goroutines hijas son descartados, no se pueden recuperar estos valores en las
+Goroutines padres, si se necesita recuperar el valor de retorno se debe usar un canal.
+
+Para trabajar con Goroutines se tienen 2 enfoques, a traves del paquete `sync` y a traves de canales.
+El paquete `sync` se usa para sincronizar las Goroutines, solo queremos que las Goroutines terminen
+su ejecución; los canales se usan para comunicar las Goroutines.
 
 ```go
 func main() {
@@ -828,10 +847,99 @@ func sayHello() {
 }
 ```
 
-## Channels
+Problemas de concurrencia:
 
-Los channels se usan para comunicar Goroutines.  
-Se pueden enviar y recibir valores de un channel.
+- **Data race:** Pasa cuando las Goroutines compiten por acceder a la misma variable y al menos
+  una de ellas es de escritura (), para solucionar esto se puede usar el paquete `sync` o uso de canales.
+
+- **Race condition:** Se produce cuando 2 o más operaciones deben ejecutarse en el orden correcto, pero el
+  programa no se ha escrito para garantizar que se mantenga este orden, para solucionar esto se debe escribir
+  el código de forma que se garantice el orden de ejecución, pensando que se usa la concurrencia y no como código
+  sincrono.
+
+- **Deadlock:** Se produce cuando 2 o más Goroutines se bloquean entre sí, es decir, se esperan unas a otras
+  y ninguna puede continuar, para solucionar esto se debe tener cuidado con el uso de canales, se debe asegurar
+  que se cierre el canal o que se use un canal bufferizado.
+
+- **Livelock:** Se produce cuando 2 o más Goroutines se bloquean entre sí, pero en lugar de quedarse quietas,
+  siguen intentando resolver el problema, pero no pueden, para solucionar esto se debe tener cuidado con la
+  logica de las Goroutines.
+
+- **Starvation:** Es una situacipin en la que un proceso no puede obtener acceso regular a los recursos
+  que necesita para realizar su trabajo y no puede progresar. Esto sucede cuando hay mas procesos que impiden
+  que otros procesos realicen su trabajo. Se produce cuando una Goroutine no puede avanzar porque otra Goroutine la bloquea, para solucionar esto se debe tener cuidado con la logica de las Goroutines.
+
+### WaitGroup
+
+El paquete `sync` se usa para sincronizar las Goroutines, se puede usar `WaitGroup` para esperar a que
+todas las Goroutines terminen su ejecución.
+
+```go
+func main() {
+  // instancia de WaitGroup
+  var wg sync.WaitGroup
+  // definir el contador, en este caso, agregar 2 Goroutines
+  wg.Add(2)
+  go func() {
+    // cuando la Goroutine termina, se llama a Done y se resta 1 del contador
+    defer wg.Done()
+    fmt.Println("Hello")
+  }()
+  go func() {
+    defer wg.Done()
+    fmt.Println("World")
+  }()
+  // esperar a que todas las Goroutines terminen, es decir, que el contador llegue a 0
+  wg.Wait()
+}
+```
+
+### Mutex
+
+El paquete `sync` se usa para sincronizar las Goroutines, se puede usar `Mutex` para evitar
+que las Goroutines compitan por acceder a la misma variable.
+
+```go
+func main() {
+	// instancia de Mutex
+	mu := sync.Mutex{}
+  // instancia de WaitGroup
+	wg := sync.WaitGroup{}
+  // definir el contador, en este caso, agregar 1 Goroutines
+	wg.Add(1)
+
+	data := 1
+
+	go func() {
+  	// bloquear el Mutex, para que solo una Goroutine pueda acceder a la sección crítica
+		mu.Lock()
+		data++
+  	// desbloquear el Mutex, para que otra Goroutine pueda acceder a la sección crítica
+		mu.Unlock()
+  	// cuando la Goroutine termina, se llama a Done y se resta 1 del contador
+		wg.Done()
+	}()
+  // esperar a que todas las Goroutines terminen, es decir, que el contador llegue a 0
+	wg.Wait()
+	mu.Lock()
+	fmt.Println(data)
+	mu.Unlock()
+}
+```
+
+### Data race detector
+
+Go tiene una herramienta para detectar el problema de Data race, este solo funciona en tiempo de
+ejecución, es decir, solo funciona en el código que ejecuta, no en todo el código. Se debe ejecutar el
+programa con la bandera `-race`. Ej: `go run main.go -race`
+
+## Canales (Channels)
+
+Los canales se usan para comunicar Goroutines. Es el prinicpal metodo de sincronizacion entre Goroutines.  
+Se pueden enviar y recibir valores de un canal.  
+Los canales son bloqueantes, la rutina se bloquea hasta que se reciba el mensaje. Ya no se tiene que hacer
+el bloqueo de forma manual, los canales se encargan de esto.  
+Se debe asegurar que alguna rutina envie el mensaje y otra lo reciba, si no se hace, se produce un deadlock.
 
 ```go
 func main() {
@@ -847,51 +955,102 @@ func main() {
 }
 ```
 
+En la imagen se puede ver como funciona un canal.
+
+![Modelo de Goroutine](/public/model_channel.png)
+
 Se pueden enviar y recibir valores de un channel de forma asíncrona.
 
 ```go
 func main() {
+  // declarar un canal
   ch := make(chan string)
   go func() {
+    // enviar un valor al canal
     ch <- "Hello"
   }()
   go func() {
+    // recibir un valor del canal
     msg := <-ch
     fmt.Println(msg)
   }()
 }
 ```
 
-Se pueden enviar y recibir valores de un channel de forma asíncrona con un buffer.
+Se puede indicar que una función solo reciba o envie valores de un canal.
 
 ```go
-func main() {
-  ch := make(chan string, 1)
+// chan<- int: canal de solo escritura, solo puede enviar valores
+func send(ch chan<- string) {
+	// enviar valores al canal
   ch <- "Hello"
+}
+// <-chan int: canal de solo lectura, solo puede recibir valores
+func receive(ch <-chan string) {
+  // recibir valores del canal
   msg := <-ch
   fmt.Println(msg)
 }
+func main() {
+	// crear canal
+  ch := make(chan string)
+	// crear gorutinas
+  go send(ch)
+  go receive(ch)
+}
 ```
 
-Se pueden cerrar los channels.
+Se pueden enviar y recibir valores de un canal con buffer, la funcion de envio puede ir enviando valores,
+sin que quede bloqueada hasta que haya una operacion de lectura. Enviar se bloquea cuando el buffer esta lleno,
+y recibir se bloquea cuando el buffer esta vacio.
 
 ```go
 func main() {
+  // crear canal con buffer de 2
+  ch := make(chan string, 2)
+  // enviar valores al canal
+  ch <- "Hello"
+  ch <- "World"
+  // recibir valores del canal
+  fmt.Println(<-ch)
+  fmt.Println(<-ch)
+}
+```
+
+Se pueden cerrar los canales, quien envia los valores debe cerrar el canal, para que el receptor sepa que
+no se enviaran mas valores.
+
+```go
+func main() {
+  // declarar un canal
   ch := make(chan string)
   go func() {
+    // enviar valores al canal
     ch <- "Hello"
+		ch <- "World"
+    // cerrar el canal
     close(ch)
   }()
   for msg := range ch {
     fmt.Println(msg)
   }
 }
+// Hello
+// World
 ```
 
 ## Testing
 
 Los tests se deben crear en un archivo con el nombre del archivo que se va a testear seguido de `_test.go`.  
 Para ejecutar los tests: `go test` ó `go test -v` para ver los detalles.
+
+- `go test -cover` para ver el porcentaje de cobertura de los tests.
+- `go test -coverprofile=coverage.out` para guardar el resultado de la cobertura en un archivo.
+- `go tool cover -func=coverage.out` para ver que funciones y cuales no tienen cobertura.
+- `go tool cover -html=coverage.out` para ver el resultado de la cobertura en un navegador.
+- `go test -cpuprofile=cou.out` para ver el uso de la CPU y genera un archivo.
+- `go tool pprof cou.out` para ver el uso de la CPU en consola, despues se pone `top` y muestra
+  que es lo que mas consume. `web` para verlo en el navegador. `pdf` para generar un pdf.
 
 ```go
 // archivo a testear: main.go
@@ -907,9 +1066,20 @@ package main
 import "testing"
 
 func TestSum(t *testing.T) {
-  result := sum(5, 5)
-  if result != 10 {
-    t.Errorf("Expected 10, got %d", result)
+  // para testear varias condiciones
+  table := []struct {
+    x, y, expected int
+  }{
+    {5, 5, 10},
+    {2, 3, 5},
+    {0, 0, 0},
+  }
+
+  for _, test := range table {
+    total := Sum(test.x, test.y)
+    if total != test.expected {
+    	t.Errorf("Expected %d, got %d", test.expected, total)
+    }
   }
 }
 ```
@@ -1032,4 +1202,10 @@ log.Fatalln("Error") // imprime y termina la ejecución del programa
 log.Panicln("Panic") // imprime y termina la ejecución del programa y muestra el stack trace
 log.SetPrefix("Prefix: ") // establecer un prefijo
 ```
+
+## MySQL
+
+Se debe instalar el driver en el proyecto, se puede encontrar y como instalar en la página de
+los drivers de Go, https://go.dev/wiki/SQLDrivers , se selecciona el driver que se va a usar y
+se siguen las instrucciones.
 
