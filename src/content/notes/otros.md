@@ -427,6 +427,62 @@ seguridad que permite que los datos viajen de manera segura por internet.
 Se puede tener un servicio HTTP de manera local y cuando se despliega a producción,
 se envuelve en un servicio HTTPS.
 
+### API
+
+Application Programming Interface, es un mecanismo que permite a dos aplicaciones
+comunicarse entre sí mediante un conjunto de definiciones y protocolo.
+
+### Rest API
+
+Acrónimo de Representational State Transfer, es una arquitectura de software.  
+Los prinipios de REST son la escalabilidad, fiabilidad, simplicidad, portabilidad,
+visibilidad, fácil de mantener.
+
+Las APIs deben ser como un embudo, pueden llegar a recibir mucha información pero solo
+procesar y devolver la información que se necesita.
+
+Los fundamentos de REST son:
+
+**Recursos:**  
+En REST todo es considerado un recurso, por ejemplo, un usuario, un producto, etc.
+Cada recurso se identifica con una URL.
+
+**Verbos:**  
+Los verbos HTTP sirven para definir las operaciones que se pueden hacer con los recursos:
+
+- GET: obtener un recurso
+- POST: crear un recurso, NO es idempotente, porque siempre se crea un nuevo recurso
+- PUT: actualizar totalmente un recurso ya existente o crearlo si no existe, SI es idempotente,
+  porque si se hace varias veces, siempre se obtiene el mismo resultado. Con un PUT se
+  enviaria todo el objeto.
+- PATCH: actualizar parcialmente un recurso, normalmente es idempotente pero depende, porque si
+  se hace varias veces, puede que se obtenga un resultado diferente como por ejemplo, si se
+  tiene una propiedad updatedAt, cada vez que se actualiza, cambia el valor de esa propiedad.
+  Con un PATCH se enviaria solo la o las propiedades que se quieren actualizar.
+- DELETE: eliminar un recurso
+- HEAD: obtener los encabezados de un recurso
+- OPTIONS: obtener los metodos HTTP que soporta un recurso
+
+**Representaciones:**  
+Lo recursos pueden tener múltiples representaciones: JSON, XML, HTML, Imagenes,
+Videos, PDF, etc. El cliente deberia poder elegir la representación del recurso pero
+no es muy común.
+
+**Stateless**  
+Cada petición que se hace al servidor debe contener toda la información necesaria
+para que el servidor pueda entenderla, no debe depender de ninguna petición anterior.
+El cliente debe enviar toda la información necesaria para procesar la request.
+
+**Interfaz uniforme**  
+Las peticiones deben ser consistentes, deben tener una interfaz uniforme,
+deben tener una estructura definida.  
+Las urls siempre deben hacer lo mismo, los verbos siempre deben hacer lo mismo,
+las respuestas siempre deben tener la misma estructura, etc.
+
+**Separación de conceptos**  
+Los componentes del cliente y del servidor estan separados entre sí, permite que
+cliente y servidor evolucionen de forma separada.
+
 ### CORS
 
 Cross Origin Resource Sharing.
@@ -442,12 +498,51 @@ en el backend, para que solo ese dominio pueda consumir el recurso.
 
 Para solucionarlo se puede instalar `npm install cors` (ver curso-nodejs-midudev, clase-3, app.js)
 
-Metodos normales: GET, HEAD, POST
+Metodos normales: GET, HEAD, POST  
 Metodos complejos: PUT, PATCH, DELETE
 
 Los metodos complejos primero hacen una peticion OPTIONS para preguntarle al servidor
 que metodos soporta, y si el servidor responde que soporta el metodo que se quiere usar,
 se hace la peticion normal.
+
+### MVC
+
+Modelo Vista Controlador es un patrón de diseño, proporciona una estructura para separar
+la aplicación en 3 componentes: Modelo, Vista y Controlador.
+
+**Modelo:**
+Representa la lógica del negocio, los datos, la lógica de la aplicación y las reglas
+de negocio. Se encarga de acceder a la base de datos, hacer consultas, actualizar la
+información, etc.  
+En código, el archivo modelo debe ser en singular, ej, user.js, product.js, etc.
+
+Las validaciones se deberían hacer en los 3 componentes, pero el modelo debería
+garantizar la integridad y la coherencia de los datos.
+
+**Controlador:**
+Actua como un intermediario entre el modelo y la vista. Responde a eventos,
+normalmente acciones del usuario, y realiza peticiones al modelo cuando se hace
+una acción, por ejemplo, cuando se hace click en un botón, el controlador puede
+pedirle al modelo que actualice los datos.
+
+**Vista:**
+Representa la interfaz de usuario, se encarga de mostrar la información al usuario.
+La vista no puede acceder directamente al modelo, debe hacerlo a través del controlador.
+La vista normalmente es una página web, pero puede ser cualquier otra cosa como una
+aplicación de escritorio, una aplicación móvil, un json, una tabla, etc.
+
+El proceso seria asi:
+
+1. El modelo envia los datos al controlador
+2. El controlador envia los datos a la vista
+3. La vista muestra los datos al usuario
+4. El usuario interactua con la vista
+5. La vista envia los datos al controlador
+6. El controlador envia los datos al modelo
+7. El modelo actualiza los datos
+8. Se repite el proceso
+
+(ver en curso-nodejs-midudev, clase-4 o clase-5)
 
 ### Web Sockets
 
@@ -467,6 +562,13 @@ Se usa para manejar información en tiempo real, como chats, juegos, etc.
 Se hace un handshake, que es un saludo entre el cliente y el servidor, para establecer la conexión.
 Se deja abierta la conexión y se envian mensajes en ambos sentidos hasta que el cliente o el servidor
 decidan cerrar la conexión.
+
+### Inyección de dependencias
+
+Es un patrón de diseño que permite crear aplicaciones más flexibles, desacoplando
+los componentes de la aplicación.  
+Permite que un objeto, una clase, etc, reciba sus dependencias desde afuera,
+se le inyectan, permite reutilización del código, permite hacer pruebas unitarias.
 
 ### Idempotencia
 

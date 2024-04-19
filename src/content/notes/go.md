@@ -86,6 +86,9 @@ var r rune = '♥' // 9829 (Unicode)
 
 ## Constantes
 
+Si se declaran fuera de la función, quedan declaradas a nivel de paquete y se pueden usar
+en cualquier parte del paquete.
+
 ```go
 const name = "John"
 const age = 30
@@ -94,7 +97,7 @@ const (
   age = 30
 )
 
-// iota es una constante que se incrementa en 1 en cada constante
+// iota es una constante que se incrementa en 1 en cada constante, empieza en 0
 const (
   lunes = iota
   martes
@@ -105,18 +108,6 @@ const (
   domingo
 )
 // lunes = 0, martes = 1, miercoles = 2, jueves = 3, viernes = 4, sabado = 5, domingo = 6
-
-// se puede usar iota para crear constantes con valores exponenciales
-const (
-  _ = iota
-  KB = 1 << (iota * 10)
-  MB = 1 << (iota * 10)
-  GB = 1 << (iota * 10)
-)
-// KB = 1024, MB = 1048576, GB = 1073741824
-// _ es una variable que se descarta
-// << es el operador de desplazamiento a la izquierda, mueve los bits a la izquierda
-// 1 << 10 es igual a 1024
 ```
 
 ## Tipos de datos
@@ -124,7 +115,7 @@ const (
 Cada tipo de dato tiene un valor por defecto.
 
 - `bool`: el valor por defecto es `false`
-- `string`: el valor por defecto es `""`
+- `string`: el valor por defecto es `""`. Siempre entre comilla doble.
 - numbers: el valor por defecto para todos es `0`.
   - `int, int8, int16, int32, int64`: números enteros, el número representa la cantidad de bits que se reserva
     para ese numero. ej: un int8 abarca los valores de -128 a 127.
@@ -132,7 +123,7 @@ Cada tipo de dato tiene un valor por defecto.
     ej: un uint8 abarca los valores de 0 a 255.
   - `float32, float64`: fracciones.
   - `complex64, complex128`: números imaginarios.
-  - `byte`: alias para uint8. Se usa para representar datos en formato binario o ASCII.
+  - `byte`: alias para uint8. Se usa para representar datos en formato ASCII.
   - `rune`: alias para int32. Se usa para representar un carácter Unicode.
 - `nil`, `array`, `slice`, `map`, `chan`, `func`, `interface`, `struct`, `pointer`, `error` el valor por defecto es `nil`
 
@@ -143,6 +134,8 @@ si es de 32 bits sera `int32` y si es de 64 bits sera `int64`.
 
 ## Arrays
 
+Los arrays son una estructura fija, no se puede cambiar su tamaño.
+
 ```go
 var arr [3]int
 arr[0] = 1
@@ -150,7 +143,7 @@ arr[1] = 2
 arr[2] = 3
 // se puede declarar e inicializar
 arr := [3]int{1, 2, 3}
-// se puede declarar e inicializar sin poner el tamaño
+// se puede declarar e inicializar sin poner el tamaño, Go infiere el tamaño
 arr := [...]int{1, 2, 3}
 // obtener la longitud del array
 len(arr)
@@ -167,7 +160,7 @@ arr := [3][3]int{
 
 ## Slices
 
-Los slices son una referencia a un array. Los arreglos son una estructura fija, no se puede cambiar su tamaño,
+Los slices son una referencia a un array. Los arrays son una estructura fija, no se puede cambiar su tamaño,
 los slices son una estructura dinámica, se puede cambiar su tamaño.
 
 ```go
@@ -176,6 +169,7 @@ arr := [3]int{1, 2, 3}
 slice := arr[:]
 // se puede crear un slice a partir de un array con un rango
 slice := arr[1:3] // [2, 3]
+
 // se puede crear un slice sin un array
 slice := []int{1, 2, 3}
 // se puede crear un slice con un tamaño,
@@ -343,13 +337,13 @@ fmt.Println(r.area()) // 50
 
 ## Punteros
 
-Un puntero es una dirección de memoria, es una variable que almacena la direccion de memoria de otra variable,
-se usan para referenciar y acceder a la variable original.
+Un puntero es una dirección de memoria, es una variable que almacena la direccion de memoria de un valor o
+de otra variable. Se usan para referenciar y acceder a la variable original.
 
 ```go
 x := 10
 // el & se usa para obtener la direccion de memoria de la variable
-y := &x // seria de tipo *int (puntero a un entero)
+y := &x // y seria de tipo *int (puntero a un entero)
 fmt.Println(y) // 0xc0000b6010
 // el * se usa para obtener el valor de la direccion de memoria
 fmt.Println(*y) // 10
@@ -397,7 +391,7 @@ Las interfaces quedan definidas implícitamente, en el ejemplo si un struct impl
 queda implícitamente relacionado con la interfaz SIzer. No se necesita decir explícitamente como en otros
 lenguajes con la palabra implements. Las interfaces quedan desacopladas de la implementación del type.
 
-## Conversión de tipos
+## Conversión de tipos (casting)
 
 Para hacer operaciones con tipos de datos diferentes, se deben convertir.
 
@@ -414,7 +408,7 @@ temperatureInt := 88
 temperatureString := strconv.Itoa(temperatureInt)
 
 temperatureString := "88"
-// el segndo valor que devuelve es un error, si no se logra hacer la conversion
+// el segundo valor que devuelve es un error, si no se logra hacer la conversion
 temperatureInt, _ := strconv.Atoi(temperatureString)
 ```
 
@@ -1203,9 +1197,203 @@ log.Panicln("Panic") // imprime y termina la ejecución del programa y muestra e
 log.SetPrefix("Prefix: ") // establecer un prefijo
 ```
 
-## MySQL
+## Paquete http
 
-Se debe instalar el driver en el proyecto, se puede encontrar y como instalar en la página de
-los drivers de Go, https://go.dev/wiki/SQLDrivers , se selecciona el driver que se va a usar y
-se siguen las instrucciones.
+Paquete para trabajar con servidores web, permite crear servidores y clientes HTTP.
+
+Existen diferentes tipos de handlers predefinidos:
+
+- `http.HandleFunc`: para manejar las rutas.
+- `http.Handle`: para manejar las rutas con un handler.
+- `http.FileServer`: para servir archivos estáticos.
+- `http.NotFound`: para manejar las rutas no encontradas.
+- `http.Redirect`: para redireccionar a otra ruta.
+- `http.StripPrefix`: para eliminar un prefijo de la ruta.
+- `http.TimeoutHandler`: para manejar el tiempo de espera de una petición.
+
+```go
+import (
+  "net/http"
+  "fmt"
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+  fmt.Fprintf(w, "Hello")
+}
+
+func main() {
+  http.HandleFunc("/", handler)
+  http.ListenAndServe(":8080", nil)
+}
+```
+
+La estructura `http.Request` contiene la informaciòn de la petición de un cliente,
+se pueden encontrar los siguientes campos:
+
+- `r.URL.Path`: la ruta de la petición.
+- `r.URL.Query()`: los query params.
+- `r.Method`: el método de la petición.
+- `r.Header`: los headers de la petición.
+- `r.Body`: el cuerpo de la petición.
+- `r.Form`: los datos del formulario.
+- `r.PostForm`: los datos del formulario en un POST.
+- `r.Cookies()`: las cookies de la petición.
+- `r.MultiPartForm`: los datos de un formulario multipart.
+
+Los metodos màs comunes de `http.Request` son:
+
+- `r.NewRequest()`: para crear una nueva petición.
+- `r.Context()`: obtiene el contexto de una petición.
+- `r.Cookie()`: obtiene una cookie por su nombre.
+- `r.Cookies()`: obtiene todas las cookies de una petición.
+- `r.FormValue()`: obtiene el valor de un campo de un formulario.
+- `r.FormFile()`: para obtener un archivo de un formulario multipart.
+- `r.ParseForm()`: para parsear los datos de un formulario.
+- `r.ParseMultipartForm()`: para parsear los datos de un formulario multipart.
+
+La estructura `http.ResponseWriter` se usa para enviar la respuesta al cliente,
+se pueden encontrar los siguientes métodos:
+
+- `w.Header()`: para escribir los headers de la respuesta.
+- `w.Write()`: para escribir el cuerpo de la respuesta.
+- `w.WriteHeader()`: para establecer el código de estado de la respuesta.
+
+Se puede modificar la estructura `Serve` para personalizar el servidor:
+
+```go
+import (
+  "net/http"
+  "fmt"
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+  fmt.Fprintf(w, "Hello")
+}
+
+func main() {
+  http.HandleFunc("/", handler)
+
+  server := http.Server {
+    Addr: ":8080",
+    Handler: nil,
+    ReadTimeout: 10 * time.Second,
+    WriteTimeout: 10 * time.Second,
+    MaxHeaderBytes: 1 << 20,
+  }
+
+  server.ListenAndServe()
+}
+```
+
+## Bases de datos
+
+Go no tiene un driver nativo para bases de datos, se deben instalar los drivers de las bases de datos
+que se van a usar. Se debe instalar el driver en el proyecto, se puede encontrar y como instalar en la
+página de los drivers de Go, https://go.dev/wiki/SQLDrivers , se selecciona el driver que se va a usar y
+se siguen las instrucciones. Es recmendable instalar los drivers que estan marcados con `[*]`
+
+Consultar información a la base de datos se hace a traves del SELECT y los metodos `Query`, `QueryContext` (este a
+diferencia del Query, recibe un contexto) y `QueryRow` (asegura que solo se devuelva una fila), para insertar,
+actualizar, eliminar y demas comandos se usa el metodo `Exec` y `ExecContext` (recibe un contexto).
+
+Si quiero utilizar las filas, lo puedo hacer usando el metodo `Query` que me devuelve las filas (recordar
+que debo cerrar las filas para liberar el recurso), si quiero trabajar solo con el resultado de la consulta
+puedo usar el metodo `Exec`.
+
+### Instrucciones preparadas
+
+Le dice a la base de datos que prepare una consulta y que la ejecute varias veces
+con diferentes valores, esto es mas eficiente que ejecutar toda la consulta varias veces.
+
+```go
+
+func main() {
+  // ejecutar una consulta preparada
+  stmt, err := db.Prepare("INSERT INTO products (name) VALUES (?)")
+  if err != nil {
+    log.Fatal(err)
+  }
+  defer stmt.Close()
+
+  result1, err := stmt.Exec("Product 1")
+  if err != nil {
+    log.Fatal(err)
+  }
+
+  result2, err := stmt.Exec("Product 2")
+  if err != nil {
+    log.Fatal(err)
+  }
+}
+```
+
+### Transacciones
+
+Las transacciones se usan para agrupar varias consultas en una sola transacción, si una consulta falla,
+se pueden revertir todas las consultas.
+
+```go
+func main() {
+  tx, err := db.Begin()
+  if err != nil { log.Fatal(err) }
+
+  stmtInvoice, err := tx.Prepare("INSERT INTO invoices (client) VALUES (?)")
+  if err != nil { tx.Rollback() }
+  defer stmtInvoice.Close()
+
+  invRes, err := stmtInvoice.Exec("Juan")
+  if err != nil { tx.Rollback() }
+
+  invID, err := invRes.LastInsertId()
+  if err != nil { tx.Rollback() }
+
+  stmtItem, err := tx.Prepare("INSERT INTO invoice_items (invoice_id, product, price) VALUES (?, ?, ?)")
+  if err != nil { tx.Rollback() }
+  defer stmtItem.Close()
+
+  _, err = stmtItem.Exec(invID, "Product 1", 10)
+  if err != nil { tx.Rollback() }
+
+  err = tx.Commit()
+  if err != nil { tx.Rollback() }
+}
+```
+
+### Datos nulos
+
+Para trabajar con datos nulos se puede usar el paquete `sql.NullString`, `sql.NullInt64`, `sql.NullFloat64`,
+`sql.NullBool`, `sql.NullTime` y demás. Se usa para trabajar con valores nulos en la base de datos y se debe
+crear una variable intermedia para hacer la asignación.
+
+```go
+func main() {
+  type Product struct { Name string }
+  for rows.Next() {
+    var nameNull sql.NullString
+    p := Product{}
+    err := rows.Scan(&nameNull)
+    if err != nil {
+      log.Fatal(err)
+    }
+    // si nameNull.Valid es verdadero, quiere decir que nameNull.String tiene un valor
+    if nameNull.Valid {
+      p.Name = nameNull.String
+    }
+  }
+
+  // se puede hacer lo mismo trabajando con un puntero
+  type Product struct { Name string }
+  for rows.Next() {
+    var name *string
+    p := Product{}
+    err := rows.Scan(&name)
+    if err != nil {
+      log.Fatal(err)
+    }
+    if name != nil {
+      p.Name = *name
+    }
+  }
+}
+```
 
