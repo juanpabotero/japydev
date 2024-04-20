@@ -1036,8 +1036,11 @@ func main() {
 ## Testing
 
 Los tests se deben crear en un archivo con el nombre del archivo que se va a testear seguido de `_test.go`.  
-Para ejecutar los tests: `go test` ó `go test -v` para ver los detalles.
+Para ejecutar los tests: `go test` ó `go test -v` para ver los detalles (para ver los logs se deberia usar con -v).
 
+- `go test ./...` para ejecutar todos los tests (en todos los subdirectorios. Recomendado para test unitarios).
+- `go test -run <nombre_de_la_funcion>` para ejecutar solo una funcion.
+- `go test -bench .` para ejecutar los benchmarks (los test que empiezan con Benchmark).
 - `go test -cover` para ver el porcentaje de cobertura de los tests.
 - `go test -coverprofile=coverage.out` para guardar el resultado de la cobertura en un archivo.
 - `go tool cover -func=coverage.out` para ver que funciones y cuales no tienen cobertura.
@@ -1396,4 +1399,13 @@ func main() {
   }
 }
 ```
+
+## GoLand IDE
+
+MAC:
+
+- `option` 2 veces, se mantiene presionado y flecha arriba o abajo: crear multiples cursores.
+- `contol + G`: seleccionar siguiente coincicencia.
+- `command + D`: duplicar linea.
+- `command + backspace`: borrar linea.
 
