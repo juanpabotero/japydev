@@ -20,9 +20,16 @@ heroImage: '/go.svg'
   - `GOBIN` directorio de binarios
 - `go run <file>.go` ejecutar un archivo .go
 - `go build <file>.go` compilar un archivo .go. Genera un nuevo archivo ejecutable.
-- `go get <package>` descargar e instalar un paquete. Cuando se ejecuta, crea un archivo go.sum con las dependencias y
-  actualiza el archivo go.mod.
-- `go mod init <module>` inicializar un módulo. Se utiliza para gestionar dependencias.
+- `go mod init <nombre_del_modulo>`: se inicializa un módulo. Se utiliza para gestionar dependencias.
+- `go mod tidy`: Importa dependencias que esten en el codigo y no se hayan instalado y elimina
+  dependencias que no se usan.
+- `go get <nombre_paquete>`: descarga e instala un paquete. Cuando se ejecuta, crea un
+  archivo go.sum con las dependencias y actualiza el archivo go.mod.
+- `go get -u <nombre_paquete>`: se actualizan las dependencias
+- `go get nombre_paquete@version`: instalar una versión específica de un paquete
+- `go list -m all`: muestra todas las dependencias del módulo
+- `go list -m -versions <nombre_paquete>`: muestra todas las versiones de un paquete. Solo muestra las versiones
+  compatibles con la version major del paquete.
 - `go install` instalar un paquete. Se instala en el directorio de binarios.
 - `go test` ejecutar pruebas
 - `go fmt` formatear el código
@@ -33,7 +40,14 @@ Go es un lenguaje de programación de código abierto que facilita la creación 
 Es un lenguaje compilado, concurrente, imperativo, estructurado y orientado a objetos.
 
 - **Paquetes**: Un paquete es un conjunto de archivos que definen un conjunto de funciones, tipos y variables.
+  El nombre del paquete deberia darnos una idea de la funcionalidad que tiene. Usar nombres como
+  `utils`, `helpers`, `common` no es recomendado. El nombre deberia ser el mismo de la carpeta.  
+  Se puede poner alias a los paquetes, dentro del import se pone el alias antes del nombre del paquete.
+
 - **Módulos**: Un módulo es un conjunto de paquetes que se comparten en un repositorio.
+  Son una forma de gestionar dependencias en Go.  
+  Dentro del archivo `go.mod` se definen las dependencias del módulo. Las dependencias se guardan en el archivo `go.sum`.  
+  Las dependencias que tienen el comentario de `// indirect` son dependencias de las dependencias.
 
 El punto de entrada de un programa en Go es la función `main` que se encuentra en el paquete `main`.
 
@@ -124,13 +138,20 @@ Cada tipo de dato tiene un valor por defecto.
   - `float32, float64`: fracciones.
   - `complex64, complex128`: números imaginarios.
   - `byte`: alias para uint8. Se usa para representar datos en formato ASCII.
-  - `rune`: alias para int32. Se usa para representar un carácter Unicode.
+  - `rune`: alias para int32. Se usa para representar un caracter Unicode.
 - `nil`, `array`, `slice`, `map`, `chan`, `func`, `interface`, `struct`, `pointer`, `error` el valor por defecto es `nil`
 
 A menos que se requiera optimizar recursos al máximo, el estándar de tipos que se deberia
 usar sería `int`, `uint32`, `float64`.  
 Si solo ponemos `int` o `uint` Go infiere el tamaño del entero dependiendo del sistema operativo,
 si es de 32 bits sera `int32` y si es de 64 bits sera `int64`.
+
+Tambien se pueden crear tipos de datos personalizados:
+
+```go
+type Age int
+var age Age = 30
+```
 
 ## Arrays
 
@@ -160,13 +181,19 @@ arr := [3][3]int{
 
 ## Slices
 
-Los slices son una referencia a un array. Los arrays son una estructura fija, no se puede cambiar su tamaño,
-los slices son una estructura dinámica, se puede cambiar su tamaño.
+Los slices son una referencia a un array, son punteros a un array. Los arrays son una estructura fija,
+no se puede cambiar su tamaño, los slices son una estructura dinámica, se puede cambiar su tamaño.  
+Si creo un slice a partir de un array y modifico el slice, tambien se modifica el array original.
 
 ```go
+// se crea un array
 arr := [3]int{1, 2, 3}
 // se puede crear un slice a partir de un array, haria referencia a todo el array
 slice := arr[:]
+// se puede crear un slice a partir de un array, desde la primera posicion hasta la indicada
+slice := arr[:2] // [1, 2]
+// se puede crear un slice a partir de un array, desde la posicion indicada hasta el final
+slice := arr[1:] // [2, 3]
 // se puede crear un slice a partir de un array con un rango
 slice := arr[1:3] // [2, 3]
 
@@ -195,8 +222,11 @@ slice2 := make([]int, len(slice))
 copy(slice2, slice)
 // longitud de un slice
 len(slice)
-// capacidad de un slice
-cap(slice)
+// capacidad de un slice, es el numero de elementos del array original, a partir de donde se
+// creo el slice hasta el final del array
+animal := [5]string{"gato", "perro", "conejo", "pajaro", "pez"}
+slice := animal[1:3]
+cap(slice) // 4
 ```
 
 ## Maps
@@ -218,9 +248,9 @@ m["age"] = 30
 // obtener un valor
 m["age"]
 // obtener un valor y si existe
-value, exists := m["age"]
+value, ok := m["age"]
 // obtener un valor y si existe
-if value, exists := m["age"]; exists {
+if value, ok := m["age"]; ok {
   fmt.Println(value)
 }
 // eliminar un valor
@@ -243,7 +273,7 @@ La primera letra en minúscula para que sea privada y solo se pueda acceder desd
 // esta seria una nested struct
 type Person struct {
   Name string
-  Age int
+  Age uint8
   AddressInfo Address
 }
 
@@ -255,7 +285,7 @@ type Address struct {
 // cuando se trabaja con json, se indica el nombre de la llave que se va a usar el json si queremos que sea diferente
 type Person struct {
   Name string `json:"name"`
-  Age int `json:"age"`
+  Age uint8 `json:"age"`
   AddressInfo Address `json:"address"`
 }
 ```
@@ -347,6 +377,8 @@ y := &x // y seria de tipo *int (puntero a un entero)
 fmt.Println(y) // 0xc0000b6010
 // el * se usa para obtener el valor de la direccion de memoria
 fmt.Println(*y) // 10
+// se podria modificar el valor de x a traves del puntero
+*y = 20 // x ahora seria 20
 ```
 
 ## Interfaces
@@ -451,13 +483,29 @@ switch age := 18; age {
   default:
     fmt.Println("No tiene 18 ni 20 años")
 }
+// se pueden agrupar condiciones
+switch age := 18; age {
+  case 18, 20:
+    fmt.Println("Tiene 18 o 20 años")
+  default:
+    fmt.Println("No tiene 18 ni 20 años")
+}
+// se pueden usar condiciones en los cases
+switch age := 18; {
+  case age < 18:
+    fmt.Println("Es menor de edad")
+  case age == 18:
+    fmt.Println("Tiene 18 años")
+  case age > 18:
+    fmt.Println("Es mayor de edad")
+}
 ```
 
 ## Ciclos
 
 ```go
 for i := 0; i < 5; i++ {
-  if i == 3 {
+  if i == 4 {
     break
   }
   if i == 2 {
@@ -478,7 +526,7 @@ for i < 5 {
   i++
 }
 
-// ciclo for range
+// ciclo for range, se usa para recorrer arrays, slices, maps, strings
 arr := []int{1, 2, 3}
 for index, value := range arr {
   fmt.Println(index, value)
@@ -525,7 +573,7 @@ Se puede ignorar un valor de retorno:
 
 ```go
 name, _ := getNames()
-// con \_ se ignora completamente esa variable, el compilador la remueve
+// con _ se ignora completamente esa variable, el compilador la remueve
 ```
 
 Se pueden nombrar los valores de retorno:
@@ -535,7 +583,7 @@ func getCoords() (x, y int){
   // x y ‘y’ se inicializan con 0
   return // retorna implícitamente x y ‘y’
 }
-// seria la forma abreviada de escribir
+// seria la forma abreviada de escribir:
 func getCoords() (int, int){
   var x int
   var y int
@@ -560,7 +608,7 @@ func sum(nums ...int) int {
 sum(1, 2, 3, 4, 5) // 15
 
 // se pueden pasar varios tipos de datos (Genericos)
-func PrintList(nums ...interface{}) int {
+func PrintList(values ...interface{}) int {
   for _, value := range values {
     fmt.Println(value)
   }
@@ -637,28 +685,14 @@ func increment() func() int {
 }
 ```
 
-## Modulos
-
-Los módulos son una forma de gestionar dependencias en Go.
-
-```go
-// se inicializa un módulo
-go mod init <nombre_del_modulo>
-// se instalan las dependencias
-go get <nombre_del_paquete>
-// se actualizan las dependencias
-go get -u <nombre_del_paquete>
-// se eliminan las dependencias
-go mod tidy
-```
-
 ## Genericos
 
-Go no tiene soporte para genéricos, pero se pueden simular.
+Son una forma de escribir código que funciona con cualquier tipo de dato.  
+Desde la versión 1.18 de Go, se añadió soporte para genéricos.
 
 ```go
 // se pueden pasar varios tipos de datos
-func PrintList(nums ...interface{}) int {
+func PrintList(values ...interface{}) int {
   for _, value := range values {
     fmt.Println(value)
   }
@@ -666,14 +700,14 @@ func PrintList(nums ...interface{}) int {
 PrintList(1, "Juan", true, 4, "Pablo") // 1, Juan, true, 4, Pablo
 
 // tambien se puede usar any
-func PrintList(nums ...any) int {
+func PrintList(values ...any) int {
   for _, value := range values {
     fmt.Println(value)
   }
 }
 PrintList(1, "Juan", true, 4, "Pablo") // 1, Juan, true, 4, Pablo
 
-// se puede poner tipos a los parametros
+// se puede poner tipos a los parametros, crear una restriccion (constraint) de tipo
 func Sum[T int | float64](nums ...T) T {
   var total T
   for _, num := range nums {
@@ -684,9 +718,23 @@ func Sum[T int | float64](nums ...T) T {
 Sum[int](1, 2, 3, 4, 5) // 15
 Sum[float64](1.5, 2.5, 3.5, 4.5, 5.5) // 17.5
 
-// crear una restriccion de tipo, tambien se puede usar alguna restriccion del paquete constraints
+// se puede usar tipos de datos derivados o por aproximacion
+type MyInt int
+var num MyInt = 10
+var num2 MyInt = 20
+// ~ se usa para decir que el tipo de dato es aproximado o derivado
+func Sum[T ~int | float64](nums ...T) T {
+  var total T
+  for _, num := range nums {
+    total += num
+  }
+  return total
+}
+Sum[int](num, num2) // 30
+
+// otra forma de crear un constraint. Tambien podria usar el paquete constraints que ya tiene tipos definidos
 type Numeric interface {
-  int | float64
+  ~int | ~float64 | ~float32 | ~uint
 }
 func Sum[T Numeric](nums ...T) T {
   var total T
@@ -735,11 +783,11 @@ Se usa para cerrar archivos, conexiones, liberar recursos, etc.
 
 ```go
 file, err := os.Open("file.txt")
+defer file.Close()
 if err != nil {
   fmt.Println("Error al abrir el archivo")
   return
 }
-defer file.Close()
 ```
 
 ## Manejo de errores
@@ -753,7 +801,6 @@ func divide(x, y int) (int, error) {
   }
   return x / y, nil
 }
-
 result, err := divide(10, 0)
 if err != nil {
   fmt.Println(err)
@@ -774,36 +821,95 @@ func divide(x, y int) (int, error) {
   }
   return x / y, nil
 }
+result, err := divide(10, 0)
+if err != nil {
+  fmt.Println(err.Error()) // No se puede dividir por 0
+} else {
+  fmt.Println(result)
+}
+
+// manejo de errores en funciones anidadas
+var errNotFound = errors.New("not found")
+
+var food = map[int]string{
+	1: "🍕",
+	2: "🍔",
+}
+
+func main() {
+	found, err := search("34")
+  // usando el paquete errors, comprobar si el error es igual a otro
+	if errors.Is(err, errNotFound) {
+		fmt.Println("pudimos controlar el error correctamente")
+		return
+	}
+	if err != nil {
+    // le doy contexto al error, diciendo de donde viene
+		fmt.Println("search()", err)
+		return
+	}
+	fmt.Println(found)
+}
+
+func search(key string) (string, error) {
+	num, err := strconv.Atoi(key)
+	if err != nil {
+    // le doy contexto al error, diciendo de donde viene
+    // %w es para envolver el error y despues poder compararlo con errors.Is()
+		return "", fmt.Errorf("strconv.Atoi(): %w", err)
+	}
+
+	emoji, err := findFood(num)
+	if err != nil {
+    // le doy contexto al error, diciendo de donde viene
+    // %w es para envolver el error y despues poder compararlo con errors.Is()
+		return "", fmt.Errorf("findFood(): %w", err)
+	}
+	return emoji, nil
+}
+
+func findFood(id int) (string, error) {
+	value, ok := food[id]
+	if !ok {
+		return "", errNotFound
+	}
+	return value, nil
+}
 ```
 
 ## Panic y Recover
 
+Cuando existe un panic, deberiamos leer los errores en consola de abajo hacia arriba.
+
 `panic` se usa para detener la ejecución de un programa.
-
-```go
-func main() {
-  defer func() {
-    if r := recover(); r != nil {
-      fmt.Println("Recovered from", r)
-    }
-  }()
-  panic("Error")
-}
-```
-
 `recover` se usa para recuperar el control del programa después de un `panic`.
 
 ```go
 func main() {
-  defer func() {
-    if r := recover(); r != nil {
-      fmt.Println("Recovered from", r)
-    }
-  }()
-  panic("Error")
-  fmt.Println("Hello")
+	division(100, 10)
+	division(34, 0)
+	division(120, 10)
 }
-// Recovered from Error
+
+func division(dividend, divisor int) {
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("me recupere del panic")
+		}
+	}()
+
+	validateZero(divisor)
+	fmt.Println(dividend / divisor)
+}
+
+func validateZero(divisor int) {
+	if divisor == 0 {
+		panic("🤕 no puedes dividir por cero")
+	}
+}
+// 10
+// me recupere del panic
+// 12
 ```
 
 ## Concurrencia (Goroutine)
@@ -1111,6 +1217,38 @@ fmt.Printf("I am %f years old", 10.05) // I am 10.05 years old
 fmt.Printf("I am %.2f years old", 10.0534) // I am 10.05 years old
 ```
 
+## Paquete strings
+
+Sirve para trabajar con cadenas de texto.
+
+```go
+import "strings"
+// concatenar cadenas
+strings.Join([]string{"Hello", "World"}, " ") // Hello World
+// separar cadenas
+strings.Split("Hello World", " ") // [Hello World]
+// buscar una cadena
+strings.Contains("Hello World", "World") // true
+// reemplazar una cadena
+strings.Replace("Hello World", "World", "Go", 1) // Hello Go
+// convertir a mayúsculas
+strings.ToUpper("Hello") // HELLO
+// convertir a minúsculas
+strings.ToLower("Hello") // hello
+// obtener la longitud de una cadena
+len("Hello") // 5
+// contar cuantas veces aparece una cadena
+strings.Count("Hello", "l") // 2
+// obtener el indice de una cadena
+strings.Index("Hello", "l") // 2
+// obtener el indice de una cadena desde la derecha
+strings.LastIndex("Hello", "l") // 3
+// obtener si una cadena empieza con otra
+strings.HasPrefix("Hello", "He") // true
+// obtener si una cadena termina con otra
+strings.HasSuffix("Hello", "lo") // true
+```
+
 ## Operadores y Paquete math
 
 Operadores: + - \* / % ++ --  
@@ -1161,6 +1299,22 @@ time.Now().Weekday()
 time.Now().Add(time.Hour * 24)
 time.Now().Sub(time.Now().Add(time.Hour * 24))
 ```
+
+## Paquete constraints
+
+Paquete para trabajar con constraints.
+
+```go
+import "constraints"
+// se puede usar para restringir el tipo de dato
+func sum[T constraints.Integer | constraints.Float](x, y T) T {
+  return x + y
+}
+sum(1, 2) // 3
+```
+
+El tipo de dato `constraints.Ordered` se usa para restringir el tipo de dato a los que se pueden comparar
+(>, <, <=, >=, ==, !=). Estos son todos los enteros, flotantes y strings.
 
 ## Paquete os
 
@@ -1408,4 +1562,5 @@ MAC:
 - `contol + G`: seleccionar siguiente coincicencia.
 - `command + D`: duplicar linea.
 - `command + backspace`: borrar linea.
+- `option + shift + flecha arriba o abajo`: mover linea.
 
