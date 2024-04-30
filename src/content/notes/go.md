@@ -153,6 +153,56 @@ type Age int
 var age Age = 30
 ```
 
+### Conversión de tipos (casting)
+
+Para hacer operaciones con tipos de datos diferentes, se deben convertir.
+
+```go
+temperatureInt := 88
+temperatureFloat := float64(temperatureInt)
+```
+
+Si se quiere convertir de número a string o viceversa, se puede hacer con el paquete `strconv`.
+
+```go
+import "strconv"
+temperatureInt := 88
+temperatureString := strconv.Itoa(temperatureInt)
+
+temperatureString := "88"
+// el segundo valor que devuelve es un error, si no se logra hacer la conversion
+temperatureInt, _ := strconv.Atoi(temperatureString)
+```
+
+### Type assertions
+
+Se usa para convertir un tipo de dato a otro tipo de dato.
+
+```go
+var i interface{} = "Juan"
+// se convierte a string, si no se puede convertir, devuelve "" y false
+j, ok := i.(string)
+if ok {
+  fmt.Println(strings.ToUpper(j))
+}
+```
+
+### Type switches
+
+Se usa para hacer un switch de tipos.
+
+```go
+var i interface{} = "Juan"
+switch v := i.(type) {
+case int:
+  fmt.Println("Es un entero")
+case string:
+  fmt.Println("Es un string")
+default:
+  fmt.Println("No se que es")
+}
+```
+
 ## Arrays
 
 Los arrays son una estructura fija, no se puede cambiar su tamaño.
@@ -368,20 +418,21 @@ fmt.Println(r.area()) // 50
 
 **Punteros en estructuras:**  
 Como en todas las funciones en Go, las estructuras también se pasan por valor, si se quiere modificar
-la estructura original, se debe pasar un puntero a la estructura.
+la estructura original, se debe pasar un puntero a la estructura.  
+Si hay por lo menos un metodo que recibe un puntero, se deberia usar punteros en todos los metodos.
 
 ```go
 type Rect struct {
 	width  int
 	height int
 }
+func NewRect(width, height int) *Rect {
+  return &Rect{width, height}
+}
 func (r *Rect) ChangeWidth(width int) {
 	r.width = width
 }
-r := &Rect{
-  width:  5,
-  height: 10,
-}
+r := NewRect(5, 10)
 r.ChangeWidth(10)
 fmt.Println(r.width) // 10
 ```
@@ -410,20 +461,24 @@ ejemplo, si el metodo es Greet(), la interfaz seria Greeter.
 
 ```go
 type Circle struct {
-	Radius float64
+	radius float64
 }
-
-func (c Circle) Area() float64 {
-	return math.Pi * math.Pow(c.Radius, 2)
+func NewCircle(radius float64) *Circle {
+  return &Circle{radius}
+}
+func (c *Circle) Area() float64 {
+	return math.Pi * math.Pow(c.radius, 2)
 }
 
 type Square struct {
-	Width  float64
-	Height float64
+	width  float64
+	height float64
 }
-
-func (s Square) Area() float64 {
-	return s.Width * s.Height
+func NewSquare(width, height float64) *Square {
+  return &Square{width, height}
+}
+func (s *Square) Area() float64 {
+	return s.width * s.height
 }
 
 type Sizer interface {
@@ -435,8 +490,8 @@ func calculateArea(s Sizer) float64 {
 }
 
 func main() {
-	c := Circle{Radius: 10}
-	s := Square{Height: 10, Width: 5}
+	c := NewCircle(10)
+	s := NewSquare(5, 10)
 	fmt.Println(calculateArea(c)) // 314.1592
 	fmt.Println(calculateArea(s)) // 50
 }
@@ -465,26 +520,8 @@ type GreeterByer interface {
 }
 ```
 
-## Conversión de tipos (casting)
-
-Para hacer operaciones con tipos de datos diferentes, se deben convertir.
-
-```go
-temperatureInt := 88
-temperatureFloat := float64(temperatureInt)
-```
-
-Si se quiere convertir de número a string o viceversa, se puede hacer con el paquete `strconv`.
-
-```go
-import "strconv"
-temperatureInt := 88
-temperatureString := strconv.Itoa(temperatureInt)
-
-temperatureString := "88"
-// el segundo valor que devuelve es un error, si no se logra hacer la conversion
-temperatureInt, _ := strconv.Atoi(temperatureString)
-```
+Tambien se pueden retornar interfaces.  
+Ver curso-go-edteam/02-POO
 
 ## Condicionales
 
@@ -1258,6 +1295,17 @@ fmt.Printf("I am %d years old", 10) // I am 10 years old
 fmt.Printf("I am %f years old", 10.05) // I am 10.05 years old
 fmt.Printf("I am %.2f years old", 10.0534) // I am 10.05 years old
 ```
+
+- `%v` para valores generales.
+- `%s` para strings.
+- `%q` para strings con comillas.
+- `%d` para enteros.
+- `%f` para flotantes.
+- `%.2f` para flotantes con 2 decimales.
+- `%T` para el tipo de dato.
+- `%t` para booleanos.
+- `%p` para punteros.
+- `%U` para Unicode.
 
 ## Paquete strings
 
