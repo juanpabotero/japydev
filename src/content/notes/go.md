@@ -288,11 +288,7 @@ type Person struct {
   Age uint8 `json:"age"`
   AddressInfo Address `json:"address"`
 }
-```
 
-Se puede usar:
-
-```go
 // crear “instancia”, si solo se ponen las llaves, los valores se iniciaran con su valor por defecto
 myPerson := Person{}
 myPerson.AddressInfo.City = "Pereira"
@@ -324,14 +320,17 @@ myPerson := struct {
 ```
 
 **Embedded structs:**  
-Son estructuras que contienen otras estructuras, se puede decir que “heredan” las propiedades de la otra struct.
-Se diferencian de las nested struct porq en estas solo una de sus propiedades hace referencia a otra struct,
-en las embedded struct se heredan las propiedades de la otra struct.
+Son estructuras que contienen otras estructuras, se puede decir que “heredan” las propiedades y metodos
+de la otra struct. Se diferencian de las nested struct porq en estas solo una de sus propiedades
+hace referencia a otra struct, en las embedded struct se heredan las propiedades de la otra struct.
 
 ```go
 type person struct {
   name string
   age int
+}
+func (p person) greet() {
+  fmt.Println("Hello")
 }
 type employee struct {
   person
@@ -346,9 +345,11 @@ myEmployee := employee{
   }
 }
 myEmployee.name // Jhon
+myEmployee.greet() // Hello
 ```
 
-**Métodos en structs:**
+**Métodos en estructuras:**  
+Se vincula una función a una estructura, se puede decir que es un método de la estructura.
 
 ```go
 type rect struct {
@@ -356,13 +357,33 @@ type rect struct {
   height int
 }
 func (r rect) area() int {
-  return r.width \* r.height
+  return r.width * r.height
 }
 r := rect{
   width: 5,
   height: 10
 }
 fmt.Println(r.area()) // 50
+```
+
+**Punteros en estructuras:**  
+Como en todas las funciones en Go, las estructuras también se pasan por valor, si se quiere modificar
+la estructura original, se debe pasar un puntero a la estructura.
+
+```go
+type Rect struct {
+	width  int
+	height int
+}
+func (r *Rect) ChangeWidth(width int) {
+	r.width = width
+}
+r := &Rect{
+  width:  5,
+  height: 10,
+}
+r.ChangeWidth(10)
+fmt.Println(r.width) // 10
 ```
 
 ## Punteros
@@ -383,7 +404,9 @@ fmt.Println(*y) // 10
 
 ## Interfaces
 
-Las interfaces definen la implementación de métodos.
+Las interfaces definen la implementación de métodos.  
+Como recomendacion, se debe poner el nombre de la interfaz como el nombre del método con el sufijo `er`,
+ejemplo, si el metodo es Greet(), la interfaz seria Greeter.
 
 ```go
 type Circle struct {
@@ -407,8 +430,8 @@ type Sizer interface {
 	Area() float64
 }
 
-func calculateArea(s Sizer) int {
-	return s.area()
+func calculateArea(s Sizer) float64 {
+	return s.Area()
 }
 
 func main() {
@@ -420,8 +443,27 @@ func main() {
 ```
 
 Las interfaces quedan definidas implícitamente, en el ejemplo si un struct implementa el método ‘Area()’,
-queda implícitamente relacionado con la interfaz SIzer. No se necesita decir explícitamente como en otros
-lenguajes con la palabra implements. Las interfaces quedan desacopladas de la implementación del type.
+queda implícitamente relacionado con la interfaz Sizer. No se necesita decir explícitamente la
+palabra implements como en otros lenguajes. Las interfaces quedan desacopladas de la implementación del type.
+
+**Interfaces embebidas**  
+Crea una interfaz que se compone de otras interfaces y de sus metodos.  
+Como recomendacion el nombre se compone de los nombres de las interfaces que contiene.
+
+```go
+type Greeter interface {
+  Greet() string
+}
+
+type Byer interface {
+  Bye() string
+}
+
+type GreeterByer interface {
+  Greeter
+  Byer
+}
+```
 
 ## Conversión de tipos (casting)
 
