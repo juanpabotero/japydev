@@ -236,7 +236,6 @@ objeto en un String.
 public class Persona {
   // atributos
   private String nombre;
-  private String apellido;
   private int edad;
   // métodos
   public void saludar() {
@@ -249,12 +248,6 @@ public class Persona {
   public void setNombre(String nombre) {
     this.nombre = nombre;
   }
-  public String getApellido() {
-    return this.apellido;
-  }
-  public void setApellido(String apellido) {
-    this.apellido = apellido;
-  }
   public int getEdad() {
     return this.edad;
   }
@@ -264,7 +257,7 @@ public class Persona {
   // metodo toString
   @Override // anotación para indicar que se sobreescribe el método
   public String toString() {
-    return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + "]";
+    return "Persona [nombre=" + nombre + ", edad=" + edad + "]";
   }
 }
 // crear un objeto de la clase Persona
@@ -273,10 +266,8 @@ Persona persona = new Persona();
 persona.saludar();
 // acceder a los atributos del objeto usando getters y setters
 persona.setNombre("Juan");
-persona.setApellido("Perez");
 persona.setEdad(20);
 System.out.println(persona.getNombre());
-System.out.println(persona.getApellido());
 System.out.println(persona.getEdad());
 ```
 
@@ -286,17 +277,15 @@ El constructor se llama igual que la clase y no tiene tipo de retorno.
 ```java
 public class Persona {
   String nombre;
-  String apellido;
   int edad;
   // constructor
-  public Persona(String nombre, String apellido, int edad) {
+  public Persona(String nombre, int edad) {
     this.nombre = nombre;
-    this.apellido = apellido;
     this.edad = edad;
   }
 }
 // crear un objeto de la clase Persona
-Persona persona = new Persona("Juan", "Perez", 20);
+Persona persona = new Persona("Juan", 20);
 ```
 
 Sobrecarga de constructores.  
@@ -305,18 +294,11 @@ Se pueden crear varios constructores con diferentes parámetros.
 ```java
 public class Persona {
   String nombre;
-  String apellido;
   int edad;
   // constructor
-  public Persona(String nombre, String apellido, int edad) {
+  public Persona(String nombre, int edad) {
     this.nombre = nombre;
-    this.apellido = apellido;
     this.edad = edad;
-  }
-  // constructor
-  public Persona(String nombre, String apellido) {
-    this.nombre = nombre;
-    this.apellido = apellido;
   }
   // constructor
   public Persona(String nombre) {
@@ -324,8 +306,7 @@ public class Persona {
   }
 }
 // crear un objeto de la clase Persona
-Persona persona1 = new Persona("Juan", "Perez", 20);
-Persona persona2 = new Persona("Juan", "Perez");
+Persona persona1 = new Persona("Juan", 20);
 Persona persona3 = new Persona("Juan");
 ```
 
@@ -394,12 +375,10 @@ varias clases.
 ```java
 public class Persona {
   private String nombre;
-  private String apellido;
   private int edad;
   // constructor
-  public Persona(String nombre, String apellido, int edad) {
+  public Persona(String nombre, int edad) {
     this.nombre = nombre;
-    this.apellido = apellido;
     this.edad = edad;
   }
   // getters y setters
@@ -408,12 +387,6 @@ public class Persona {
   }
   public void setNombre(String nombre) {
     this.nombre = nombre;
-  }
-  public String getApellido() {
-    return this.apellido;
-  }
-  public void setApellido(String apellido) {
-    this.apellido = apellido;
   }
   public int getEdad() {
     return this.edad;
@@ -424,7 +397,7 @@ public class Persona {
   // metodo toString
   @Override // anotación para indicar que se sobreescribe el método
   public String toString() {
-    return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + "]";
+    return "Persona [nombre=" + nombre + ", edad=" + edad + "]";
   }
 }
 
@@ -433,9 +406,9 @@ public class Empleado extends Persona {
   private int idEmpleado;
   private double sueldo;
   // constructor
-  public Empleado(String nombre, String apellido, int edad, int idEmpleado, double sueldo) {
+  public Empleado(String nombre, int edad, int idEmpleado, double sueldo) {
     // llamar al constructor de la clase padre
-    super(nombre, apellido, edad);
+    super(nombre, edad);
     this.idEmpleado = idEmpleado;
     this.sueldo = sueldo;
   }
@@ -455,11 +428,11 @@ public class Empleado extends Persona {
   // metodo toString
   @Override // anotación para indicar que se sobreescribe el método
   public String toString() {
-    return "Empleado [idEmpleado=" + idEmpleado + ", sueldo=" + sueldo + ", nombre=" + getNombre() + ", apellido=" + getApellido() + ", edad=" + getEdad() + "]";
+    return "Empleado [idEmpleado=" + idEmpleado + ", sueldo=" + sueldo + ", nombre=" + getNombre() + ", edad=" + getEdad() + "]";
   }
 }
 // crear un objeto de la clase Empleado
-Empleado empleado = new Empleado("Juan", "Perez", 20, 1, 1000);
+Empleado empleado = new Empleado("Juan", 20, 1, 1000);
 ```
 
 Se puede sobreescribir un método de la clase padre en la clase hija.

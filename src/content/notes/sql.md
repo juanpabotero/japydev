@@ -172,6 +172,8 @@ DESCRIBE table_name;
 DROP TABLE table_name;
 -- elimina la tabla si existe
 DROP TABLE IF EXISTS table_name;
+-- vaciar tabla (eliminar todos los registros)
+TRUNCATE TABLE table_name;
 -- actualizar tabla
 -- agregar nueva columna
 ALTER TABLE table_name
@@ -207,8 +209,9 @@ DEFAULT -- valor por defecto
 CHECK -- permite hacer una validación
 PRIMARY KEY -- clave primaria, es el campo o conjunto de campos que identifica de manera unica al registro,
 -- debe ser inmutable. La clave primaria debe ir abajo de la tabla.
-FOREIGN KEY -- clave foranea, es la manera de relacionar las tablas, le digo el campo de la tabla actual a que
--- campo hace referencia de la otra tabla. Puede ser mas de una clave foranea.
+FOREIGN KEY -- clave foranea, es la manera de relacionar las tabla, hace referencia a la llave primaria
+-- de otra tabla, le digo el campo de la tabla actual a que campo hace referencia de la otra tabla.
+-- Puede ser mas de una clave foranea.
 
 -- funciones
 AUTO_INCREMENT -- se incrementa automaticamente cuando se crea un nuevo registro
@@ -288,7 +291,9 @@ Para busquedas de texto libre como lo hacen las redes sociales en sus
 buscadores o Google, no se hacen con SQL, se usan otras herramientas.
 Por ejemplo, se puede usar ElasticSearch, Algolia, Apache Lucene.
 
-**Sub consulta**: es una consulta dentro de otra consulta, es una alternativa a hacer JOINs.
+### Sub consulta
+
+Es una consulta dentro de otra consulta, es una alternativa a hacer JOINs.
 
 ```sql
 SELECT * FROM movies WHERE 'directorId' = (SELECT id FROM directors WHERE name = "Chris");
@@ -313,7 +318,7 @@ SELECT * FROM movies ORDER BY year DESC;
 SELECT * FROM movies ORDER BY year DESC, title ASC;
 ```
 
-### LIMIT
+### LIMIT y OFFSET
 
 Permite limitar la cantidad de resultados que se traen.  
 Se puede usar con o sin OFFSET, éste permite traer los resultados
@@ -409,6 +414,20 @@ SELECT COUNT(year) FROM movies HAVING COUNT(year) > 3;
 SELECT directorId, COUNT(*) FROM movies GROUP BY directorId HAVING COUNT(*) > 1;
 ```
 
+### CHECK
+
+Permite hacer una validación en una columna.
+
+```sql
+CREATE TABLE movies (
+  id INT NOT NULL AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  year INT NOT NULL,
+  rating FLOAT NOT NULL,
+  CHECK(rating > 0 AND rating <= 10)
+);
+```
+
 ### JOIN
 
 Permite unir dos tablas, y traer los datos de ambas tablas según la relación especificada.  
@@ -453,6 +472,11 @@ WHERE movies.year = 2001 AND directors.name = "Chris" ORDER BY movies.title DESC
 SELECT movies.title, directors.name FROM movies
 FULL JOIN directors ON movies.director_id = directors.id
 WHERE movies.year = 2001 AND directors.name = "Chris" ORDER BY movies.title DESC LIMIT 5 OFFSET 5;
+
+-- left join con exclusion
+SELECT movies.title, directors.name FROM movies
+LEFT JOIN directors ON movies.director_id = directors.id
+WHERE movies.director_id IS NULL;
 ```
 
 Para una consulta donde existe una relación de muchos a muchos, se puede hacer la consulta a la tabla
@@ -467,7 +491,7 @@ JOIN languages ON users_languages.language_id = languages.id ;
 
 ### UNION
 
-Permite unir los resultados de dos consultas.
+Permite unir los resultados de dos consultas. Debe tener el mismo numero de columnas.
 
 ```sql
 SELECT * FROM movies WHERE year = 2001
@@ -515,7 +539,7 @@ DELETE FROM movies WHERE year = 2001 AND director = "Chris"        ;
 Permite ejecutar una acción cuando se inserta, actualiza o elimina un registro.
 
 ```sql
-CREATE TRIGGER trigger_name
+CREATE OR REPLACE TRIGGER trigger_name
 BEFORE/AFTER INSERT/UPDATE/DELETE
 ON table_name
 FOR EACH ROW
@@ -530,7 +554,7 @@ Ejemplo:
 -- DELIMITER es para cambiar el delimitador, para que SQL sepa cuando termina el trigger y cuando
 -- termina la sentencia SQL
 DELIMITER $$
-CREATE TRIGGER update_rating
+CREATE OR REPLACE TRIGGER update_rating
 AFTER INSERT
 ON movies
 FOR EACH ROW
@@ -542,21 +566,31 @@ END $$
 DELIMITER ;
 ```
 
-### INDEXES
+### INDEXES (Indices)
 
 Permite mejorar el rendimiento de las consultas al hacer una referencia más exacta de una columna,
-pero puede afectar el rendimiento de las inserciones, actualizaciones y eliminaciones.
+pero puede afectar el rendimiento de las inserciones, actualizaciones y eliminaciones porque
+debe actualizar el indice.  
+Si se crea un indice unico, al ser valores unicos, una vez encuentra el valor, ya no sigue buscando,
+no itera sobre los demas registros.
 
 ```sql
 CREATE INDEX idx_column_name ON table_name (column_name);
 ```
 
-### VIEWS
+### VIEWS (Vistas)
 
 Permite guardar una consulta en una vista, y luego poder hacer consultas a esa vista.  
 Es una representación virtual de una o más tablas.  
 Las vistas no almacenan datos, solo almacenan la consulta, no se puede insertar, actualizar o eliminar datos en una vista.  
-Las vistas se usan para simplificar las consultas, para no tener que escribir la misma consulta muchas veces.
+Las vistas se usan para simplificar las consultas, para no tener que escribir la misma consulta muchas veces.  
+No se crea una tabla fisica, cuando se consulta una vista se ejecuta la query con la que se construyó la vista.
+
+Una vista materializada es una vista que crea la tabla fisica, no ejecuta la query de la vista sino que consulta
+directamente la tabla. Se debe actualizar manualmente.
+
+La vista puede ser mas lenta porque vuelve a ejecutar el query pero no ocupa espacio en memoria,
+mientras que la vista materializada ocupa espacio en memoria pero es mas rapida.
 
 ```sql
 CREATE VIEW view_name AS
@@ -565,6 +599,70 @@ SELECT column_name FROM table_name WHERE condition;
 -- ejemplo
 CREATE VIEW movies_view AS
 SELECT title, year, rating FROM movies WHERE year > 2000;
+
+-- para consultar la vista
+SELECT * FROM movies_view;
+
+-- para eliminar la vista
+DROP VIEW view_name;
+
+-- crear una vista materializada
+CREATE MATERIALIZED VIEW view_name AS
+SELECT column_name FROM table_name WHERE condition;
+
+-- para actualizar la vista materializada
+REFRESH MATERIALIZED VIEW view_name;
+
+-- para eliminar la vista materializada
+DROP MATERIALIZED VIEW view_name;
+```
+
+### Common Table Expressions (CTE)
+
+Permite guardar una consulta en una tabla temporal, y luego poder hacer consultas a esa tabla temporal.
+
+```sql
+WITH cte_name AS (
+  SELECT column_name FROM table_name WHERE condition
+)
+SELECT * FROM cte_name;
+
+-- CTE recursiva
+WITH RECURSIVE cte_name AS (
+  SELECT column_name FROM table_name WHERE condition
+  UNION
+  SELECT column_name FROM cte_name WHERE condition
+)
+SELECT * FROM cte_name;
+```
+
+### Funciones
+
+Permite ejecutar una logica que devuelve información.
+
+```sql
+create or replace function max_raise(empl_id int)
+    returns numeric(8, 2)
+    -- si quiero devolver una tabla
+    -- returns table(column_name data_type, column_name data_type)
+as
+$$
+declare
+    -- declarar variable para guardar el resultado
+    posssible_raise numeric(8, 2);
+begin
+    select max_salary - salary into posssible_raise
+    from employees
+             join jobs on employees.job_id = jobs.job_id
+    where employees.employee_id = empl_id;
+    return posssible_raise;
+    -- si quiero devolver una tabla
+    -- return query select column_name, column_name from table_name;
+end ;
+$$ language plpgsql;
+
+-- ejecutar la función
+select max_raise(206);
 ```
 
 ### STORED PROCEDURES
@@ -572,23 +670,23 @@ SELECT title, year, rating FROM movies WHERE year > 2000;
 Permite guardar una consulta en un procedimiento, y luego poder ejecutar ese procedimiento.
 
 ```sql
-DELIMITER $$
-CREATE PROCEDURE procedure_name()
-BEGIN
-  -- codigo
-END $$
-DELIMITER ;
+create or replace procedure insert_region(id integer, name varchar)
+as
+$$
+begin
+    insert into regions (region_id, region_name)
+    values (id, name);
 
--- ejemplo
-DELIMITER $$
-CREATE PROCEDURE get_movies()
-BEGIN
-  SELECT * FROM movies;
-END $$
-DELIMITER ;
+    -- si algo sale mal
+    -- ROLLBACK;
+
+    -- si todo esta bien
+    COMMIT;
+end;
+$$ language plpgsql;
 
 -- ejecutar el procedimiento
-CALL get_movies();
+call insert_region(5, 'Central America');
 ```
 
 ### TRANSACTIONS
@@ -613,6 +711,117 @@ Permite bloquear una tabla para que no se puedan hacer consultas, actualizacione
 LOCK TABLES table_name READ/WRITE;
 -- codigo
 UNLOCK TABLES;
+```
+
+### Fechas
+
+Las funciones de fechas mas comunes son:
+
+```sql
+SELECT NOW(); -- devuelve la fecha y hora actual
+SELECT current_timestamp; -- devuelve la fecha y hora actual
+SELECT current_date; -- devuelve la fecha actual
+SELECT current_time; -- devuelve la hora actual
+SELECT date('2022-01-01 12:00:00'); -- devuelve la fecha a partir de una fecha o fecha y hora
+
+-- si pongo una fecha que no es TIMESTAMP, debo hacer el casteo a TIMESTAMP
+SELECT date_part('year', TIMESTAMP '2022-01-01 12:00:00'); -- devuelve el año de una fecha
+SELECT date_part('month', now()); -- devuelve el mes de una fecha
+SELECT date_part('day', now()); -- devuelve el dia de una fecha
+SELECT date_part('hour', now()); -- devuelve la hora de una fecha
+SELECT date_part('minute', now()); -- devuelve los minutos de una fecha
+SELECT date_part('second', now()); -- devuelve los segundos de una fecha
+SELECT date_part('millisecond', now()); -- devuelve los milisegundos de una fecha
+SELECT date_part('dow', now()); -- devuelve el dia de la semana de una fecha
+SELECT date_part('doy', now()); -- devuelve el dia del año de una fecha
+SELECT date_part('isodow', now()); -- devuelve el dia de la semana de una fecha
+SELECT date_part('isoyear', now()); -- devuelve el año ISO de una fecha
+SELECT date_part('week', now()); -- devuelve la semana del año de una fecha
+SELECT date_part('quarter', now()); -- devuelve el trimestre de una fecha
+SELECT date_part('decade', now()); -- devuelve la decada de una fecha
+SELECT date_part('century', now()); -- devuelve el siglo de una fecha
+SELECT date_part('millennium', now()); -- devuelve el milenio de una fecha
+SELECT date_part('timezone_hour', now()); -- devuelve la zona horaria de una fecha
+SELECT date_part('timezone_minute', now()); -- devuelve la zona horaria de una fecha
+SELECT date_part('epoch', now()); -- devuelve la fecha en segundos desde el 1 de enero de 1970
+-- lo mismo funciona con extract
+SELECT extract(year from now()); -- devuelve el año de una fecha
+
+-- para hacer operaciones con fechas
+-- si pongo una fecha que no es TIMESTAMP, debo hacer el casteo a TIMESTAMP
+SELECT TIMESTAMP '2022-01-01 12:00:00' + INTERVAL '1 day'; -- suma un dia a una fecha
+SELECT now() - INTERVAL '1 day'; -- resta un dia a una fecha
+SELECT now() + INTERVAL '1 month'; -- suma un mes a una fecha
+SELECT now() - INTERVAL '1 month'; -- resta un mes a una fecha
+SELECT now() + INTERVAL '1 year'; -- suma un año a una fecha
+SELECT now() - INTERVAL '1 year'; -- resta un año a una fecha
+SELECT now() + INTERVAL '1 hour'; -- suma una hora a una fecha
+SELECT now() - INTERVAL '1 hour'; -- resta una hora a una fecha
+SELECT now() + INTERVAL '1 minute'; -- suma un minuto a una fecha
+SELECT now() - INTERVAL '1 minute'; -- resta un minuto a una fecha
+
+-- para formatear una fecha
+SELECT to_char(now(), 'YYYY-MM-DD HH24:MI:SS'); -- 2024-06-01 22:57:25
+SELECT to_char(now(), 'YYYY-MM-DD'); -- 2024-06-01
+SELECT to_char(now(), 'HH24:MI:SS'); -- 22:57:25
+SELECT to_char(now(), 'YYYY'); -- 2024
+SELECT to_char(now(), 'MM'); -- 06
+SELECT to_char(now(), 'DD'); -- 01
+SELECT to_char(now(), 'HH24'); -- 22
+SELECT to_char(now(), 'MI'); -- 57
+SELECT to_char(now(), 'SS'); -- 25
+SELECT to_char(now(), 'D'); -- 7
+SELECT to_char(now(), 'DY'); -- SAT
+SELECT to_char(now(), 'DAY'); -- SATURDAY
+SELECT to_char(now(), 'MM/DD/YYYY'); -- 06/01/2024
+SELECT to_char(now(), 'DD/MM/YYYY'); -- 01/06/2024
+SELECT to_char(now(), 'YYYY/MM/DD'); -- 2024/06/01
+```
+
+### Funciones de agregación
+
+Permiten hacer operaciones con los datos de una columna.
+
+```sql
+SELECT COUNT(*) FROM movies; -- cuenta la cantidad de registros
+SELECT SUM(rating) FROM movies; -- suma los valores de una columna
+SELECT AVG(rating) FROM movies; -- calcula el promedio de los valores de una columna
+SELECT MAX(rating) FROM movies; -- devuelve el valor máximo de una columna
+SELECT MIN(rating) FROM movies; -- devuelve el valor mínimo de una columna
+```
+
+### Funciones de texto
+
+```sql
+SELECT UPPER('hola'); -- convierte el texto a mayúsculas
+SELECT LOWER('HOLA'); -- convierte el texto a minúsculas
+SELECT LENGTH('hola'); -- devuelve la longitud del texto
+SELECT TRIM(' hola '); -- elimina los espacios en blanco al principio y al final del texto
+SELECT LTRIM(' hola '); -- elimina los espacios en blanco al principio del texto
+SELECT RTRIM(' hola '); -- elimina los espacios en blanco al final del texto
+SELECT SUBSTRING('hola', 1, 2); -- devuelve una parte del texto
+SELECT REPLACE('hola', 'o', 'a'); -- reemplaza una parte del texto
+SELECT CONCAT('hola', ' ', 'mundo'); -- concatena texto
+SELECT CHAR_LENGTH('hola'); -- devuelve la longitud del texto
+SELECT POSITION('o' IN 'hola'); -- devuelve la posición de una parte del texto
+SELECT REPEAT('hola', 3); -- repite el texto
+SELECT REVERSE('hola'); -- invierte el texto
+SELECT INITCAP('hola mundo'); -- convierte la primera letra de cada palabra a mayúsculas
+```
+
+### Funciones matemáticas
+
+```sql
+SELECT ABS(-10); -- devuelve el valor absoluto
+SELECT CEIL(10.1); -- redondea hacia arriba
+SELECT FLOOR(10.9); -- redondea hacia abajo
+SELECT ROUND(10.5); -- redondea
+SELECT TRUNC(10.9); -- trunca
+SELECT MOD(10, 3); -- devuelve el resto de la división
+SELECT SQRT(9); -- devuelve la raíz cuadrada
+SELECT POWER(2, 3); -- devuelve la potencia
+SELECT RANDOM(); -- devuelve un número aleatorio
+SELECT ROUND(RANDOM() * 100); -- devuelve un número aleatorio entre 0 y 100
 ```
 
 ### CARDINALIDAD
@@ -661,6 +870,12 @@ CREATE TABLE users (
 ```
 
 La biblioteca para conectarse a MySQL desde Node.js es **mysql2**.
+
+#### Programas para hacer diagramas
+
+- https://app.diagrams.net/
+- https://dbdiagram.io/home (permite exportar a SQL)
+- https://drawsql.app/
 
 #### Atajos MySQL Workbench
 

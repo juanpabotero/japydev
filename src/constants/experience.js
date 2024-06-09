@@ -1,5 +1,13 @@
 export const experience = [
   {
+    title: 'Software Developer',
+    company: 'Mercado Libre',
+    date: 'Abr/2024 - Actualidad',
+    description: [
+      'Desarrollo de software'
+    ]
+  },
+  {
     title: 'Desarrollador Full Stack',
     company: 'Inlaze',
     date: 'Nov/2023 - Mar/2024',
