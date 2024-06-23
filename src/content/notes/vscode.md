@@ -6,6 +6,8 @@ pubDate: 'Jan 01 2022'
 heroImage: '/vscode.svg'
 ---
 
+## Windows
+
 ## Atajos
 
 ### Navegacion

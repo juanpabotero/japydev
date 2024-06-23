@@ -66,7 +66,7 @@ Los tipos de datos se dividen en dos grupos:
   - `Clases`: indica un objeto de una clase.
   - `Interfaces`: indica un objeto de una interfaz.
 
-Conversión de tipos (casting o casteo):
+**Conversión de tipos (casting o casteo):**
 
 ```java
 // de String a int
@@ -83,9 +83,12 @@ double edad = edad;
 // de double a int
 double edad = 20.5;
 int edad = (int) edad;
+// de object a string
+Object nombreObject = "Juan";
+String nombre = (String) nombreObject;
 ```
 
-Conversión de objetos:
+**Conversión de objetos:**
 
 ```java
 // de String a Integer
@@ -97,6 +100,148 @@ String edad = String.valueOf(edad);
 // de una clase a otra
 Persona persona = new Persona();
 Empleado empleado = (Empleado) persona;
+```
+
+### Arrays o arreglos
+
+Los arreglos son estructuras de datos que permiten almacenar varios valores
+del mismo tipo, los arreglos son de tipo objeto. Una vez se crea un arreglo,
+no se puede cambiar su tamaño. Si se quiere agregar un elemento, se debe crear
+un nuevo arreglo con el tamaño necesario y copiar los elementos del arreglo
+anterior, o se puede usar otra estructura de datos como una lista, set o map,
+que si permiten un tamaño dinámico.
+
+```java
+// declarar un arreglo de enteros
+int[] numeros;
+// inicializar el arreglo
+numeros = new int[3];
+// asignar valores al arreglo
+numeros[0] = 1;
+numeros[1] = 2;
+numeros[2] = 3;
+// declarar e inicializar un arreglo de enteros
+int[] numeros1 = new int[3];
+// declarar e inicializar un arreglo de enteros
+int[] numeros2 = {1, 2, 3};
+// acceder a un elemento del arreglo
+System.out.println(numeros[0]);
+// recorrer un arreglo
+for (int i = 0; i < numeros.length; i++) {
+  System.out.println(numeros[i]);
+}
+// recorrer un arreglo con for each
+for (int numero : numeros) {
+  System.out.println(numero);
+}
+
+// declarar un arreglo de Strings
+String[] nombres = {"Juan", "Pedro", "Maria"};
+
+// declarar un arreglo de objetos
+Persona[] personas = new Persona[3];
+// inicializar los objetos del arreglo
+personas[0] = new Persona("Juan", "Perez", 20);
+personas[1] = new Persona("Pedro", "Gomez", 30);
+personas[2] = new Persona("Maria", "Lopez", 40);
+// recorrer un arreglo de objetos
+for (Persona persona : personas) {
+  System.out.println(persona);
+}
+
+// declarar e inicializar un arreglo de enteros de 2 dimensiones
+int[][] numeros = {{1, 2}, {3, 4}};
+// acceder a un elemento del arreglo
+System.out.println(numeros[0][0]);
+// recorrer un arreglo de 2 dimensiones
+for (int i = 0; i < numeros.length; i++) {
+  for (int j = 0; j < numeros[i].length; j++) {
+    System.out.println(numeros[i][j]);
+  }
+}
+// recorrer un arreglo de 2 dimensiones con for each
+for (int[] fila : numeros) {
+  for (int numero : fila) {
+    System.out.println(numero);
+  }
+}
+```
+
+### Listas
+
+Las listas son estructuras de datos que permiten almacenar varios valores
+del mismo tipo, pero con un tamaño dinámico.
+
+```java
+// importar desde util
+import java.util.*;
+// declarar una lista de enteros
+List numeros = new ArrayList();
+// agregar elementos a la lista
+numeros.add(1);
+// acceder a un elemento de la lista
+System.out.println(numeros.get(0));
+// recorrer una lista
+for (int i = 0; i < numeros.size(); i++) {
+  System.out.println(numeros.get(i));
+}
+// recorrer una lista con for each
+for (int numero : numeros) {
+  System.out.println(numero);
+}
+// recorrer con funciones lambda o funciones flecha
+numeros.forEach(numero -> {
+  System.out.println(numero)
+});
+```
+
+### Sets
+
+Los sets son estructuras de datos que permiten almacenar varios valores
+del mismo tipo, pero no permiten duplicados. No garantiza el orden de los elementos.
+
+```java
+// importar desde util
+import java.util.*;
+// declarar un set de enteros
+Set numeros = new HashSet();
+// agregar elementos al set
+numeros.add(1);
+numeros.add(2);
+numeros.add(3);
+numeros.add(1);
+// acceder a un elemento del set
+System.out.println(numeros);
+// recorrer un set
+for (int numero : numeros) {
+  System.out.println(numero); // 1, 2, 3
+}
+```
+
+### Maps
+
+Los maps son estructuras de datos que permiten almacenar varios valores
+del mismo tipo, pero no permiten duplicados. Se compone de una clave y un valor.
+
+```java
+// importar desde util
+import java.util.*;
+// declarar un map de enteros
+Map numeros = new HashMap();
+// agregar elementos al map
+numeros.put("uno", 1);
+numeros.put("dos", 2);
+numeros.put("tres", 3);
+// acceder a un elemento del map
+System.out.println(numeros.get("uno"));
+// recorrer un map
+for (Object clave : numeros.keySet()) {
+  System.out.println(clave + ": " + numeros.get(clave));
+}
+// imprimir los valores
+for (Object valor : numeros.values()) {
+  System.out.println(valor);
+}
 ```
 
 ### AutoBoxing y UnBoxing
@@ -708,71 +853,6 @@ System.out.println("Hola " + nombre + " " + apellido);
 scanner.close();
 ```
 
-### Arreglos
-
-Los arreglos son estructuras de datos que permiten almacenar varios valores
-del mismo tipo, los arreglos son de tipo objeto. Una vez se crea un arreglo,
-no se puede cambiar su tamaño. Si se quiere agregar un elemento, se debe crear
-un nuevo arreglo con el tamaño necesario y copiar los elementos del arreglo
-anterior, o se puede usar otra estructura de datos como una lista, set o map,
-que si permiten un tamaño dinámico.
-
-```java
-// declarar un arreglo de enteros
-int[] numeros;
-// inicializar el arreglo
-numeros = new int[3];
-// asignar valores al arreglo
-numeros[0] = 1;
-numeros[1] = 2;
-numeros[2] = 3;
-// declarar e inicializar un arreglo de enteros
-int[] numeros1 = new int[3];
-// declarar e inicializar un arreglo de enteros
-int[] numeros2 = {1, 2, 3};
-// acceder a un elemento del arreglo
-System.out.println(numeros[0]);
-// recorrer un arreglo
-for (int i = 0; i < numeros.length; i++) {
-  System.out.println(numeros[i]);
-}
-// recorrer un arreglo con for each
-for (int numero : numeros) {
-  System.out.println(numero);
-}
-
-// declarar un arreglo de Strings
-String[] nombres = {"Juan", "Pedro", "Maria"};
-
-// declarar un arreglo de objetos
-Persona[] personas = new Persona[3];
-// inicializar los objetos del arreglo
-personas[0] = new Persona("Juan", "Perez", 20);
-personas[1] = new Persona("Pedro", "Gomez", 30);
-personas[2] = new Persona("Maria", "Lopez", 40);
-// recorrer un arreglo de objetos
-for (Persona persona : personas) {
-  System.out.println(persona);
-}
-
-// declarar e inicializar un arreglo de enteros de 2 dimensiones
-int[][] numeros = {{1, 2}, {3, 4}};
-// acceder a un elemento del arreglo
-System.out.println(numeros[0][0]);
-// recorrer un arreglo de 2 dimensiones
-for (int i = 0; i < numeros.length; i++) {
-  for (int j = 0; j < numeros[i].length; j++) {
-    System.out.println(numeros[i][j]);
-  }
-}
-// recorrer un arreglo de 2 dimensiones con for each
-for (int[] fila : numeros) {
-  for (int numero : fila) {
-    System.out.println(numero);
-  }
-}
-```
-
 ### Enumeraciones o enums
 
 Las enumeraciones son un tipo de dato que permite definir un conjunto de
@@ -900,4 +980,113 @@ System.out.println(persona.getIdPersona()); // 10
 // crear otro objeto de la clase Persona
 Persona persona2 = new Persona();
 System.out.println(persona2.getIdPersona()); // 11
+```
+
+### Interfaces
+
+Las interfaces son un tipo de dato que permite definir un conjunto de métodos
+que deben ser implementados por las clases que la implementan.  
+Los metodos de una interfaz no tienen una implmentacion por lo que son abstractos por defecto, ademas de publicos.  
+Si asignamos un valor a un atributo de una interfaz, este será una constante, es decir, final y estático.  
+Conviene mas usar una clase abstracta, cuando la impelmentaciòn tiene que ver mas con sus caracteristicas,
+si es mas de comportamiento, se usa una interfaz.
+
+```java
+// declarar una interfaz
+public interface AccesoDatos {
+// métodos
+void insertar();
+}
+// implementar una interfaz
+public class ImplementacionMySql implements AccesoDatos {
+  // implementar los métodos de la interfaz
+  @Override
+  public void insertar() {
+    System.out.println("Insertar desde MySql");
+  }
+}
+// implementar una interfaz
+public class ImplementacionOracle implements AccesoDatos {
+  // implementar los métodos de la interfaz
+  @Override
+  public void insertar() {
+    System.out.println("Insertar desde Oracle");
+  }
+}
+// crear un objeto de la clase ImplementacionMySql
+AccesoDatos datos = new ImplementacionMySql();
+// llamar a los métodos de la interfaz
+datos.insertar();
+// crear un objeto de la clase ImplementacionOracle
+AccesoDatos datos2 = new ImplementacionOracle();
+// llamar a los métodos de la interfaz
+datos2.insertar();
+```
+
+### JavaBeans
+
+Los JavaBeans son clases que siguen una serie de convenciones, al cumplir estas convenciones
+algunos frameworks y herramientas de Java pueden trabajar con ellas sin necesidad de configuración.
+
+- Deben tener un constructor sin parámetros.
+- Deben tener atributos privados.
+- Deben tener métodos getters y setters para acceder a los atributos.
+- Deben implementar la interfaz `Serializable` si se quiere guardar en un archivo.
+
+Serializable permite convertir un objeto a bits, para que pueda ser transferido
+a través de la red o guardado en un archivo.  
+Una vez se recibe el objeto se aplica el concepto de deserializacion para volver
+a construir el objeto.
+
+```java
+// declarar una clase JavaBean
+public class Persona implements Serializable {
+  // atributos
+  private String nombre;
+  private int edad;
+  // constructor sin parámetros
+  public Persona() {
+  }
+  // getters y setters
+  public String getNombre() {
+    return this.nombre;
+  }
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+  public int getEdad() {
+    return this.edad;
+  }
+  public void setEdad(int edad) {
+    this.edad = edad;
+  }
+}
+```
+
+### Excepciones
+
+Las excepciones son errores que se producen durante la ejecución de un programa.
+Java maneja las excepciones con un sistema de excepciones que permite controlar
+los errores y evitar que el programa se detenga.
+
+Las excepciones se dividen en dos tipos:
+
+- Excepciones comprobadas o checked: son las que se deben manejar obligatoriamente
+  en el código, si no se manejan, el programa no compila. Pertenecen las clases
+  que heredan de `Exception` pero no de `RuntimeException`.
+- Excepciones no comprobadas o unchecked: son las que no se deben manejar.
+  Pertenecen las clases que heredan de `RuntimeException`.
+
+```java
+// lanzar una excepción
+throw new Exception("Error");
+// capturar una excepción
+try {
+  // código que puede lanzar una excepción
+} catch (Exception e) {
+  // código que se ejecuta si se lanza una excepción
+  System.out.println(e.getMessage());
+} finally {
+  // código que se ejecuta siempre, haya o no excepción
+}
 ```
