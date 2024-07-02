@@ -56,6 +56,7 @@ Los tipos de datos se dividen en dos grupos:
   - `char`: indica un caracter Unicode de 16 bits. Para poner solo un caracter
     usamos comillas simples y se puede poner en su forma literal, decimal o
     el Unicode (se debe anteponer `\u` seguido del código Unicode).
+    Ej: `char letra = 'a';`, `char letra = 97;`, `char letra = '\u0061';`.
   - `boolean`: indica un valor booleano, que puede ser `true` o `false`, por defecto es `false`.
 
 - **Referenciados**: Son los tipos de datos que se utilizan para almacenar objetos,
@@ -100,6 +101,26 @@ String edad = String.valueOf(edad);
 // de una clase a otra
 Persona persona = new Persona();
 Empleado empleado = (Empleado) persona;
+```
+
+### AutoBoxing y UnBoxing
+
+El autoboxing es la conversión automática que hace Java de un tipo primitivo
+a su clase envolvente (wrapper) y el unboxing es la conversión automática que
+hace Java de un objeto de tipo envolvente a su tipo primitivo.  
+Se usa para convertir tipos primitivos en objetos y viceversa, se usa su clase
+envolvente cuando se quiere acceder a los atributos o métodos de la clase.
+
+- Para el tipo primitivo `int`, su clase envolvente es `Integer`.
+- Para el tipo primitivo `double`, su clase envolvente es `Double`.
+- Para el tipo primitivo `boolean`, su clase envolvente es `Boolean`.
+- Para el tipo primitivo `char`, su clase envolvente es `Character`.
+
+```java
+// autoboxing
+Integer entero = 10; // se convierte a Integer, es decir, a un objeto
+// unboxing
+int entero2 = entero; // se convierte a int, es decir, a un tipo primitivo
 ```
 
 ### Arrays o arreglos
@@ -177,10 +198,24 @@ del mismo tipo, pero con un tamaño dinámico.
 import java.util.*;
 // declarar una lista de enteros
 List numeros = new ArrayList();
+// declarar e inicializar una lista de enteros
+List numeros = new ArrayList(Arrays.asList(1, 2, 3));
 // agregar elementos a la lista
 numeros.add(1);
 // acceder a un elemento de la lista
 System.out.println(numeros.get(0));
+// modificar un elemento (en la posicion 0 pone el 2)
+numeros.set(0, 2);
+// eliminar un elemento
+numeros.remove(0);
+// obtener el tamaño de la lista
+System.out.println(numeros.size());
+// comprobar si la lista está vacía
+System.out.println(numeros.isEmpty());
+// comprobar si un elemento está en la lista
+System.out.println(numeros.contains(1));
+// vaciar la lista
+numeros.clear();
 // recorrer una lista
 for (int i = 0; i < numeros.size(); i++) {
   System.out.println(numeros.get(i));
@@ -221,7 +256,7 @@ for (int numero : numeros) {
 ### Maps
 
 Los maps son estructuras de datos que permiten almacenar varios valores
-del mismo tipo, pero no permiten duplicados. Se compone de una clave y un valor.
+del mismo tipo, pero no permiten duplicados de sus llaves. Se compone de una clave y un valor.
 
 ```java
 // importar desde util
@@ -230,8 +265,6 @@ import java.util.*;
 Map numeros = new HashMap();
 // agregar elementos al map
 numeros.put("uno", 1);
-numeros.put("dos", 2);
-numeros.put("tres", 3);
 // acceder a un elemento del map
 System.out.println(numeros.get("uno"));
 // recorrer un map
@@ -242,26 +275,35 @@ for (Object clave : numeros.keySet()) {
 for (Object valor : numeros.values()) {
   System.out.println(valor);
 }
+// recorrer un map con funciones lambda o funciones flecha
+numeros.forEach((clave, valor) -> {
+  System.out.println(clave + ": " + valor);
+});
 ```
 
-### AutoBoxing y UnBoxing
+### Genericos
 
-El autoboxing es la conversión automática que hace Java de un tipo primitivo
-a su clase envolvente (wrapper) y el unboxing es la conversión automática que
-hace Java de un objeto de tipo envolvente a su tipo primitivo.  
-Se usa para convertir tipos primitivos en objetos y viceversa, se usa su clase
-envolvente cuando se quiere acceder a los atributos o métodos de la clase.
-
-- Para el tipo primitivo `int`, su clase envolvente es `Integer`.
-- Para el tipo primitivo `double`, su clase envolvente es `Double`.
-- Para el tipo primitivo `boolean`, su clase envolvente es `Boolean`.
-- Para el tipo primitivo `char`, su clase envolvente es `Character`.
+Los genéricos son una característica de Java que permite definir clases, interfaces
+y métodos que pueden trabajar con tipos de datos genéricos.
 
 ```java
-// autoboxing
-Integer entero = 10; // se convierte a Integer, es decir, a un objeto
-// unboxing
-int entero2 = entero; // se convierte a int, es decir, a un tipo primitivo
+// declarar una clase genérica
+public class ClaseGenerica<T> {
+  // atributo de tipo genérico
+  private T objeto;
+  // constructor
+  public ClaseGenerica(T objeto) {
+    this.objeto = objeto;
+  }
+  // método que devuelve el objeto
+  public T getObjeto() {
+    return this.objeto;
+  }
+}
+
+// usar una clase genérica
+ClaseGenerica<String> claseGenerica = new ClaseGenerica<>("Hola");
+System.out.println(claseGenerica.getObjeto());
 ```
 
 ### Operadores
@@ -363,7 +405,7 @@ Con el modificador `private` se puede restringir el acceso a los atributos y mé
 de una clase, solo se podrá acceder a ellos desde la misma clase.  
 Con el modificador `protected` se puede restringir el acceso a los atributos y métodos
 de una clase, solo se podrá acceder a ellos desde la misma clase y desde las clases
-que heredan de ella.  
+que heredan de ella, o que estan en el mismo paquete.  
 Por defecto, si no se define un modificador, se usa el modificador `default` o
 `package`, que permite acceder a los atributos y métodos de una clase desde el
 mismo paquete.  
@@ -455,7 +497,7 @@ Persona persona1 = new Persona("Juan", 20);
 Persona persona3 = new Persona("Juan");
 ```
 
-Los métodos u atributos estáticos se pueden usar sin necesidad de crear un
+Los métodos u atributos **estáticos (static)** se pueden usar sin necesidad de crear un
 objeto de la clase, quedan asociados a la clase y no al objeto, por lo tanto,
 un método o atributo estático es común a todos los objetos que se crean a
 partir de esa clase. Sólo pueden acceder a otros atributos y métodos
@@ -711,11 +753,6 @@ public abstract class FiguraGeometrica {
   public void setTipoFigura(String tipoFigura) {
     this.tipoFigura = tipoFigura;
   }
-  // método toString
-  @Override // anotación para indicar que se sobreescribe el método
-  public String toString() {
-    return "FiguraGeometrica [tipoFigura=" + tipoFigura + "]";
-  }
 }
 // crear una clase que hereda de FiguraGeometrica
 public class Rectangulo extends FiguraGeometrica {
@@ -853,6 +890,29 @@ System.out.println("Hola " + nombre + " " + apellido);
 scanner.close();
 ```
 
+### Otras clases
+
+- Clase `Math`: contiene métodos matemáticos.
+- Clase `Date`: permite trabajar con fechas.
+- Clase `Calendar`: permite trabajar con fechas.
+- Clase `System`: permite trabajar con el sistema.
+
+### Paquetes
+
+Los paquetes son carpetas que contienen clases, se usan para organizar y agrupar
+clases y evitar conflictos de nombres.
+
+```java
+// declarar un paquete
+package com.example;
+// importar una clase de otro paquete
+import com.example.Persona;
+// importar todas las clases de un paquete
+import com.example.*;
+// importar estaticos
+import static com.example.Persona.EDAD_MAXIMA;
+```
+
 ### Enumeraciones o enums
 
 Las enumeraciones son un tipo de dato que permite definir un conjunto de
@@ -988,7 +1048,7 @@ Las interfaces son un tipo de dato que permite definir un conjunto de métodos
 que deben ser implementados por las clases que la implementan.  
 Los metodos de una interfaz no tienen una implmentacion por lo que son abstractos por defecto, ademas de publicos.  
 Si asignamos un valor a un atributo de una interfaz, este será una constante, es decir, final y estático.  
-Conviene mas usar una clase abstracta, cuando la impelmentaciòn tiene que ver mas con sus caracteristicas,
+Conviene mas usar una clase abstracta, cuando la implementaciòn tiene que ver mas con sus caracteristicas,
 si es mas de comportamiento, se usa una interfaz.
 
 ```java
@@ -1074,7 +1134,7 @@ Las excepciones se dividen en dos tipos:
 - Excepciones comprobadas o checked: son las que se deben manejar obligatoriamente
   en el código, si no se manejan, el programa no compila. Pertenecen las clases
   que heredan de `Exception` pero no de `RuntimeException`.
-- Excepciones no comprobadas o unchecked: son las que no se deben manejar.
+- Excepciones no comprobadas o unchecked: no estan obligadas a ser manejadas.
   Pertenecen las clases que heredan de `RuntimeException`.
 
 ```java
@@ -1089,4 +1149,58 @@ try {
 } finally {
   // código que se ejecuta siempre, haya o no excepción
 }
+```
+
+### Threads
+
+Los threads o hilos son la forma de ejecutar varios procesos de forma simultánea
+en un programa.
+
+```java
+// crear un hilo
+Thread hilo = new Thread() {
+  // método run
+  @Override
+  public void run() {
+    // código que se ejecuta en el hilo
+    System.out.println("Hola desde el hilo");
+  }
+};
+// iniciar el hilo
+hilo.start();
+```
+
+### Expresiones lambda
+
+Las expresiones lambda son funciones anónimas que se pueden pasar como argumentos
+a un método o asignar a una variable.
+
+```java
+// declarar una expresión lambda
+Runnable r = () -> {
+  System.out.println("Hola desde la expresión lambda");
+};
+// ejecutar la expresión lambda
+r.run();
+```
+
+### Streams
+
+Los streams son una secuencia de elementos que se pueden procesar de forma
+secuencial o paralela.
+
+```java
+// declarar un stream
+List<String> lista = Arrays.asList("uno", "dos", "tres");
+// recorrer un stream
+lista.stream().forEach(System.out::println);
+// filtrar un stream
+lista.stream().filter(e -> e.startsWith("d")).forEach(System.out::println);
+// ordenar un stream
+lista.stream().sorted().forEach(System.out::println);
+// mapear un stream
+lista.stream().map(String::toUpperCase).forEach(System.out::println);
+// contar un stream
+long cantidad = lista.stream().count();
+System.out.println(cantidad);
 ```
