@@ -1204,3 +1204,155 @@ lista.stream().map(String::toUpperCase).forEach(System.out::println);
 long cantidad = lista.stream().count();
 System.out.println(cantidad);
 ```
+
+### Optional
+
+Optional es una clase que se utiliza para evitar los valores nulos.
+
+```java
+// declarar un optional
+Optional<String> optional = Optional.of("Hola");
+// obtener el valor
+String valor = optional.get();
+System.out.println(valor); // Hola
+// comprobar si el optional tiene un valor
+System.out.println(optional.isPresent()); // true
+// obtener un valor por defecto
+String valor2 = optional.orElse("Mundo");
+System.out.println(valor2); // Hola
+// lanzar una excepción si el optional no tiene un valor
+String valor3 = optional.orElseThrow(() -> new Exception("Error"));
+System.out.println(valor3); // Hola
+// ejecutar un código si el optional tiene un valor
+optional.ifPresent(System.out::println); // Hola
+```
+
+### Anotaciones
+
+Las anotaciones son metadatos que se pueden agregar a clases, métodos o atributos
+para dar información adicional.
+
+```java
+// declarar una anotación
+public @interface MiAnotacion {
+  // atributos
+  String nombre() default "";
+  String descripcion();
+}
+// usar una anotación
+@MiAnotacion(nombre = "Anotación", descripcion = "Descripción")
+public class Clase {
+}
+// obtener las anotaciones de una clase
+MiAnotacion anotacion = Clase.class.getAnnotation(MiAnotacion.class);
+```
+
+### Reflection
+
+La reflexión es una característica de Java que permite inspeccionar y modificar
+clases, métodos y atributos en tiempo de ejecución.
+
+```java
+// obtener la clase de un objeto
+Clase clase = new Clase();
+Class<?> clase = clase.getClass();
+// obtener los métodos de una clase
+Method[] metodos = clase.getMethods();
+// obtener los atributos de una clase
+Field[] atributos = clase.getFields();
+// obtener los constructores de una clase
+Constructor<?>[] constructores = clase.getConstructors();
+```
+
+### JUnit
+
+JUnit es un framework de pruebas unitarias para Java.  
+JUnit5 soporta expresiones lambda y permite organizar las pruebas en paquetes.
+
+```java
+// importar JUnit
+import static org.junit.jupiter.api.Assertions.*;
+// declarar una clase de pruebas
+public class Pruebas {
+  // declarar un método de prueba
+  @Test
+  public void test() {
+    // código de prueba
+    assertEquals(2, 1 + 1);
+    // hacer assert de varios métodos, muestra todos los errores, no detiene la ejecución
+    assertAll(
+      () -> assertEquals(2, 1 + 1),
+      () -> assertEquals(4, 2 * 2)
+    );
+    // se puede agregar un mensaje al error que lance el assert
+    assertEquals(2, 1 + 1, "El resultado debe ser 2");
+    // se puede pasar como función lambda
+    assertEquals(2, 1 + 1, () -> "El resultado debe ser 2");
+  }
+
+  // se puede usar la anotacion @DisplayName para dar un nombre a la prueba
+  @Test
+  @DisplayName("Prueba de suma")
+  public void testSuma() {
+    assertEquals(2, 1 + 1);
+  }
+
+  // se puede usar la anotacion @Disabled para deshabilitar una prueba
+  @Test
+  @Disabled
+  public void test() {
+    assertEquals(2, 1 + 1);
+  }
+}
+```
+
+Los hooks del ciclo de vida son los siguientes, se podrian usar para inicializar y finalizar recursos:
+
+- `@BeforeAll`: se ejecuta antes de todos los metodos, una sola vez. Queda relacionado a la clase, es `static`
+- `@AfterAll`: se ejecuta despues de todos los metodos, una sola vez. Queda relacionado a la clase, es `static`
+- `@BeforeEach`: se ejecuta antes de cada metodo
+- `@AfterEach`: se ejecuta despues de cada metodo
+
+```java
+public class Pruebas {
+
+  @Test
+  public void test() {
+    @BeforeEach
+    void initMetodoTest() {
+        this.cuenta = new Cuenta(NOMBRE, new BigDecimal(SALDO));
+        System.out.println("Metodo inicializado");
+    }
+
+    @AfterEach
+    void tearDown() {
+        System.out.println("Finalizado");
+    }
+
+    @BeforeAll
+    static void beforeAll() {
+        System.out.println("Inicializando el test");
+    }
+
+    @AfterAll
+    static void afterAll() {
+        System.out.println("Finalizando el test");
+    }
+  }
+}
+```
+
+`Assumption` es una clase que permite hacer asunciones, si la asunción falla, la prueba se detiene.
+
+```java
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
+
+public class Pruebas {
+
+  @Test
+  public void test() {
+    assumeTrue(1 > 0);
+    assertEquals(2, 1 + 1);
+  }
+}
+```

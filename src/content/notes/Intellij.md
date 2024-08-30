@@ -8,7 +8,7 @@ heroImage: '/intellij.svg'
 
 ## MAC
 
-### Atajos
+### ~~Atajos~~
 
 - Formatear el codigo `option + command + L`
 
@@ -23,3 +23,5 @@ heroImage: '/intellij.svg'
 - Crear nuevo cursor `2 veces option + flecha arriba o abajo`
 
 - Crear cursor con mouse en varias lineas `fn + option + click sostenido`
+
+- Encontrar una accion `shift + command + a`

@@ -52,13 +52,16 @@ persona pueda entenderlo
   Si una clase b hereda de una clase a, se podria sustituir cualquier
   instancia de a por cualquier instancia de b, sin alterar las
   propiedades del sistema.
+
 - INTERFACE SEGREGATION (ISP): segregación de interfaz.
   Los clientes no deberian estar obligados a depender de interfaces
   que no utlizan. Se deberian segregar las interfaces en funcion de
   la necesidad de cada objeto que depende de ella, para que este objeto
   no tenga algo que no necesita.
 
-- DEPENDENCY INVERSION (IDP): inversión de dependencias.
+- DEPENDENCY INVERSION (IDP): inversión de dependencias.  
+  Establece que las clases deben depender de interfaces o clases abstractas en lugar de
+  clases y funciones concretas.
   - Los modulos de alto nivel no deben depender de modulos de bajo nivel.
     Ambos deben depender de abstracciones.
   - Las abstracciones no deben depender de los detalles.
@@ -85,12 +88,13 @@ debe ser eliminada.
 - **Singleton**: patron singleton
 
 - **Tight Coupling**: alto acoplamiento.
-  deberiamos tener bajo acoplamiento y buena cohesion.
-  acoplamiento se refiere a cuan relacionadas o dependientes son 2
+  deberiamos tener bajo acoplamiento y buena cohesion. Son inversamente proporcionales.
+  **acoplamiento** se refiere a cuan relacionadas o dependientes son 2
   clases o modulos entre si, un bajo acoplamiento indica que cambiar
-  algo importante en una clase no deberia afectar a la otra.
-  cohesion se refiere a lo que la clase puede hacer, una buena cohesion
-  indica que la clase se enfoca en lo que deberia hacer.
+  algo importante en una clase no deberia afectar a la otra.  
+  **cohesion** se refiere a lo que la clase puede hacer, una buena cohesion
+  indica que la clase se enfoca en lo que deberia hacer, que realice una tarea en especifico.
+  Si es un modulo de facturacion, deberia encargarse solo de eso y no de otra cosa.
 
 - **Untestability**: codigo no probable (unit test)
 
