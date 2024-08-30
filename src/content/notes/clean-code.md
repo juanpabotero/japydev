@@ -117,3 +117,5 @@ debe ser eliminada.
   reservada private
 
 - usar readonly para marcar propiedades que no seran reasignadas
+
+- prueba
