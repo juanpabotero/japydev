@@ -762,7 +762,7 @@ Para buscar cualquier libreria con vanilla javascript:
   https://godly.website/
   https://www.dark.design/ (diseños de dark mode)
 
-- Patrones de diseño  
+- Patrones de diseño de Interface de usuario  
   [ui-patterns.com](https://ui-patterns.com/)
 
 - Atajos para los programas de diseño  
@@ -941,9 +941,9 @@ Para buscar cualquier libreria con vanilla javascript:
   transformar para optimizarlas. Se puede poner el src de la imagen
   apuntando a este servicio para cargarla optimizada desde aqui.
 
-- Patrones de diseño en Javascript.
+- Patrones de diseño  
   https://www.patterns.dev/  
-  Refactoring gurú.
+  https://refactoring.guru/design-patterns
 
 - https://jsonbin.io/
   Puedes tener una API y el archivo json como base de datos
@@ -996,3 +996,4 @@ Para buscar cualquier libreria con vanilla javascript:
 - El metodo Ikigai - Hector Garcia
 - English is not easy - Luci Gutierrez
 - Good to great - Jim Collins
+
