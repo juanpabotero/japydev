@@ -1220,9 +1220,12 @@ System.out.println(optional.isPresent()); // true
 // obtener un valor por defecto
 String valor2 = optional.orElse("Mundo");
 System.out.println(valor2); // Hola
-// lanzar una excepción si el optional no tiene un valor
-String valor3 = optional.orElseThrow(() -> new Exception("Error"));
+// usar ElseGet para obtener un valor por defecto
+String valor3 = optional.orElseGet(() -> "Mundo");
 System.out.println(valor3); // Hola
+// lanzar una excepción si el optional no tiene un valor
+String valor4 = optional.orElseThrow(() -> new Exception("Error"));
+System.out.println(valor4); // Hola
 // ejecutar un código si el optional tiene un valor
 optional.ifPresent(System.out::println); // Hola
 ```
@@ -1353,6 +1356,65 @@ public class Pruebas {
   public void test() {
     assumeTrue(1 > 0);
     assertEquals(2, 1 + 1);
+  }
+}
+```
+
+### Mockito
+
+Mockito es un framework de pruebas unitarias que permite crear objetos simulados
+o mocks para probar el comportamiento de un objeto.
+
+```java
+// importar Mockito
+import static org.mockito.Mockito.*;
+// crear un mock
+List<String> mock = mock(List.class);
+// definir el comportamiento del mock
+when(mock.get(0)).thenReturn("Hola");
+// llamar al método del mock
+System.out.println(mock.get(0)); // Hola
+// verificar que se llamó al método del mock
+verify(mock).get(0);
+```
+
+Las anotaciones de Mockito son las siguientes:
+
+- `@Mock`: crea un mock.
+- `@Spy`: crea un spy, que es un objeto real con comportamiento simulado.
+- `@InjectMocks`: inyecta los mocks en el objeto que se va a probar.
+- `@MockBean`: crea un mock de un bean de Spring.
+- `@SpyBean`: crea un spy de un bean de Spring.
+
+Ejemplo de uso de @Mock y @InjectMocks:
+
+```java
+// importar Mockito
+import static org.mockito.Mockito.*;
+// importar JUnit
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+// declarar una clase de pruebas
+@ExtendWith(MockitoExtension.class)
+public class Pruebas {
+  // crear un mock
+  @Mock
+  List<String> mock;
+  // inyectar los mocks en el objeto que se va a probar
+  @InjectMocks
+  Clase clase;
+  // declarar un método de prueba
+  @Test
+  public void test() {
+    // definir el comportamiento del mock
+    when(mock.get(0)).thenReturn("Hola");
+    // llamar al método del mock
+    System.out.println(mock.get(0)); // Hola
+    // verificar que se llamó al método del mock
+    verify(mock).get(0);
   }
 }
 ```
