@@ -1267,7 +1267,7 @@ Field[] atributos = clase.getFields();
 Constructor<?>[] constructores = clase.getConstructors();
 ```
 
-### JUnit
+## JUnit
 
 JUnit es un framework de pruebas unitarias para Java.  
 JUnit5 soporta expresiones lambda y permite organizar las pruebas en paquetes.
@@ -1360,7 +1360,7 @@ public class Pruebas {
 }
 ```
 
-### Mockito
+## Mockito
 
 Mockito es un framework de pruebas unitarias que permite crear objetos simulados
 o mocks para probar el comportamiento de un objeto.
@@ -1415,6 +1415,61 @@ public class Pruebas {
     System.out.println(mock.get(0)); // Hola
     // verificar que se llamó al método del mock
     verify(mock).get(0);
+  }
+}
+```
+
+## Servlets
+
+Los servlets son programas (clases) de Java que se ejecutan en el servidor web y que
+permiten generar contenido dinámico.
+
+```java
+// importar Servlet
+import javax.servlet.*;
+// declarar una clase Servlet
+public class MiServlet implements Servlet {
+  // método init. para inicializar el servlet. se llama una sola vez en el ciclo de vida
+  @Override
+  public void init(ServletConfig config) throws ServletException {
+  }
+  // método service. para procesar las peticiones. por lo general no se sobreescribe.
+  // cada peticion llama al metodo service y este llama a los metodos doGet o doPost
+  // cada peticion se ejecuta en un hilo diferente
+  @Override
+  public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+    // código que se ejecuta al recibir una petición
+  }
+  // método destroy. para finalizar el servlet
+  @Override
+  public void destroy() {
+  }
+  // métodos de la interfaz Servlet
+  @Override
+  public ServletConfig getServletConfig() {
+    return null;
+  }
+  @Override
+  public String getServletInfo() {
+    return null;
+  }
+}
+```
+
+```java
+// importar HttpServlet
+import javax.servlet.http.*;
+// declarar una clase HttpServlet
+public class MiServlet extends HttpServlet {
+  // método doGet
+  @Override
+  protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    // código que se ejecuta al recibir una petición GET
+  }
+  // método doPost
+  @Override
+  protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    // código que se ejecuta al recibir una petición POST
   }
 }
 ```
