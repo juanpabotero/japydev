@@ -18,13 +18,15 @@ const posts = await getCollection('notes');
   </p>
   <section class="sm:columns-2 gap-x-4">
     {
-      posts.map((post) => (
-        <Note
-          id={post.data.id}
-          img={post.data.heroImage}
-          link={`/notes/${post.slug}/`}
-          title={post.data.title}
-        />
+      posts
+        .toSorted((a, b) =>  a.data.title.localeCompare(b.data.title))
+        .map((post) => (
+          <Note
+            id={post.data.id}
+            img={post.data.heroImage}
+            link={`/notes/${post.slug}/`}
+            title={post.data.title}
+          />
       ))
     }
   </section>

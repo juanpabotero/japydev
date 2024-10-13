@@ -8,7 +8,7 @@ heroImage: '/intellij.svg'
 
 ## MAC
 
-### ~~Atajos~~
+### Atajos
 
 - Formatear el codigo `option + command + L`
 

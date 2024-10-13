@@ -17,7 +17,7 @@ const { id, img, link, title } = Astro.props;
   <img
     src={img}
     alt={`Logo de ${title}`}
-    class="w-5 h-5 object-cover"
+    class="w-5 object-cover"
     transition:name={`note-img-${id}`}
   />
   <span transition:name={`note-title-${id}`}>{title}</span>
