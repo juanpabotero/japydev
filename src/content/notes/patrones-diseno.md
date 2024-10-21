@@ -222,4 +222,66 @@ public class Main {
 }
 ```
 
+## Patron Observer
 
+El patrón Observer es un patrón de diseño de comportamiento que permite a un objeto, llamado sujeto,
+notificar a otros objetos, llamados observadores, cuando cambia su estado.
+
+```java
+public abstract class Subject {
+    protected List<Observer> observers = new ArrayList<>();
+
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    };
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    };
+    public void notifyObservers() {
+        for (Observer obs : this.observers) {
+            obs.update(this);
+        }
+    };
+}
+
+public interface Observer {
+    void update(Subject subject);
+}
+
+public class ConcreteSubject extends Subject {
+    private String state;
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+        this.notifyObservers();
+    }
+}
+
+public class ConcreteObserverA implements Observer {
+    @Override
+    public void update(Subject subject) {
+        System.out.println("ConcreteObserverA update");
+    }
+}
+
+public class ConcreteObserverB implements Observer {
+    @Override
+    public void update(Subject subject) {
+        System.out.println("ConcreteObserverB update");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ConcreteSubject subject = new ConcreteSubject();
+        subject.addObserver(new ConcreteObserverA());
+        subject.addObserver(new ConcreteObserverB());
+        
+        subject.setState("state");
+    }
+}
+```
