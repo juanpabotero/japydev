@@ -25,3 +25,5 @@ heroImage: '/intellij.svg'
 - Crear cursor con mouse en varias lineas `fn + option + click sostenido`
 
 - Encontrar una accion `shift + command + a`
+
+- Ir a la linea `command + l`

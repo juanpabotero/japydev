@@ -8,28 +8,30 @@ heroImage: '/design.svg'
 
 Se dividen en 3 categorias:
 
-- **Creacionales**: Se encargan de la creación de objetos. Ejemplos: Singleton, Factory, Builder, Prototype, 
+- **Creacionales**: Se encargan de la creación de objetos. Ejemplos: Singleton, Factory, Builder, Prototype,
   Abstract Factory
 
-- **Estructurales**: Se encargan de la composición de clases y objetos. Ejemplos: Adapter, Bridge, Composite, 
+- **Estructurales**: Se encargan de la composición de clases y objetos. Ejemplos: Adapter, Bridge, Composite,
   Decorator, Facade, Flyweight, Proxy
 
-- **Comportamiento**: Se encargan de la interacción entre objetos. Ejemplos: Chain of Responsibility, Command, 
+- **Comportamiento**: Se encargan de la interacción entre objetos. Ejemplos: Chain of Responsibility, Command,
   Interpreter, Iterator, Mediator, Memento, Observer, State, Strategy, Template Method, Visitor
 
-## Patron Singleton
+## Patrones Creacionales
 
-El patrón Singleton es un patrón de diseño creacional que garantiza que solo haya una instancia de una clase 
+### Patron Singleton
+
+El patrón Singleton es un patrón de diseño creacional que garantiza que solo haya una instancia de una clase
 y proporciona un punto de acceso global a ella.
 
 ```java
 public class Singleton {
     private static Singleton instance;
-    
+
     private Singleton() {
         // Constructor privado para evitar la creación de instancias desde fuera de la clase
     }
-    
+
     public static Singleton getInstance() {
         if (instance == null) {
             instance = new Singleton();
@@ -39,7 +41,7 @@ public class Singleton {
 }
 ```
 
-## Patron Factory
+### Patron Factory
 
 El patrón Factory es un patrón de diseño creacional que proporciona una interfaz para crear objetos en una
 superclase, pero permite a las subclases alterar el tipo de objetos que se crearán.
@@ -68,7 +70,7 @@ public class ConcreteProductB implements Product {
 
 public abstract class Creator {
     public abstract Product factoryMethod();
-    
+
     public void someOperation() {
         Product product = factoryMethod();
         product.operation();
@@ -93,14 +95,188 @@ public class Main {
     public static void main(String[] args) {
         Creator creatorA = new ConcreteCreatorA();
         creatorA.someOperation();
-        
+
         Creator creatorB = new ConcreteCreatorB();
         creatorB.someOperation();
     }
 }
 ```
 
-## Patron Decorator
+### Patron Builder
+
+El patrón Builder es un patrón de diseño creacional que permite construir objetos complejos paso a paso.  
+El patrón Builder separa la construcción de un objeto complejo de su representación, de modo que el mismo
+proceso de construcción pueda crear diferentes representaciones.
+
+Se puede crear el patron Builder con Lombok para Java con el @Builder.
+
+```java
+public class Product {
+    private String attribute1;
+    private String attribute2;
+    private String attribute3;
+
+    public void setAttribute1(String attribute1) {
+        this.attribute1 = attribute1;
+    }
+
+    public void setAttribute2(String attribute2) {
+        this.attribute2 = attribute2;
+    }
+
+    public void setAttribute3(String attribute3) {
+        this.attribute3 = attribute3;
+    }
+}
+
+public interface Builder {
+    void buildAttribute1();
+    void buildAttribute2();
+    void buildAttribute3();
+    Product getProduct();
+}
+
+public class ConcreteBuilder implements Builder {
+    private Product product = new Product();
+
+    @Override
+    public void buildAttribute1() {
+        product.setAttribute1("Attribute 1");
+    }
+
+    @Override
+    public void buildAttribute2() {
+        product.setAttribute2("Attribute 2");
+    }
+
+    @Override
+    public void buildAttribute3() {
+        product.setAttribute3("Attribute 3");
+    }
+
+    @Override
+    public Product getProduct() {
+        return product;
+    }
+}
+
+public class Director {
+    public void construct(Builder builder) {
+        builder.buildAttribute1();
+        builder.buildAttribute2();
+        builder.buildAttribute3();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Builder builder = new ConcreteBuilder();
+        Director director = new Director();
+        director.construct(builder);
+        Product product = builder.getProduct();
+    }
+}
+```
+
+## Patrones Estructurales
+
+### Patron Adapter
+
+El patrón Adapter es un patrón de diseño estructural que permite a objetos con interfaces incompatibles
+colaborar entre sí.
+
+```java
+public interface Target {
+    void request();
+}
+
+public class Adaptee {
+    public void specificRequest() {
+        System.out.println("Adaptee specificRequest");
+    }
+}
+
+public class Adapter implements Target {
+    private Adaptee adaptee;
+
+    public Adapter(Adaptee adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    @Override
+    public void request() {
+        adaptee.specificRequest();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Target target = new Adapter(new Adaptee());
+        target.request();
+    }
+}
+```
+
+### Patron Composite
+
+El patrón Composite es un patrón de diseño estructural, sirve para construir objetos complejos a partir
+de otros más simples y similares entre sí, gracias a la composición recursiva y a una estructura
+en forma de árbol.
+
+Esto simplifica el tratamiento de los objetos creados, ya que al poseer todos ellos una interfaz común,
+se tratan todos de la misma manera. Dependiendo de la implementación, pueden aplicarse procedimientos al
+total o una de las partes de la estructura compuesta como si de un nodo final se tratara, aunque dicha
+parte esté compuesta a su vez de muchas otras.
+
+```java
+public interface ComponentComposite {
+    void operation();
+}
+
+public class Leaf implements ComponentComposite {
+    @Override
+    public void operation() {
+        System.out.println("Leaf operation");
+    }
+}
+
+public class Composite implements ComponentComposite {
+    private List<ComponentComposite> components = new ArrayList<>();
+
+    public void addComponent(ComponentComposite component) {
+        components.add(component);
+    }
+
+    public void removeComponent(ComponentComposite component) {
+        components.remove(component);
+    }
+
+    public ComponentComposite getComponent(int index) {
+        return components.get(index);
+    }
+
+    @Override
+    public void operation() {
+        System.out.println("Composite operation");
+        for (ComponentComposite component : components) {
+            component.operation();
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ComponentComposite leaf = new Leaf();
+        leaf.operation();
+
+        Composite composite = new Composite();
+        composite.addComponent(leaf);
+        composite.operation();
+    }
+}
+```
+
+### Patron Decorator
 
 El patrón Decorator es un patrón de diseño estructural que permite añadir funcionalidades a un objeto
 dinámicamente. Es una alternativa flexible a la herencia para extender la funcionalidad de una clase.
@@ -153,76 +329,19 @@ public class Main {
     public static void main(String[] args) {
         Component component = new ConcreteComponent();
         component.operation();
-        
+
         Component decoratorA = new ConcreteDecoratorA(component);
         decoratorA.operation();
-        
+
         Component decoratorB = new ConcreteDecoratorB(decoratorA);
         decoratorB.operation();
     }
 }
 ```
 
-## Patron Composite
+## Patrones Comportamiento
 
-El patrón Composite es un patrón de diseño estructural, sirve para construir objetos complejos a partir 
-de otros más simples y similares entre sí, gracias a la composición recursiva y a una estructura 
-en forma de árbol.
-
-Esto simplifica el tratamiento de los objetos creados, ya que al poseer todos ellos una interfaz común, 
-se tratan todos de la misma manera. Dependiendo de la implementación, pueden aplicarse procedimientos al 
-total o una de las partes de la estructura compuesta como si de un nodo final se tratara, aunque dicha 
-parte esté compuesta a su vez de muchas otras.
-
-```java
-public interface ComponentComposite {
-    void operation();
-}
-
-public class Leaf implements ComponentComposite {
-    @Override
-    public void operation() {
-        System.out.println("Leaf operation");
-    }
-}
-
-public class Composite implements ComponentComposite {
-    private List<ComponentComposite> components = new ArrayList<>();
-
-    public void addComponent(ComponentComposite component) {
-        components.add(component);
-    }
-
-    public void removeComponent(ComponentComposite component) {
-        components.remove(component);
-    }
-
-    public ComponentComposite getComponent(int index) {
-        return components.get(index);
-    }
-
-    @Override
-    public void operation() {
-        System.out.println("Composite operation");
-        for (ComponentComposite component : components) {
-            component.operation();
-        }
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        ComponentComposite leaf = new Leaf();
-        leaf.operation();
-        
-        Composite composite = new ComponentComposite();
-        composite.addComponent(leaf);
-        composite.operation();
-    }
-}
-```
-
-## Patron Observer
+### Patron Observer
 
 El patrón Observer es un patrón de diseño de comportamiento que permite a un objeto, llamado sujeto,
 notificar a otros objetos, llamados observadores, cuando cambia su estado.
@@ -280,8 +399,9 @@ public class Main {
         ConcreteSubject subject = new ConcreteSubject();
         subject.addObserver(new ConcreteObserverA());
         subject.addObserver(new ConcreteObserverB());
-        
+
         subject.setState("state");
     }
 }
 ```
+
