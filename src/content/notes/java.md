@@ -247,8 +247,18 @@ numeros.add(3);
 numeros.add(1);
 // acceder a un elemento del set
 System.out.println(numeros);
+// eliminar un elemento del set
+numeros.remove(1);
+// comprobar si un elemento está en el set
+System.out.println(numeros.contains(1));
+// obtener el tamaño del set
+System.out.println(numeros.size());
+// vaciar el set
+numeros.clear();
+// comprobar si el set está vacío
+System.out.println(numeros.isEmpty());
 // recorrer un set
-for (int numero : numeros) {
+for (Object numero : numeros) {
   System.out.println(numero); // 1, 2, 3
 }
 ```
@@ -267,6 +277,16 @@ Map numeros = new HashMap();
 numeros.put("uno", 1);
 // acceder a un elemento del map
 System.out.println(numeros.get("uno"));
+// eliminar un elemento del map
+numeros.remove("uno");
+// comprobar si un elemento está en el map
+System.out.println(numeros.containsKey("uno"));
+// obtener el tamaño del map
+System.out.println(numeros.size());
+// vaciar el map
+numeros.clear();
+// comprobar si el map está vacío
+System.out.println(numeros.isEmpty());
 // recorrer un map
 for (Object clave : numeros.keySet()) {
   System.out.println(clave + ": " + numeros.get(clave));
@@ -1145,6 +1165,10 @@ try {
   // código que puede lanzar una excepción
 } catch (Exception e) {
   // código que se ejecuta si se lanza una excepción
+  System.out.println(e.getMessage());
+  // se pueden manejar varias excepciones
+} catch (OtraException e) {
+  // código que se ejecuta si se lanza una excepción de este tipo
   System.out.println(e.getMessage());
 } finally {
   // código que se ejecuta siempre, haya o no excepción

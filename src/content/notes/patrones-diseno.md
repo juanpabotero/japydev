@@ -6,16 +6,21 @@ pubDate: 'Jan 01 2022'
 heroImage: '/design.svg'
 ---
 
+Los patrones de diseño son soluciones comunes y probadas a problemas comunes.
+
 Se dividen en 3 categorias:
 
-- **Creacionales**: Se encargan de la creación de objetos. Ejemplos: Singleton, Factory, Builder, Prototype,
-  Abstract Factory
+- **Creacionales**: Se encargan de la creación de objetos, ayudan a crear objetos de manera eficiente y
+  flexible, ocultando los detalles de instanciacion. Ejemplos: Singleton, Factory, Builder, Prototype,
+  Abstract Factory.
 
-- **Estructurales**: Se encargan de la composición de clases y objetos. Ejemplos: Adapter, Bridge, Composite,
+- **Estructurales**: Se encargan de la composición de clases y objetos, enfocados en como componer clases
+  u objetos para formar estructuras mas grandes y reutilizables. Ejemplos: Adapter, Bridge, Composite,
   Decorator, Facade, Flyweight, Proxy
 
-- **Comportamiento**: Se encargan de la interacción entre objetos. Ejemplos: Chain of Responsibility, Command,
-  Interpreter, Iterator, Mediator, Memento, Observer, State, Strategy, Template Method, Visitor
+- **Comportamiento**: Se encargan de la interacción entre objetos, definen como los objetos interactuan y se
+  comunican para cumplir tareas complejas. Ejemplos: Chain of Responsibility, Command, Interpreter, 
+  Iterator, Mediator, Memento, Observer, State, Strategy, Template Method, Visitor
 
 ## Patrones Creacionales
 
@@ -104,9 +109,10 @@ public class Main {
 
 ### Patron Builder
 
-El patrón Builder es un patrón de diseño creacional que permite construir objetos complejos paso a paso.  
-El patrón Builder separa la construcción de un objeto complejo de su representación, de modo que el mismo
-proceso de construcción pueda crear diferentes representaciones.
+El patrón Builder es un patrón de diseño creacional que permite construir objetos complejos paso a paso. 
+El patrón nos permite producir distintos tipos y representaciones de un objeto empleando el 
+mismo código de construcción. El patrón Builder separa la construcción de un objeto complejo de 
+su representación, de modo que el mismo proceso de construcción pueda crear diferentes representaciones.
 
 Se puede crear el patron Builder con Lombok para Java con el @Builder.
 
@@ -339,6 +345,29 @@ public class Main {
 }
 ```
 
+### Patron Facade
+
+El patrón Facade es un patrón de diseño estructural que proporciona una interfaz simplificada a una biblioteca,
+un framework o cualquier conjunto complejo de clases.
+
+```java
+public class SubsystemA {
+    public void operationA() {
+        System.out.println("SubsystemA operationA");
+    }
+}
+
+public class SubsystemB {
+    public void operationB() {
+        System.out.println("SubsystemB operationB");
+    }
+}
+
+
+
+```
+
+
 ## Patrones Comportamiento
 
 ### Patron Observer
@@ -405,3 +434,53 @@ public class Main {
 }
 ```
 
+### Patron Strategy
+
+El patrón Strategy es un patrón de diseño de comportamiento que permite tener multiples metodos 
+para resolver un mismo problema y se elige dinamicamente segun el contexto.
+
+```java
+public interface Strategy {
+    void algorithm();
+}
+
+public class ConcreteStrategyA implements Strategy {
+    @Override
+    public void algorithm() {
+        System.out.println("ConcreteStrategyA algorithm");
+    }
+}
+
+public class ConcreteStrategyB implements Strategy {
+    @Override
+    public void algorithm() {
+        System.out.println("ConcreteStrategyB algorithm");
+    }
+}
+
+public class Context {
+    private Strategy strategy;
+
+    public Context(Strategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public void setStrategy(Strategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public void execute() {
+        strategy.algorithm();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Context context = new Context(new ConcreteStrategyA());
+        context.execute();
+
+        context.setStrategy(new ConcreteStrategyB());
+        context.execute();
+    }
+}
+```

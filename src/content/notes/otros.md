@@ -602,46 +602,6 @@ Serializar la informacion es transformar la informacion en un string para
 que pueda viajar desde el servidor al cliente porque si se envian objetos
 complejos se perderia informacion, por eso se transforma a un string
 
-### Expresiones regulares (regex):
-
-- /expresion/: expresion regular
-- /expresion/g: expresion regular global
-- /expresion/i: expresion regular insensible a mayusculas y minusculas
-- /expresion/m: expresion regular multilinea
-- \: es el simbolo de escape, para quitar la relacion y buscar el simbolo
-  como tal. Dentro del conjunto de caracteres no es necesario escapar
-  los simbolos.
-
-- coincidencias basicas:
-  - .: cualquier caracter, excepto el salto de linea
-  - \d: digito (0-9)
-  - \D: no es digito (0-9)
-  - \w: caracter alfanumerico (a-zA-Z0-9\_)
-  - \W: no es caracter alfanumerico (a-zA-Z0-9\_)
-  - \s: espacio de cualquier tipo (tab, espacio, salto de linea)
-  - \S: no es espacio de cualquier tipo (tab, espacio, salto de linea)
-- limites:
-  - \b: limite de palabra
-  - \B: no es limite de palabra
-  - ^: inicio de cadena de texto
-  - $: fin de cadena de texto
-- cuantificadores:
-  - \*: 0 o más veces
-  - +: 1 o más veces
-  - ?: 0 o 1 vez
-  - {n}: numero exacto de veces
-  - {n,m}: rango (minimo, maximo)
-- conjunto de caracteres:
-  - [abc]: cualquier caracter de la lista
-  - [^abc]: cualquier caracter que no esta en la lista
-- grupos:
-
-  - (expresion): grupo de expresiones
-  - (expresion)?: grupo de expresiones opcionales
-  - |: uno u otro
-
-  - regexr.com: distintas expresiones regulares para validaciones
-
 ### Depurar (debugging):
 
 Identificar y corregir errores.  
