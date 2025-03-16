@@ -19,7 +19,7 @@ const posts = await getCollection('notes');
   <section class="sm:columns-2 gap-x-4">
     {
       posts
-        .toSorted((a, b) =>  a.data.title.localeCompare(b.data.title))
+        .sort((a, b) =>  a.data.title.localeCompare(b.data.title))
         .map((post) => (
           <Note
             id={post.data.id}
