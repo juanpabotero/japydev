@@ -27,3 +27,5 @@ heroImage: '/intellij.svg'
 - Encontrar una accion `shift + command + a`
 
 - Ir a la linea `command + l`
+
+- Borrar el tab a la izquierda `shift + tab`

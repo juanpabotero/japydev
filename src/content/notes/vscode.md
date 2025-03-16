@@ -6,7 +6,7 @@ pubDate: 'Jan 01 2022'
 heroImage: '/vscode.svg'
 ---
 
-## Windows
+## Windows (MAC)
 
 ## Atajos
 
@@ -47,7 +47,7 @@ heroImage: '/vscode.svg'
 - ctrl + shift + e  
   cambiar el foco entre el explorador y el editor
 
-- ctrl + ñ  
+- ctrl + ñ  (ctrl + ñ)
   abrir terminal
 
 - ctrl + shift + m  
@@ -65,7 +65,7 @@ heroImage: '/vscode.svg'
 - ctrl + s  
   guardar el archivo
 
-- ctrl + k, s  
+- ctrl + k, s (cmd + opt + s)  
   guardar todo
 
 - ctrl + shift + n  
@@ -151,11 +151,11 @@ heroImage: '/vscode.svg'
 - ctrl + .  
   abrir sugerencias del editor (sobre un error para ver las opciones)
 
-- ctrl + shift + alt + flecha arriba o abajo  
-  agregar cursor arriba o abajo
+- ctrl + shift + alt + flecha arriba o abajo (cmd + opt + flecha arriba o abajo)  
+  Multicursor - agregar cursor arriba o abajo
 
-- alt + click  
-  para agregar varios cursores y se quedan donde se hace click
+- alt + click (opt + click)  
+  Multicursor - para agregar varios cursores y se quedan donde se hace click
 
 - shift + alt + click  
   para agregar varios cursores y se mueven para quedar alineados

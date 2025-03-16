@@ -51,6 +51,10 @@ public class Singleton {
 El patrón Factory es un patrón de diseño creacional que proporciona una interfaz para crear objetos en una
 superclase, pero permite a las subclases alterar el tipo de objetos que se crearán.
 
+Permite crear objetos sin especificar la clase exacta que se creará. En lugar de eso, delegamos
+la creación de objetos a subclases o métodos que encapsulan esta lógica.  
+Es útil cuando una clase no puede anticipar la clase de objetos que debe crear.
+
 El patrón Abstract Factory es una versión más compleja del patrón Factory que permite crear familias de
 objetos relacionados sin especificar sus clases concretas. Agrega un nivel mas de abstraccion al patron Factory.
 
@@ -59,50 +63,55 @@ public interface Product {
     void operation();
 }
 
-public class ConcreteProductA implements Product {
+public class ProductA implements Product {
     @Override
     public void operation() {
-        System.out.println("ConcreteProductA operation");
+        System.out.println("ProductA operation");
     }
 }
 
-public class ConcreteProductB implements Product {
+public class ProductB implements Product {
     @Override
     public void operation() {
-        System.out.println("ConcreteProductB operation");
+        System.out.println("ProductB operation");
     }
 }
 
-public abstract class Creator {
-    public abstract Product factoryMethod();
+public abstract class Factory {
+    abstract Product factoryMethod();
 
     public void someOperation() {
-        Product product = factoryMethod();
+        Product product = this.factoryMethod();
         product.operation();
     }
 }
 
-public class ConcreteCreatorA extends Creator {
+public class FactoryA extends Factory {
     @Override
     public Product factoryMethod() {
-        return new ConcreteProductA();
+        return new ProductA();
     }
 }
 
-public class ConcreteCreatorB extends Creator {
+public class FactoryB extends Factory {
     @Override
     public Product factoryMethod() {
-        return new ConcreteProductB();
+        return new ProductB();
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Creator creatorA = new ConcreteCreatorA();
-        creatorA.someOperation();
+        Factory factory;
+        boolean condition = true;
 
-        Creator creatorB = new ConcreteCreatorB();
-        creatorB.someOperation();
+        if (condition) {
+            factory = new FactoryA();
+        } else {
+            factory = new FactoryB();
+        }
+
+        factory.someOperation(); // ProductA operation
     }
 }
 ```
@@ -120,7 +129,6 @@ Se puede crear el patron Builder con Lombok para Java con el @Builder.
 public class Product {
     private String attribute1;
     private String attribute2;
-    private String attribute3;
 
     public void setAttribute1(String attribute1) {
         this.attribute1 = attribute1;
@@ -129,57 +137,49 @@ public class Product {
     public void setAttribute2(String attribute2) {
         this.attribute2 = attribute2;
     }
-
-    public void setAttribute3(String attribute3) {
-        this.attribute3 = attribute3;
-    }
 }
 
 public interface Builder {
-    void buildAttribute1();
-    void buildAttribute2();
-    void buildAttribute3();
-    Product getProduct();
+    Product build();
+    Builder builder();
+    Builder buildAttribute1(String text);
+    Builder buildAttribute2(String text);
 }
 
-public class ConcreteBuilder implements Builder {
-    private Product product = new Product();
+public class ProductBuilder implements Builder {
+    private Product product;
 
     @Override
-    public void buildAttribute1() {
-        product.setAttribute1("Attribute 1");
+    public Builder builder() {
+        this.product = new Product();
+        return this;
     }
 
     @Override
-    public void buildAttribute2() {
-        product.setAttribute2("Attribute 2");
+    public void buildAttribute1(String text) {
+        product.setAttribute1(text);
+        return this;
     }
 
     @Override
-    public void buildAttribute3() {
-        product.setAttribute3("Attribute 3");
+    public void buildAttribute2(String text()) {
+        product.setAttribute2(text);
+        return this;
     }
 
     @Override
-    public Product getProduct() {
-        return product;
-    }
-}
-
-public class Director {
-    public void construct(Builder builder) {
-        builder.buildAttribute1();
-        builder.buildAttribute2();
-        builder.buildAttribute3();
+    public Product build() {
+        return this.product;
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Builder builder = new ConcreteBuilder();
-        Director director = new Director();
-        director.construct(builder);
-        Product product = builder.getProduct();
+        Builder productBuilder = new ProductBuilder();
+        Product product = productBuilder.builder()
+            .buildAttribute1("Attribute 1")
+            .buildAttribute2("Attribute 2")
+            .build();
     }
 }
 ```
