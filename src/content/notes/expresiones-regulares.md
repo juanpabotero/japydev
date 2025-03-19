@@ -3,7 +3,7 @@ id: 'expresiones_regulares'
 title: 'Expresiones regulares'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jan 01 2022'
-heroImage: '/accessibility.svg'
+heroImage: '/regex.svg'
 ---
 
 Las expresiones regulares se utilizan para buscar y manipular cadenas de texto

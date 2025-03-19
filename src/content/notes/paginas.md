@@ -978,6 +978,9 @@ Para buscar cualquier libreria con vanilla javascript:
 - https://www.engvid.com/  
   Curso de ingles
 
+- https://jsondiff.com/
+  Comparar dos jsons
+
 ---
 
 ## Libros de programación
