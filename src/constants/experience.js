@@ -1,6 +1,6 @@
 export const experience = [
   {
-    title: 'Software Developer',
+    title: 'Software Engineer',
     company: 'Mercado Libre',
     date: 'Abr/2024 - Actualidad',
     description: [

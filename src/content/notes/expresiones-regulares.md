@@ -36,41 +36,48 @@ Coincidencias basicas:
 - `\W`: no es caracter alfanumerico (a-zA-Z0-9\_)
 - `\s`: espacio de cualquier tipo (tab, espacio, salto de linea)
 - `\S`: no es espacio de cualquier tipo (tab, espacio, salto de linea)
+- `a-z`: rango de caracteres de la `a` a la `z`
+- `A-Z`: rango de caracteres de la `A` a la `Z`
+- `0-9`: rango de caracteres del `0` al `9`
+- `\n`: salto de linea
+- `\t`: tab
 
 Limites:
 
-- `\b`: limite de palabra
+- `\b`: limite de palabra. Coincide con el principio o fin de una palabra
 - `\B`: no es limite de palabra
 - `^`: inicio de cadena de texto
 - `$`: fin de cadena de texto
 
 Cuantificadores:
 
-- \*: 0 o más veces
-- +: 1 o más veces
-- ?: 0 o 1 vez
-- {n}: numero exacto de veces
-- {n,m}: rango (minimo, maximo)
+- `*`: 0 o más veces
+- `+`: 1 o más veces
+- `?`: 0 o 1 vez
+- `{n}`: numero exacto de veces
+- `{n,m}`: rango (minimo, maximo)
+- `{n,}`: minimo
+- `{,m}`: maximo
 
 Conjunto de caracteres:
 
-- [abc]: cualquier caracter de la lista
-- [^abc]: cualquier caracter que no esta en la lista
+- `[abc]`: cualquier caracter de la lista
+- `[^abc]`: cualquier caracter que no esta en la lista
 
 Grupos:
 
-- (expresion): grupo de expresiones
-- (expresion)?: grupo de expresiones opcionales
-- |: uno u otro
+- `(expresion)`: grupo de expresiones
+- `(expresion)?`: grupo de expresiones opcionales
+- `|`: Coincide con una opción u otra. Ejemplo: `a|b` coincide con `a` o `b`
 
 Ejemplos:
 
 - `/a.b/`: cualquier caracter entre `a` y `b`. Ejemplo: `acb`
-- `/^\+\d{2} \d{7}/`: validar un numero de telefono internacional. Ejemplo: `+54 1234567`
-- `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/`: validar un email. Ejemplo:
+- `/^\+\d{2} \d{7}/`: validar un numero de telefono internacional. Ejemplo: `+57 1234567`
+- `^([a-zA-Z0-9]+(\.|_)?[a-zA-Z0-9]+)+\@[a-zA-Z0-9]+(\.?[a-z]{2,6}){1,2}$`: validar un email. 
+  Ejemplo: `abc_123.456@domain.com.co`
 
 Páginas:
 
-- regexr.com: distintas expresiones regulares para validaciones
+- https://regexr.com/: distintas expresiones regulares para validaciones
 - https://regex101.com/
-
