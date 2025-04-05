@@ -19,7 +19,7 @@ Se dividen en 3 categorias:
   Decorator, Facade, Flyweight, Proxy
 
 - **Comportamiento**: Se encargan de la interacción entre objetos, definen como los objetos interactuan y se
-  comunican para cumplir tareas complejas. Ejemplos: Chain of Responsibility, Command, Interpreter, 
+  comunican para cumplir tareas complejas. Ejemplos: Chain of Responsibility, Command, Interpreter,
   Iterator, Mediator, Memento, Observer, State, Strategy, Template Method, Visitor
 
 ## Patrones Creacionales
@@ -54,9 +54,6 @@ superclase, pero permite a las subclases alterar el tipo de objetos que se crear
 Permite crear objetos sin especificar la clase exacta que se creará. En lugar de eso, delegamos
 la creación de objetos a subclases o métodos que encapsulan esta lógica.  
 Es útil cuando una clase no puede anticipar la clase de objetos que debe crear.
-
-El patrón Abstract Factory es una versión más compleja del patrón Factory que permite crear familias de
-objetos relacionados sin especificar sus clases concretas. Agrega un nivel mas de abstraccion al patron Factory.
 
 ```java
 public interface Product {
@@ -103,9 +100,8 @@ public class FactoryB extends Factory {
 public class Main {
     public static void main(String[] args) {
         Factory factory;
-        boolean condition = true;
 
-        if (condition) {
+        if (true) {
             factory = new FactoryA();
         } else {
             factory = new FactoryB();
@@ -116,11 +112,118 @@ public class Main {
 }
 ```
 
+### Patron Abstract Factory
+
+El patrón Abstract Factory es una versión más compleja del patrón Factory que permite crear
+familias de objetos relacionados sin especificar sus clases concretas. Agrega un nivel mas de
+abstraccion al patron Factory.
+
+En lugar de crear objetos individuales directamente, creamos fabricas que producen un conjunto
+de objetos relacionados.
+
+Es útil cuando necesitas crear objetos que son parte de una familia y quieres asegurarte de que
+de que estos objetos se complementen entre si.
+
+```java
+public interface Vehicule {
+    void operation();
+}
+
+public class VehiculeA implements Vehicule {
+    @Override
+    public void operation() {
+        System.out.println("VehiculeA operation");
+    }
+}
+
+public class VehiculeB implements Vehicule {
+    @Override
+    public void operation() {
+        System.out.println("VehiculeB operation");
+    }
+}
+
+public interface Engine {
+    void operation();
+}
+
+public class EngineA implements Engine {
+    @Override
+    public void operation() {
+        System.out.println("EngineA operation");
+    }
+}
+
+public class EngineB implements Engine {
+    @Override
+    public void operation() {
+        System.out.println("EngineB operation");
+    }
+}
+
+public interface VehiculeFactory {
+  Vehicule createVehicule();
+  Engine createEngine();
+}
+
+public class VehiculeAFactory implements VehiculeFactory {
+  @Override
+  public Vehicule createVehicule() {
+    return new VehiculeA();
+  }
+
+  @Override
+  public Engine createEngine() {
+    return new EngineA();
+  }
+}
+
+public class VehiculeBFactory implements VehiculeFactory {
+  @Override
+  public Vehicule createVehicule() {
+    return new VehiculeB();
+  }
+
+  @Override
+  public Engine createEngine() {
+    return new EngineB();
+  }
+}
+
+public class VehiculeFactoryImpl {
+  VehiculeFactory vehiculeFactory;
+
+  public void generateFactory(VehiculeFactory vehiculeFactory) {
+    this.vehiculeFactory = vehiculeFactory;
+
+    Vehicule vehicule = vehiculeFactory.createVehicule();
+    Engine engine = vehiculeFactory.createEngine();
+
+    vehicule.assemble();
+    engine.start();
+  }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        VehiculeFactoryImpl vehiculeFactory = new VehiculeFactoryImpl();
+
+        if (true) {
+            vehiculeFactory.generateFactory(new VehiculeAFactory());
+        } else {
+            vehiculeFactory.generateFactory(new VehiculeBFactory());
+        }
+        // VehiculeA operation
+        // EngineA operation
+    }
+}
+```
+
 ### Patron Builder
 
-El patrón Builder es un patrón de diseño creacional que permite construir objetos complejos paso a paso. 
-El patrón nos permite producir distintos tipos y representaciones de un objeto empleando el 
-mismo código de construcción. El patrón Builder separa la construcción de un objeto complejo de 
+El patrón Builder es un patrón de diseño creacional que permite construir objetos complejos paso a paso.
+El patrón nos permite producir distintos tipos y representaciones de un objeto empleando el
+mismo código de construcción. El patrón Builder separa la construcción de un objeto complejo de
 su representación, de modo que el mismo proceso de construcción pueda crear diferentes representaciones.
 
 Se puede crear el patron Builder con Lombok para Java con el @Builder.
@@ -363,10 +466,7 @@ public class SubsystemB {
     }
 }
 
-
-
 ```
-
 
 ## Patrones Comportamiento
 
@@ -436,7 +536,7 @@ public class Main {
 
 ### Patron Strategy
 
-El patrón Strategy es un patrón de diseño de comportamiento que permite tener multiples metodos 
+El patrón Strategy es un patrón de diseño de comportamiento que permite tener multiples metodos
 para resolver un mismo problema y se elige dinamicamente segun el contexto.
 
 ```java
