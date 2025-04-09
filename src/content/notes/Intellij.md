@@ -29,3 +29,5 @@ heroImage: '/intellij.svg'
 - Ir a la linea `command + l`
 
 - Borrar el tab a la izquierda `shift + tab`
+
+- Ordenar lineas (Personalizado) `shift + option + S`
