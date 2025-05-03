@@ -287,6 +287,44 @@ public class Main {
 }
 ```
 
+### Patron Prototype
+
+El patrón Prototype es un patrón de diseño creacional que permite copiar objetos existentes sin
+hacer que el código dependa de sus clases.
+
+Es util cuando queremos duplicar cualquier objeto complejo por ejemplo el contenido, 
+el titulo y el autor de un documento.
+
+```java
+public interface Prototype {
+    Prototype clone();
+}
+
+public class ConcretePrototypeA implements Prototype {
+    @Override
+    public Prototype clone() {
+        return new ConcretePrototypeA();
+    }
+}
+
+public class ConcretePrototypeB implements Prototype {
+    @Override
+    public Prototype clone() {
+        return new ConcretePrototypeB();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Prototype prototypeA = new ConcretePrototypeA();
+        Prototype prototypeAClone = prototypeA.clone();
+
+        Prototype prototypeB = new ConcretePrototypeB();
+        Prototype prototypeBClone = prototypeB.clone();
+    }
+}
+```
+
 ## Patrones Estructurales
 
 ### Patron Adapter
