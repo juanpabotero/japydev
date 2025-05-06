@@ -434,9 +434,6 @@ Para buscar cualquier libreria con vanilla javascript:
   [party.js.org](https://party.js.org/)  
   [kirilv.com/canvas-confetti](https://www.kirilv.com/canvas-confetti/)
 
-- Manejar estados de la aplicacion  
-  [superstate.dev](https://superstate.dev/)
-
 - Dialogos  
   [sweetalert2.github.io](https://sweetalert2.github.io/)  
   https://a11y-dialog.netlify.app/ (script para usar dialogos accesibles)
@@ -892,6 +889,9 @@ Para buscar cualquier libreria con vanilla javascript:
 
 - [regex101.com](https://regex101.com/)  
   Probar expresiones regulares
+
+- [cyrilex](https://extendsclass.com/regex-tester.html)  
+  Probar y visualizar expresiones regulares
 
 - [pravatar.cc](https://pravatar.cc/)  
   para obtener una imagen de perfil aleatoria
