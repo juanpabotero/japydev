@@ -14,9 +14,9 @@ Se dividen en 3 categorias:
   flexible, ocultando los detalles de instanciacion. Ejemplos: Singleton, Factory, Builder, Prototype,
   Abstract Factory.
 
-- **Estructurales**: Se encargan de la composición de clases y objetos, enfocados en como componer clases
-  u objetos para formar estructuras mas grandes y reutilizables. Ejemplos: Adapter, Bridge, Composite,
-  Decorator, Facade, Flyweight, Proxy
+- **Estructurales**: Se encargan de la composición de clases y objetos, explican cómo
+  ensamblar objetos y clases en estructuras más grandes, a la vez que se mantiene la flexibilidad y
+  eficiencia de estas estructuras. Ejemplos: Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy.
 
 - **Comportamiento**: Se encargan de la interacción entre objetos, definen como los objetos interactuan y se
   comunican para cumplir tareas complejas. Ejemplos: Chain of Responsibility, Command, Interpreter,
@@ -292,7 +292,7 @@ public class Main {
 El patrón Prototype es un patrón de diseño creacional que permite copiar objetos existentes sin
 hacer que el código dependa de sus clases.
 
-Es util cuando queremos duplicar cualquier objeto complejo por ejemplo el contenido, 
+Es util cuando queremos duplicar cualquier objeto complejo por ejemplo el contenido,
 el titulo y el autor de un documento.
 
 ```java
@@ -330,7 +330,9 @@ public class Main {
 ### Patron Adapter
 
 El patrón Adapter es un patrón de diseño estructural que permite a objetos con interfaces incompatibles
-colaborar entre sí.
+colaborar entre sí. Es muy util para utilizar librerias de terceros en nuestra aplicación sin
+depender directamente de ellas, es decir, ayuda a crear una capa de abstracción en medio y no tener
+que modificar nuestro código si.
 
 ```java
 public interface Target {
@@ -360,6 +362,85 @@ public class Main {
     public static void main(String[] args) {
         Target target = new Adapter(new Adaptee());
         target.request();
+    }
+}
+```
+
+### Patron Bridge
+
+El patrón Bridge es un patrón de diseño estructural que permite desacoplar una abstracción de su
+implementación, de modo que ambas puedan variar de forma independiente. Permite dividir
+una clase grande, o un grupo de clases estrechamente relacionadas, en dos jerarquías separadas
+(abstracción e implementación) que pueden desarrollarse independientemente la una de la otra.
+
+Es util cuando se tienen muchas implementaciones de una abstracción. Se puede utilizar para
+separar la lógica de negocio de la lógica de presentación.
+
+```java
+public interface Implementor {
+    void operation();
+}
+
+public class ConcreteImplementorA implements Implementor {
+    @Override
+    public void operation() {
+        System.out.println("ConcreteImplementorA operation");
+    }
+}
+
+public class ConcreteImplementorB implements Implementor {
+    @Override
+    public void operation() {
+        System.out.println("ConcreteImplementorB operation");
+    }
+}
+
+public abstract class Abstraction {
+    protected Implementor implementor;
+
+    public Abstraction(Implementor implementor) {
+        this.implementor = implementor;
+    }
+
+    public abstract void operation();
+}
+
+public class ConcreteAbstractionA extends Abstraction {
+    public ConcreteAbstractionA(Implementor implementor) {
+        super(implementor);
+    }
+
+    @Override
+    public void operation() {
+        System.out.println("ConcreteAbstractionA operation");
+        this.implementor.operation();
+    }
+}
+
+public class ConcreteAbstractionB extends Abstraction {
+    public ConcreteAbstractionB(Implementor implementor) {
+        super(implementor);
+    }
+
+    @Override
+    public void operation() {
+        System.out.println("ConcreteAbstractionB operation");
+        this.implementor.operation();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Abstraction abstractionA = new ConcreteAbstractionA(new ConcreteImplementorA());
+        abstractionA.operation(); // ConcreteAbstractionA operation
+                                  // ConcreteImplementorA operation
+        abstractionA = new ConcreteAbstractionA(new ConcreteImplementorB());
+        abstractionA.operation(); // ConcreteAbstractionA operation
+                                  // ConcreteImplementorB operation
+
+        Abstraction abstractionB = new ConcreteAbstractionB(new ConcreteImplementorB());
+        abstractionB.operation(); // ConcreteAbstractionB operation
+                                  // ConcreteImplementorB operation
     }
 }
 ```
@@ -622,3 +703,4 @@ public class Main {
     }
 }
 ```
+
