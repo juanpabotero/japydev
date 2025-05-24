@@ -447,9 +447,9 @@ public class Main {
 
 ### Patron Composite
 
-El patrón Composite es un patrón de diseño estructural, sirve para construir objetos complejos a partir
-de otros más simples y similares entre sí, gracias a la composición recursiva y a una estructura
-en forma de árbol.
+El patrón Composite es un patrón de diseño estructural, permite componer objetos en estructuras de árbol 
+para representar jerarquías y trabajar con esas estructuras como si fueran objetos individuales. 
+El patrón permite a los clientes tratar los objetos individuales y los compuestos de la misma manera.
 
 Esto simplifica el tratamiento de los objetos creados, ya que al poseer todos ellos una interfaz común,
 se tratan todos de la misma manera. Dependiendo de la implementación, pueden aplicarse procedimientos al
@@ -495,11 +495,12 @@ public class Composite implements ComponentComposite {
 public class Main {
     public static void main(String[] args) {
         ComponentComposite leaf = new Leaf();
-        leaf.operation();
+        leaf.operation(); // Leaf operation
 
         Composite composite = new Composite();
         composite.addComponent(leaf);
-        composite.operation();
+        composite.operation(); // Composite operation
+                               // Leaf operation
     }
 }
 ```
@@ -507,7 +508,11 @@ public class Main {
 ### Patron Decorator
 
 El patrón Decorator es un patrón de diseño estructural que permite añadir funcionalidades a un objeto
-dinámicamente. Es una alternativa flexible a la herencia para extender la funcionalidad de una clase.
+dinámicamente. Es una alternativa flexible a la herencia para extender la funcionalidad de una clase.  
+Permite añadir funcionalidades a objetos colocando estos objetos dentro de objetos encapsuladores 
+que contienen estas funcionalidades.  
+Es util cuando se necesitan añadir funcionalidades a un objeto de forma dinámica y sin afectar a otros
+objetos de la misma clase.
 
 ```java
 public interface Component {
@@ -537,7 +542,7 @@ public class ConcreteDecoratorA extends Decorator {
     @Override
     public void operation() {
         System.out.println("ConcreteDecoratorA operation");
-        component.operation();
+        this.component.operation();
     }
 }
 
@@ -549,20 +554,23 @@ public class ConcreteDecoratorB extends Decorator {
     @Override
     public void operation() {
         System.out.println("ConcreteDecoratorB operation");
-        component.operation();
+        this.component.operation();
     }
 }
 
 public class Main {
     public static void main(String[] args) {
         Component component = new ConcreteComponent();
-        component.operation();
+        component.operation(); // ConcreteComponent operation
 
         Component decoratorA = new ConcreteDecoratorA(component);
-        decoratorA.operation();
+        decoratorA.operation(); // ConcreteDecoratorA operation
+                                // ConcreteComponent operation
 
         Component decoratorB = new ConcreteDecoratorB(decoratorA);
-        decoratorB.operation();
+        decoratorB.operation(); // ConcreteDecoratorB operation
+                                // ConcreteDecoratorA operation
+                                // ConcreteComponent operation
     }
 }
 ```
