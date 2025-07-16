@@ -447,8 +447,8 @@ public class Main {
 
 ### Patron Composite
 
-El patrón Composite es un patrón de diseño estructural, permite componer objetos en estructuras de árbol 
-para representar jerarquías y trabajar con esas estructuras como si fueran objetos individuales. 
+El patrón Composite es un patrón de diseño estructural, permite componer objetos en estructuras de árbol
+para representar jerarquías y trabajar con esas estructuras como si fueran objetos individuales.
 El patrón permite a los clientes tratar los objetos individuales y los compuestos de la misma manera.
 
 Esto simplifica el tratamiento de los objetos creados, ya que al poseer todos ellos una interfaz común,
@@ -509,7 +509,7 @@ public class Main {
 
 El patrón Decorator es un patrón de diseño estructural que permite añadir funcionalidades a un objeto
 dinámicamente. Es una alternativa flexible a la herencia para extender la funcionalidad de una clase.  
-Permite añadir funcionalidades a objetos colocando estos objetos dentro de objetos encapsuladores 
+Permite añadir funcionalidades a objetos colocando estos objetos dentro de objetos encapsuladores
 que contienen estas funcionalidades.  
 Es util cuando se necesitan añadir funcionalidades a un objeto de forma dinámica y sin afectar a otros
 objetos de la misma clase.
@@ -578,21 +578,135 @@ public class Main {
 ### Patron Facade
 
 El patrón Facade es un patrón de diseño estructural que proporciona una interfaz simplificada a una biblioteca,
-un framework o cualquier conjunto complejo de clases.
+un framework o cualquier conjunto complejo de clases.  
+Define una interfaz de nivel superior que hace que el subsistema sea más fácil de usar.
+Es util cuando se tiene un subsistema complejo y se quiere proporcionar una interfaz simple para
+interactuar con él a traves del cliente.
 
 ```java
 public class SubsystemA {
-    public void operationA() {
-        System.out.println("SubsystemA operationA");
+    public void operation1() {
+        System.out.println("SubsystemA operation1");
+    }
+
+    public void operation2() {
+        System.out.println("SubsystemA operation2");
     }
 }
 
 public class SubsystemB {
-    public void operationB() {
-        System.out.println("SubsystemB operationB");
+    public void operation1() {
+        System.out.println("SubsystemB operation1");
+    }
+
+    public void operation2() {
+        System.out.println("SubsystemB operation2");
     }
 }
 
+public class ExternalFacade {
+    private SubsystemA subsystemA;
+    private SubsystemB subsystemB;
+
+    public ExternalFacade(SubsystemA subsystemA, SubsystemB subsystemB) {
+        this.subsystemA = subsystemA;
+        this.subsystemB = subsystemB;
+    }
+
+    public void operation1() {
+        subsystemA.operation1();
+        subsystemB.operation1();
+    }
+
+    public void operation2() {
+        subsystemA.operation2();
+        subsystemB.operation2();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        SubsystemA subsystemA = new SubsystemA();
+        SubsystemB subsystemB = new SubsystemB();
+
+        ExternalFacade externalFacade = new ExternalFacade(subsystemA, subsystemB);
+        externalFacade.operation1(); // SubsystemA operation1
+                                     // SubsystemB operation1
+
+        externalFacade.operation2(); // SubsystemA operation2
+                                     // SubsystemB operation2
+
+    }
+}
+```
+
+### Patron Flyweight
+
+El patrón Flyweight es un patrón de diseño estructural que permite mantener más objetos dentro de
+la cantidad disponible de RAM compartiendo las partes comunes del estado entre varios objetos
+en lugar de mantener toda la información en cada objeto.
+
+Es util cuando se necesitan crear muchas instancias de un objeto y se quiere ahorrar memoria
+compartiendo instancias similares.
+
+```java
+public class Flyweight {
+    private String intrinsicState;
+
+    public Flyweight(String intrinsicState) {
+        this.intrinsicState = intrinsicState;
+    }
+
+    public void operation(String extrinsicState) {
+        System.out.println("Flyweight operation: " + intrinsicState + " " + extrinsicState);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Flyweight flyweight = new Flyweight("intrinsicState");
+        flyweight.operation("extrinsicState");
+    }
+}
+```
+
+### Patron Proxy
+
+Es un patrón de diseño estructural que te permite proporcionar un sustituto o marcador de posición
+para otro objeto. Un proxy controla el acceso al objeto original, permitiéndote hacer algo antes o después
+de que la solicitud llegue al objeto original. Crea un objeto que actúa como intermediario entre el cliente
+y el objeto real, lo que permite agregar funcionalidad adicional al objeto real sin cambiar su código.
+
+```java
+public interface Subject {
+    void request();
+}
+
+public class RealSubject implements Subject {
+    @Override
+    public void request() {
+        System.out.println("RealSubject request");
+    }
+}
+
+public class Proxy implements Subject {
+    private RealSubject realSubject;
+
+    @Override
+    public void request() {
+        if (this.realSubject == null) {
+            this.realSubject = new RealSubject();
+        }
+        realSubject.request();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Subject subject = new Proxy();
+        subject.request(); // RealSubject request
+    }
+}
 ```
 
 ## Patrones Comportamiento
