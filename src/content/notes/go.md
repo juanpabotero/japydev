@@ -612,6 +612,16 @@ for index, value := range arr {
 }
 ```
 
+Entre las dos formas de iterar en Go, la elección depende del tamaño de los datos y lo que necesitas hacer dentro del bucle:
+
+- `for _, message := range messages` es la opción más clara y conveniente cuando solo necesitas leer los elementos y
+  estos son datos simples o punteros. Sin embargo, si los elementos del slice son structs grandes, esta forma implica
+  una copia de cada elemento en cada iteración, lo que puede afectar el rendimiento y uso de memoria en
+  grandes volúmenes de datos.
+- `for i := range messages` es preferible cuando necesitas modificar los elementos, acceder a ellos por índice,
+  o cuando trabajas con structs grandes. Esta forma evita la copia de datos pesados, ya que accedes directamente al
+  elemento en el slice mediante su índice.
+
 ## Funciones
 
 ```go

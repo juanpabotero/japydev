@@ -711,6 +711,116 @@ public class Main {
 
 ## Patrones Comportamiento
 
+### Patron Chain of Responsibility
+
+El patrón Chain of Responsibility es un patrón de diseño de comportamiento que permite pasar solicitudes
+a lo largo de una cadena de manejadores. Al recibir una solicitud, cada manejador decide si
+la procesa o si la pasa al siguiente manejador de la cadena. Es util cuando se necesita procesar
+datos en una secuencia y de diferentes maneras, pero no se sabe de antemano qué tipo de procesamiento
+necesita o en que orden.
+
+```java
+public abstract class Handler {
+    protected Handler successor;
+    public Handler setSuccessor(Handler successor) {
+        this.successor = successor;
+        return this.successor;
+    }
+    public abstract void handleRequest(Request request);
+}
+public class ConcreteHandlerA extends Handler {
+    @Override
+    public void handleRequest(String request) {
+        if (request.equals("A")) {
+            System.out.println("ConcreteHandlerA handleRequest");
+        } else if (successor != null) {
+            successor.handleRequest(request);
+        } else {
+            System.out.println("No handler found");
+        }
+    }
+}
+public class ConcreteHandlerB extends Handler {
+    @Override
+    public void handleRequest(String request) {
+        if (request.equals("B")) {
+            System.out.println("ConcreteHandlerB handleRequest");
+        } else if (successor != null) {
+            successor.handleRequest(request);
+        } else {
+            System.out.println("No handler found");
+        }
+    }
+}
+public class ConcreteHandlerC extends Handler {
+    @Override
+    public void handleRequest(String request) {
+        if (request.equals("C")) {
+            System.out.println("ConcreteHandlerC handleRequest");
+        } else if (successor != null) {
+            successor.handleRequest(request);
+        } else {
+            System.out.println("No handler found");
+        }
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Handler handlerA = new ConcreteHandlerA();
+        Handler handlerB = new ConcreteHandlerB();
+        Handler handlerC = new ConcreteHandlerC();
+        handlerA.setSuccessor(handlerB).setSuccessor(handlerC);
+        handlerA.handleRequest("B"); // ConcreteHandlerB handleRequest
+        handlerA.handleRequest("C"); // ConcreteHandlerC handleRequest
+        handlerA.handleRequest("D"); // No handler found
+    }
+}
+```
+
+### Patron Command
+
+El patrón Command es un patrón de diseño de comportamiento que convierte una solicitud en un objeto
+independiente que contiene toda la información sobre la solicitud. Esta transformación te permite
+parametrizar los métodos con diferentes solicitudes, retrasar o poner en cola la ejecución de una
+solicitud y soportar operaciones que no se pueden realizar.  
+Es util cuando se necesita desacoplar el objeto que invoca la operacion del objeto que sabe como realizarla.
+
+```java
+public interface Command {
+    void execute();
+}
+public class ConcreteCommandA implements Command {
+    @Override
+    public void execute() {
+        System.out.println("ConcreteCommandA execute");
+    }
+}
+public class ConcreteCommandB implements Command {
+    @Override
+    public void execute() {
+        System.out.println("ConcreteCommandB execute");
+    }
+}
+public class Invoker {
+    private Command command;
+    public void setCommand(Command command) {
+        this.command = command;
+    }
+    public void executeCommand() {
+        command.execute();
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Invoker invoker = new Invoker();
+        invoker.setCommand(new ConcreteCommandA());
+        invoker.executeCommand(); // ConcreteCommandA execute
+        invoker.setCommand(new ConcreteCommandB());
+        invoker.executeCommand(); // ConcreteCommandB execute
+    }
+}
+```
+
 ### Patron Observer
 
 El patrón Observer es un patrón de diseño de comportamiento que permite a un objeto, llamado sujeto,
@@ -779,6 +889,13 @@ public class Main {
 
 El patrón Strategy es un patrón de diseño de comportamiento que permite tener multiples metodos
 para resolver un mismo problema y se elige dinamicamente segun el contexto.
+Es util cuando se tienen multiples algoritmos que se pueden utilizar para resolver un problema y se
+quiere elegir el algoritmo en tiempo de ejecucion.  
+El patron Strategy se compone de 3 partes:
+
+- **Strategy**: Interfaz que define el algoritmo a utilizar.
+- **ConcreteStrategy**: Implementacion concreta de la interfaz Strategy.
+- **Context**: Clase que utiliza la estrategia para ejecutar el algoritmo.
 
 ```java
 public interface Strategy {
@@ -811,17 +928,23 @@ public class Context {
     }
 
     public void execute() {
-        strategy.algorithm();
+        this.strategy.algorithm();
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Context context = new Context(new ConcreteStrategyA());
-        context.execute();
+        String algorithm = "A"; // Obtener el algoritmo a utilizar
+        Strategy strategy;
 
-        context.setStrategy(new ConcreteStrategyB());
-        context.execute();
+        if (algorithm.equals("A")) {
+            strategy = new ConcreteStrategyA();
+        } else {
+            strategy = new ConcreteStrategyB();
+        }
+
+        Context context = new Context(strategy);
+        context.execute(); // ConcreteStrategyA algorithm
     }
 }
 ```
